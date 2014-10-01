@@ -446,6 +446,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutelas($cedula));
     }
 
+    /*Obtener listado de pqr por numero de cedula*/
+    public function get_Pqr($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_pqr($cedula));
+    }
+
     /**
      * Método do_finish
      *

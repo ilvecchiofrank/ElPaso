@@ -251,6 +251,21 @@ class QM_Form extends CI_Model {
         return $dataArray;
     }
 
+    /*Metodo get_pqr
+        metodo que obtiene los pqr por numero de cedula*/
+    public function get_pqr($cedula){
+    try {
+            //Generamos el query
+        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado FROM t21web_pqr WHERE cedula = '$cedula'");
+        //$SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
     /*Metodo get_tutelas
       metodo que obtiene las tutelas por numero de cedula*/
       public function get_tutelas($cedula){
