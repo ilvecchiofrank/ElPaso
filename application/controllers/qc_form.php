@@ -194,6 +194,43 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
+
+    /* Metodo full_form
+        metodo que muestra la pagina alternativa de impresion*/
+        public function print_full($inRSearch = null, $stRType = null){
+
+            if ($this->session->userdata("isLoggedIn")) {
+
+                if (!is_null($inRSearch)){
+                    $this->session->set_userdata("inRFormID", $inRSearch);
+                }
+
+                if ($this->session->userdata("inRFormID")){
+
+                    $this->load->model("qm_form", "form", true);
+                    $this->load->model("qm_user", "user", true);
+                    $arrLPageData = array();
+
+                    /*Obtener los datos del formulario*/
+                    $arrLForm = $this->form->get_form();
+                    $arrLPageData["arrRForm"] = $arrLForm;
+                    $arrLPageData["arrRChapter"] = $this->form->get_chapters("A");
+                    $arrLPageData["arrRAnswers"] = $this->user->get_answers();
+                    $arrLPageData["arrRChapterB"] = $this->form->get_chapterb($inRSearch);
+                    $arrLPageData["arrRChapterC"] = $this->form->get_chapterc($inRSearch);
+                    $arrLPageData["stRType"] = $stRType;
+                    $this->load->vars($arrLPageData);
+                    $this->display_page("print_full", "form", true);
+                    return;
+
+                }
+
+            }
+
+            redirect("/");
+
+        }
+
     /**
      * Metodo view
      *
