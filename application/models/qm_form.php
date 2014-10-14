@@ -297,6 +297,32 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /**Metodo get_empleo
+    metodo que obtiene la informacion de la vista electrohuila*/
+    public function get_empleo($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM v06web_empleo WHERE Cedula =  '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_pesca
+    metodo que obtiene la informacion de la vista electrohuila*/
+    public function get_pesca($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM v04web_pescadores WHERE CC =  '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Metodo get_tutelas
       metodo que obtiene las tutelas por numero de cedula*/
       public function get_tutelas($cedula){

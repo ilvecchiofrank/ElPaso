@@ -499,6 +499,18 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_pqr($cedula));
     }
 
+    /*Cargar Info Empleo*/
+    public function get_Empleo($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_empleo($cedula));
+    }
+
+    /*Cargar Info Pescadores*/
+    public function get_Pesca($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_pesca($cedula));
+    }
+
     /*Cargar Info Electrohuila*/
     public function get_Electro($cedula){
         $this->load->model("qm_form", "form", true);

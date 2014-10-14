@@ -14,21 +14,34 @@ $(".modal").modal('hide');
 
 //-Cargar Empleo-//
 function loadEmpleo(){
-    console.log("Empleo");
-    var cedula = getParameterByName("docId");
-    var tablaempleo = "";
+    //console.log("Empleo");
+    // var cedula = getParameterByName("docId");
+    // var tablaempleo = "";
+    // $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData){
+    //     arrayEmpleo = objRData;
+    //     if(arrayElectro.length >= 1){
+    //         tablaempleo += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Año</td><td>Mes</td><td>Municipio</td><td>Ubicación</td><td>Cédula</td><td>Dirección</td><td>Contador</td><td>Fecha Matricula</td></tr>";
+    //         for (var e = arrayEmpleo.length -1; e >=0; e--){
+    //             tablaempleo += "<tr><td>" + arrayEmpleo[e].Año + "</td><td>" + arrayEmpleo[e].Mes + "</td><td>" + arrayEmpleo[e].MUNICIPIO + "</td><td>" + arrayEmpleo[e].Ubicacion + "</td><td>" + arrayEmpleo[e].CC + "</td><td>" + arrayEmpleo[e].Direccion + "</td><td>" + arrayEmpleo[e].Contador + "</td><td>" + arrayEmpleo[e].Fecha_Matricula + "</td></tr>";
+    //         }
+    //     }else{
+    //         $("#tableEmpleo").css("display","none");
+    //     }
+    //         tablaempleo += "</tbody></table>";
+    //         $("#tableEmpleo").html(tablaempleo);
+    // });
 }
 
 //-Cargar Compensación Residentes-//
 function loadResid(){
-    console.log("Residentes");
+    //console.log("Residentes");
     var cedula = getParameterByName("docId");
     var tablaresid = "";
 }
 
 //-Cargar Compensación No Residentes-//
 function loadNoResid(){
-    console.log("No residentes");
+    //console.log("No residentes");
     var cedula = getParameterByName("docId");
     var tablanoresid = "";
 }
@@ -38,11 +51,24 @@ function loadPesca(){
     console.log("Pesca");
     var cedula = getParameterByName("docId");
     var tablapesca = "";
+    $.getJSON("index.php/form/get_Pesca/" + cedula, function(objRData){
+        arrayPesca = objRData;
+        if(arrayPesca.length >= 1){
+            tablapesca += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cédula</td><td>Asociación</td><td>Arte de pesca</td><td>Número ICA</td><td>Tramo</td><td>Zona de pesca</td></tr>";
+            for (var e = arrayPesca.length -1; e >=0; e--){
+                tablapesca += "<tr><td>" + arrayPesca[e].CC + "</td><td>" + arrayPesca[e].ASOCIACION + "</td><td>" + arrayPesca[e].ARTE_PESCA + "</td><td>" + arrayPesca[e].No_ICA + "</td><td>" + arrayPesca[e].TRAMO + "</td><td>" + arrayPesca[e].ZONA_PESCA + "</td></tr>";
+            }
+        }else{
+            $("#tablePescadores").css("display","none");
+        }
+            tablapesca += "</tbody></table>";
+            $("#tablePescadores").html(tablapesca);
+    });
 }
 
 //-Cargar Transportadores-//
 function loadTransp(){
-    console.log("Transp");
+    //console.log("Transp");
     var cedula = getParameterByName("docId");
     var tablatransp = "";
 }
@@ -70,7 +96,7 @@ function loadElectro(){
 
 //-Cargar Censo-//
 function loadCenso(){
-    console.log("Censo");
+    //console.log("Censo");
     var cedula = getParameterByName("docId");
     var tablacenso = "";
 }
