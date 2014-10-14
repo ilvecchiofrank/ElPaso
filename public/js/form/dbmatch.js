@@ -60,7 +60,8 @@ function loadElectro(){
                 tablaelectro += "<tr><td>" + arrayElectro[e].Año + "</td><td>" + arrayElectro[e].Mes + "</td><td>" + arrayElectro[e].MUNICIPIO + "</td><td>" + arrayElectro[e].Ubicacion + "</td><td>" + arrayElectro[e].CC + "</td><td>" + arrayElectro[e].Direccion + "</td><td>" + arrayElectro[e].Contador + "</td><td>" + arrayElectro[e].Fecha_Matricula + "</td></tr>";
             }
         }else{
-            $("tableElectro").css("display","none");
+            $("#tableElectro").css("display","none");
+            $("#labelElectro").css("display","none");
         }
             tablaelectro += "</tbody></table>";
             $("#tableElectro").html(tablaelectro);

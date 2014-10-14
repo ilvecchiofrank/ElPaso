@@ -30,7 +30,7 @@ if (isset($_GET["code"])) {
             <br/>
             <legend>Empleo</legend>
             <br/>
-            <table id='tableEmpleo' class='table table-stripped'>
+            <table id='tableEmpleo' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
@@ -40,7 +40,7 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableCompResidentes' class='table table-stripped'>
+            <table id='tableCompResidentes' class='table table-striped'>
             <legend>Compensación Residentes</legend>
             <br/>
               <thead>
@@ -52,7 +52,7 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableCompNoResidentes' class='table table-stripped'>
+            <table id='tableCompNoResidentes' class='table table-striped'>
               <legend>Compensación No Residentes</legend>
               <br/>
               <thead>
@@ -71,7 +71,7 @@ if (isset($_GET["code"])) {
             <br/>
             <legend>Pescadores</legend>
             <br/>
-            <table id='tablePescadores' class='table table-stripped'>
+            <table id='tablePescadores' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
@@ -81,7 +81,7 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableTransportadores' class='table table-stripped'>
+            <table id='tableTransportadores' class='table table-striped'>
             <legend>Transportadores</legend>
             <br/>
               <thead>
@@ -93,8 +93,8 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableElectro' class='table table-stripped'>
-              <legend>ElectroHuila</legend>
+            <table id='tableElectro' class='table table-striped'>
+              <legend id-'labelElectro'>ElectroHuila</legend>
               <br/>
               <thead>
                 <tbody>
@@ -105,7 +105,7 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableCenso' class='table table-stripped'>
+            <table id='tableCenso' class='table table-striped'>
               <legend>Censo</legend>
               <br/>
               <thead>
