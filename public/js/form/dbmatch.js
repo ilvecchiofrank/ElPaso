@@ -2,7 +2,6 @@ $(document).ready(function () {
 
 $("#txtCedula").html(getParameterByName("docId"));
 
-$(".modal").modal('show');
 loadEmpleo();
 loadResid();
 loadNoResid();
@@ -10,26 +9,26 @@ loadPesca();
 loadTransp();
 loadElectro();
 loadCenso();
-$(".modal").modal('hide');
 
 //-Cargar Empleo-//
 function loadEmpleo(){
-    //console.log("Empleo");
-    // var cedula = getParameterByName("docId");
-    // var tablaempleo = "";
-    // $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData){
-    //     arrayEmpleo = objRData;
-    //     if(arrayElectro.length >= 1){
-    //         tablaempleo += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Año</td><td>Mes</td><td>Municipio</td><td>Ubicación</td><td>Cédula</td><td>Dirección</td><td>Contador</td><td>Fecha Matricula</td></tr>";
-    //         for (var e = arrayEmpleo.length -1; e >=0; e--){
-    //             tablaempleo += "<tr><td>" + arrayEmpleo[e].Año + "</td><td>" + arrayEmpleo[e].Mes + "</td><td>" + arrayEmpleo[e].MUNICIPIO + "</td><td>" + arrayEmpleo[e].Ubicacion + "</td><td>" + arrayEmpleo[e].CC + "</td><td>" + arrayEmpleo[e].Direccion + "</td><td>" + arrayEmpleo[e].Contador + "</td><td>" + arrayEmpleo[e].Fecha_Matricula + "</td></tr>";
-    //         }
-    //     }else{
-    //         $("#tableEmpleo").css("display","none");
-    //     }
-    //         tablaempleo += "</tbody></table>";
-    //         $("#tableEmpleo").html(tablaempleo);
-    // });
+    console.log("Empleo");
+    $(".modal").modal('show');
+    var cedula = getParameterByName("docId");
+    var tablaempleo = "";
+    $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData){
+        arrayEmpleo = objRData;
+        if(arrayEmpleo.length >= 1){
+            tablaempleo += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cédula</td><td>Cargo</td><td>Número de contrato</td><td>Tipo de contrato</td><td>Fecha de contratación</td><td>Fecha de terminación de contrato</td></tr>";
+            for (var e = arrayEmpleo.length -1; e >=0; e--){
+                tablaempleo += "<tr><td>" + arrayEmpleo[e].Cedula + "</td><td>" + arrayEmpleo[e].Cargo + "</td><td>" + arrayEmpleo[e].N_Contrato + "</td><td>" + arrayEmpleo[e].Tipo_Contrato + "</td><td>" + arrayEmpleo[e].Fecha_Contratacion + "</td><td>" + arrayEmpleo[e].Fecha_Terminacion_Contrato + "</td></tr>";
+            }
+        }else{
+            $("#tableEmpleo").css("display","none");
+        }
+            tablaempleo += "</tbody></table>";
+            $("#tableEmpleo").html(tablaempleo);
+    });
 }
 
 //-Cargar Compensación Residentes-//
@@ -112,6 +111,7 @@ function loadCenso(){
     //console.log("Censo");
     var cedula = getParameterByName("docId");
     var tablacenso = "";
+    $(".modal").modal('hide');
 }
 
 //-Extraer parametros QueryString-//

@@ -302,7 +302,7 @@ class QM_Form extends CI_Model {
     public function get_empleo($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v06web_empleo WHERE Cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT Cedula, Cargo, N_Contrato, Tipo_Contrato, Fecha_Contratacion, Fecha_Terminacion_Contrato FROM v06web_empleo WHERE Cedula = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
