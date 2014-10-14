@@ -284,6 +284,19 @@ class QM_Form extends CI_Model {
         }
     }
 
+    /**Metodo get_electro
+    metodo que obtiene la informacion de la vista electrohuila*/
+    public function get_electro($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM v05web_electrohuila WHERE CC = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Metodo get_tutelas
       metodo que obtiene las tutelas por numero de cedula*/
       public function get_tutelas($cedula){

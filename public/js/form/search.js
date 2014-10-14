@@ -89,6 +89,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 var objLAnchorP = $(objLAnchorC).clone();
                 var objLAnchorPF = $(objLAnchorC).clone();
                 var objLAnchorA = $(objLAnchorC).clone();
+                var objLAnchorCRBD = $(objLAnchorC).clone();
                 var objLAnchorE = $(objLAnchorC).clone();
                 var objLAnchorUD = $(objLAnchorC).clone();
                 var objLAnchorCERT = $(objLAnchorC).clone();
@@ -106,6 +107,9 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 $(objLAnchorPF).attr("target","_blank");
                 $(objLAnchorPF).attr("href", "index.php/form/print_full/" + arrRData.form)
                     .html("Ver Respuestas").addClass("btn btn-info");
+                $(objLAnchorCRBD).attr("target","_blank");
+                $(objLAnchorCRBD).attr("href", "index.php/form/dbmatch?docId=" + arrRData.cc)
+                    .html("Ver Cruces DB").addClass("btn btn-warning");
                 $(objLAnchorA).attr("href", "index.php/form/print_form/" + arrRData.form + "/full")
                     .html("Ver").addClass("btn btn-warning");
                 $(objLAnchorE).attr("href", "index.php/form/chapter/A/" + arrRData.form)
@@ -182,6 +186,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                         case "4":
                             $(objLAction).append(" ").append(objLAnchorF);
 							$(objLAction).append(" ").append(objLAnchorPF);
+                            $(objLAction).append(" ").append(objLAnchorCRBD);
                             break;
 
                         default:

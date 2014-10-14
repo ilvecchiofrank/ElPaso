@@ -48,6 +48,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar cruces BD*/
+    public function dbmatch(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("dbmatch", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /**
      * Metodo search
      *
@@ -487,6 +497,12 @@ class QC_Form extends QC_Controller {
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_pqr($cedula));
+    }
+
+    /*Cargar Info Electrohuila*/
+    public function get_Electro($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_electro($cedula));
     }
 
     /**
