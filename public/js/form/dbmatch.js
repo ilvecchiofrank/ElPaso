@@ -68,9 +68,22 @@ function loadPesca(){
 
 //-Cargar Transportadores-//
 function loadTransp(){
-    //console.log("Transp");
+    console.log("Transp");
     var cedula = getParameterByName("docId");
     var tablatransp = "";
+    $.getJSON("index.php/form/get_Transp/" + cedula, function(objRData){
+        arrayPesca = objRData;
+        if(arrayPesca.length >= 1){
+            tablatransp += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cédula</td><td>Año</td><td>Destino</td><td>Viajes</td><td>Pasajeros</td></tr>";
+            for (var e = arrayPesca.length -1; e >=0; e--){
+                tablatransp += "<tr><td>" + arrayPesca[e].CC + "</td><td>" + arrayPesca[e].AÑO + "</td><td>" + arrayPesca[e].DESTINO + "</td><td>" + arrayPesca[e].VIAJES + "</td><td>" + arrayPesca[e].PASAJEROS + "</td></tr>";
+            }
+        }else{
+            $("#tableTransportadores").css("display","none");
+        }
+            tablatransp += "</tbody></table>";
+            $("#tableTransportadores").html(tablatransp);
+    });
 }
 
 //-Cargar ElectroHuila-//

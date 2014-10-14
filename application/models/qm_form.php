@@ -302,7 +302,7 @@ class QM_Form extends CI_Model {
     public function get_empleo($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v06web_empleo WHERE Cedula =  '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM v06web_empleo WHERE Cedula = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
@@ -315,7 +315,20 @@ class QM_Form extends CI_Model {
     public function get_pesca($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v04web_pescadores WHERE CC =  '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM v04web_pescadores WHERE CC = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_transp
+    metodo que obtiene la informacion de la vista electrohuila*/
+    public function get_transp($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM v03web_transporte WHERE CC = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
