@@ -289,7 +289,7 @@ class QM_Form extends CI_Model {
     public function get_electro($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v05web_electrohuila WHERE CC = '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM tmp_electrohuila WHERE CC = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
