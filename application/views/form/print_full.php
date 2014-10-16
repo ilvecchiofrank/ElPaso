@@ -35,7 +35,7 @@
           <div class="panel panel-default" style="border: none;">
             <div class="panel-body">
               <div class="pull-left">
-                <img alt="Emgesa" src="public/img/logoprint.gif" class="img-responsive" width="75">
+                <img alt="Emgesa" src="public/img/logoprint.gif" class="img-responsive" width="150">
               </div>
               <h4 class="pull-right">FORMATO SOLICITUD DE REGISTRO EN EL CENSO</h4>
             </div>

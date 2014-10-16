@@ -302,7 +302,7 @@ class QM_Form extends CI_Model {
     public function get_empleo($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT Cedula, Cargo, N_Contrato, Tipo_Contrato, Fecha_Contratacion, Fecha_Terminacion_Contrato FROM v06web_empleo WHERE Cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT FECHA, Cargo, N_Contrato, Tipo_Contrato, Fecha_Contratacion, Fecha_Terminacion_Contrato FROM v06web_empleo WHERE Cedula = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
@@ -388,8 +388,8 @@ class QM_Form extends CI_Model {
             //         $arrLResults = array_merge($arrLResults, $SQLResult->result_array());
             //     }
             // }
-            
-            $SQLResult = $this->db->query("SELECT * FROM v01web_union_busqueda where form = '$arrRFormData[TxtFormNo]' ");
+
+            $SQLResult = $this->db->query("SELECT * FROM tmp_base where form = '$arrRFormData[TxtFormNo]' ");
             $SQLDT = $SQLResult->result();
 
             if (sizeof($SQLDT) > 0) {
@@ -452,7 +452,7 @@ class QM_Form extends CI_Model {
             // }
             
             //$SQLResult = $this->db->query("SELECT * FROM v01web_union_busqueda where nombresapellidos = '$arrRFormData[TxtPersonName]' ");
-            $SQLResult = $this->db->query("SELECT * FROM v01web_union_busqueda where nombresapellidos like('%".str_replace(" ", "%') OR nombresapellidos LIKE('%", $arrRFormData["TxtPersonName"])."%')");
+            $SQLResult = $this->db->query("SELECT * FROM tmp_base where nombresapellidos like('%".str_replace(" ", "%') OR nombresapellidos LIKE('%", $arrRFormData["TxtPersonName"])."%')");
             $SQLDT = $SQLResult->result();
 
             if (sizeof($SQLDT) > 0) {
