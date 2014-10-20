@@ -328,7 +328,7 @@ class QM_Form extends CI_Model {
     public function get_transp($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v03web_transporte WHERE CC = '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM tmp_transporte WHERE CC = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
