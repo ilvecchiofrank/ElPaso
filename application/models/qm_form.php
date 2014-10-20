@@ -315,7 +315,7 @@ class QM_Form extends CI_Model {
     public function get_pesca($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM v04web_pescadores WHERE CC = '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM tmp_pescadores WHERE CC = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
