@@ -8,7 +8,7 @@ loadNoResid();
 loadPesca();
 loadTransp();
 loadElectro();
-loadCenso();
+//loadCenso();
 
 //-Cargar Empleo-//
 function loadEmpleo(){
@@ -16,6 +16,7 @@ function loadEmpleo(){
     $(".modal").modal('show');
     var cedula = getParameterByName("docId");
     var tablaempleo = "";
+    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData){
         arrayEmpleo = objRData;
         if(arrayEmpleo.length >= 1){
@@ -23,6 +24,7 @@ function loadEmpleo(){
             for (var e = arrayEmpleo.length -1; e >=0; e--){
                 tablaempleo += "<tr><td>" + arrayEmpleo[e].FECHA + "</td><td>" + arrayEmpleo[e].Cargo + "</td><td>" + arrayEmpleo[e].N_Contrato + "</td><td>" + arrayEmpleo[e].Tipo_Contrato + "</td><td>" + arrayEmpleo[e].Fecha_Contratacion + "</td><td>" + arrayEmpleo[e].Fecha_Terminacion_Contrato + "</td></tr>";
             }
+            $(".modal").modal('hide');
         }else{
             $("#tableEmpleo").css("display","none");
         }
@@ -50,6 +52,7 @@ function loadPesca(){
     console.log("Pesca");
     var cedula = getParameterByName("docId");
     var tablapesca = "";
+    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Pesca/" + cedula, function(objRData){
         arrayPesca = objRData;
         if(arrayPesca.length >= 1){
@@ -57,6 +60,7 @@ function loadPesca(){
             for (var e = arrayPesca.length -1; e >=0; e--){
                 tablapesca += "<tr><td>" + arrayPesca[e].CC + "</td><td>" + arrayPesca[e].ASOCIACION + "</td><td>" + arrayPesca[e].ARTE_PESCA + "</td><td>" + arrayPesca[e].No_ICA + "</td><td>" + arrayPesca[e].TRAMO + "</td><td>" + arrayPesca[e].ZONA_PESCA + "</td></tr>";
             }
+            $(".modal").modal('hide');
         }else{
             $("#tablePescadores").css("display","none");
         }
@@ -70,6 +74,7 @@ function loadTransp(){
     console.log("Transp");
     var cedula = getParameterByName("docId");
     var tablatransp = "";
+    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Transp/" + cedula, function(objRData){
         arrayPesca = objRData;
         if(arrayPesca.length >= 1){
@@ -77,6 +82,7 @@ function loadTransp(){
             for (var e = arrayPesca.length -1; e >=0; e--){
                 tablatransp += "<tr><td>" + arrayPesca[e].CC + "</td><td>" + arrayPesca[e].AÑO + "</td><td>" + arrayPesca[e].DESTINO + "</td><td>" + arrayPesca[e].VIAJES + "</td><td>" + arrayPesca[e].PASAJEROS + "</td></tr>";
             }
+            $(".modal").modal('hide');
         }else{
             $("#tableTransportadores").css("display","none");
         }
@@ -90,6 +96,7 @@ function loadElectro(){
     console.log("Electro");
     var cedula = getParameterByName("docId");
     var tablaelectro = "";
+    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Electro/" + cedula, function(objRData){
         arrayElectro = objRData;
         if(arrayElectro.length >= 1){
@@ -97,6 +104,7 @@ function loadElectro(){
             for (var e = arrayElectro.length -1; e >=0; e--){
                 tablaelectro += "<tr><td>" + arrayElectro[e].Año + "</td><td>" + arrayElectro[e].Mes + "</td><td>" + arrayElectro[e].MUNICIPIO + "</td><td>" + arrayElectro[e].Ubicacion + "</td><td>" + arrayElectro[e].CC + "</td><td>" + arrayElectro[e].Direccion + "</td><td>" + arrayElectro[e].Contador + "</td><td>" + arrayElectro[e].Fecha_Matricula + "</td></tr>";
             }
+            $(".modal").modal('hide');
         }else{
             $("#tableElectro").css("display","none");
             $("#labelElectro").css("display","none");
@@ -104,14 +112,6 @@ function loadElectro(){
             tablaelectro += "</tbody></table>";
             $("#tableElectro").html(tablaelectro);
     });
-}
-
-//-Cargar Censo-//
-function loadCenso(){
-    //console.log("Censo");
-    var cedula = getParameterByName("docId");
-    var tablacenso = "";
-    $(".modal").modal('hide');
 }
 
 //-Extraer parametros QueryString-//

@@ -1,6 +1,6 @@
 <link href="public/css/certifications/form.css" rel="stylesheet" />
 <script type='text/javascript'>
-    var formCode = '<?php echo $_GET["formCode"]; ?>';
+    
     var docId = '<?php echo $_GET["docId"]; ?>';
     var code = '<?php
 if (isset($_GET["code"])) {
@@ -105,17 +105,6 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableCenso' class='table table-striped'>
-              <legend>Censo</legend>
-              <br/>
-              <thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </thead>
-            </table>
           </div>
 
         </div>
