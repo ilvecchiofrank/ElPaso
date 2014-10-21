@@ -4,7 +4,7 @@ loadControlValues();
 
 loadTutelas();
 
- loadpqrs();
+loadpqrs();
 
 $("#txtIdentificador").html(getParameterByName("formCode"));
 $("#txtCedula").html(getParameterByName("docId"));
@@ -25,13 +25,13 @@ function loadpqrs(){
 
         if(arrayPqrs.length >= 1){
 
-            tablapqr += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Tipo</th><th scope='col'>Año</th><th scope='col'>Radicado</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+            tablapqr += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Tipo</th><th scope='col'>Año</th><th scope='col'>Radicado</th><th scope='col'>Caso</th><th scope='col'>Detalle</th></tr></thead><tbody>";
 
             for (var p = arrayPqrs.length -1; p >=0; p--){
                 var ruta = arrayPqrs[p].path.replace("Q:emgesaCD/", "https://emgesa.s3.amazonaws.com/CD/");
-                tablapqr += "<tr><td>" + arrayPqrs[p].tipo + "</td><td>" + arrayPqrs[p].año + "</td><td>" + arrayPqrs[p].radicado + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+                tablapqr += "<tr><td>" + arrayPqrs[p].tipo + "</td><td>" + arrayPqrs[p].año + "</td><td>" + arrayPqrs[p].radicado + "</td><td>" + arrayPqrs[p].caso + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
             }
-
+console.log(tablapqr);
         }
         else
         {
@@ -40,7 +40,7 @@ function loadpqrs(){
 
         tablapqr += "</tbody></table><br/>";
         $("#tablePqrsResults").html(tablapqr);
-
+    $(".modal").modal('hide');
     });
 }
 
@@ -67,7 +67,7 @@ function loadTutelas(){
 
         tabtutelas += "</tbody></table><br/>";
         $("#tableTutelasResults").html(tabtutelas);
-
+    $(".modal").modal('hide');
     });
 }
 
@@ -148,8 +148,7 @@ function loadControlValues(){
             tabla += "</tbody></table><br/>";
             $("#tableResults").html(tabla);
         }
-
-    $(".modal").modal('hide');
+        $(".modal").modal('hide');
     });
 }
 

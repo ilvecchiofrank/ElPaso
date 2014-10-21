@@ -274,7 +274,7 @@ class QM_Form extends CI_Model {
     public function get_pqr($cedula){
     try {
             //Generamos el query
-        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado FROM t21web_pqr WHERE cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula'");
         //$SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
         $dataArray = $SQLResult->result();
 
