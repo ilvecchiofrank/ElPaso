@@ -289,6 +289,15 @@ class QM_Form extends CI_Model {
         return $dataArray;
       }
 
+      /*Metodo get_form_docs
+      metodo que obtiene los archivos relacionados en el formulario de impresion*/
+      public function get_form_docs($codeform){
+        $SQLResult = $this->db->query("SELECT a09O01 AS documento, a09O02 AS folios FROM t09web_usuario_respuestasn rn WHERE rn.a09Pregunta = 'CP019' AND rn.a09Formulario = '$codeform';");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
     /*Metodo get_pqr
         metodo que obtiene los pqr por numero de cedula*/
     public function get_pqr($cedula){

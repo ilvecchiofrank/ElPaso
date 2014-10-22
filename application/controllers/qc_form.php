@@ -230,6 +230,7 @@ class QC_Form extends QC_Controller {
                     $arrLPageData["arrRChapterC"] = $this->form->get_chapterc($inRSearch);
                     $arrLPageData["arrCoordB"] = $this->form->get_coordb($inRSearch);
                     $arrLPageData["arrCoordC"] = $this->form->get_coordc($inRSearch);
+                    $arrLPageData["arrFiles"] = $this->form->get_form_docs($inRSearch);
                     $arrLPageData["stRType"] = $stRType;
                     $this->load->vars($arrLPageData);
                     $this->display_page("print_full", "form", true);

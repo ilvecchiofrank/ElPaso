@@ -266,6 +266,18 @@
                   <td colspan="3"></td>
                 </tr>
               </table>
+              <br/>
+              <table class="table table-bordered table-condensed">
+                <tr>
+                  <th>Nombre documento</th><th>No. de folios</th>
+                </tr>
+                <? foreach ($arrFiles as $archivo) : ?>
+                   <tr>
+                     <td><?php echo $archivo->documento; ?></td>
+                     <td><?php echo $archivo->folios; ?></td>
+                   </tr>
+                <? endforeach; ?>
+              </table>
 
 <?php } else { ?>
               <p class="text-danger">SIN Información</p>
