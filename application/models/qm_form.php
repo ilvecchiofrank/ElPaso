@@ -269,6 +269,16 @@ class QM_Form extends CI_Model {
           return $dataArray;
         }
 
+      /*Metodo get_coord
+      metodo que obtiene las información de coordenadas para el formulario de impresion*/
+      public function get_coord($codeform){
+        /*$SQLResult = $this->db->query("SET group_concat_max_len = 2048");*/
+        $SQLResult = $this->db->query("SELECT rn.a09Pregunta, GROUP_CONCAT(rn.a09O01 SEPARATOR ' | ') AS coordenadas FROM t09web_usuario_respuestasn rn JOIN t08web_usuario_respuestas ur ON rn.a09Formulario = ur.a08Formulario WHERE rn.a09Pregunta = 'CP08' AND ur.a08CP07O01 IN(51,52) AND rn.a09Formulario = '$codeform' GROUP BY rn.a09Pregunta;");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
     /*Metodo get_pqr
         metodo que obtiene los pqr por numero de cedula*/
     public function get_pqr($cedula){

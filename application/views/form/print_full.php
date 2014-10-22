@@ -168,6 +168,10 @@
                   <th colspan="2">Nombre del dueño</th>
                   <td colspan="4"></td>
                 </tr>
+                <tr>
+                  <th>Coordenadas</th>
+                  <td colspan="7"><?php echo $arrCoord[0]->coordenadas; ?></td>
+                </tr>
               </table>
 
               <div class="panel-body">
