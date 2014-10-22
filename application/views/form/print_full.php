@@ -170,7 +170,10 @@
                 </tr>
                 <tr>
                   <th>Coordenadas</th>
-                  <td colspan="7"><?php echo $arrCoordB[0]->coordenadas; ?></td>
+                  <td colspan="7">
+                     <?php if (sizeof($arrCoordB) > 0) { ?>
+                     <?php echo $arrCoordB[0]->coordenadas; ?><?php } ?>
+                </td>
                 </tr>
               </table>
 
@@ -223,7 +226,10 @@
                 </tr>
                 <tr>
                   <th>Coordenadas</th>
-                  <td colspan="7"><?php echo $arrCoordC[0]->coordenadas; ?></td>
+                  <td colspan="7">
+                     <?php if (sizeof($arrCoordC) > 0) { ?>
+                     <?php echo $arrCoordC[0]->coordenadas; ?><?php } ?>
+                </td>
                 </tr>
                 <tr>
                   <th>Pagos en seguridad social</th>
