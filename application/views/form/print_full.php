@@ -170,7 +170,7 @@
                 </tr>
                 <tr>
                   <th>Coordenadas</th>
-                  <td colspan="7"><?php echo $arrCoord[0]->coordenadas; ?></td>
+                  <td colspan="7"><?php echo $arrCoordB[0]->coordenadas; ?></td>
                 </tr>
               </table>
 
@@ -220,6 +220,10 @@
                   <td colspan="3"></td>
                   <th>Nombre del dueño</th>
                   <td colspan="3"></td>
+                </tr>
+                <tr>
+                  <th>Coordenadas</th>
+                  <td colspan="7"><?php echo $arrCoordC[0]->coordenadas; ?></td>
                 </tr>
                 <tr>
                   <th>Pagos en seguridad social</th>
