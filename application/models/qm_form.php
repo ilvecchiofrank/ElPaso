@@ -107,6 +107,48 @@ class QM_Form extends CI_Model {
         return $SQLResult->result_array();
     }
 
+    /*Obtener listado de departamentos*/
+    public function get_dpto(){
+      try {
+        $query = $this->db->query("SELECT a05Codigo, a05Nombre FROM t05web_departamentos ORDER BY a05Nombre");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $departamento => $objDepto) {
+          $html .= "<option value='$objDepto->a05Codigo'>$objDepto->a05Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Obtener listado de municipios*/
+    public function get_mpo($depto){
+      try {
+        $query = $this->db->query("SELECT a06codigo, a06Nombre FROM t06web_municipios WHERE a06Departamento = $depto ORDER BY a06Nombre");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $municipio => $objMpo) {
+          $html .= "<option value='$objMpo->a06codigo'>$objMpo->a06Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Obtener informacion relacionada de la tutela*/
+    public function get_tutela_info($tutelaId){
+        $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion FROM t19web_tutelas WHERE tutela_id = $tutelaId");
+        $dataArray = $query->result();
+
+        return $dataArray;
+    }
+
     /* Obtener archivos relacionados con la certificacion*/
     public function get_CertFiles($code){
         try {
@@ -368,7 +410,7 @@ class QM_Form extends CI_Model {
     /*Metodo get_tutelas
       metodo que obtiene las tutelas por numero de cedula*/
       public function get_tutelas($cedula){
-        $SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT tutela_id, numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
         $dataArray = $SQLResult->result();
 
         return $dataArray;
@@ -479,7 +521,7 @@ class QM_Form extends CI_Model {
             // if ($SQLResult->num_rows() > 0) {
             //     $arrLResults = array_merge($arrLResults, $SQLResult->result_array());
             // }
-            
+
             //$SQLResult = $this->db->query("SELECT * FROM v01web_union_busqueda where nombresapellidos = '$arrRFormData[TxtPersonName]' ");
             $SQLResult = $this->db->query("SELECT * FROM tmp_base where nombresapellidos like('%".str_replace(" ", "%') OR nombresapellidos LIKE('%", $arrRFormData["TxtPersonName"])."%')");
             $SQLDT = $SQLResult->result();
@@ -583,8 +625,8 @@ class QM_Form extends CI_Model {
                 $arrLChapter[$stLKey] = trim($stLData);
             }
             else if (strpos($stRKey, "BP08") !== false) {
-                $arrLData = $stLData;                
-                
+                $arrLData = $stLData;
+
                 foreach ($arrLData as $inLNKey => $stLNData) {
                     $stLBNKey = str_replace("TxtFormBP08", "a09", $stRKey);
                     $stLTrimData = trim($stLNData);

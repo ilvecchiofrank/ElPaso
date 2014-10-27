@@ -89,6 +89,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 var objLAnchorP = $(objLAnchorC).clone();
                 var objLAnchorPF = $(objLAnchorC).clone();
                 var objLAnchorA = $(objLAnchorC).clone();
+                var objLAnchorJA = $(objLAnchorC).clone();
                 var objLAnchorCRBD = $(objLAnchorC).clone();
                 var objLAnchorE = $(objLAnchorC).clone();
                 var objLAnchorUD = $(objLAnchorC).clone();
@@ -102,6 +103,9 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 $(objLAnchorU).attr("href", "index.php/form/done/" + arrRData.form)
                     .html("Terminar").addClass("btn btn-danger");
                 $(objLAnchorU).attr("target","_blank");
+                $(objLAnchorJA).attr("target","_blank");
+                $(objLAnchorJA).attr("href", "index.php/form/tutelas?docId=" + arrRData.cc)
+                    .html("Tutelas").addClass("btn btn-default");
                 $(objLAnchorP).attr("target","_blank");
                 $(objLAnchorP).attr("href", "index.php/form/print_form/" + arrRData.form)
                     .html("Imprimir").addClass("btn btn-info");
@@ -130,9 +134,6 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 $(objLTableRow).appendTo(".table");
                 $(objLTableData).clone().html(++inRIndex).appendTo(objLTableRow);
 
-                console.log(arrRData.nombresapellidos);
-                console.log("-/-");
-
                 if (arrRData.cc) {
                     $(objLTableData).clone().html(arrRData.cc).appendTo(objLTableRow);
                     $(objLTableData).clone().html(arrRData.nombresapellidos).appendTo(objLTableRow);
@@ -143,7 +144,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                     if (!arrRData.nombresapellidos) {
                         /*Switch RUser*/
                         switch(responseText.inRUserType) {
-                            
+
                             case "4":
                             $(objLTableData).clone().append(objLAnchorF).appendTo(objLTableRow);
                             break;
@@ -194,6 +195,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                             $(objLAction).append(" ").append(objLAnchorF);
 							$(objLAction).append(" ").append(objLAnchorPF);
                             $(objLAction).append(" ").append(objLAnchorCRBD);
+                            $(objLAction).append(" ").append(objLAnchorJA);
                             break;
 
                         default:

@@ -48,10 +48,30 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar certificaciones*/
+    public function j_actions(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("j_actions", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario para consultar cruces BD*/
     public function dbmatch(){
         if ($this->session->userdata("isLoggedIn")) {
             $this->display_page("dbmatch", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Formulario para consultar cruces BD*/
+    public function tutelas(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("tutelas", "form");
             return;
         }
 
@@ -524,6 +544,24 @@ class QC_Form extends QC_Controller {
     public function get_Electro($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
+    }
+
+    /*Cargar departamentos*/
+    public function get_Dpto(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dpto());
+    }
+
+    /*Cargar municipios*/
+    public function get_Mpo($depto){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_mpo($depto));
+    }
+
+    /*Cargar detalles de tutela*/
+    public function get_Tutela_Info($tutelaId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tutela_info($tutelaId));
     }
 
     /**
