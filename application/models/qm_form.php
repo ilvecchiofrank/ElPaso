@@ -540,6 +540,68 @@ class QM_Form extends CI_Model {
 
     }
 
+    /*Metodo get_programs
+      metodo que obtiene los programas del formulario de impresion*/
+      public function get_programs($codeform){
+
+        try {
+
+          $SQLResult = $this->db->query("SELECT a09O01, a09O02, a09O03, a09O04, a09O05, a09O06, a09O07, a09O08, a09O09, a09O010 FROM t09web_usuario_respuestasn rn WHERE rn.a09Pregunta = 'CP015' AND rn.a09Formulario = '$codeform';");
+          $dataArray = $SQLResult->result();
+          $html="";
+
+          //Cuerpo tabla
+          foreach ($dataArray as $programa => $objPrograma) {
+            if($objPrograma->a09O01 != null || $objPrograma->a09O01 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O01</td></tr>";
+            }
+
+            if($objPrograma->a09O02 != null || $objPrograma->a09O02 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O02</td></tr>";
+            }
+
+            if($objPrograma->a09O03 != null || $objPrograma->a09O03 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O03</td></tr>";
+            }
+
+            if($objPrograma->a09O04 != null || $objPrograma->a09O04 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O04</td></tr>";
+            }
+
+            if($objPrograma->a09O05 != null || $objPrograma->a09O05 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O05</td></tr>";
+            }
+
+            if($objPrograma->a09O06 != null || $objPrograma->a09O06 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O06</td></tr>";
+            }
+
+            if($objPrograma->a09O07 != null || $objPrograma->a09O07 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O07</td></tr>";
+            }
+
+            if($objPrograma->a09O08 != null || $objPrograma->a09O08 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O08</td></tr>";
+            }
+
+            if($objPrograma->a09O09 != null || $objPrograma->a09O09 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O09</td></tr>";
+            }
+
+            if($objPrograma->a09O010 != null || $objPrograma->a09O010 != '' ){
+              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O010</td></tr>";
+            }
+
+          }
+
+          return $html;
+
+        } catch (Exception $exc) {
+          echo $exc->getTraceAsString();
+        }
+
+      }
+
     /**Metodo get_electro
     metodo que obtiene la informacion de la vista electrohuila*/
     public function get_electro($cedula){

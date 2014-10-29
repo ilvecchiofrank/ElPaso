@@ -252,6 +252,7 @@ class QC_Form extends QC_Controller {
                     $arrLPageData["arrCoordC"] = $this->form->get_coordc($inRSearch);
                     $arrLPageData["arrNActB"] = $this->form->get_n_act_b($inRSearch);
                     $arrLPageData["arrNActC"] = $this->form->get_n_act_c($inRSearch);
+                    $arrLPageData["arrProg"] = $this->form->get_programs($inRSearch);
                     $arrLPageData["arrFiles"] = $this->form->get_form_docs($inRSearch);
                     $arrLPageData["stRType"] = $stRType;
                     $this->load->vars($arrLPageData);

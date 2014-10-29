@@ -241,7 +241,7 @@
               </table>
               <table id="table_programs" class="table table-bordered table-condensed">
                   <th>Programa(s) con el cual(es) se ha beneficiado o se está(n) beneficiando usted o su grupo familiar</th>
-                  <td colspan="7"></td>
+                  <?php echo $arrProg; ?>
                 </tr>
               </table>
               <table class="table table-bordered table-condensed">
@@ -257,10 +257,11 @@
               <br/>
               <table class="table table-bordered table-condensed">
                 <tr>
-                  <th colspan="3">Familiares compensados con algún tipo de medida por el proyecto</th>
+                  <th>Familiares compensados con algún tipo de medida por el proyecto</th>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td colspan="3"></td>
+                  <td></td>
                 </tr>
               </table>
               <br/>
