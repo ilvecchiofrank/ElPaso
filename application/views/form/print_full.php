@@ -257,12 +257,10 @@
               <br/>
               <table class="table table-bordered table-condensed">
                 <tr>
-                  <th>Familiares compensados con algún tipo de medida por el proyecto</th>
+                  <th colspan='3'>Familiares compensados con algún tipo de medida por el proyecto</th>
                   <td></td>
                 </tr>
-                <tr>
-                  <td></td>
-                </tr>
+                <?php echo $arrFamiliar; ?>
               </table>
               <br/>
               <table id="table_documents" class="table table-bordered table-condensed">

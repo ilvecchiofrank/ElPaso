@@ -552,55 +552,49 @@ class QM_Form extends CI_Model {
 
           //Cuerpo tabla
           foreach ($dataArray as $programa => $objPrograma) {
-            if($objPrograma->a09O01 != null || $objPrograma->a09O01 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O01</td></tr>";
-            }
-
-            if($objPrograma->a09O02 != null || $objPrograma->a09O02 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O02</td></tr>";
-            }
-
-            if($objPrograma->a09O03 != null || $objPrograma->a09O03 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O03</td></tr>";
-            }
-
-            if($objPrograma->a09O04 != null || $objPrograma->a09O04 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O04</td></tr>";
-            }
-
-            if($objPrograma->a09O05 != null || $objPrograma->a09O05 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O05</td></tr>";
-            }
-
-            if($objPrograma->a09O06 != null || $objPrograma->a09O06 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O06</td></tr>";
-            }
-
-            if($objPrograma->a09O07 != null || $objPrograma->a09O07 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O07</td></tr>";
-            }
-
-            if($objPrograma->a09O08 != null || $objPrograma->a09O08 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O08</td></tr>";
-            }
-
-            if($objPrograma->a09O09 != null || $objPrograma->a09O09 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O09</td></tr>";
-            }
-
-            if($objPrograma->a09O010 != null || $objPrograma->a09O010 != '' ){
-              $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O010</td></tr>";
-            }
+            if($objPrograma->a09O01 != null || $objPrograma->a09O01 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O01</td></tr>"; }
+            if($objPrograma->a09O02 != null || $objPrograma->a09O02 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O02</td></tr>"; }
+            if($objPrograma->a09O03 != null || $objPrograma->a09O03 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O03</td></tr>"; }
+            if($objPrograma->a09O04 != null || $objPrograma->a09O04 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O04</td></tr>"; }
+            if($objPrograma->a09O05 != null || $objPrograma->a09O05 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O05</td></tr>"; }
+            if($objPrograma->a09O06 != null || $objPrograma->a09O06 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O06</td></tr>"; }
+            if($objPrograma->a09O07 != null || $objPrograma->a09O07 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O07</td></tr>"; }
+            if($objPrograma->a09O08 != null || $objPrograma->a09O08 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O08</td></tr>"; }
+            if($objPrograma->a09O09 != null || $objPrograma->a09O09 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O09</td></tr>"; }
+            if($objPrograma->a09O010 != null || $objPrograma->a09O010 != '' ){ $html .= "<tr><td colspan='7' class='itemRespuesta'>$objPrograma->a09O010</td></tr>"; }
 
           }
 
           return $html;
-
         } catch (Exception $exc) {
           echo $exc->getTraceAsString();
         }
 
       }
+
+    /*Metodo get_familiar
+    metodo que obtiene los familiares afectados en el formulario de impresion*/
+    public function get_familiar($codeform){
+
+      try {
+
+        $SQLResult = $this->db->query("SELECT rn.a09O02 AS nombres, rn.a09O03 AS cedula, rn.a09O04 AS parentesco, rn.a09O05 AS medida FROM t09web_usuario_respuestasn rn WHERE rn.a09Pregunta = 'CP018' AND rn.a09O01='85' AND rn.a09Formulario='$codeform';");
+        $dataArray = $SQLResult->result();
+        $html="";
+
+        $html .= "<tr><th>Nombres</th><th>Cédula</th><th>Parentesco</th><th>Medida</th></tr>";
+
+        //Cuerpo tabla
+        foreach ($dataArray as $familiar => $objFamiliar) {
+          $html .= "<tr><td>$objFamiliar->nombres</td><td>$objFamiliar->cedula</td><td>$objFamiliar->parentesco</td><td class='itemRespuesta'>$objFamiliar->medida</td></tr>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+
+    }
 
     /**Metodo get_electro
     metodo que obtiene la informacion de la vista electrohuila*/
