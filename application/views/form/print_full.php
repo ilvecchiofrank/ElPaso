@@ -153,6 +153,9 @@
                   <th>Cual</th>
                   <td colspan="3"><?php echo $arrRChapterB[0]->actprinc_cual; ?></td>
                 </tr>
+              </table>
+
+              <table id="n_act_cap_b" class="table table-bordered table-condensed">
                 <tr>
                   <th>Zona desarrollo de actividad</th>
                   <th>Municipio</th>
@@ -209,11 +212,14 @@
                   <th>Cual</th>
                   <td colspan="2"><?php echo $arrRChapterC[0]->actividadprin_cual; ?></td>
                 </tr>
+              </table>
+
+              <table id="n_act_cap_c" class="table table-bordered table-condensed">
                 <tr>
                   <th>Zona desarrollo de actividad</th>
                   <th>Municipio</th>
                   <td></td>
-                  <th>Corregimiento</th>      
+                  <th>Corregimiento</th>
                   <td colspan="2"></td>
                   <th>Vereda</th>
                   <td></td>
@@ -231,6 +237,8 @@
                      <?php echo $arrCoordC[0]->coordenadas; ?><?php } ?>
                 </td>
                 </tr>
+              </table>
+
                 <tr>
                   <th>Pagos en seguridad social</th>
                   <td colspan="2" class='itemRespuesta'><?php echo $arrRChapterC[0]->pagos_ss; ?></td>
@@ -273,7 +281,7 @@
                 </tr>
               </table>
               <br/>
-              <table class="table table-bordered table-condensed">
+              <table id="table_documents" class="table table-bordered table-condensed">
                 <tr>
                   <th>Nombre documento</th><th>No. de folios</th>
                 </tr>
@@ -284,7 +292,7 @@
                      <td><?php echo $archivo->documento; ?></td>
                      <td><?php echo $archivo->folios; ?></td>
                    </tr>
-                <? foreach; ?>
+                <? endforeach; ?>
                 </td>
               </table>
 
