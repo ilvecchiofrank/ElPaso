@@ -242,6 +242,8 @@ function loadData(){
                 $("#temas").val(arrayTutela[t].temas);
                 $("#sentencia").val(arrayTutela[t].sentencia);
                 $("#impugnacion").val(arrayTutela[t].impugnacion);
+                $("#btnTutelaDetail").attr("target","_blank");
+                $("#btnTutelaDetail").attr("href", arrayTutela[t].path);
             }
         }else{
         }

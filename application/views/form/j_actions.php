@@ -29,6 +29,10 @@ if (isset($_GET["code"])) {
           <div id='identification' class='form-group'>
             <legend>Análisis de acciones judiciales</legend>
             <br/>
+            <div id='divTutelaDetail' style="text-align: right;">
+                <a id='btnTutelaDetail' href="#" class="btn btn-warning btn-md">Ver detalle de tutela</a>
+              <br/>
+            </div>
             <legend>A. Identificación</legend>
 
             <table class='table'>

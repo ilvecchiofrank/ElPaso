@@ -167,7 +167,7 @@ class QM_Form extends CI_Model {
 
     /*Obtener informacion relacionada de la tutela capitulo A*/
     public function get_tutela_info($tutelaId){
-        $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion FROM t19web_tutelas WHERE tutela_id = $tutelaId");
+        $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion, REPLACE(path,'Q:emgesaTutelas','https://s3.amazonaws.com/emgesa/Tutelas/') as path FROM t19web_tutelas WHERE tutela_id = $tutelaId");
         $dataArray = $query->result();
 
         return $dataArray;
@@ -403,7 +403,7 @@ class QM_Form extends CI_Model {
 
         return $arrLCode["a07Codigo"];
     }
-    
+
     /**
      * Método get_uuid
      *
@@ -478,6 +478,22 @@ class QM_Form extends CI_Model {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+    }
+
+    /*Metodo get_n_act_b
+      metodo que obtiene las N actividades del capitulo B*/
+    public function get_n_act_b($codeform){
+
+      try {
+
+        $SQLResult = $this->db->query("SELECT m.a06Nombre AS municipio, rn.a09O03 AS corregimiento, rn.a09O04 AS vereda, a09O05 AS predio, a09O06 AS dueno FROM t09web_usuario_respuestasn rn JOIN t06web_municipios m ON rn.a09O02=m.a06Codigo WHERE rn.a09Formulario = '$codeform' AND a09Pregunta = 'BP08'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+
     }
 
     /**Metodo get_electro

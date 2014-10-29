@@ -239,6 +239,7 @@
                 </tr>
               </table>
 
+              <table class="table table-bordered table-condensed">
                 <tr>
                   <th>Pagos en seguridad social</th>
                   <td colspan="2" class='itemRespuesta'><?php echo $arrRChapterC[0]->pagos_ss; ?></td>
@@ -266,9 +267,13 @@
                   <td colspan="5"><?php echo $arrRChapterC[0]->entidad_pension; ?></td>
                 </tr>
                 <tr>
+              </table>
+              <table id="table_programs" class="table table-bordered table-condensed">
                   <th>Programa(s) con el cual(es) se ha beneficiado o se está(n) beneficiando usted o su grupo familiar</th>
                   <td colspan="7"></td>
                 </tr>
+              </table>
+              <table class="table table-bordered table-condensed">
                 <tr>
                   <th>Impactos directos o indirectos a su actividad económica con el desarrollo del Proyecto Hidroeléctrico El Quimbo</th>
                   <td colspan="7" class='itemRespuesta'><?php echo $arrRChapterC[0]->impactos; ?></td>
@@ -276,7 +281,14 @@
                 <tr>
                   <th>Solicitudes anteriores</th>
                   <td class='itemRespuesta'><?php echo $arrRChapterC[0]->solicitudes; ?></td>
+                </tr>
+              </table>
+              <br/>
+              <table class="table table-bordered table-condensed">
+                <tr>
                   <th colspan="3">Familiares compensados con algún tipo de medida por el proyecto</th>
+                </tr>
+                <tr>
                   <td colspan="3"></td>
                 </tr>
               </table>
@@ -285,7 +297,6 @@
                 <tr>
                   <th>Nombre documento</th><th>No. de folios</th>
                 </tr>
-                <td>
                 <?php $archivo = array(); ?>
                 <? foreach ($arrFiles as $archivo) : ?>
                    <tr>
@@ -293,7 +304,6 @@
                      <td><?php echo $archivo->folios; ?></td>
                    </tr>
                 <? endforeach; ?>
-                </td>
               </table>
 
 <?php } else { ?>
