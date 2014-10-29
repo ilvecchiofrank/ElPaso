@@ -201,22 +201,7 @@
               </table>
 
               <table id="n_act_cap_c" class="table table-bordered table-condensed">
-                <tr>
-                  <th>Zona desarrollo de actividad</th>
-                  <th>Municipio</th>
-                  <td></td>
-                  <th>Corregimiento</th>
-                  <td colspan="2"></td>
-                  <th>Vereda</th>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th>Predio</th>
-                  <td colspan="3"></td>
-                  <th>Nombre del dueño</th>
-                  <td colspan="3"></td>
-                </tr>
-                <tr>
+                  <?php echo $arrNActC; ?>
                   <th>Coordenadas</th>
                   <td colspan="7">
                      <?php if (sizeof($arrCoordC) > 0) { ?>
