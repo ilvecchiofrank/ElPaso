@@ -182,20 +182,27 @@ function loadMun(){
 
     //Cargar municipios en el cambio de departamento
     $("#departamento").change(function(){
-        if($("#departamento").val() != ''){
-            $(".modal").modal('show');
-            var departamento = $("#departamento").val();
-            $.getJSON("index.php/form/get_Mpo/" + departamento, function(objRData){
-            $("#municipio").html(objRData);
-
-            if($("#hfMunicipio").val != ''){
-                $("#municipio").val($("#hfMunicipio").val());
-            }
-
-            $(".modal").modal('hide');
+        $(".modal").modal('show');
+        updDepto();
+        $(".modal").modal('hide');
     });
+}
+
+function updDepto(){
+
+    if($("#departamento").val() != ''){
+
+        var departamento = $("#departamento").val();
+        $.getJSON("index.php/form/get_Mpo/" + departamento, function(objRData){
+        $("#municipio").html(objRData);
+
+        if($("#hfMunicipio").val != ''){
+            $("#municipio").val($("#hfMunicipio").val());
         }
-    });
+
+        });
+    }
+
 }
 
 function saveForm(){
@@ -269,7 +276,8 @@ function resumeForm(){
                         $("#ordenes_si").val(arrayTutela[t].ordenes_si);
                         $("#argumento_si").val(arrayTutela[t].argumento_si);
                         $("#departamento").val(arrayTutela[t].departamento);
-                        $("#departamento").trigger('change');
+                        //$("#departamento").trigger('change');
+                        updDepto();
                         $("#hfMunicipio").val(arrayTutela[t].municipio);
                         $("#estado_civ").val(arrayTutela[t].estado_civ);
                         $("#sexo").val(arrayTutela[t].sexo);
