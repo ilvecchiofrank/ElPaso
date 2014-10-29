@@ -488,8 +488,15 @@ class QM_Form extends CI_Model {
 
         $SQLResult = $this->db->query("SELECT m.a06Nombre AS municipio, rn.a09O03 AS corregimiento, rn.a09O04 AS vereda, a09O05 AS predio, a09O06 AS dueno FROM t09web_usuario_respuestasn rn JOIN t06web_municipios m ON rn.a09O02=m.a06Codigo WHERE rn.a09Formulario = '$codeform' AND a09Pregunta = 'BP08'");
         $dataArray = $SQLResult->result();
+        $html="";
 
-        return $dataArray;
+        //Cuerpo tabla
+        foreach ($dataArray as $actividad => $objActividad){
+          $html .= "<tr><th>Zona desarrollo de actividad</th><th>Municipio</th><td>$objActividad->municipio</td><th>Corregimiento</th><td colspan='2'>$objActividad->corregimiento</td><th>Vereda</th><td>$objActividad->vereda</td></tr>";
+          $html .= "<tr><th>Predio</th><td>$objActividad->predio</td><th colspan='2'>Nombre del dueño</th><td colspan='4'>$objActividad->dueno</td></tr>";
+        }
+
+        return $html;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }

@@ -156,21 +156,7 @@
               </table>
 
               <table id="n_act_cap_b" class="table table-bordered table-condensed">
-                <tr>
-                  <th>Zona desarrollo de actividad</th>
-                  <th>Municipio</th>
-                  <td></td>
-                  <th>Corregimiento</th>
-                  <td colspan="2"></td>
-                  <th>Vereda</th>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th>Predio</th>
-                  <td></td>
-                  <th colspan="2">Nombre del dueño</th>
-                  <td colspan="4"></td>
-                </tr>
+                <?php echo $arrNActB; ?>
                 <tr>
                   <th>Coordenadas</th>
                   <td colspan="7">
