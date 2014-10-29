@@ -558,10 +558,73 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_mpo($depto));
     }
 
+    /*Cargar listado de actividades economicas*/
+    public function get_Act_Prin(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_act_prin());
+    }
+
     /*Cargar detalles de tutela*/
     public function get_Tutela_Info($tutelaId){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_tutela_info($tutelaId));
+    }
+
+    /*Cargar detalles de accion de tutela*/
+    public function get_Tutela_Info_2($tutelaId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tutela_info_2($tutelaId));
+    }
+
+    /*Consultar si la tutela ya tiene acciones juridicas*/
+    public function get_Tutela_Exist($tutelaId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tutela_exist($tutelaId));
+    }
+
+    /*Metodo que guarda la captura de la accion de tutela*/
+    public function do_saveJAction(){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemValue->value;
+            }
+        }
+
+        $arrayData["id_tutela"] = $_POST["id_tutela"];
+        $this->form->do_setJActionProps($arrayData);
+        $resultInsert = $this->form->do_createAction();
+
+        if ($resultInsert>0)
+            echo "ok";
+        else
+            echo $resultInsert;
+    }
+
+    /*Metodo que actualiza la captura de la accion de tutela*/
+    public function do_updateJAction(){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemValue->value;
+            }
+        }
+
+        $arrayData["id_tutela"] = $_POST["id_tutela"];
+        $this->form->do_setJActionProps($arrayData);
+        $resultInsert = $this->form->do_updateAction($_POST["id_tutela"]);
+
+        if($resultInsert == true)
+            echo "ok";
+        else
+            echo $resultInsert;
+
     }
 
     /**
@@ -575,7 +638,7 @@ class QC_Form extends QC_Controller {
         $arrLFormData = $this->input->post();
         $inRFormID = $arrLFormData["TxtFormID"];
         $arrLResponse = array();
-        
+
         $this->load->library("upload");
         $config["upload_path"] = "public/uploads/".$inRFormID;
         $config["allowed_types"] = "*";
@@ -584,18 +647,18 @@ class QC_Form extends QC_Controller {
         $inLCount = 0;
 
         $this->upload->initialize($config);
-        
+
         if (!file_exists(FCPATH."/public/uploads/".$inRFormID)
                 && !is_dir(FCPATH."public/uploads/".$inRFormID)) {
             mkdir(FCPATH."/public/uploads/".$inRFormID, 0755, true);
         }
-        
+
         foreach($_FILES as $stLKey => $arrLFile) {
             if ($this->upload->do_upload($stLKey)) {
                 $inLKey = str_replace("File", "", $stLKey);
-                
+
                 $tipo = substr($inLKey, -2);
-                
+
                 $arrLFileData = $this->upload->data();
                 $arrLFileInfo = array( 	"a13Identificador" => $inRFormID,
                                         //"a13Tipo" => ++$inLCount,
@@ -610,9 +673,7 @@ class QC_Form extends QC_Controller {
         }
 
         $bolLDocs = $this->form->do_uploads($arrLFiles);
-        
-        
-        
+
         if ($bolLDocs) {
             $arrLResponse["TxtSuccessForm"] = true;
             $arrLResponse["TxtTitle"] = "Guardado!";
@@ -633,7 +694,7 @@ class QC_Form extends QC_Controller {
      *
      * Método que Obtiene la ruta de los archivos cargados por codifo de formulario
      */
-    
+
     function do_getFilesPath($codeForm){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_files($codeForm));

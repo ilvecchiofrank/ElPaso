@@ -25,6 +25,10 @@
  * @link        http://www.arthvrian.org/
  */
 class QM_Form extends CI_Model {
+
+    private $arrayJActionProps = array();
+    private $arrayJActionPropsChild = array();
+
     /**
      * Constructor de la Clase
      */
@@ -141,12 +145,48 @@ class QM_Form extends CI_Model {
       }
     }
 
-    /*Obtener informacion relacionada de la tutela*/
+    /*Obtener listado de Actividad economica principal*/
+    public function get_act_prin(){
+      try {
+        $query = $this->db->query("SELECT t46oficiodescr, t44nivel01desc, t45nivel02desc, t46nivel03desc, t46nivel04desc, t46codigo FROM v08web_oficios");
+        $dataArray = $query->result();
+        $oficio = "";
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $actividad => $objActividad) {
+          $oficio .= $objActividad->t46oficiodescr . " (" . $objActividad->t44nivel01desc . " - " . $objActividad->t45nivel02desc . " - " . $objActividad->t46nivel03desc . " - " . $objActividad->t46nivel04desc . ")";
+          $html .= "<option value='$objActividad->t46codigo'>" . $oficio . "</option>";
+          $oficio = null;
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Obtener informacion relacionada de la tutela capitulo A*/
     public function get_tutela_info($tutelaId){
         $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion FROM t19web_tutelas WHERE tutela_id = $tutelaId");
         $dataArray = $query->result();
 
         return $dataArray;
+    }
+
+    /*Obtener informacion relacionada de la tutela capitulo B y C*/
+    public function get_tutela_info_2($tutelaId){
+        $query = $this->db->query("SELECT * FROM t42web_accion_juridica aj JOIN t43web_accion_detalles ad ON aj.id_accion_juridica = ad.id_accion_juridica WHERE aj.id_tutela = $tutelaId");
+        $dataArray = $query->result();
+
+        return $dataArray;
+    }
+
+    /*Consultar si la tutela ya tiene acciones juridicas*/
+    public function get_tutela_exist($tutelaId){
+      $query = $this->db->query("SELECT id_tutela FROM t42web_accion_juridica WHERE id_tutela = $tutelaId");
+      $dataArray = $query->result();
+
+      return $dataArray;
     }
 
     /* Obtener archivos relacionados con la certificacion*/
@@ -160,6 +200,91 @@ class QM_Form extends CI_Model {
             echo $exc->getTraceAsString();
         }
 
+    }
+
+    /*Establecer las propiedades de la accion de tutela en un array*/
+    public function do_setJActionProps($arrayDataFromView){
+      $this->arrayJActionProps = array(
+        'id_tutela' => (isset($arrayDataFromView['id_tutela'])) ? $arrayDataFromView['id_tutela'] : null,
+        'dir_contacto' => (isset($arrayDataFromView['dir_contacto'])) ? $arrayDataFromView['dir_contacto'] : null,
+        'departamento' => (isset($arrayDataFromView['departamento'])) ? $arrayDataFromView['departamento'] : null,
+        'municipio' => (isset($arrayDataFromView['municipio'])) ? $arrayDataFromView['municipio'] : null,
+        'estado_civ' => (isset($arrayDataFromView['estado_civ'])) ? $arrayDataFromView['estado_civ'] : null,
+        'sexo' => (isset($arrayDataFromView['sexo'])) ? $arrayDataFromView['sexo'] : null,
+        'fec_nacimiento' => (isset($arrayDataFromView['fec_nacimiento'])) ? $arrayDataFromView['fec_nacimiento'] : null,
+        'act_principal' => (isset($arrayDataFromView['act_principal'])) ? $arrayDataFromView['act_principal'] : null,
+        'processtype' => (isset($arrayDataFromView['processtype'])) ? $arrayDataFromView['processtype'] : null,
+        'prim_instancia' => (isset($arrayDataFromView['prim_instancia'])) ? $arrayDataFromView['prim_instancia'] : null,
+        'ordenes_pi' => (isset($arrayDataFromView['ordenes_pi'])) ? $arrayDataFromView['ordenes_pi'] : null,
+        'argumento_pi' => (isset($arrayDataFromView['argumento_pi'])) ? $arrayDataFromView['argumento_pi'] : null,
+        'seg_instancia' => (isset($arrayDataFromView['seg_instancia'])) ? $arrayDataFromView['seg_instancia'] : null,
+        'ordenes_si' => (isset($arrayDataFromView['ordenes_si'])) ? $arrayDataFromView['ordenes_si'] : null,
+        'argumento_si' => (isset($arrayDataFromView['argumento_si'])) ? $arrayDataFromView['argumento_si'] : null,
+        'fecha_creacion' => date("Y-m-d H:i:s")
+        );
+
+      $this->arrayJActionPropsUpd = array(
+        'id_tutela' => (isset($arrayDataFromView['id_tutela'])) ? $arrayDataFromView['id_tutela'] : null,
+        'dir_contacto' => (isset($arrayDataFromView['dir_contacto'])) ? $arrayDataFromView['dir_contacto'] : null,
+        'departamento' => (isset($arrayDataFromView['departamento'])) ? $arrayDataFromView['departamento'] : null,
+        'municipio' => (isset($arrayDataFromView['municipio'])) ? $arrayDataFromView['municipio'] : null,
+        'estado_civ' => (isset($arrayDataFromView['estado_civ'])) ? $arrayDataFromView['estado_civ'] : null,
+        'sexo' => (isset($arrayDataFromView['sexo'])) ? $arrayDataFromView['sexo'] : null,
+        'fec_nacimiento' => (isset($arrayDataFromView['fec_nacimiento'])) ? $arrayDataFromView['fec_nacimiento'] : null,
+        'act_principal' => (isset($arrayDataFromView['act_principal'])) ? $arrayDataFromView['act_principal'] : null,
+        'processtype' => (isset($arrayDataFromView['processtype'])) ? $arrayDataFromView['processtype'] : null,
+        'prim_instancia' => (isset($arrayDataFromView['prim_instancia'])) ? $arrayDataFromView['prim_instancia'] : null,
+        'ordenes_pi' => (isset($arrayDataFromView['ordenes_pi'])) ? $arrayDataFromView['ordenes_pi'] : null,
+        'argumento_pi' => (isset($arrayDataFromView['argumento_pi'])) ? $arrayDataFromView['argumento_pi'] : null,
+        'seg_instancia' => (isset($arrayDataFromView['seg_instancia'])) ? $arrayDataFromView['seg_instancia'] : null,
+        'ordenes_si' => (isset($arrayDataFromView['ordenes_si'])) ? $arrayDataFromView['ordenes_si'] : null,
+        'argumento_si' => (isset($arrayDataFromView['argumento_si'])) ? $arrayDataFromView['argumento_si'] : null
+        );
+
+    $this->arrayJActionPropsChild = array(
+        'trabajo' => (isset($arrayDataFromView['trabajo'])) ? true : false,
+        'minimo_vital' => (isset($arrayDataFromView['minimo_vital'])) ? true : false,
+        'igualdad' => (isset($arrayDataFromView['igualdad'])) ? true : false,
+        'medio_ambiente' => (isset($arrayDataFromView['medio_ambiente'])) ? true : false,
+        'debido_proceso' => (isset($arrayDataFromView['debido_proceso'])) ? true : false,
+        'integridad_fisica' => (isset($arrayDataFromView['integridad_fisica'])) ? true : false,
+        'participacionA' => (isset($arrayDataFromView['participacionA'])) ? true : false,
+        'otro' => (isset($arrayDataFromView['otro'])) ? true : false,
+        'participacion' => (isset($arrayDataFromView['participacion'])) ? true : false,
+        'casacion' => (isset($arrayDataFromView['casacion'])) ? true : false,
+        'desacato' => (isset($arrayDataFromView['desacato'])) ? true : false,
+        'selecRevision' => (isset($arrayDataFromView['selecRevision'])) ? true : false,
+      );
+    }
+
+    /*insertar la accion de tutela*/
+    public function do_createAction(){
+      try {
+        $this->db->insert('t42web_accion_juridica', $this->arrayJActionProps);
+        $query = $this->db->query('SELECT max(id_accion_juridica) as id from t42web_accion_juridica');
+        $row = $query->row_array();
+        $this->arrayJActionPropsChild['id_accion_juridica'] = $row['id'];
+        $this->db->insert('t43web_accion_detalles', $this->arrayJActionPropsChild);
+        return $row['id'];
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Actualizar la accion de tutela*/
+    public function do_updateAction($idTutela){
+      try {
+        $this->db->where("id_tutela", $idTutela);
+        $this->db->update('t42web_accion_juridica', $this->arrayJActionPropsUpd);
+        $query = $this->db->query('SELECT id_accion_juridica as id FROM t42web_accion_juridica WHERE id_tutela = ' . $idTutela);
+        $row = $query->row_array();
+        $this->arrayJActionPropsChild['id_accion_juridica'] = $row['id'];
+        $this->db->where("id_accion_juridica", $row['id']);
+        $this->db->update('t43web_accion_detalles', $this->arrayJActionPropsChild);
+        return true;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
     }
 
     /**

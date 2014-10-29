@@ -41,7 +41,7 @@ $(document).ready(function () {
 
     //Require field Observaciones
     $("input[name='chkObservaciones']").change(function() {
-        
+
         if ($("input[name='chkObservaciones']:checked").val() == "1"){
             $("#containerTxtObservaciones").css("display","block");
         }else if($("input[name='chkObservaciones']:checked").val() == "0"){
@@ -49,7 +49,6 @@ $(document).ready(function () {
         }
 
     });
-    
 
     $("input[name='txtPersonaNoFigura']").change(function() {
         varControles = ["#txtMunicipioExpedicion", "#txtVeredaCertificacion", "#txtPredioCertificacion", "#txtFechaExpedicion", "#txtOtroPredio", "#addVereda", "#txtCargo", "#txtFechaSuministrada", "#labelFechaExpedicion", "#labeltxtMunicipioExpedicion", "#labeltxtVeredaCertificacion", "#labeltxtPredioCertificacion", "#labelFechaSuministrada", "#labeltxtCargo", "#txtOtroMunicipio", "#txtOtraVereda", "#txtOtroPredio", "#lblCualOtroMunicipio", "#lblCualOtraVereda", "#lblCualOtroPredio", "#txtFechaInicio", "#txtFechaFin", "#labeltxtFechaInicio", "#labeltxtFechafin", "#containerFechaSuministrada"];

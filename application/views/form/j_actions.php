@@ -128,7 +128,7 @@ if (isset($_GET["code"])) {
                   Departamento:
                 </th>
                 <td>
-                   <select class='form-control' id='departamento'>
+                   <select class='form-control' id='departamento' name='departamento'>
                       <option value="">Seleccione...</option>
                     </select>
                 </td>
@@ -136,7 +136,7 @@ if (isset($_GET["code"])) {
                   Municipio:
                 </th>
                 <td>
-                   <select class='form-control' id='municipio'>
+                   <select class='form-control' id='municipio' name='municipio'>
                       <option value="">Seleccione...</option>
                     </select>
                 </td>
@@ -146,7 +146,7 @@ if (isset($_GET["code"])) {
                   Estado civil:
                 </th>
                 <td>
-                   <select class='form-control' id="estado_civ">
+                   <select class='form-control' id="estado_civ" name="estado_civ">
                       <option value="">Seleccione...</option>
                       <option value="Soltero">Soltero</option>
                       <option value="Casado">Casado</option>
@@ -160,7 +160,7 @@ if (isset($_GET["code"])) {
                   Sexo:
                 </th>
                 <td>
-                   <select class='form-control' id="sexo">
+                   <select class='form-control' id="sexo" name="sexo">
                       <option value="">Seleccione...</option>
                       <option value="H">Hombre</option>
                       <option value="M">Mujer</option>
@@ -178,7 +178,7 @@ if (isset($_GET["code"])) {
                   Actividad económica principal:
                 </th>
                 <td colspan='5'>
-                   <select class='form-control' id="act_principal">
+                   <select class='form-control' id="act_principal" name="act_principal">
                       <option value="">Seleccione...</option>
                     </select>
                 </td>
@@ -195,7 +195,7 @@ if (isset($_GET["code"])) {
                   1. Tipo de proceso:
                 </th>
                 <td>
-                   <select class='form-control' id='processtype'>
+                   <select class='form-control' id='processtype' name='processtype'>
                       <option value="">Seleccione...</option>
                       <option value="1">Tutela</option>
                       <option value="2">Acción de grupo</option>
@@ -213,7 +213,7 @@ if (isset($_GET["code"])) {
                   <input type="checkbox" name="medio_ambiente" id="medio_ambiente" value="MedioAmbiente">Medio ambiente</input>
                   <input type="checkbox" name="debido_proceso" id="debido_proceso" value="DebidoProceso">Debido proceso</input>
                   <input type="checkbox" name="integridad_fisica" id="integridad_fisica" value="IntegridadFisica">Integridad física</input>
-                  <input type="checkbox" name="participacion" id="participacionA" value="Participacion">Participación</input>
+                  <input type="checkbox" name="participacionA" id="participacionA" value="Participacion">Participación</input>
                   <input type="checkbox" name="otro" id="otro" value="Otro">Otro</input>
                 </td>
               </tr>
@@ -222,7 +222,7 @@ if (isset($_GET["code"])) {
                   3. Primera instancia:
                 </th>
                 <td>
-                   <select class='form-control' id="prim_instancia">
+                   <select class='form-control' id="prim_instancia" name="prim_instancia">
                       <option value="">Seleccione...</option>
                       <option value="1">Favorable</option>
                       <option value="2">Desfavorable</option>
@@ -251,7 +251,7 @@ if (isset($_GET["code"])) {
                   4. Segunda instancia:
                 </th>
                 <td>
-                   <select class='form-control' id="seg_instancia">
+                   <select class='form-control' id="seg_instancia" name="seg_instancia">
                       <option value="">Seleccione...</option>
                       <option value="1">Favorable</option>
                       <option value="2">Desfavorable</option>
@@ -280,17 +280,18 @@ if (isset($_GET["code"])) {
                   5. Último recurso:
                 </th>
                 <td>
-                  <input type="checkbox" name="participacion" id="participacion" value="participacion"></input>
-                  <label id="lblParticipacion" for="participacion">Participación</label>
-                  <input type="checkbox" name="casacion" id="casacion" value="casacion"></input>
-                  <label id="lblCasacion" for="casacion">Casación</label>
-                  <input type="checkbox" name="desacato" id="desacato" value="desacato"></input>
-                  <label id="lblDesacato" for="desacato">Desacato</label>
-                  <input type="checkbox" name="selecRevision" id="selecRevision" value="selecRevision"></input>
-                  <label id="idSelecRevision" for="selecRevision">Selecc. revisión</label>
+                  <input type="checkbox" name="participacion" id="participacion" value="participacion" style="display: none;"></input>
+                  <label id="lblParticipacion" for="participacion" style="display: none;">Participación</label>
+                  <input type="checkbox" name="casacion" id="casacion" value="casacion" style="display: none;"></input>
+                  <label id="lblCasacion" for="casacion" style="display: none;">Casación</label>
+                  <input type="checkbox" name="desacato" id="desacato" value="desacato" style="display: none;"></input>
+                  <label id="lblDesacato" for="desacato" style="display: none;">Desacato</label>
+                  <input type="checkbox" name="selecRevision" id="selecRevision" value="selecRevision" style="display: none;"></input>
+                  <label id="lblSelecRevision" for="selecRevision" style="display: none;">Selecc. revisión</label>
                 </td>
               </tr>
             </table>
+            <input type="hidden" name="hfMunicipio" id="hfMunicipio">
           </div>
             <legend style='clear: both;'></legend>
             <buttton id='saveInformation' class='btn btn-success btn-md'>Guardar Información</button>
