@@ -459,10 +459,24 @@ class QM_Form extends CI_Model {
       /*Metodo get_form_docs
       metodo que obtiene los archivos relacionados en el formulario de impresion*/
       public function get_form_docs($codeform){
+
+        try {
+
         $SQLResult = $this->db->query("SELECT a09O01 AS documento, a09O02 AS folios FROM t09web_usuario_respuestasn rn WHERE rn.a09Pregunta = 'CP019' AND rn.a09Formulario = '$codeform';");
         $dataArray = $SQLResult->result();
+        $html="";
 
-        return $dataArray;
+        //Cuerpo tabla
+        foreach ($dataArray as $actividad => $objActividad) {
+          $html .= "<tr><td>$objActividad->documento</td><td>$objActividad->folios</td></tr>";
+        }
+
+        return $html;
+
+        } catch (Exception $exc) {
+          echo $exc->getTraceAsString();
+        }
+
       }
 
     /*Metodo get_pqr

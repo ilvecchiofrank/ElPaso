@@ -268,13 +268,7 @@
                 <tr>
                   <th>Nombre documento</th><th>No. de folios</th>
                 </tr>
-                <?php $archivo = array(); ?>
-                <? foreach ($arrFiles as $archivo) : ?>
-                   <tr>
-                     <td><?php echo $archivo->documento; ?></td>
-                     <td><?php echo $archivo->folios; ?></td>
-                   </tr>
-                <? endforeach; ?>
+                <?php echo $arrFiles; ?>
               </table>
 
 <?php } else { ?>
