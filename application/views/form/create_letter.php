@@ -32,7 +32,7 @@ if (isset($_GET["code"])) {
               <tr>
                 <td style="width:33%"><img alt="Emgesa" src="public/img/logoprint.gif" class="img-responsive" width="150"></td>
                 <td style="width:33%"></td>
-                <td style="width:33%; text-align: right">EMGESA S.A. E.S.P.<br/>Radicado: 00095421<br/>Documento Externo<br/>20/10/2014 12:11</td>
+                <td style="width:33%; text-align: right">EMGESA S.A. E.S.P.<br/>Radicado: <input type="text" name="rad_emgesa" id="rad_emgesa" class='form-control'><br/>Documento Externo<br/><input type="date" name="fec_carta" id="fec_carta" class='form-control'></td>
               </tr>
             </table>
             <br/>
