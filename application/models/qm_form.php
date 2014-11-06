@@ -111,6 +111,18 @@ class QM_Form extends CI_Model {
         return $SQLResult->result_array();
     }
 
+    /*Metodo que obtiene el listado de cartas de respuesta para el documento solicitado*/
+    public function get_letters($cedula){
+      try {
+        $query = $this->db->query("SELECT estado, finalizada, fecha_creacion FROM t49web_respuestas_tutelas WHERE cedula = $cedula");
+        $dataArray = $query->result();
+        return $dataArray;
+
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Obtener listado de departamentos*/
     public function get_dpto(){
       try {
@@ -165,6 +177,40 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Obtener listado de tipologias*/
+    public function get_tipologias(){
+      try {
+        $query = $this->db->query("SELECT id_tipologias, nombre_tipologia FROM t54web_tipologias");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $tipologia => $objTipologia) {
+          $html .= "<option value='$objTipologia->id_tipologias'>" . $objTipologia->nombre_tipologia . "</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Obtener listado de categorias*/
+    public function get_categorias(){
+      try {
+        $query = $this->db->query("SELECT id_categoria, nombre_categoria FROM t53web_categorias");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $categoria => $objCategoria) {
+          $html .= "<option value='$objCategoria->id_categoria'>" . $objCategoria->nombre_categoria . "</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Obtener informacion relacionada de la tutela capitulo A*/
     public function get_tutela_info($tutelaId){
         $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion, REPLACE(path,'Q:emgesaTutelas','https://s3.amazonaws.com/emgesa/Tutelas/') as path FROM t19web_tutelas WHERE tutela_id = $tutelaId");
@@ -189,6 +235,14 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Precargar el encabezado de la respuesta de tutela*/
+    public function get_tut_answ_header($cedula){
+      $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08AP08O02 = '$cedula'");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener archivos relacionados con la certificacion*/
     public function get_CertFiles($code){
         try {
@@ -200,6 +254,12 @@ class QM_Form extends CI_Model {
             echo $exc->getTraceAsString();
         }
 
+    }
+
+    /*Establecer las propiedades de la respuesta a la tutela en un array*/
+    public function do_setLetterProps($arrayDataFromView){
+      $this->arrayLetterProps = array("");
+      $this->arrayLetterPropsUpd = array("");
     }
 
     /*Establecer las propiedades de la accion de tutela en un array*/
@@ -281,6 +341,29 @@ class QM_Form extends CI_Model {
         $this->arrayJActionPropsChild['id_accion_juridica'] = $row['id'];
         $this->db->where("id_accion_juridica", $row['id']);
         $this->db->update('t43web_accion_detalles', $this->arrayJActionPropsChild);
+        return true;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Insertar la carta de respuesta*/
+    public function do_createLetter(){
+      try {
+        $this->bd->insert('t49web_respuestas_tutelas', $this->arrayLetterProps);
+        $query = $this->db->query('SELECT max(id_respuesta) as id from t49web_respuestas_tutelas');
+        $row = $query->row_array();
+        return $row['id'];
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Actualizar la carta de respuesta*/
+    public function do_updateLetter($idLetter){
+      try {
+        $this->db->where("id_respuesta", $idLetter);
+        $this->db->update('t49web_respuestas_tutelas', $this->arrayLetterPropsUpd);
         return true;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();

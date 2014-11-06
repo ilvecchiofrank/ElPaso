@@ -95,6 +95,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 var objLAnchorUD = $(objLAnchorC).clone();
                 var objLAnchorCERT = $(objLAnchorC).clone();
                 var objLAnchorF = $(objLAnchorC).clone();
+                var objLAnchorRJ = $(objLAnchorC).clone();
 
                 $(objLAnchorC).attr("href", "index.php/form/chapter/A/" + arrRData.a11Codigo)
                     .html("Completar").addClass("btn btn-warning");
@@ -110,6 +111,9 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
                 $(objLAnchorP).attr("href", "index.php/form/print_form/" + arrRData.form)
                     .html("Imprimir").addClass("btn btn-info");
                 $(objLAnchorP).attr("target","_blank");
+                $(objLAnchorRJ).attr("target", "_blank");
+                $(objLAnchorRJ).attr("href", "index.php/form/pre_letter?formCode=" + arrRData.form + "&docId=" + arrRData.cc)
+                    .html("Responder").addClass("btn btn-danger");
                 $(objLAnchorPF).attr("target","_blank");
                 $(objLAnchorPF).attr("href", "index.php/form/print_full/" + arrRData.form)
                     .html("Ver Respuestas").addClass("btn btn-info");
@@ -196,6 +200,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
 							$(objLAction).append(" ").append(objLAnchorPF);
                             $(objLAction).append(" ").append(objLAnchorCRBD);
                             $(objLAction).append(" ").append(objLAnchorJA);
+                            $(objLAction).append(" ").append(objLAnchorRJ);
                             break;
 
                         default:

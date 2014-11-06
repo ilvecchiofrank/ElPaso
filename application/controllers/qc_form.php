@@ -38,6 +38,7 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
+
     /* Formulario para consultar certificaciones*/
     public function files(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -68,10 +69,29 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar cartas de respuesta */
+    public function pre_letter(){
+        if($this->session->userdata("isLoggedIn")) {
+            $this->display_page("pre_letter", "form");
+            return;
+        }
+        redirect("/");
+    }
+
     /* Formulario para consultar cruces BD*/
     public function tutelas(){
         if ($this->session->userdata("isLoggedIn")) {
             $this->display_page("tutelas", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Formulario de redaccion de cartas*/
+    public function create_letter(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("create_letter", "form");
             return;
         }
 
@@ -319,6 +339,7 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
+
     /**
      * Método do_search
      *
@@ -586,6 +607,52 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutela_exist($tutelaId));
     }
 
+    /*Metodo que precarga el encabezado de la respuesta de tutela*/
+    public function get_Tut_Answ_Header($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tut_answ_header($cedula));
+    }
+
+    /*Metodo que consulta las cartas de respuestas a las tutelas*/
+    public function get_Letters($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_letters($cedula));
+    }
+
+    /*Metodo que carga las categorias de las cartas de respuesta a las tutelas*/
+    public function get_Categorias(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_categorias());
+    }
+
+    /*Metodo que carga las tipologias de las cartas de respuestas a las tutelas*/
+    public function get_Tipologias(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tipologias());
+    }
+
+    /*Metodo que guarda la carta de respuesta a las tutelas*/
+    public function do_SaveLetter(){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemValue->value;
+            }
+        }
+
+        $arrayData["id_respuesta"] = $_POST["id_respuesta"];
+        $this->form->do_setLetterProps($arrayData);
+        $resultInsert = $this->form->do_createLetter();
+
+        if ($resultInsert > 0)
+            echo "ok";
+        else
+            echo $resultInsert;
+    }
+
     /*Metodo que guarda la captura de la accion de tutela*/
     public function do_saveJAction(){
         $this->load->model("qm_form", "form", true);
@@ -602,10 +669,33 @@ class QC_Form extends QC_Controller {
         $this->form->do_setJActionProps($arrayData);
         $resultInsert = $this->form->do_createAction();
 
-        if ($resultInsert>0)
+        if ($resultInsert > 0)
             echo "ok";
         else
             echo $resultInsert;
+    }
+
+    /*Metodo que actualiza la carta de respuesta a las tutelas*/
+    public function do_updateLetters(){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemvalue->value;
+            }
+        }
+
+        $arrayData["id_respuestas"] = $_POST["id_respuestas"];
+        $this->form->do_setLetterProps($arrayData);
+        $resultInsert = $this->form->do_updateLetter($_POST["id_respuestas"]);
+
+        if($resultInsert == true)
+            echo "ok";
+        else
+            echo $resultInsert;
+
     }
 
     /*Metodo que actualiza la captura de la accion de tutela*/

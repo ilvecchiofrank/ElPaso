@@ -300,7 +300,7 @@ if (isset($_GET["code"])) {
             <input type="hidden" name="hfMunicipio" id="hfMunicipio">
           </div>
             <legend style='clear: both;'></legend>
-            <buttton id='saveInformation' class='btn btn-success btn-md'>Guardar Información</button>
+            <button id='saveInformation' class='btn btn-success btn-md'>Guardar Información</button>
         </div>
         </br>
       </div>
