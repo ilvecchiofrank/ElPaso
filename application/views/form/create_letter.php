@@ -134,7 +134,7 @@ if (isset($_GET["code"])) {
             <br/>
           </div>
           <div id='divRedaccion' name='divRedaccion'>
-            <textarea name="dummy" id="dummy" cols="30" rows="10"></textarea>
+            <textarea name="dummy" id="dummy" cols="30" rows="10" class='form-control'></textarea>
             <br/>
           </div>
           <div id='divCierre' name='divCierre'>
@@ -149,8 +149,15 @@ if (isset($_GET["code"])) {
             <label id='lblFooter'>Pie de página</label>
           </div>
           <legend style='clear: both;'></legend>
+			<div id='divDevolver' style='display:none'>
+			<label id='lblDevolver'>Motivo de la devolución:</label>
+			<br/>
+			<input type="text" name="txtDevolver" id="txtDevolver" class='form-control'>
+			<br/>
+			</div>
             <button id='saveInfo' class='btn btn-success btn-md'>Guardar Información</button>
             <button id='saveClose' class='btn btn-danger btn-md'>Guardar y Cerrar</button>
+			<button id='putBack' class='btn btn-warning btn-md'>Devolver</button>
         </div>
         </br>
       </div>

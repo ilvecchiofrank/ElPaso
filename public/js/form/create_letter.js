@@ -241,11 +241,24 @@ function loadData(){
         $("#tipologia").html(objRData);
     });
 
+	//-acciones boton devolver-//
+	$("#putBack").click( function(){
+			if( $("#divDevolver").css('display') == 'none' ){
+			$("#divDevolver").css('display', 'block');
+			$("#putBack").html('Confirmar devolución');
+			}else{
+			$("#divDevolver").css('display', 'none');
+			}
+
+        }
+    );
+	
 }
 
 //-Cargar desde T8-//
 function loadT8(){
     var cedula = getParameterByName("docId");
+	var formulario = getParameterByName("formCode");
     $.getJSON("index.php/form/get_Tut_Answ_Header/" + cedula, function(objRData){
         arrayT8 = objRData;
         if(arrayT8.length > 0){
@@ -272,7 +285,10 @@ function loadT8(){
                 $("#btnDBMatch").attr("href", 'index.php/form/dbmatch?docId=' + cedula);
                 $("#btnTutela").attr("target","_blank");
                 $("#btnTutela").attr("href", 'index.php/form/tutelas?docId=' + cedula);
-
+				$("#btnCert").attr("target","_blank");
+                $("#btnCert").attr("href", 'index.php/form/files?formCode' + formulario + '&docId=' + cedula);
+                $("#btnAnswer").attr("target","_blank");
+                $("#btnAnswer").attr("href", 'index.php/form/print_full/' + formulario);
             }
         }
     });
