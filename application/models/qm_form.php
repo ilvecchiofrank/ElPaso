@@ -235,9 +235,25 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Consultar si existe alguna carta en estado pendiente o proceso*/
+    public function get_letter_exist($cedula){
+      $query = $this->db->query("SELECT id_respuesta FROM t49web_respuestas_tutelas WHERE estado != 3 AND cedula = $cedula");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /*Precargar el encabezado de la respuesta de tutela*/
     public function get_tut_answ_header($cedula){
       $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08AP08O02 = '$cedula'");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener pendientes del dashboard */
+    public function get_dash_works($usuario){
+      $query = $this->db->query("SELECT estado, tipologia, categoria, modulo_actual FROM t49web_respuestas_tutelas rt WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario'");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -258,8 +274,45 @@ class QM_Form extends CI_Model {
 
     /*Establecer las propiedades de la respuesta a la tutela en un array*/
     public function do_setLetterProps($arrayDataFromView){
-      $this->arrayLetterProps = array("");
-      $this->arrayLetterPropsUpd = array("");
+
+      var_dump($arrayDataFromView);
+
+      $this->arrayLetterProps = array(
+        'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,
+        'estado'=> (isset($arrayDataFromView['estado'])) ? $arrayDataFromView['estado'] : null,
+        'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
+        'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,
+        'finalizada'=> (isset($arrayDataFromView['finalizada'])) ? $arrayDataFromView['finalizada'] : 0,
+        'cuerpo_mensaje'=> (isset($arrayDataFromView['cuerpo_mensaje'])) ? $arrayDataFromView['cuerpo_mensaje'] : null,
+        'ult_actualizacion'=> (isset($arrayDataFromView['ult_actualizacion'])) ? $arrayDataFromView['ult_actualizacion'] : null,
+        'fec_carta'=> (isset($arrayDataFromView['fec_carta'])) ? $arrayDataFromView['fec_carta'] : null,
+        'rad_emgesa'=> (isset($arrayDataFromView['rad_emgesa'])) ? $arrayDataFromView['rad_emgesa'] : null,
+        'txt_Devolver'=> (isset($arrayDataFromView['txt_Devolver'])) ? $arrayDataFromView['txt_Devolver'] : null,
+        'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
+        'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
+        'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
+        'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null,
+        'fecha_creacion' => date("Y-m-d H:i:s")
+        );
+
+      $this->arrayLetterPropsUpd = array(
+        'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,
+        'estado'=> (isset($arrayDataFromView['estado'])) ? $arrayDataFromView['estado'] : null,
+        'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
+        'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,
+        'finalizada'=> (isset($arrayDataFromView['finalizada'])) ? $arrayDataFromView['finalizada'] : 0,
+        'cuerpo_mensaje'=> (isset($arrayDataFromView['cuerpo_mensaje'])) ? $arrayDataFromView['cuerpo_mensaje'] : null,
+        'ult_actualizacion'=> (isset($arrayDataFromView['ult_actualizacion'])) ? $arrayDataFromView['ult_actualizacion'] : null,
+        'fec_carta'=> (isset($arrayDataFromView['fec_carta'])) ? $arrayDataFromView['fec_carta'] : null,
+        'rad_emgesa'=> (isset($arrayDataFromView['rad_emgesa'])) ? $arrayDataFromView['rad_emgesa'] : null,
+        'txt_Devolver'=> (isset($arrayDataFromView['txt_Devolver'])) ? $arrayDataFromView['txt_Devolver'] : null,
+        'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
+        'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
+        'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
+        'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null
+        );
     }
 
     /*Establecer las propiedades de la accion de tutela en un array*/
@@ -350,7 +403,7 @@ class QM_Form extends CI_Model {
     /*Insertar la carta de respuesta*/
     public function do_createLetter(){
       try {
-        $this->bd->insert('t49web_respuestas_tutelas', $this->arrayLetterProps);
+        $this->db->insert('t49web_respuestas_tutelas', $this->arrayLetterProps);
         $query = $this->db->query('SELECT max(id_respuesta) as id from t49web_respuestas_tutelas');
         $row = $query->row_array();
         return $row['id'];

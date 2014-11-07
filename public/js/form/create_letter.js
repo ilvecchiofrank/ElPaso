@@ -10,8 +10,8 @@ $(".modal").modal('hide');
 //loadMun();
 //resumeForm();
 
-//saveForm();
-//fader();
+saveForm();
+fader();
 
  $("#processtype").change(function(){
     //Verificar la opcion seleccionada
@@ -59,18 +59,18 @@ function autosave(){
 
 function saveNotify(auto){
 
-var tutela = getParameterByName("tutId");
-            //-Consultar si ya existen datos de la tutela actual-//
-            $.getJSON("index.php/form/get_Tutela_Exist/" + tutela, function(objRData){
-                arrayTutelaExists = objRData;
+var cedula = getParameterByName("docId");
+            //-Consultar si ya existe una carta por la cedula con un proceso activo-//
+            $.getJSON("index.php/form/get_Letter_Exist/" + cedula, function(objRData){
+                arrayLetterExists = objRData;
 
-                if(arrayTutelaExists.length > 0){
+                if(arrayLetterExists.length > 0){
                     //Si existe tutela
                     console.log("Carta existe, actualización");
-                    $.ajax({
-                    url: "index.php/form/do_updateJAction",
+                     $.ajax({
+                    url: "index.php/form/do_updateLetters",
                     type: "POST",
-                    data: { csrf_test_name: get_csrf_hash, "id_tutela":tutela, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+                    data: { csrf_test_name: get_csrf_hash, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                     success: function(result){
                         if (result == "ok"){
                             //Guardado ok
@@ -84,7 +84,7 @@ var tutela = getParameterByName("tutId");
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/tutelas?docId=" + $("#cedula").val();
+                                window.location.href = "index.php/form/search"; //"index.php/form/tutelas?docId=" + $("#cedula").val();
                                 console.log("Redirecciona");
                             }
                             else{
@@ -95,14 +95,14 @@ var tutela = getParameterByName("tutId");
                         //Error
                         notify('error');
                     }
-                });
+                 });
                 }else{
                     //Tutela nueva
-                    console.log("Tutela nueva, crear");
+                    console.log("Carta nueva, crear");
                     $.ajax({
-                        url: "index.php/form/do_saveJAction",
+                        url: "index.php/form/do_SaveLetter",
                         type: "POST",
-                        data: { csrf_test_name: get_csrf_hash, "id_tutela":tutela, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+                        data: { csrf_test_name: get_csrf_hash, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                         success: function(result){
                             if (result == "ok"){
                                 //Guardado ok
@@ -116,7 +116,7 @@ var tutela = getParameterByName("tutId");
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/tutelas?docId=" + $("#cedula").val();
+                                window.location.href = "index.php/form/search";//"index.php/form/tutelas?docId=" + $("#cedula").val();
                                 console.log("Redirecciona");
                             }
                             else{
@@ -211,9 +211,15 @@ function updDepto(){
 }
 
 function saveForm(){
-      $("#saveInformation").click( function(){
+       $("#saveInfo").click( function(){
+            console.log(CKEDITOR.instances.contenido.getData());
             saveNotify();
-        });
+         });
+
+       $("#saveClose").click( function(){
+            console.log(CKEDITOR.instances.contenido.getData());
+            saveNotify();
+         });
 }
 
 function fader(){
@@ -241,6 +247,11 @@ function loadData(){
         $("#tipologia").html(objRData);
     });
 
+    //-Ocultar controles ckeditor-//
+    $("#cke_23").css("display","none");
+    $("#cke_30").css("display","none");
+    $("#cke_32").css("display","none");
+
 	//-acciones boton devolver-//
 	$("#putBack").click( function(){
 			if( $("#divDevolver").css('display') == 'none' ){
@@ -252,7 +263,7 @@ function loadData(){
 
         }
     );
-	
+
 }
 
 //-Cargar desde T8-//

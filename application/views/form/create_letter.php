@@ -1,3 +1,5 @@
+<script src="<?php echo base_url(); ?>/public/js/ckeditor/ckeditor.js"></script>
+<!-- <script type="text/javascript" src="/asset/ckfinder/ckfinder.js"></script> -->
 <link href="public/css/certifications/form.css" rel="stylesheet" />
 <style type="text/css">
 
@@ -134,7 +136,15 @@ if (isset($_GET["code"])) {
             <br/>
           </div>
           <div id='divRedaccion' name='divRedaccion'>
-            <textarea name="dummy" id="dummy" cols="30" rows="10" class='form-control'></textarea>
+            <textarea name="contenido" id="contenido" cols="30" rows="10" class='form-control'></textarea>
+
+            <script>
+              CKEDITOR.replace('contenido');
+              // $("#cke_23").css("display","none");
+              // $("#cke_30").css("display","none");
+              // $("#cke_32").css("display","none");
+            </script>
+
             <br/>
           </div>
           <div id='divCierre' name='divCierre'>

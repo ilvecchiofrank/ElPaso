@@ -9,7 +9,8 @@ function loadLetters(){
     var cedula = getParameterByName("docId");
     var formulario = getParameterByName("formCode");
     var tabletters = "";
-    $(".modal").modal('show');
+    $(".modal").m
+    odal('show');
     $.getJSON("index.php/form/get_Letters/" + cedula, function(objRData){
         arrayLetters = objRData;
 

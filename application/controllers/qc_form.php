@@ -24,6 +24,7 @@
  * @link        http://www.arthvrian.org/
  */
 class QC_Form extends QC_Controller {
+
     /**
      * Metodo index
      *
@@ -63,6 +64,16 @@ class QC_Form extends QC_Controller {
     public function dbmatch(){
         if ($this->session->userdata("isLoggedIn")) {
             $this->display_page("dbmatch", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Dashboard*/
+    public function dash(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("dash", "form");
             return;
         }
 
@@ -607,6 +618,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutela_exist($tutelaId));
     }
 
+    /*Consultar si la carta existe y esta en un estado diferente a finalizado*/
+    public function get_Letter_Exist($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_letter_exist($cedula));
+    }
+
     /*Metodo que precarga el encabezado de la respuesta de tutela*/
     public function get_Tut_Answ_Header($cedula){
         $this->load->model("qm_form", "form", true);
@@ -635,7 +652,6 @@ class QC_Form extends QC_Controller {
     public function do_SaveLetter(){
         $this->load->model("qm_form", "form", true);
         $arrayData = array();
-
         if(!empty($_POST["dataForm"])){
             $arrayDataFromView = json_decode($_POST["dataForm"]);
             foreach ($arrayDataFromView as $itemKey => $itemValue) {
@@ -643,7 +659,7 @@ class QC_Form extends QC_Controller {
             }
         }
 
-        $arrayData["id_respuesta"] = $_POST["id_respuesta"];
+        $arrayData["cedula"] = $_POST["cedula"];
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_createLetter();
 

@@ -33,7 +33,45 @@ class QC_User extends QC_Controller {
      */
     public function index($stRPage = "home") {
         if ($this->session->userdata("isLoggedIn")) {
-            redirect("form/search");
+
+            $tipo = $this->session->userdata("inRUserType");
+            $uid = $this->session->userdata("inRUserID");
+
+            /*Redireccion de usuario por rol*/
+            switch ($this->session->userdata("inRUserType")) {
+
+            // case 1:
+            //     echo "Admin";
+            //     break;
+            // case 2:
+            //     echo "Usuario";
+            //     break;
+            // case 3:
+            //     echo "Clasifica";
+            //     break;
+            // case 4:
+            //     echo"Abogado";
+            //     break;
+            case 5:
+                //echo "Redactor";
+                redirect("form/dash");
+                break;
+            case 6:
+                //echo "Consultor";
+                redirect("form/dash");
+                break;
+            case 7:
+                //echo "Juridico";
+                redirect("form/dash");
+                break;
+            case 8:
+                //echo"Gerente";
+                redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
+                break;
+            default:
+                redirect("form/search");
+            }
+
         }
 
         $this->display_page($stRPage);
