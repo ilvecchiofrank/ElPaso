@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
 var rol = getParameterByName("uT");
+loadDash();
 
 //loadTutelas();
 
@@ -8,15 +9,17 @@ function loadDash(){
     var uid = getParameterByName("uI");
     var tabLetters = "";
     $(".modal").modal('show');
+    console.log("llamado carga");
     $.getJSON("index.php/form/get_Dash_Works/" + uid, function(objRData){
         arrayLetters = objRData;
-
+        console.log("trae datos");
         if (arrayLetters.length >= 1){
-             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Modulo Actual</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+            console.log("mas de 0");
+             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Modulo Actual</th><th scope='col'>Detalle</th></tr></thead><tbody>";
 
              for (var t = arrayLetters.length -1; t >=0; t--){
-                var ruta = "index.php/form/create_letter?formCode=b6cab292-f1d4-11e3-9d40-00fff0499688&docId=16598973" + arrayLetters[t].tutela_id ;
-                tabLetters += "<tr><td>" + arrayLetters[t].estado + "</td><td>" + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + arrayLetters[t].modulo_actual + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+                var ruta = "index.php/form/create_letter?" + arrayLetters[t].formulario + "&docId=" + arrayLetters[t].cedula + "&tId=" + arrayLetters[t].tip_id + "&cId=" + arrayLetters[t].cat_id ;
+                tabLetters += "<tr><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].estado + "</td><td>" + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + arrayLetters[t].modulo_actual + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
             }
 
         }
@@ -24,7 +27,7 @@ function loadDash(){
         {
             $("#dash_letters").css("display","none");
         }
-
+        console.log("finaliza carga");
         tabLetters += "</tbody></table><br/>";
         $("#tableLetters").html(tabLetters);
     $(".modal").modal('hide');

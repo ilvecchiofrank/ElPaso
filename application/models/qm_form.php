@@ -253,7 +253,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener pendientes del dashboard */
     public function get_dash_works($usuario){
-      $query = $this->db->query("SELECT estado, tipologia, categoria, modulo_actual, cedula, FROM t49web_respuestas_tutelas rt WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario'");
+      $query = $this->db->query("SELECT rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario'");
       $dataArray = $query->result();
 
       return $dataArray;

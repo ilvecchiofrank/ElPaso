@@ -54,15 +54,15 @@ class QC_User extends QC_Controller {
             //     break;
             case 5:
                 //echo "Redactor";
-                redirect("form/dash");
+                redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
                 break;
             case 6:
                 //echo "Consultor";
-                redirect("form/dash");
+                redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
                 break;
             case 7:
                 //echo "Juridico";
-                redirect("form/dash");
+                redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
                 break;
             case 8:
                 //echo"Gerente";

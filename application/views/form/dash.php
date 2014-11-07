@@ -10,17 +10,8 @@
 
 </style>
 <script type='text/javascript'>
-    var docId = '<?php echo $_GET["docId"]; ?>';
-    var code = '<?php
-if (isset($_GET["code"])) {
-    echo $_GET["code"];
-} else {
-    echo "0";
-}
-?>';
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-
 </script>
     <section class="main-content">
       <div class="container">
