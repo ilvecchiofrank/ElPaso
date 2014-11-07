@@ -5,30 +5,30 @@ var rol = getParameterByName("uT");
 //loadTutelas();
 
 function loadDash(){
-    // var cedula = getParameterByName("docId");
-    // var tabtutelas = "";
-    // $(".modal").modal('show');
-    // $.getJSON("index.php/form/get_Tutelas/" + cedula, function(objRData){
-    //     arrayTutelas = objRData;
+    var uid = getParameterByName("uI");
+    var tabLetters = "";
+    $(".modal").modal('show');
+    $.getJSON("index.php/form/get_Dash_Works/" + uid, function(objRData){
+        arrayLetters = objRData;
 
-    //     if (arrayTutelas.length >= 1){
-    //         tabtutelas += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Número de proceso</th><th scope='col'>Tema</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+        if (arrayLetters.length >= 1){
+             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Modulo Actual</th><th scope='col'>Detalle</th></tr></thead><tbody>";
 
-    //         for (var t = arrayTutelas.length -1; t >=0; t--){
-    //             var ruta = "index.php/form/j_actions?tutId=" +arrayTutelas[t].tutela_id ;
-    //             tabtutelas += "<tr><td>" + arrayTutelas[t].numero_proceso + "</td><td>" + arrayTutelas[t].temas + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
-    //         }
+             for (var t = arrayLetters.length -1; t >=0; t--){
+                var ruta = "index.php/form/create_letter?formCode=b6cab292-f1d4-11e3-9d40-00fff0499688&docId=16598973" + arrayLetters[t].tutela_id ;
+                tabLetters += "<tr><td>" + arrayLetters[t].estado + "</td><td>" + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + arrayLetters[t].modulo_actual + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+            }
 
-    //     }
-    //     else
-    //     {
-    //         $("#tutelas").css("display","none");
-    //     }
+        }
+        else
+        {
+            $("#dash_letters").css("display","none");
+        }
 
-    //     tabtutelas += "</tbody></table><br/>";
-    //     $("#tableTutelasResults").html(tabtutelas);
-    // $(".modal").modal('hide');
-    // });
+        tabLetters += "</tbody></table><br/>";
+        $("#tableLetters").html(tabLetters);
+    $(".modal").modal('hide');
+    });
 }
 
 //-Extraer parametros QueryString-//

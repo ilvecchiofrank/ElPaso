@@ -552,6 +552,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutelas($cedula));
     }
 
+	/* Obtener actividades para el dashboard del usuario actual*/
+	public function get_Dash_Works($userId){
+		$this->load->model("qm_form", "form", true);
+		echo json_encode($this->form>get_dash_works($userId));
+	}
+	
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);
