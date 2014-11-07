@@ -140,9 +140,13 @@ if (isset($_GET["code"])) {
 
             <script>
               CKEDITOR.replace('contenido');
-              // $("#cke_23").css("display","none");
-              // $("#cke_30").css("display","none");
-              // $("#cke_32").css("display","none");
+            </script>
+
+            <script src="public/js/jquery-1.11.0.min.js" type="text/javascript">
+            console.log("test!");
+              $("#cke_23").css("display","none");
+              $("#cke_30").css("display","none");
+              $("#cke_32").css("display","none");
             </script>
 
             <br/>
@@ -172,6 +176,8 @@ if (isset($_GET["code"])) {
         </br>
       </div>
       <input type="hidden" name="hfCreate" id="hfCreate">
+      <input type="hidden" name="hfUserType" id="hfUserType" value=<?php echo $this->session->userdata("inRUserType") ?>>
+      <input type="hidden" name="hfUserId" id="hfUserId" value=<?php echo $this->session->userdata("inRUserID") ?>>
     </section>
 
 <!-- Modal -->
@@ -193,3 +199,6 @@ if (isset($_GET["code"])) {
         </div>
     </div>
 </div>
+
+<div id="divUpdate" style="z-index:1000; position:fixed; bottom:0; right:0; width:25%; display: none;" class="alert alert-success" role="alert" ><b>Guardado automatico. </b>Última modificación: 01/01/2001 01:01</div>
+<div id="divError" style="z-index:1000; position:fixed; bottom:0; right:0; width:25%; display: none;" class="alert alert-danger" role="alert" ><b>Falló el guardado. </b>Ha ocurrido un error al guardar.</div>

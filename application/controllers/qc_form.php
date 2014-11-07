@@ -666,6 +666,9 @@ class QC_Form extends QC_Controller {
         }
 
         $arrayData["cedula"] = $_POST["cedula"];
+        $arrayData["categoria"] = $_POST["categoria"];
+        $arrayData["tipologia"] = $_POST["tipologia"];
+        $arrayData["formulario"] = $_POST["formulario"];
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_createLetter();
 

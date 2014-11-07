@@ -253,7 +253,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener pendientes del dashboard */
     public function get_dash_works($usuario){
-      $query = $this->db->query("SELECT rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario'");
+      $query = $this->db->query("SELECT rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ORDER BY tip_id, cat_id");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -279,6 +279,9 @@ class QM_Form extends CI_Model {
 
       $this->arrayLetterProps = array(
         'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,
+        'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,
+        'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
+        'formulario'=> (isset($arrayDataFromView['formulario'])) ? $arrayDataFromView['formulario'] : null,
         'estado'=> (isset($arrayDataFromView['estado'])) ? $arrayDataFromView['estado'] : null,
         'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
         'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,
@@ -298,6 +301,9 @@ class QM_Form extends CI_Model {
 
       $this->arrayLetterPropsUpd = array(
         'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,
+        'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,
+        'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
+        'formulario'=> (isset($arrayDataFromView['formulario'])) ? $arrayDataFromView['formulario'] : null,
         'estado'=> (isset($arrayDataFromView['estado'])) ? $arrayDataFromView['estado'] : null,
         'tipologia'=> (isset($arrayDataFromView['tipologia'])) ? $arrayDataFromView['tipologia'] : null,
         'categoria'=> (isset($arrayDataFromView['categoria'])) ? $arrayDataFromView['categoria'] : null,

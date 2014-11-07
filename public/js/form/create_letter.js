@@ -1,11 +1,17 @@
 $(document).ready(function () {
 
-console.log("Carga de t8");
-
 $(".modal").modal('show');
 loadT8();
 loadData();
 $(".modal").modal('hide');
+
+//-Prediligenciar tipologia y categoria-//
+// var tipo = getParameterByName("tId");
+// var categ = getParameterByName("cId");
+// console.log('hola');
+// $("#tipologia").val(1);
+// $("#categoria").val(1);
+// console.log('chao');
 
 //loadMun();
 //resumeForm();
@@ -60,6 +66,11 @@ function autosave(){
 function saveNotify(auto){
 
 var cedula = getParameterByName("docId");
+var formulario_id = getParameterByName("formCode");
+var categoria_id = getParameterByName("cId");
+var tipologia_id = getParameterByName("tId");
+var tipo_usuario = getParameterByName("uT");
+var id_usuario = getParameterByName("uI");
             //-Consultar si ya existe una carta por la cedula con un proceso activo-//
             $.getJSON("index.php/form/get_Letter_Exist/" + cedula, function(objRData){
                 arrayLetterExists = objRData;
@@ -68,7 +79,7 @@ var cedula = getParameterByName("docId");
                     //Si existe tutela
                     console.log("Carta existe, actualización");
                      $.ajax({
-                    url: "index.php/form/do_updateLetters",
+                    url: "index.php/form/do_updateLetters/" + 45,
                     type: "POST",
                     data: { csrf_test_name: get_csrf_hash, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                     success: function(result){
@@ -84,7 +95,7 @@ var cedula = getParameterByName("docId");
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/search"; //"index.php/form/tutelas?docId=" + $("#cedula").val();
+                                window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
                                 console.log("Redirecciona");
                             }
                             else{
@@ -102,10 +113,11 @@ var cedula = getParameterByName("docId");
                     $.ajax({
                         url: "index.php/form/do_SaveLetter",
                         type: "POST",
-                        data: { csrf_test_name: get_csrf_hash, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+                        data: { csrf_test_name: get_csrf_hash, "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                         success: function(result){
                             if (result == "ok"){
                                 //Guardado ok
+                                console.log("guardado ok");
                                 if(auto=='auto'){
                                     notify('auto');
                                 }else{
@@ -116,7 +128,7 @@ var cedula = getParameterByName("docId");
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/search";//"index.php/form/tutelas?docId=" + $("#cedula").val();
+                                window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
                                 console.log("Redirecciona");
                             }
                             else{
@@ -248,11 +260,16 @@ function loadData(){
     });
 
     //-Ocultar controles ckeditor-//
-    $("#cke_23").css("display","none");
-    $("#cke_30").css("display","none");
-    $("#cke_32").css("display","none");
+    // $("#cke_23").css("display","none");
+    // $("#cke_30").css("display","none");
+    // $("#cke_32").css("display","none");
 
-	//-acciones boton devolver-//
+    //-Validaciones de rol-//
+    if($("#hfUserType").val() < 6 ){
+    $("#putBack").css("display", "none");
+    }
+
+	//-Acciones boton devolver-//
 	$("#putBack").click( function(){
 			if( $("#divDevolver").css('display') == 'none' ){
 			$("#divDevolver").css('display', 'block');
@@ -297,7 +314,7 @@ function loadT8(){
                 $("#btnTutela").attr("target","_blank");
                 $("#btnTutela").attr("href", 'index.php/form/tutelas?docId=' + cedula);
 				$("#btnCert").attr("target","_blank");
-                $("#btnCert").attr("href", 'index.php/form/files?formCode' + formulario + '&docId=' + cedula);
+                $("#btnCert").attr("href", 'index.php/form/files?formCode=' + formulario + '&docId=' + cedula);
                 $("#btnAnswer").attr("target","_blank");
                 $("#btnAnswer").attr("href", 'index.php/form/print_full/' + formulario);
             }
