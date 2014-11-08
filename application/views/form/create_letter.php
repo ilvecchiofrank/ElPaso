@@ -110,16 +110,18 @@ if (isset($_GET["code"])) {
             <table>
               <tr>
                 <td>
-                  <label for="tipologia">Tipología:</label>
-                   <select class='form-control' id="tipologia" name="tipologia">
+                  <label>Tipología:</label>
+                  <label id="lblTipologia"></label>
+<!--                    <select class='form-control' id="tipologia" name="tipologia">
                       <option value="">Seleccione...</option>
-                    </select>
+                    </select> -->
                 </td>
                 <td>
-                  <label for="categoria">Categoría:</label>
-                   <select class='form-control' id="categoria" name="categoria">
+                  <label>Categoría:</label>
+                  <label id="lblCategoria"></label>
+<!--                    <select class='form-control' id="categoria" name="categoria">
                       <option value="">Seleccione...</option>
-                    </select>
+                    </select> -->
                 </td>
               </tr>
               <tr>
@@ -129,7 +131,7 @@ if (isset($_GET["code"])) {
                   <a id='btnTutela' href="#" class="btn btn-success btn-md">Tutelas</a>
                   <a id='btnAnswer' href="#" class="btn btn-warning btn-md">Respuestas</a>
                   <a id='btnDBMatch' href="#" class="btn btn-info btn-md">Cruces BD</a>
-                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Concepto comité técnico</a>
+                  <a id='btnCCT' class="btn btn-danger btn-md" style='opacity: 0.4;'>Concepto comité técnico</a>
                 </td>
               </tr>
             </table>
@@ -152,15 +154,15 @@ if (isset($_GET["code"])) {
             <br/>
           </div>
           <div id='divCierre' name='divCierre'>
-            <label id='lblDespedida'>Despedida</label>
+            <label id='lblDespedida'>Cordialmente,</label>
             <br/>
             <label id='lblSigner'>MILLER AUGUSTO PERDOMO</label>
             <br/>
             <label id='lblSignerWork'>Responsable de Desarrollo Económico</label>
             <br/>
-            <label id='lblSignerEnterprise'>Proyecto Hidroeléctrico el Quimbo</label>
+            <label id='lblSignerEnterprise'>Proyecto Hidroeléctrico El Quimbo</label>
             <br/>
-            <label id='lblFooter'>Pie de página</label>
+            <label id='lblFooter' style='display: none' >Pie de página</label>
           </div>
           <legend style='clear: both;'></legend>
 			<div id='divDevolver' style='display:none'>

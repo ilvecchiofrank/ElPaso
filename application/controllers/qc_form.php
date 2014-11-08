@@ -612,6 +612,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutela_info($tutelaId));
     }
 
+    /*Cargar informacion de cartas fase1*/
+    public function get_Letter_Info($letterId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_letter_info($letterId));
+    }
+
     /*Cargar detalles de accion de tutela*/
     public function get_Tutela_Info_2($tutelaId){
         $this->load->model("qm_form", "form", true);
@@ -643,15 +649,15 @@ class QC_Form extends QC_Controller {
     }
 
     /*Metodo que carga las categorias de las cartas de respuesta a las tutelas*/
-    public function get_Categorias(){
+    public function get_Categorias($id_cat){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_categorias());
+        echo json_encode($this->form->get_categorias($id_cat));
     }
 
     /*Metodo que carga las tipologias de las cartas de respuestas a las tutelas*/
-    public function get_Tipologias(){
+    public function get_Tipologias($id_tip){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_tipologias());
+        echo json_encode($this->form->get_tipologias($id_tip));
     }
 
     /*Metodo que guarda la carta de respuesta a las tutelas*/
@@ -669,6 +675,7 @@ class QC_Form extends QC_Controller {
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
         $arrayData["formulario"] = $_POST["formulario"];
+        $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_createLetter();
 

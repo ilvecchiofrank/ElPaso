@@ -28,6 +28,8 @@ if (isset($_GET["code"])) {
           <br/>
 
           <div id='results' class='form-group'>
+            <br/>
+            <legend>Censo 2014:</legend>
             <table id='tableResults' class='table table-striped'>
               <thead>
                 <tbody>

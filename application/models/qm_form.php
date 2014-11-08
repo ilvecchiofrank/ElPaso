@@ -178,34 +178,34 @@ class QM_Form extends CI_Model {
     }
 
     /*Obtener listado de tipologias*/
-    public function get_tipologias(){
+    public function get_tipologias($id_tip){
       try {
-        $query = $this->db->query("SELECT id_tipologias, nombre_tipologia FROM t54web_tipologias");
+        $query = $this->db->query("SELECT nombre_tipologia FROM t54web_tipologias WHERE id_tipologias = $id_tip");
         $dataArray = $query->result();
 
-        $html = "<option value=''>Seleccione...</option>";
-        foreach ($dataArray as $tipologia => $objTipologia) {
-          $html .= "<option value='$objTipologia->id_tipologias'>" . $objTipologia->nombre_tipologia . "</option>";
-        }
+        // $html = "<option value=''>Seleccione...</option>";
+        // foreach ($dataArray as $tipologia => $objTipologia) {
+        //   $html .= "<option value='$objTipologia->id_tipologias'>" . $objTipologia->nombre_tipologia . "</option>";
+        // }
 
-        return $html;
+        return $dataArray;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }
     }
 
     /*Obtener listado de categorias*/
-    public function get_categorias(){
+    public function get_categorias($id_cat){
       try {
-        $query = $this->db->query("SELECT id_categoria, nombre_categoria FROM t53web_categorias");
+        $query = $this->db->query("SELECT nombre_categoria FROM t53web_categorias WHERE id_categoria = $id_cat");
         $dataArray = $query->result();
 
-        $html = "<option value=''>Seleccione...</option>";
-        foreach ($dataArray as $categoria => $objCategoria) {
-          $html .= "<option value='$objCategoria->id_categoria'>" . $objCategoria->nombre_categoria . "</option>";
-        }
+        // $html = "<option value=''>Seleccione...</option>";
+        // foreach ($dataArray as $categoria => $objCategoria) {
+        //   $html .= "<option value='$objCategoria->id_categoria'>" . $objCategoria->nombre_categoria . "</option>";
+        // }
 
-        return $html;
+        return $dataArray;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
       }
@@ -222,6 +222,14 @@ class QM_Form extends CI_Model {
     /*Obtener informacion relacionada de la tutela capitulo B y C*/
     public function get_tutela_info_2($tutelaId){
         $query = $this->db->query("SELECT * FROM t42web_accion_juridica aj JOIN t43web_accion_detalles ad ON aj.id_accion_juridica = ad.id_accion_juridica WHERE aj.id_tutela = $tutelaId");
+        $dataArray = $query->result();
+
+        return $dataArray;
+    }
+
+    /*Obtener informacion de una carta especifica*/
+    public function get_letter_info($letterId){
+        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
         $dataArray = $query->result();
 
         return $dataArray;
@@ -253,7 +261,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener pendientes del dashboard */
     public function get_dash_works($usuario){
-      $query = $this->db->query("SELECT rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ORDER BY tip_id, cat_id");
+      $query = $this->db->query("SELECT rt.id_respuesta, rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ORDER BY tip_id, cat_id");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -274,8 +282,6 @@ class QM_Form extends CI_Model {
 
     /*Establecer las propiedades de la respuesta a la tutela en un array*/
     public function do_setLetterProps($arrayDataFromView){
-
-      var_dump($arrayDataFromView);
 
       $this->arrayLetterProps = array(
         'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,

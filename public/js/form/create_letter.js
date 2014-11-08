@@ -14,7 +14,7 @@ $(".modal").modal('hide');
 // console.log('chao');
 
 //loadMun();
-//resumeForm();
+resumeForm();
 
 saveForm();
 fader();
@@ -63,7 +63,36 @@ function autosave(){
     saveNotify('auto');
 }
 
-function saveNotify(auto){
+function check_status(boton_llama){
+
+    //Iniciar estado Nuevo
+    var estado = 1;
+
+    switch(boton_llama) {
+    case "G":
+        //Guardar
+        estado = 2;
+        break;
+    case "C":
+        //Cerrar
+        estado = 3;
+        break;
+    default:
+        //Devolver
+        if($("#hfUserType") < 6){
+            estado = 4;
+        }
+        else
+        {
+            estado = 2;
+        }
+    }
+
+    return estado;
+
+}
+
+function saveNotify(auto, boton){
 
 var cedula = getParameterByName("docId");
 var formulario_id = getParameterByName("formCode");
@@ -71,6 +100,9 @@ var categoria_id = getParameterByName("cId");
 var tipologia_id = getParameterByName("tId");
 var tipo_usuario = getParameterByName("uT");
 var id_usuario = getParameterByName("uI");
+var contenido = CKEDITOR.instances.contenido.getData();
+var estado = check_status(boton);
+
             //-Consultar si ya existe una carta por la cedula con un proceso activo-//
             $.getJSON("index.php/form/get_Letter_Exist/" + cedula, function(objRData){
                 arrayLetterExists = objRData;
@@ -113,7 +145,7 @@ var id_usuario = getParameterByName("uI");
                     $.ajax({
                         url: "index.php/form/do_SaveLetter",
                         type: "POST",
-                        data: { csrf_test_name: get_csrf_hash, "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+                        data: { csrf_test_name: get_csrf_hash, "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                         success: function(result){
                             if (result == "ok"){
                                 //Guardado ok
@@ -224,12 +256,10 @@ function updDepto(){
 
 function saveForm(){
        $("#saveInfo").click( function(){
-            console.log(CKEDITOR.instances.contenido.getData());
-            saveNotify();
+            saveNotify('no','G');
          });
 
        $("#saveClose").click( function(){
-            console.log(CKEDITOR.instances.contenido.getData());
             saveNotify();
          });
 }
@@ -249,14 +279,30 @@ function fader(){
 //-Cargar Datos-//
 function loadData(){
 
-    //-Cargar combo de categoría-//
-    $.getJSON("index.php/form/get_Categorias", function(objRData){
-        $("#categoria").html(objRData);
+var categoria_id = getParameterByName("cId");
+var tipologia_id = getParameterByName("tId");
+
+    //-Cargar label categoria y tipologia-//
+    $.getJSON("index.php/form/get_Tipologias/" + tipologia_id, function(objRData){
+        arrayTip = objRData;
+        if(arrayTip.length > 0){
+            for(var e = arrayTip.length -1; e >=0; e--){
+
+                $("#lblTipologia").html(tipologia_id + ' - ' + arrayTip[e].nombre_tipologia);
+
+            }
+        }
     });
 
-    //-Cargar combo de tipología-//
-    $.getJSON("index.php/form/get_Tipologias", function(objRData){
-        $("#tipologia").html(objRData);
+    $.getJSON("index.php/form/get_Categorias/" + categoria_id, function(objRData){
+        arrayCat = objRData;
+        if(arrayCat.length > 0){
+            for(var e = arrayCat.length -1; e >=0; e--){
+
+                $("#lblCategoria").html(categoria_id + ' - ' + arrayCat[e].nombre_categoria);
+
+            }
+        }
     });
 
     //-Ocultar controles ckeditor-//
@@ -324,60 +370,30 @@ function loadT8(){
 
 //-Precargar Edicion-//
 function resumeForm(){
-    var tutela = getParameterByName("tutId");
-    //-Consultar si ya existen datos de la tutela actual-//
-    $.getJSON("index.php/form/get_Tutela_Exist/" + tutela, function(objRData){
-        arrayTutelaExists = objRData;
+    var carta = getParameterByName("letId");
+    console.log("Cargando " + carta);
 
-        if(arrayTutelaExists.length > 0){
-            //Si existe tutela
-            console.log("Tutela existe, actualización");
+    //-Consultar los datos de la carta actual-//
+    $.getJSON("index.php/form/get_Letter_Info/" + carta, function(objRData){
+        arrayCarta = objRData;
+        if(arrayCarta.length > 0){
+            for (var t = arrayCarta.length -1; t >=0; t--){
+                $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
+                $("#fec_carta").val(arrayCarta[t].fec_carta);
+                CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
-            $.getJSON("index.php/form/get_Tutela_Info_2/" + tutela, function(objRData){
-                arrayTutela = objRData;
-                if(arrayTutela.length > 0){
-                    for (var t = arrayTutela.length -1; t >=0; t--){
-                        $("#dir_contacto").val(arrayTutela[t].dir_contacto);
-                        $("#fec_nacimiento").val(arrayTutela[t].fec_nacimiento);
-                        $("#ordenes_pi").val(arrayTutela[t].ordenes_pi);
-                        $("#argumento_pi").val(arrayTutela[t].argumento_pi);
-                        $("#ordenes_si").val(arrayTutela[t].ordenes_si);
-                        $("#argumento_si").val(arrayTutela[t].argumento_si);
-                        $("#departamento").val(arrayTutela[t].departamento);
-                        //$("#departamento").trigger('change');
-                        updDepto();
-                        $("#hfMunicipio").val(arrayTutela[t].municipio);
-                        $("#estado_civ").val(arrayTutela[t].estado_civ);
-                        $("#sexo").val(arrayTutela[t].sexo);
-                        $("#processtype").val(arrayTutela[t].processtype);
-                        $("#processtype").trigger('change');
-                        $("#prim_instancia").val(arrayTutela[t].prim_instancia);
-                        $("#seg_instancia").val(arrayTutela[t].seg_instancia);
-                        $("#act_principal").val(arrayTutela[t].act_principal);
-
-                        if(arrayTutela[t].trabajo == 1 ){$("#trabajo").attr("checked","checked");}
-                        if(arrayTutela[t].minimo_vital == 1 ){$("#minimo_vital").attr("checked","checked");}
-                        if(arrayTutela[t].igualdad == 1 ){$("#igualdad").attr("checked","checked");}
-                        if(arrayTutela[t].medio_ambiente == 1 ){$("#medio_ambiente").attr("checked","checked");}
-                        if(arrayTutela[t].debido_proceso == 1 ){$("#debido_proceso").attr("checked","checked");}
-                        if(arrayTutela[t].integridad_fisica == 1 ){$("#integridad_fisica").attr("checked","checked");}
-                        if(arrayTutela[t].participacionA == 1 ){$("#participacionA").attr("checked","checked");}
-                        if(arrayTutela[t].otro == 1 ){$("#otro").attr("checked","checked");}
-                        if(arrayTutela[t].participacion == 1 ){$("#participacion").attr("checked","checked");}
-                        if(arrayTutela[t].casacion == 1 ){$("#casacion").attr("checked","checked");}
-                        if(arrayTutela[t].desacato == 1 ){$("#desacato").attr("checked","checked");}
-                        if(arrayTutela[t].selecRevision == 1 ){$("#selecRevision").attr("checked","checked");}
-                    }
-                }else{
+                console.log(arrayCarta[t].txt_Devolver);
+                if(arrayCarta[t].txt_Devolver != null){
+                    console.log('Observaciones');
+                    $("#txtDevolver").val(arrayCarta[t].txt_Devolver);
+                    $("#divDevolver").css("display", "block");
                 }
-            });
 
+            }
         }else{
-            //Tutela nueva
-            //console.log("Tutela nueva, crear");
         }
-
     });
+
 }
 
 //-Extraer parametros QueryString-//
