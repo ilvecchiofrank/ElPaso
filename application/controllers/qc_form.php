@@ -708,20 +708,27 @@ class QC_Form extends QC_Controller {
     }
 
     /*Metodo que actualiza la carta de respuesta a las tutelas*/
-    public function do_updateLetters(){
+    public function do_updateLetters($letterId){
         $this->load->model("qm_form", "form", true);
         $arrayData = array();
 
         if(!empty($_POST["dataForm"])){
             $arrayDataFromView = json_decode($_POST["dataForm"]);
             foreach ($arrayDataFromView as $itemKey => $itemValue) {
-                $arrayData[$itemValue->name] = $itemvalue->value;
+                $arrayData[$itemValue->name] = $itemValue->value;
             }
         }
 
-        $arrayData["id_respuestas"] = $_POST["id_respuestas"];
+        $arrayData["id_respuestas"] = $letterId;
+		$arrayData["cedula"] = $_POST["cedula"];
+        $arrayData["categoria"] = $_POST["categoria"];
+        $arrayData["tipologia"] = $_POST["tipologia"];
+		$arrayData["estado"] = $_POST["estado"];
+		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
+        $arrayData["formulario"] = $_POST["formulario"];
+        $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
         $this->form->do_setLetterProps($arrayData);
-        $resultInsert = $this->form->do_updateLetter($_POST["id_respuestas"]);
+        $resultInsert = $this->form->do_updateLetter($letterId);
 
         if($resultInsert == true)
             echo "ok";
