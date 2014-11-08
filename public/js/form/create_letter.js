@@ -261,7 +261,7 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
-            saveNotify();
+            saveNotify('no','C');
          });
 }
 
