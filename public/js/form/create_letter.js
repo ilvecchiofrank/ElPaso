@@ -77,6 +77,11 @@ function check_status(boton_llama){
         //Cerrar
         estado = 3;
         break;
+    case "R":
+        //Recategorizar
+        console.log('recategor');
+        estado = 6;
+        break;
     default:
         //Devolver
         if($("#hfUserType") < 6){
@@ -265,7 +270,25 @@ function saveForm(){
          });
 
        $("#btnRecat").click( function(){
-            console.log('Recategorizar');
+
+            if( $("#divDevolver").css('display') == 'none' ){
+            $("#lblDevolver").html('Motivo de la recategorización:');
+            $("#divDevolver").css('display', 'block');
+            $("#btnRecat").html('Confirmar recategorización');
+            }else{
+            //$("#divDevolver").css('display', 'none');
+
+                if($("#txtDevolver").val() == ''){
+                    $("#lblDevolver").html('Motivo de la recategorización: <font color = "red">*(Campo requerido)</font>');
+                    $("#txtDevolver").focus();
+                }
+                else
+                {
+                    saveNotify('no', 'R');
+                }
+
+            }
+
        });
 }
 
@@ -323,6 +346,7 @@ var tipologia_id = getParameterByName("tId");
 	//-Acciones boton devolver-//
 	$("#putBack").click( function(){
 			if( $("#divDevolver").css('display') == 'none' ){
+            $("#lblDevolver").html('Motivo de la devolución:');
 			$("#divDevolver").css('display', 'block');
 			$("#putBack").html('Confirmar devolución');
 			}else{
@@ -387,6 +411,7 @@ function resumeForm(){
                 CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
                 if(arrayCarta[t].txt_Devolver != null){
+                    console.log('Mostrar devolver ' + arrayCarta[t].txt_Devolver);
                     $("#txtDevolver").val(arrayCarta[t].txt_Devolver);
                     $("#divDevolver").css("display", "block");
                 }
