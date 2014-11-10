@@ -98,8 +98,8 @@ var cedula = getParameterByName("docId");
 var formulario_id = getParameterByName("formCode");
 var categoria_id = getParameterByName("cId");
 var tipologia_id = getParameterByName("tId");
-var tipo_usuario = getParameterByName("uT");
-var id_usuario = getParameterByName("uI");
+var tipo_usuario = $("#hfUserType").val();
+var id_usuario = $("#hfUserId").val();
 var contenido = CKEDITOR.instances.contenido.getData();
 var estado = check_status(boton);
 
@@ -111,12 +111,13 @@ var estado = check_status(boton);
                     //Si existe tutela
                     console.log("Carta existe, actualización");
                      $.ajax({
-                    url: "index.php/form/do_updateLetters/" + 45,
+                    url: "index.php/form/do_updateLetters/" + getParameterByName("letId"),
                     type: "POST",
-                    data: { csrf_test_name: get_csrf_hash, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+					data: { csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario,  "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                     success: function(result){
                         if (result == "ok"){
                             //Guardado ok
+                                console.log("guardado ok");
                                 if(auto=='auto'){
                                     notify('auto');
                                 }else{
@@ -260,7 +261,7 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
-            saveNotify();
+            saveNotify('no','C');
          });
 }
 
@@ -371,7 +372,6 @@ function loadT8(){
 //-Precargar Edicion-//
 function resumeForm(){
     var carta = getParameterByName("letId");
-    console.log("Cargando " + carta);
 
     //-Consultar los datos de la carta actual-//
     $.getJSON("index.php/form/get_Letter_Info/" + carta, function(objRData){
@@ -382,9 +382,7 @@ function resumeForm(){
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
-                console.log(arrayCarta[t].txt_Devolver);
                 if(arrayCarta[t].txt_Devolver != null){
-                    console.log('Observaciones');
                     $("#txtDevolver").val(arrayCarta[t].txt_Devolver);
                     $("#divDevolver").css("display", "block");
                 }
