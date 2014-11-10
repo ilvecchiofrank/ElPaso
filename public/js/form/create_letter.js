@@ -79,7 +79,6 @@ function check_status(boton_llama){
         break;
     case "R":
         //Recategorizar
-        console.log('recategor');
         estado = 6;
         break;
     default:
@@ -266,7 +265,7 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
-            saveNotify('no','C');
+            saveNotify(undefined,'C');
          });
 
        $("#btnRecat").click( function(){
@@ -284,7 +283,7 @@ function saveForm(){
                 }
                 else
                 {
-                    saveNotify('no', 'R');
+                    saveNotify(undefined, 'R');
                 }
 
             }
