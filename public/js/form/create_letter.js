@@ -263,6 +263,10 @@ function saveForm(){
        $("#saveClose").click( function(){
             saveNotify('no','C');
          });
+
+       $("#btnRecat").click( function(){
+            console.log('Recategorizar');
+       });
 }
 
 function fader(){
