@@ -3,18 +3,16 @@ $(document).ready(function () {
 $(".modal").modal('show');
 loadT8();
 loadData();
+resumeForm();
 $(".modal").modal('hide');
 
 //-Prediligenciar tipologia y categoria-//
 // var tipo = getParameterByName("tId");
 // var categ = getParameterByName("cId");
-// console.log('hola');
 // $("#tipologia").val(1);
 // $("#categoria").val(1);
-// console.log('chao');
 
 //loadMun();
-resumeForm();
 
 saveForm();
 fader();
@@ -53,7 +51,7 @@ fader();
 $("#txtCedula").html(getParameterByName("docId"));
 
 //Autosave
-setInterval(
+var autoGuardar = setInterval(
     function(){
         autosave();
     }, 120000
@@ -132,8 +130,9 @@ var estado = check_status(boton);
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
-                                console.log("Redirecciona");
+                                window.close();
+                                //window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
+                                //console.log("Redirecciona");
                             }
                             else{
                                 console.log("No redirecciona");
@@ -165,8 +164,9 @@ var estado = check_status(boton);
                             //Evaluar redireccion
                             if (auto == undefined){
                                 //Boton
-                                window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
-                                console.log("Redirecciona");
+                                window.close();
+                                //window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
+                                //console.log("Redirecciona");
                             }
                             else{
                                 console.log("No redirecciona");
@@ -413,6 +413,15 @@ function resumeForm(){
                     console.log('Mostrar devolver ' + arrayCarta[t].txt_Devolver);
                     $("#txtDevolver").val(arrayCarta[t].txt_Devolver);
                     $("#divDevolver").css("display", "block");
+                }
+
+                //-Revisar el estado del documento-//
+                if(arrayCarta[t].estado == 3){
+                    $("#divActions").css("display", "none");
+                    $("#rad_emgesa").attr('readonly', true);
+                    $("#fec_carta").attr('readonly', true);
+                    CKEDITOR.instances['contenido'].setReadOnly(true);
+                    clearInterval(autoGuardar);
                 }
 
             }

@@ -171,10 +171,14 @@ if (isset($_GET["code"])) {
 			<input type="text" name="txtDevolver" id="txtDevolver" class='form-control'>
 			<br/>
 			</div>
-            <button id='saveInfo' class='btn btn-success btn-md'>Guardar Información</button>
-            <button id='saveClose' class='btn btn-danger btn-md'>Guardar y Cerrar</button>
-			      <button id='putBack' class='btn btn-warning btn-md'>Devolver</button>
-            <button id='btnRecat' class='btn btn-info btn-md'>Recategorizar</button>
+
+      <div id='divActions'>
+        <button id='saveInfo' class='btn btn-success btn-md'>Guardar Información</button>
+        <button id='saveClose' class='btn btn-danger btn-md'>Guardar y Cerrar</button>
+        <button id='putBack' class='btn btn-warning btn-md'>Devolver</button>
+        <button id='btnRecat' class='btn btn-info btn-md'>Recategorizar</button>
+      </div>
+
         </div>
         </br>
       </div>
