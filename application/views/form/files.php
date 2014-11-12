@@ -40,7 +40,7 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
           </div>
-          
+
           <div id='docuIdentifica' class='form-group' style='display: none'>
               <label for='txtCedula'>Número de Identificación:</label>
               <br/>
@@ -62,7 +62,7 @@ if (isset($_GET["code"])) {
           </div>
 
           <div id="pqrs" class='form-group'>
-            <br/>  
+            <br/>
             <legend>PQRS:</legend>
             <table id='tablePqrsResults' class='table table-striped'>
               <thead>
