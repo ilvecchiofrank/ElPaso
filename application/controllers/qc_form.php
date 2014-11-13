@@ -773,12 +773,11 @@ class QC_Form extends QC_Controller {
 				}
 			}
 			
-			//$arrayCreateData["estado"] = '1';
+			$arrayCreateData["estado"] = '1';
 			$arrayCreateData["modulo_actual"] = 6;
 			$arrayCreateData["cedula"] = $_POST["cedula"];
 			$arrayCreateData["categoria"] = $_POST["categoria"];
 			$arrayCreateData["tipologia"] = $_POST["tipologia"];
-			$arrayCreateData["estado"] = $_POST["estado"];
 			$arrayCreateData["modulo_actual"] = $_POST["modulo_actual"];
 			$arrayCreateData["formulario"] = $_POST["formulario"];
 			$arrayCreateData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];

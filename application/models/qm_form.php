@@ -358,6 +358,7 @@ class QM_Form extends CI_Model {
         'sexo' => (isset($arrayDataFromView['sexo'])) ? $arrayDataFromView['sexo'] : null,
         'fec_nacimiento' => (isset($arrayDataFromView['fec_nacimiento'])) ? $arrayDataFromView['fec_nacimiento'] : null,
         'act_principal' => (isset($arrayDataFromView['act_principal'])) ? $arrayDataFromView['act_principal'] : null,
+        
         'processtype' => (isset($arrayDataFromView['processtype'])) ? $arrayDataFromView['processtype'] : null,
         'prim_instancia' => (isset($arrayDataFromView['prim_instancia'])) ? $arrayDataFromView['prim_instancia'] : null,
         'ordenes_pi' => (isset($arrayDataFromView['ordenes_pi'])) ? $arrayDataFromView['ordenes_pi'] : null,
@@ -429,7 +430,17 @@ class QM_Form extends CI_Model {
     public function do_updateLetter($idLetter){
       try {
         $this->db->where("id_respuesta", $idLetter);
-        $this->db->update('t49web_respuestas_tutelas', $this->arrayLetterPropsUpd);
+        //$this->db->update('t49web_respuestas_tutelas', $this->arrayLetterPropsUpd);
+        foreach ($this->arrayLetterPropsUpd as $key => $value) {
+          if ($value != null){
+            if($key == "fecha_creacion" && $value == "0000-00-00 00:00:00"){
+              $query = $this->db->query("update t49web_respuestas_tutelas set fecha_creacion = now() WHERE id_respuesta = $idLetter");
+            }else{
+              $query = $this->db->query("update t49web_respuestas_tutelas set $key = '$value' WHERE id_respuesta = $idLetter");
+            }
+
+          }
+        }
         return true;
       } catch (Exception $exc) {
         echo $exc->getTraceAsString();
