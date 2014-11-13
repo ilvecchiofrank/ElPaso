@@ -737,6 +737,66 @@ class QC_Form extends QC_Controller {
 
     }
 
+	/*Metodo para recategorizar una carta de respuesta*/
+	public function do_recatLetters($letterId){
+		$this->load->model("qm_form", "form", true);
+		$arrayData = array();
+		
+		if(!empty($_POST["dataForm"])){
+			$arrayDataFromView = json_decode($_POST["dataForm"]);
+			foreach ($arrayDataFromView as $itemKey => $itemValue){
+				$arrayData[$itemValue->name] = $itemValue->value;
+			}
+		}
+		
+		$arrayData["id_respuestas"] = $letterId;
+		$arrayData["cedula"] = $_POST["cedula"];
+		$arrayData["categoria"] = $_POST["categoria"];
+		$arrayData["tipologia"] = $_POST["tipologia"];
+		$arrayData["estado"] = $_POST["estado"];
+		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
+		$arrayData["formulario"] = $_POST["formulario"];
+		$arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
+		$arrayData["usuario_consultor"] = "2437d92d-d402-11e3-8578-0019to58485l";
+		
+		$this->form->do_setLetterProps($arrayData);
+		$resultInsert = $this->form->do_updateLetter($letterId);
+		
+		/*Crear registro nuevo*/
+		if($resultInsert == true){
+			$arrayCreateData = array();
+			
+			if(!empty($_POST["dataForm"])){
+				$arrayDataFromView = json_decode($_POST["dataForm"]);
+				foreach ($arrayDataFromView as $itemKey => $itemValue) {
+					$arrayCreateData[$itemValue->name] = $itemValue->value;
+				}
+			}
+			
+			//$arrayCreateData["estado"] = '1';
+			$arrayCreateData["modulo_actual"] = 6;
+			$arrayCreateData["cedula"] = $_POST["cedula"];
+			$arrayCreateData["categoria"] = $_POST["categoria"];
+			$arrayCreateData["tipologia"] = $_POST["tipologia"];
+			$arrayCreateData["estado"] = $_POST["estado"];
+			$arrayCreateData["modulo_actual"] = $_POST["modulo_actual"];
+			$arrayCreateData["formulario"] = $_POST["formulario"];
+			$arrayCreateData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
+			$arrayCreateData["usuario_consultor"] = "2437d92d-d402-11e3-8578-0019to58485l";
+			
+			$this->form->do_setLetterProps($arrayCreateData);
+			$resultInsert = $this->form->do_createLetter();
+			
+			if ($resultInsert > 0)
+				echo "ok";
+			else
+				echo $resultInsert;
+			
+		}
+		
+		
+	}
+	
     /*Metodo que actualiza la captura de la accion de tutela*/
     public function do_updateJAction(){
         $this->load->model("qm_form", "form", true);

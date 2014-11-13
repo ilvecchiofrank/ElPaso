@@ -283,7 +283,31 @@ function saveForm(){
                 }
                 else
                 {
-                    saveNotify(undefined, 'R');
+                    //saveNotify(undefined, 'R');
+					//console.log("recategorizar");
+					var cedula = getParameterByName("docId");
+					var formulario_id = getParameterByName("formCode");
+					var categoria_id = getParameterByName("cId");
+					var tipologia_id = getParameterByName("tId");
+					var tipo_usuario = $("#hfUserType").val();
+					var id_usuario = $("#hfUserId").val();
+					var contenido = CKEDITOR.instances.contenido.getData();
+					var estado = 6;
+					
+					$.ajax({
+					url: "index.php/form/do_recatLetters/" + getParameterByName("letId"),
+					type: "POST",
+					data: { csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario,  "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+					success: function(result){
+						if(result == "ok"){
+							window.close();
+							//console.log("recategorizado!");
+						}else{
+							//console.log("error");
+						}
+					}
+					});
+					
                 }
 
             }

@@ -168,7 +168,7 @@ if (isset($_GET["code"])) {
 			<div id='divDevolver' style='display:none'>
 			<label id='lblDevolver'>Motivo de la devolución:</label>
 			<br/>
-			<input type="text" name="txtDevolver" id="txtDevolver" class='form-control'>
+			<input type="text" name="txt_Devolver" id="txt_Devolver" class='form-control'>
 			<br/>
 			</div>
 
