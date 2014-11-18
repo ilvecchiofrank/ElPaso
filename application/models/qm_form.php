@@ -229,7 +229,7 @@ class QM_Form extends CI_Model {
 
     /*Obtener informacion de una carta especifica*/
     public function get_letter_info($letterId){
-        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
+        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
         $dataArray = $query->result();
 
         return $dataArray;

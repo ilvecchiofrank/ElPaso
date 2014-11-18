@@ -129,10 +129,10 @@ var estado = check_status(boton);
 
                             //Evaluar redireccion
                             if (auto == undefined){
-                                //Boton
-                                window.close();
+                                //Boton cerrar
+                                //window.close();
                                 //window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
-                                //console.log("Redirecciona");
+                                console.log("Redirecciona");
                             }
                             else{
                                 console.log("No redirecciona");
