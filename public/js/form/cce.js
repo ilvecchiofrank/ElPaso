@@ -13,7 +13,8 @@ function loadCce(){
             tabcce += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Detalle</th></tr></thead><tbody>";
 
             for (var c = arrayCce.length -1; c >=0; c--){
-                var ruta = prefijoArch += arrayCce[c].path;
+                var ruta = prefijoArch + arrayCce[c].path;
+                console.log(c + "-" + arrayCce[c].path);
                 tabcce += "<tr><td>" + arrayCce[c].tipologia_id + "</td><td>" + arrayCce[c].categoria_id + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>"
             }
         }
