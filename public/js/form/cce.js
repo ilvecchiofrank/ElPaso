@@ -5,7 +5,7 @@ loadCce();
 function loadCce(){
     var tabcce = "";
     var prefijoArch = "https://s3.amazonaws.com/emgesa/CONCEPTOS_COMITE_EXPERTOS/";
-    $(".modal").modal('show');
+    //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Cce", function(objRData){
         arrayCce = objRData;
 
@@ -25,7 +25,7 @@ function loadCce(){
 
         tabcce += "</body></table><br/>";
         $("#tableCceResults").html(tabcce);
-        $(".modal").modal('hide');
+        //$(".modal").modal('hide');
     });
 }
 
@@ -65,3 +65,9 @@ function getParameterByName(name) {
 }
 
 });
+
+$(document).ajaxStart(function() {
+    $(".modal").modal('show');
+}).ajaxStop(function() {
+    $(".modal").modal('hide');
+})

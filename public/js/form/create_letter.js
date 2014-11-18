@@ -417,6 +417,8 @@ function loadT8(){
                 $("#btnAnswer").attr("href", 'index.php/form/print_full/' + formulario);
                 $("#btnCCT").attr("target","_blank");
                 $("#btnCCT").attr("href", 'index.php/form/cce');
+                $("#btnSuppCon").attr("target","_blank");
+                $("#btnSuppCon").attr("href", 'index.php/form/cce');
             }
         }
     });

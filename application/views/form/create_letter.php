@@ -131,7 +131,8 @@ if (isset($_GET["code"])) {
                   <a id='btnTutela' href="#" class="btn btn-success btn-md">Tutelas</a>
                   <a id='btnAnswer' href="#" class="btn btn-warning btn-md">Respuestas</a>
                   <a id='btnDBMatch' href="#" class="btn btn-info btn-md">Cruces BD</a>
-                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Concepto comité técnico</a>
+                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Concepto Comité de Expertos</a>
+                  <a id='btnCert' href="#" class="btn btn-default btn-md">Conceptos de soporte</a>
                 </td>
               </tr>
             </table>
