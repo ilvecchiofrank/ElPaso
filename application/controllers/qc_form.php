@@ -70,6 +70,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar concepto comite expertos */
+    public function cce(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("cce", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Dashboard*/
     public function dash(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -550,6 +560,12 @@ class QC_Form extends QC_Controller {
     public function get_Tutelas($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_tutelas($cedula));
+    }
+
+    /* Obtener conceptos comite expertos */
+    public function get_Cce(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_cce());
     }
 
 	/* Obtener actividades para el dashboard del usuario actual*/

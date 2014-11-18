@@ -415,6 +415,8 @@ function loadT8(){
                 $("#btnCert").attr("href", 'index.php/form/files?formCode=' + formulario + '&docId=' + cedula);
                 $("#btnAnswer").attr("target","_blank");
                 $("#btnAnswer").attr("href", 'index.php/form/print_full/' + formulario);
+                $("#btnCCT").attr("target","_blank");
+                $("#btnCCT").attr("href", 'index.php/form/cce');
             }
         }
     });

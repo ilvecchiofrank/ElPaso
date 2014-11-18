@@ -817,6 +817,15 @@ class QM_Form extends CI_Model {
         return $dataArray;
       }
 
+    /*Metodo get_cce
+      metodo que obtiene los datos de comite de expertos*/
+      public function get_cce(){
+        $SQLResult = $this->db->query("SELECT * FROM t56web_concepto_comite_expertos");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
     /**
      * Método do_search
      *
