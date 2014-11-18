@@ -418,7 +418,7 @@ function loadT8(){
                 $("#btnCCT").attr("target","_blank");
                 $("#btnCCT").attr("href", 'index.php/form/cce');
                 $("#btnSuppCon").attr("target","_blank");
-                $("#btnSuppCon").attr("href", 'index.php/form/cce');
+                $("#btnSuppCon").attr("href", 'index.php/form/supp_con');
             }
         }
     });

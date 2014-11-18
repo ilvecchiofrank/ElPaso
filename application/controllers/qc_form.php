@@ -80,6 +80,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar concepto comite expertos */
+    public function supp_con(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("supp_con", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Dashboard*/
     public function dash(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -566,6 +576,12 @@ class QC_Form extends QC_Controller {
     public function get_Cce(){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_cce());
+    }
+
+    /* Obtener conceptos de soporte */
+    public function get_Supp_con(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_supp_con());
     }
 
 	/* Obtener actividades para el dashboard del usuario actual*/
