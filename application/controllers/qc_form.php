@@ -572,6 +572,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutelas($cedula));
     }
 
+    /* Obtener categorias y tipologias agrupadas */
+    public function get_Cat_Info($codeForm){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_cat_info($codeForm));
+    }
+
     /* Obtener conceptos comite expertos */
     public function get_Cce(){
         $this->load->model("qm_form", "form", true);

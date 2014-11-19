@@ -330,7 +330,20 @@ function fader(){
 //-Cargar Datos-//
 function loadData(){
 
-var categoria_id = getParameterByName("cId");
+var formulario_id = getParameterByName("formCode");
+
+//- Cargar tipologias y categorias -//
+$.getJSON("index.php/form/get_Cat_Info/" + formulario_id, function(objRData){
+    arrayTipCat = objRData;
+    if (arrayTipCat.length > 0) {
+        for(var e = arrayTipCat.length -1; e >=0; e--){
+            $("#lblTipologia").html(arrayTipCat[e].tipologias);
+            $("#lblCategoria").html(arrayTipCat[e].categorias);
+        }
+    };
+});
+
+/*var categoria_id = getParameterByName("cId");
 var tipologia_id = getParameterByName("tId");
 
     //-Cargar label categoria y tipologia-//
@@ -354,7 +367,7 @@ var tipologia_id = getParameterByName("tId");
 
             }
         }
-    });
+    });*/
 
     //-Ocultar controles ckeditor-//
     // $("#cke_23").css("display","none");

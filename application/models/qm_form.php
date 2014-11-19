@@ -624,6 +624,15 @@ class QM_Form extends CI_Model {
         return $dataArray;
       }
 
+      /*Metodo get_cat_info
+      metodo que obtiene las categorias y las tipologias de una carta agrupadas*/
+      public function get_cat_info($codeform){
+        $SQLResult = $this->db->query("SELECT GROUP_CONCAT(id_tipologia SEPARATOR ' - ') AS tipologias, GROUP_CONCAT(id_categoria SEPARATOR ' - ') AS categorias FROM t57web_formularios_categorias WHERE id_formulario = '$codeform'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
       /*Metodo get_form_docs
       metodo que obtiene los archivos relacionados en el formulario de impresion*/
       public function get_form_docs($codeform){
