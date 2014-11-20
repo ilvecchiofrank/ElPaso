@@ -270,6 +270,25 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener pendientes del dashboard filtrados por estado*/
+    public function get_dash_filtered($usuario, $estado){
+      //$query = $this->db->query("SELECT rt.id_respuesta, rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ORDER BY tip_id, cat_id");
+      //$query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, rt.vulnerable FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) DESC");
+      //$query = $this->db->query("SELECT * FROM (SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, rt.vulnerable, rt.estado FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) DESC) AS tabla WHERE estado IN (1,2)");
+      $query = $this->db->query("SELECT * FROM (SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, rt.estado FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) ASC, CAST(cat_id AS DECIMAL) ASC, vulnerable_id DESC, rt.estado ASC, rt.cedula ASC) AS tabla WHERE estado = $estado");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener info general del dashboard del usuario */
+    public function get_dash_status($usuario){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.estado, wec.nombre_estado_carta");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener conceptos de soporte */
     public function get_supp_con(){
       $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");

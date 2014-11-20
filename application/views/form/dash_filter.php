@@ -17,19 +17,6 @@
       <div class="container">
           <div id='controls'>
           <br/>
-          <div id='dash_status' class='form-group'>
-            <table id='tableDashStatus' align='center'>
-              <tr>
-                <td><a id='btnStatTotal' class='btn btn-default btn-md'>Total ( 0 )</a></td>
-                <td><a id='btnStatNew' class='btn btn-info btn-md'>Nuevos ( 0 )</a></td>
-                <td><a id='btnStatSaved' class='btn btn-success btn-md'>Guardados ( 0 )</a></td>
-                <td><a id='btnStatClosed' class='btn btn-warning btn-md'>Cerrados ( 0 )</a></td>
-                <td><a id='btnStatReturned' class='btn btn-danger btn-md'>Devueltos ( 0 )</a></td>
-                <!-- <td><a id='btnStatRecat'>Recategorizados?</a></td> -->
-              </tr>
-            </table>
-            <br/>
-          </div>
           <div id='dash_letters' class='form-group'>
             <br/>
             <legend>Inicio</legend>

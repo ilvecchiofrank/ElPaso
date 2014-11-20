@@ -80,6 +80,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar el dash por estados */
+    public function dash_filter(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("dash_filter", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario para consultar concepto comite expertos */
     public function supp_con(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -595,6 +605,18 @@ class QC_Form extends QC_Controller {
 		$this->load->model("qm_form", "form", true);
 		echo json_encode($this->form->get_dash_works($userId));
 	}
+
+    /* Obtener infor general dashboard */
+    public function get_Dash_Status($userId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dash_status($userId));
+    }
+
+    /* Obtener dashboard filtrado por estado */
+    public function get_Dash_Filtered($userId, $statusId){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dash_filtered($userId, $statusId));
+    }
 
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
