@@ -109,19 +109,29 @@ if (isset($_GET["code"])) {
           <div id='divControles' name='divControles'>
             <table>
               <tr>
-                <td>
+                <td style='width:50%'>
                   <label>Tipología:</label>
                   <label id="lblTipologia"></label>
 <!--                    <select class='form-control' id="tipologia" name="tipologia">
                       <option value="">Seleccione...</option>
                     </select> -->
                 </td>
-                <td>
+                <td style='width:50%'>
                   <label>Categoría:</label>
                   <label id="lblCategoria"></label>
 <!--                    <select class='form-control' id="categoria" name="categoria">
                       <option value="">Seleccione...</option>
                     </select> -->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Tipologías adicionales:</label>
+                  <label id="lblTipologia_adic"></label>
+                </td>
+                <td>
+                  <label>Categorías adicionales:</label>
+                  <label id="lblCategoria_adic"></label>
                 </td>
               </tr>
               <tr>
