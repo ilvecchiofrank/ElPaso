@@ -70,6 +70,26 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consultar concepto comite expertos */
+    public function cce(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("cce", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Formulario para consultar concepto comite expertos */
+    public function supp_con(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("supp_con", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Dashboard*/
     public function dash(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -552,6 +572,24 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutelas($cedula));
     }
 
+    /* Obtener categorias y tipologias agrupadas */
+    public function get_Cat_Info($codeForm){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_cat_info($codeForm));
+    }
+
+    /* Obtener conceptos comite expertos */
+    public function get_Cce(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_cce());
+    }
+
+    /* Obtener conceptos de soporte */
+    public function get_Supp_con(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_supp_con());
+    }
+
 	/* Obtener actividades para el dashboard del usuario actual*/
 	public function get_Dash_Works($userId){
 		$this->load->model("qm_form", "form", true);
@@ -730,11 +768,71 @@ class QC_Form extends QC_Controller {
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_updateLetter($letterId);
 
-        if($resultInsert == true)
-            echo "ok";
-        else
-            echo $resultInsert;
+        if($resultInsert == true){
+            //Validar el estado para crear registro nuevo en estado cerrado
 
+            if($_POST["estado"] == 3){
+                //Se crea el nuevo registro para el historico de las cartas
+                $arrayCreateData = $arrayName = array();
+
+                if (!empty($_POST["dataForm"])) {
+                    $arrayDataFromView = json_decode($_POST["dataForm"]);
+                    foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                        $arrayCreateData[$itemValue->name] = $itemValue->value;
+                    }
+                }
+
+                //Switch para determinar el nuevo modulo actual
+                switch ($_POST["modulo_actual"]) {
+                    case '5':
+                        $arrayCreateData["modulo_actual"] = '7';
+                        break;
+                    
+                    case '7':
+                        $arrayCreateData["modulo_actual"] = '6';
+                        break;
+
+                    case '6':
+                        $arrayCreateData["modulo_actual"] = '8';
+                        break;
+
+                    default:
+                        break;
+                }
+
+                $arrayCreateData["estado"] = '1';
+                $arrayCreateData["cedula"] = $_POST["cedula"];
+                $arrayCreateData["categoria"] = $_POST["categoria"];
+                $arrayCreateData["tipologia"] = $_POST["tipologia"];
+                $arrayCreateData["formulario"] = $_POST["formulario"];
+                $arrayCreateData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
+
+                //Se traen los datos de usuarios del registro anterior
+                $arrayAnterior = $this->form->get_letter_info($letterId);
+                $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
+                $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+                $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+                $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
+                $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
+                $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
+                $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
+                
+                $this->form->do_setLetterProps($arrayCreateData);
+                $resultInsert = $this->form->do_createLetter();
+
+                if ($resultInsert > 0) {
+                    echo "ok";
+                }
+                else
+                {
+                    echo $resultInsert;
+                }
+
+            }
+        }
+        else{
+            echo $resultInsert;
+        }
     }
 
 	/*Metodo para recategorizar una carta de respuesta*/

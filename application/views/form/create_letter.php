@@ -109,19 +109,29 @@ if (isset($_GET["code"])) {
           <div id='divControles' name='divControles'>
             <table>
               <tr>
-                <td>
+                <td style='width:50%'>
                   <label>Tipología:</label>
                   <label id="lblTipologia"></label>
 <!--                    <select class='form-control' id="tipologia" name="tipologia">
                       <option value="">Seleccione...</option>
                     </select> -->
                 </td>
-                <td>
+                <td style='width:50%'>
                   <label>Categoría:</label>
                   <label id="lblCategoria"></label>
 <!--                    <select class='form-control' id="categoria" name="categoria">
                       <option value="">Seleccione...</option>
                     </select> -->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Tipologías adicionales:</label>
+                  <label id="lblTipologia_adic"></label>
+                </td>
+                <td>
+                  <label>Categorías adicionales:</label>
+                  <label id="lblCategoria_adic"></label>
                 </td>
               </tr>
               <tr>
@@ -131,7 +141,8 @@ if (isset($_GET["code"])) {
                   <a id='btnTutela' href="#" class="btn btn-success btn-md">Tutelas</a>
                   <a id='btnAnswer' href="#" class="btn btn-warning btn-md">Respuestas</a>
                   <a id='btnDBMatch' href="#" class="btn btn-info btn-md">Cruces BD</a>
-                  <a id='btnCCT' class="btn btn-danger btn-md" style='opacity: 0.4;'>Concepto comité técnico</a>
+                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Concepto Comité de Expertos</a>
+                  <a id='btnSuppCon' href="#" class="btn btn-default btn-md">Conceptos de soporte</a>
                 </td>
               </tr>
             </table>

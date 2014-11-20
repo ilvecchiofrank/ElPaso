@@ -229,7 +229,7 @@ class QM_Form extends CI_Model {
 
     /*Obtener informacion de una carta especifica*/
     public function get_letter_info($letterId){
-        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
+        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
         $dataArray = $query->result();
 
         return $dataArray;
@@ -264,6 +264,14 @@ class QM_Form extends CI_Model {
       //$query = $this->db->query("SELECT rt.id_respuesta, rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, wr.a01Nombre AS modulo_actual, rt.tipologia AS tip_id, rt.categoria AS cat_id FROM t49web_respuestas_tutelas rt JOIN t00web_roles wr ON rt.modulo_actual = wr.a01Codigo JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ORDER BY tip_id, cat_id");
       //$query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, rt.vulnerable FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) DESC");
       $query = $this->db->query("SELECT * FROM (SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, rt.vulnerable, rt.estado FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) DESC) AS tabla WHERE estado IN (1,2)");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener conceptos de soporte */
+    public function get_supp_con(){
+      $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -616,6 +624,15 @@ class QM_Form extends CI_Model {
         return $dataArray;
       }
 
+      /*Metodo get_cat_info
+      metodo que obtiene las categorias y las tipologias de una carta agrupadas*/
+      public function get_cat_info($codeform){
+        $SQLResult = $this->db->query("SELECT GROUP_CONCAT(DISTINCT id_tipologia ORDER BY CAST(id_tipologia AS DECIMAL) ASC SEPARATOR ' - ') AS tipologias, GROUP_CONCAT(DISTINCT id_categoria ORDER BY CAST(id_categoria AS DECIMAL) ASC SEPARATOR ' - ') AS categorias FROM t57web_formularios_categorias WHERE id_formulario = '$codeform'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
       /*Metodo get_form_docs
       metodo que obtiene los archivos relacionados en el formulario de impresion*/
       public function get_form_docs($codeform){
@@ -812,6 +829,15 @@ class QM_Form extends CI_Model {
       metodo que obtiene las tutelas por numero de cedula*/
       public function get_tutelas($cedula){
         $SQLResult = $this->db->query("SELECT tutela_id, numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      }
+
+    /*Metodo get_cce
+      metodo que obtiene los datos de comite de expertos*/
+      public function get_cce(){
+        $SQLResult = $this->db->query("SELECT * FROM t56web_concepto_comite_expertos");
         $dataArray = $SQLResult->result();
 
         return $dataArray;

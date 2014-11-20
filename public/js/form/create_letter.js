@@ -129,7 +129,7 @@ var estado = check_status(boton);
 
                             //Evaluar redireccion
                             if (auto == undefined){
-                                //Boton
+                                //Boton cerrar
                                 window.close();
                                 //window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
                                 //console.log("Redirecciona");
@@ -330,6 +330,19 @@ function fader(){
 //-Cargar Datos-//
 function loadData(){
 
+var formulario_id = getParameterByName("formCode");
+
+//- Cargar tipologias y categorias -//
+$.getJSON("index.php/form/get_Cat_Info/" + formulario_id, function(objRData){
+    arrayTipCat = objRData;
+    if (arrayTipCat.length > 0) {
+        for(var e = arrayTipCat.length -1; e >=0; e--){
+            $("#lblTipologia_adic").html(arrayTipCat[e].tipologias);
+            $("#lblCategoria_adic").html(arrayTipCat[e].categorias);
+        }
+    };
+});
+
 var categoria_id = getParameterByName("cId");
 var tipologia_id = getParameterByName("tId");
 
@@ -415,6 +428,10 @@ function loadT8(){
                 $("#btnCert").attr("href", 'index.php/form/files?formCode=' + formulario + '&docId=' + cedula);
                 $("#btnAnswer").attr("target","_blank");
                 $("#btnAnswer").attr("href", 'index.php/form/print_full/' + formulario);
+                $("#btnCCT").attr("target","_blank");
+                $("#btnCCT").attr("href", 'index.php/form/cce');
+                $("#btnSuppCon").attr("target","_blank");
+                $("#btnSuppCon").attr("href", 'index.php/form/supp_con');
             }
         }
     });
