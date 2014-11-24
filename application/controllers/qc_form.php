@@ -809,7 +809,7 @@ class QC_Form extends QC_Controller {
                     case '5':
                         $arrayCreateData["modulo_actual"] = '7';
                         break;
-                    
+
                     case '7':
                         $arrayCreateData["modulo_actual"] = '6';
                         break;
@@ -838,7 +838,7 @@ class QC_Form extends QC_Controller {
                 $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
                 $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
                 $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
-                
+
                 $this->form->do_setLetterProps($arrayCreateData);
                 $resultInsert = $this->form->do_createLetter();
 
@@ -855,6 +855,23 @@ class QC_Form extends QC_Controller {
         else{
             echo $resultInsert;
         }
+    }
+
+    /*Metodo para devolver una carta de respuesta*/
+    public function do_getbackLetter($letterId){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arraydata as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemValue->value;
+            }
+        }
+
+        $arrayData["id_respuestas"] = $letterId;
+        $arrayData["cedula"] = $_POST["cedula"];
+
     }
 
 	/*Metodo para recategorizar una carta de respuesta*/

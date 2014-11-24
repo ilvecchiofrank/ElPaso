@@ -385,17 +385,38 @@ var tipologia_id = getParameterByName("tId");
             $("#lblDevolver").html('Motivo de la devolución:');
 			$("#divDevolver").css('display', 'block');
 			$("#putBack").html('Confirmar devolución');
-            console.log("Mostrar devolver");
 			}else{
 
-            //Validar contenido
-            if ($("#txt_Devolver").val().length > 3) {
-                console.log("Devolver");
-                console.log("Cerrar ventana");
-                //window.close();
-            }
-                $("#lblDevolver").html('Motivo de la devolución: <font color = "red">*(Campo requerido)</font>');
-                $("#txtDevolver").focus();
+                //Validar contenido
+                if ($("#txt_Devolver").val().length > 3) {
+                    console.log("Devolver");
+                    //llamar proceso de devolucion
+                    var cedula = getParameterByName("docId");
+                    var formulario_id = getParameterByName("formCode");
+                    var categoria_id = getParameterByName("cId");
+                    var tipologia_id = getParameterByName("tId");
+                    var tipo_usuario = $("#hfUserType").val();
+                    var id_usuario = $("#hfUserId").val();
+                    var contenido = CKEDITOR.instances.contenido.getData();
+                    var estado = 7;//7 es el estado devuelto para el historico
+
+                    $.ajax({
+                        url: "index.php/form/do_getBackLetter/" + getParameterByName("letId"),
+                        type: "POST",
+                        data:{ csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria": categoria_id, "tipologia": tipologia_id, "formulario": formulario_id, "cedula": cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray()) },
+                        success: function(result){
+                            if(result == "ok"){
+                                console.log("Cerrar ventana");
+                                //window.close();
+                            }
+                        }
+                    });
+
+                }else{
+                    $("#lblDevolver").html('Motivo de la devolución: <font color = "red">*(Campo requerido)</font>');
+                    $("#txtDevolver").focus();
+                }
+
 			}
 
         }
