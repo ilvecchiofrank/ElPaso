@@ -406,7 +406,7 @@ var tipologia_id = getParameterByName("tId");
                         data:{ csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria": categoria_id, "tipologia": tipologia_id, "formulario": formulario_id, "cedula": cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray()) },
                         success: function(result){
                             if(result == "ok"){
-                                console.log("Cerrar ventana");
+                                console.log("Devuelto!");
                                 //window.close();
                             }
                         }

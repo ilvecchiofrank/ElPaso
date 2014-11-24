@@ -386,7 +386,7 @@ class QM_Form extends CI_Model {
         'sexo' => (isset($arrayDataFromView['sexo'])) ? $arrayDataFromView['sexo'] : null,
         'fec_nacimiento' => (isset($arrayDataFromView['fec_nacimiento'])) ? $arrayDataFromView['fec_nacimiento'] : null,
         'act_principal' => (isset($arrayDataFromView['act_principal'])) ? $arrayDataFromView['act_principal'] : null,
-        
+
         'processtype' => (isset($arrayDataFromView['processtype'])) ? $arrayDataFromView['processtype'] : null,
         'prim_instancia' => (isset($arrayDataFromView['prim_instancia'])) ? $arrayDataFromView['prim_instancia'] : null,
         'ordenes_pi' => (isset($arrayDataFromView['ordenes_pi'])) ? $arrayDataFromView['ordenes_pi'] : null,
