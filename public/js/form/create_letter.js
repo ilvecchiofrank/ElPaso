@@ -277,7 +277,7 @@ function saveForm(){
             }else{
             //$("#divDevolver").css('display', 'none');
 
-                if($("#txtDevolver").val() == ''){
+                if($("#txtDevolver").val().length < 3){
                     $("#lblDevolver").html('Motivo de la recategorización: <font color = "red">*(Campo requerido)</font>');
                     $("#txtDevolver").focus();
                 }
@@ -293,7 +293,7 @@ function saveForm(){
 					var id_usuario = $("#hfUserId").val();
 					var contenido = CKEDITOR.instances.contenido.getData();
 					var estado = 6;
-					
+
 					$.ajax({
 					url: "index.php/form/do_recatLetters/" + getParameterByName("letId"),
 					type: "POST",
@@ -307,7 +307,7 @@ function saveForm(){
 						}
 					}
 					});
-					
+
                 }
 
             }
@@ -385,8 +385,17 @@ var tipologia_id = getParameterByName("tId");
             $("#lblDevolver").html('Motivo de la devolución:');
 			$("#divDevolver").css('display', 'block');
 			$("#putBack").html('Confirmar devolución');
+            console.log("Mostrar devolver");
 			}else{
-			$("#divDevolver").css('display', 'none');
+
+            //Validar contenido
+            if ($("#txt_Devolver").val().length > 3) {
+                console.log("Devolver");
+                console.log("Cerrar ventana");
+                //window.close();
+            }
+                $("#lblDevolver").html('Motivo de la devolución: <font color = "red">*(Campo requerido)</font>');
+                $("#txtDevolver").focus();
 			}
 
         }
@@ -450,9 +459,9 @@ function resumeForm(){
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
-                if(arrayCarta[t].txt_Devolver != null){
+                if(arrayCarta[t].txt_Devolver != null && arrayCarta[t].txt_Devolver.length > 2){
                     console.log('Mostrar devolver ' + arrayCarta[t].txt_Devolver);
-                    $("#txtDevolver").val(arrayCarta[t].txt_Devolver);
+                    $("#txt_Devolver").val(arrayCarta[t].txt_Devolver);
                     $("#divDevolver").css("display", "block");
                 }
 
