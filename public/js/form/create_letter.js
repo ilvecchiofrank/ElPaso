@@ -62,6 +62,10 @@ var fillEditor = setInterval(
     function(){
         CKEDITOR.instances['contenido'].setData($("#hfContent").val());
         clearInterval(fillEditor);
+        //-Ocultar controles ckeditor-//
+        $("#cke_23").css("display","none");
+        $("#cke_30").css("display","none");
+        $("#cke_32").css("display","none");
     }, 4000
 );
 
@@ -377,11 +381,6 @@ var tipologia_id = getParameterByName("tId");
         }
     });
 
-    //-Ocultar controles ckeditor-//
-    // $("#cke_23").css("display","none");
-    // $("#cke_30").css("display","none");
-    // $("#cke_32").css("display","none");
-
     //-Validaciones de rol-//
     if($("#hfUserType").val() < 6 ){
     $("#putBack").css("display", "none");
@@ -487,6 +486,11 @@ function resumeForm(){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
+                var limpiar = $("#hfContent").val().replace(/(?:\\[rnt])+/gi,"");
+                limpiar = limpiar.replace(/<p>&quot;<\/p>/g,"");
+                limpiar = limpiar.substring(1, limpiar.length() - 1);
+                $("#hfContent").val(limpiar);
+                console.log(limpiar);
                 //CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
                 if(arrayCarta[t].txt_Devolver != null && arrayCarta[t].txt_Devolver.length > 2){
