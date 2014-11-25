@@ -488,9 +488,12 @@ function resumeForm(){
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
                 var limpiar = $("#hfContent").val().replace(/(?:\\[rnt])+/gi,"");
                 limpiar = limpiar.replace(/<p>&quot;<\/p>/g,"");
-                limpiar = limpiar.substring(1, limpiar.length() - 1);
+                var frstLetter = limpiar.substring(0, 1);
+
+                if (frstLetter = '"'){
+                    limpiar = limpiar.substr(0, limpiar.length - 1);
+                }
                 $("#hfContent").val(limpiar);
-                console.log(limpiar);
                 //CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
                 if(arrayCarta[t].txt_Devolver != null && arrayCarta[t].txt_Devolver.length > 2){
