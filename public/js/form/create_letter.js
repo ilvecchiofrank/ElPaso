@@ -57,6 +57,14 @@ var autoGuardar = setInterval(
     }, 120000
 );
 
+//Cargar editor
+var fillEditor = setInterval(
+    function(){
+        CKEDITOR.instances['contenido'].setData($("#hfContent").val());
+        clearInterval(fillEditor);
+    }, 4000
+);
+
 function autosave(){
     saveNotify('auto');
 }
@@ -478,7 +486,8 @@ function resumeForm(){
             for (var t = arrayCarta.length -1; t >=0; t--){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
-                CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
+                $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
+                //CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
                 if(arrayCarta[t].txt_Devolver != null && arrayCarta[t].txt_Devolver.length > 2){
                     console.log('Mostrar devolver ' + arrayCarta[t].txt_Devolver);
