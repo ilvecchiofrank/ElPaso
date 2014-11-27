@@ -177,7 +177,7 @@ class QM_Form extends CI_Model {
       }
     }
 
-    /*Obtener listado de tipologias*/
+    /*Obtener nombre de tipologia*/
     public function get_tipologias($id_tip){
       try {
         $query = $this->db->query("SELECT nombre_tipologia FROM t54web_tipologias WHERE id_tipologias = $id_tip");
@@ -194,7 +194,7 @@ class QM_Form extends CI_Model {
       }
     }
 
-    /*Obtener listado de categorias*/
+    /*Obtener nombre de categoria*/
     public function get_categorias($id_cat){
       try {
         $query = $this->db->query("SELECT nombre_categoria FROM t53web_categorias WHERE id_categoria = $id_cat");
@@ -211,12 +211,57 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Obtener listado de tipologias*/
+    public function get_tipologias_list(){
+      try {
+        $query = $this->db->query("SELECT * FROM t54web_tipologias");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $tipologia => $objTipologia) {
+          $html .= "<option value='$objTipologia->id_tipologias'>" . $objTipologia->nombre_tipologia . "</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /*Obtener listado de categorias*/
+    public function get_categorias_list($id_tip){
+      try {
+        $query = $this->db->query("SELECT * FROM t53web_categorias WHERE tipologia_id = $id_tip");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $categoria => $objCategoria) {
+          $html .= "<option value='$objCategoria->id_categoria'>" . $objCategoria->nombre_categoria . "</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Obtener informacion relacionada de la tutela capitulo A*/
     public function get_tutela_info($tutelaId){
         $query = $this->db->query("SELECT cedula, demandante, numero_proceso, juzgado, abogado_asig, depto, ciudad, termino, fecha_auto_admisorio, temas, sentencia, impugnacion, REPLACE(path,'Q:emgesaTutelas','https://s3.amazonaws.com/emgesa/Tutelas/') as path FROM t19web_tutelas WHERE tutela_id = $tutelaId");
         $dataArray = $query->result();
 
         return $dataArray;
+    }
+
+    public function get_filtered_cce($tipologia, $categoria){
+      try {
+        $query = $this->db->query("SELECT * FROM t56web_concepto_comite_expertos WHERE tipologia_id = $tipologia AND categoria_id = $categoria");
+        $dataArray = $query->result();
+
+        return $dataArray;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
     }
 
     /*Obtener informacion relacionada de la tutela capitulo B y C*/

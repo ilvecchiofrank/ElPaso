@@ -720,6 +720,24 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tipologias($id_tip));
     }
 
+    /*Metodo que carga el listado de categorias*/
+    public function get_Categorias_List($id_tip){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_categorias_list($id_tip));
+    }
+
+    /*Metodo que carga el listado de tipologias*/
+    public function get_Tipologias_List(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tipologias_list());
+    }
+
+    /*Metodo que carga la tabla de cce filtrada por tipologia y categoria*/
+    public function get_Filtered_Cce($tipologia, $categoria){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_filtered_cce($tipologia, $categoria));
+    }
+
     /*Metodo que guarda la carta de respuesta a las tutelas*/
     public function do_SaveLetter(){
         $this->load->model("qm_form", "form", true);

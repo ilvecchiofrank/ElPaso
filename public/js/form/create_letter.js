@@ -6,12 +6,6 @@ loadData();
 resumeForm();
 $(".modal").modal('hide');
 
-//-Prediligenciar tipologia y categoria-//
-// var tipo = getParameterByName("tId");
-// var categ = getParameterByName("cId");
-// $("#tipologia").val(1);
-// $("#categoria").val(1);
-
 //loadMun();
 
 saveForm();
@@ -223,7 +217,6 @@ function notify(tipo){
         break;
     }
 
-
 }
 
 //Carga de municipios y departamento
@@ -368,11 +361,6 @@ var tipologia_id = getParameterByName("tId");
             }
         }
     });
-
-    //-Ocultar controles ckeditor-//
-    // $("#cke_23").css("display","none");
-    // $("#cke_30").css("display","none");
-    // $("#cke_32").css("display","none");
 
     //-Validaciones de rol-//
     if($("#hfUserType").val() < 6 ){

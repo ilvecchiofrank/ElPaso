@@ -18,6 +18,25 @@
           <div id='controls'>
           <br/>
 
+          <table style='width:95%'>
+            <tr>
+              <td style='width:40%'>
+                <label id="lblTipologia">Tipología: </label>
+                <select class='form-control' id="tipologia" name="tipologia">
+                  <option value="">Seleccione...</option>
+                </select>
+              </td>
+              <td style='width:10%'>
+              </td>
+              <td style='width:40%'>
+                <label id="lblCategoria">Categoría: </label>
+                <select class='form-control' id="categoria" name="categoria">
+                  <option value="">Seleccione...</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+
           <div id='cce' clas='form-group'>
             <br/>
             <legend>Conceptos comité de expertos:</legend>

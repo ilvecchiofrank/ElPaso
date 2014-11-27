@@ -112,16 +112,12 @@ if (isset($_GET["code"])) {
                 <td style='width:50%'>
                   <label>Tipología:</label>
                   <label id="lblTipologia"></label>
-<!--                    <select class='form-control' id="tipologia" name="tipologia">
-                      <option value="">Seleccione...</option>
-                    </select> -->
+
                 </td>
                 <td style='width:50%'>
                   <label>Categoría:</label>
                   <label id="lblCategoria"></label>
-<!--                    <select class='form-control' id="categoria" name="categoria">
-                      <option value="">Seleccione...</option>
-                    </select> -->
+
                 </td>
               </tr>
               <tr>
@@ -153,13 +149,6 @@ if (isset($_GET["code"])) {
 
             <script>
               CKEDITOR.replace('contenido');
-            </script>
-
-            <script src="public/js/jquery-1.11.0.min.js" type="text/javascript">
-            console.log("test!");
-              $("#cke_23").css("display","none");
-              $("#cke_30").css("display","none");
-              $("#cke_32").css("display","none");
             </script>
 
             <br/>
