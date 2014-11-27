@@ -183,6 +183,7 @@ if (isset($_GET["code"])) {
         </br>
       </div>
       <input type="hidden" name="hfCreate" id="hfCreate">
+      <input type="hidden" name="hfContent" id="hfContent">
       <input type="hidden" name="hfUserType" id="hfUserType" value=<?php echo $this->session->userdata("inRUserType") ?>>
       <input type="hidden" name="hfUserId" id="hfUserId" value=<?php echo $this->session->userdata("inRUserID") ?>>
     </section>
