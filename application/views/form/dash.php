@@ -21,10 +21,12 @@
             <table id='tableDashStatus' align='center'>
               <tr>
                 <td><a id='btnStatTotal' class='btn btn-default btn-md'>Total ( 0 )</a></td>
+                <td><a id='btnStatPend' class='btn btn-warning btn-md'>Pendientes ( 0 )</a></td>
                 <td><a id='btnStatNew' class='btn btn-info btn-md'>Nuevos ( 0 )</a></td>
                 <td><a id='btnStatSaved' class='btn btn-success btn-md'>Guardados ( 0 )</a></td>
                 <td><a id='btnStatClosed' class='btn btn-warning btn-md'>Cerrados ( 0 )</a></td>
-                <td><a id='btnStatReturned' class='btn btn-danger btn-md'>Devueltos ( 0 )</a></td>
+                <td><a id='btnStatReturned' class='btn btn-danger btn-md'>Devueltos para mí ( 0 )</a></td>
+                <td><a id='btnStatReturned2' class='btn btn-primary btn-md'>Devueltos por mí ( 0 )</a></td>
                 <!-- <td><a id='btnStatRecat'>Recategorizados?</a></td> -->
               </tr>
             </table>

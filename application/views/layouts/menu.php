@@ -20,6 +20,8 @@
               <li<?php if ($stRPage == "start") { ?> class="active"<?php } ?>>
                 <a href="<?php echo site_url("form/start"); ?>"><?php echo lang("TxtPageStart"); ?></a></li>
               <li>
+                <a href="http://localhost/" target="_blank">Georeferenciación</a></li>
+              <li>
                 <a href="<?php echo site_url("form/sync"); ?>">Sincronizar</a></li>
               <li>
                 <a href="<?php echo site_url("user/do_logout"); ?>">Salir</a></li>
