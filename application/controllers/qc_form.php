@@ -601,9 +601,9 @@ class QC_Form extends QC_Controller {
     }
 
 	/* Obtener actividades para el dashboard del usuario actual*/
-	public function get_Dash_Works($userId){
+	public function get_Dash_Works($userId, $rol){
 		$this->load->model("qm_form", "form", true);
-		echo json_encode($this->form->get_dash_works($userId));
+		echo json_encode($this->form->get_dash_works($userId, $rol));
 	}
 
     /* Obtener infor general dashboard */

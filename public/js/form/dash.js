@@ -16,7 +16,7 @@ function loadDash(){
         $("#btnStatReturned2").css("display", "none");
     }
 
-    $.getJSON("index.php/form/get_Dash_Status/" + uid, function(objRData){
+    $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" rol, function(objRData){
         arrayStats = objRData;
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
