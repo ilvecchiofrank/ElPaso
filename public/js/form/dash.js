@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
 var rol = getParameterByName("uT");
+
 loadDash();
 
 //loadTutelas();
@@ -10,6 +11,10 @@ function loadDash(){
     var tabLetters = "";
     var totalStats = 0;
     var pendingStats = 0;
+
+    if (rol < 6){
+        $("#btnStatReturned2").css("display", "none");
+    }
 
     $.getJSON("index.php/form/get_Dash_Status/" + uid, function(objRData){
         arrayStats = objRData;
