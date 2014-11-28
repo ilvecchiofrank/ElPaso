@@ -16,7 +16,7 @@ function loadDash(){
         $("#btnStatReturned2").css("display", "none");
     }
 
-    $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" rol, function(objRData){
+    $.getJSON("index.php/form/get_Dash_Status/" + uid, function(objRData){
         arrayStats = objRData;
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
@@ -81,7 +81,7 @@ function loadDash(){
     });
 
     //$(".modal").modal('show');
-    $.getJSON("index.php/form/get_Dash_Works/" + uid, function(objRData){
+    $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
         if (arrayLetters.length >= 1){
              tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Vulnerable</th><th scope='col'>Detalle</th></tr></thead><tbody>";
