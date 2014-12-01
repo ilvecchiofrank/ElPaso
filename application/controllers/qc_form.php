@@ -972,6 +972,13 @@ class QC_Form extends QC_Controller {
 		}
 
 		$arrayData["id_respuestas"] = $letterId;
+        $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
+        $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+        $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+        $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
+        $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
+        $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
+        $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
 		$arrayData["cedula"] = $_POST["cedula"];
 		$arrayData["categoria"] = $_POST["categoria"];
 		$arrayData["tipologia"] = $_POST["tipologia"];
@@ -995,6 +1002,8 @@ class QC_Form extends QC_Controller {
 				}
 			}
 
+            //Se traen los datos de usuarios del registro anterior
+            $arrayAnterior = $this->form->get_letter_info($letterId);
 			$arrayCreateData["estado"] = '1';
 			$arrayCreateData["modulo_actual"] = 6;
 			$arrayCreateData["cedula"] = $_POST["cedula"];
