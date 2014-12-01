@@ -396,10 +396,11 @@ class QM_Form extends CI_Model {
         'fec_carta'=> (isset($arrayDataFromView['fec_carta'])) ? $arrayDataFromView['fec_carta'] : null,
         'rad_emgesa'=> (isset($arrayDataFromView['rad_emgesa'])) ? $arrayDataFromView['rad_emgesa'] : null,
         'txt_Devolver'=> (isset($arrayDataFromView['txt_Devolver'])) ? $arrayDataFromView['txt_Devolver'] : null,
-        //'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
+        'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
         'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
-        //'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
-        //'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
+        'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'vulnerable'=> (isset($arrayDataFromView['vulnerable'])) ? $arrayDataFromView['vulnerable'] : 0,
         'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null
         );
 
