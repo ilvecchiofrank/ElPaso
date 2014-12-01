@@ -856,7 +856,6 @@ class QC_Form extends QC_Controller {
                 $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
                 $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
                 $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
-
                 $this->form->do_setLetterProps($arrayCreateData);
                 $resultInsert = $this->form->do_createLetter();
 

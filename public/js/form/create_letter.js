@@ -125,7 +125,6 @@ var estado = check_status(boton);
                     success: function(result){
                         if (result == "ok"){
                             //Guardado ok
-                                console.log("guardado ok");
                                 if(auto=='auto'){
                                     notify('auto');
                                 }else{
