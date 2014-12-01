@@ -281,7 +281,7 @@ function saveForm(){
             }else{
             //$("#divDevolver").css('display', 'none');
 
-                if($("#txtDevolver").val().length < 3){
+                if($("#txtDevolver").size < 3){
                     $("#lblDevolver").html('Motivo de la recategorización: <font color = "red">*(Campo requerido)</font>');
                     $("#txtDevolver").focus();
                 }
