@@ -1007,7 +1007,6 @@ class QC_Form extends QC_Controller {
 			$arrayCreateData["cedula"] = $_POST["cedula"];
 			$arrayCreateData["categoria"] = $_POST["categoria"];
 			$arrayCreateData["tipologia"] = $_POST["tipologia"];
-			$arrayCreateData["modulo_actual"] = $_POST["modulo_actual"];
 			$arrayCreateData["formulario"] = $_POST["formulario"];
 			$arrayCreateData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
 			$arrayCreateData["usuario_consultor"] = "2437d92d-d402-11e3-8578-0019to58485l";
