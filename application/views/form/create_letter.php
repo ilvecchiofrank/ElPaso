@@ -162,6 +162,15 @@ if (isset($_GET["code"])) {
             <br/>
             <label id='lblSignerEnterprise'>Proyecto Hidroeléctrico El Quimbo</label>
             <br/>
+            <br/>
+            <label id='lblRedac'>Elaboró:</label>
+            <br/>
+            <label id='lblJurid'>Revisó:</label>
+            <br/>
+            <label id='lblConsul'>Validó:</label>
+            <br/>
+            <label id='lblGeren'>Aprobó:</label>
+            <br/>
             <label id='lblFooter' style='display: none' >Pie de página</label>
           </div>
           <legend style='clear: both;'></legend>

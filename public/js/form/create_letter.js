@@ -478,6 +478,12 @@ function resumeForm(){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
+
+                $("#lblRedac").html("Elaboró: " + arrayCarta[t].usuario_redactor);
+                $("#lblJurid").html("Revisó: " + arrayCarta[t].usuario_juridico);
+                $("#lblConsul").html("Validó: " + arrayCarta[t].usuario_consultor);
+                $("#lblGeren").html("Aprobó: " + arrayCarta[t].usuario_gerente);
+
                 var limpiar = $("#hfContent").val().replace(/(?:\\[rnt])+/gi,"");
                 limpiar = limpiar.replace(/<p>&quot;<\/p>/g,"");
                 var frstLetter = limpiar.substring(0, 1);
