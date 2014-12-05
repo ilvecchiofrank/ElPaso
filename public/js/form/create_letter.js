@@ -483,28 +483,33 @@ function resumeForm(){
                 $.getJSON("index.php/form/get_Asigned_Users/" + arrayCarta[t].usuario_redactor + "/" + arrayCarta[t].usuario_consultor + "/" + arrayCarta[t].usuario_juridico + "/" + arrayCarta[t].usuario_gerente , function(objRData){
                     arrayAsigUsr = objRData;
                     if (arrayAsigUsr.length > 0){
-
-                        for (var us = arrayAsigUsr.length -1; t >=0; t--){
+                        console.log(arrayAsigUsr);
+                        for (var us = arrayAsigUsr.length -1; us >=0; us--){
 
                             switch (arrayAsigUsr[us].a01Tipo){
 
                             case '5':
+                            console.log("elaboro");
                             $("#lblRedac").html("Elaboró: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '6':
+                            console.log("valido");
                             $("#lblConsul").html("Validó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '7':
+                            console.log("reviso");
                             $("#lblJurid").html("Revisó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '8':
+                            console.log("aprobo");
                             $("#lblGeren").html("Aprobó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             default:
+                            console.log("ninguna");
                             break;
                             }
 
