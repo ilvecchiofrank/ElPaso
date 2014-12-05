@@ -600,6 +600,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_supp_con());
     }
 
+    /*Metodo para traer los nombresd de los usuarios asignados a una carta*/
+    public function get_Asigned_Users($redactor = 0, $consultor = 0, $juridico = 0, $gerente= 0){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_asigned_users($redactor, $consultor, $juridico, $gerente));
+    }
+
 	/* Obtener actividades para el dashboard del usuario actual*/
 	public function get_Dash_Works($userId, $rol){
 		$this->load->model("qm_form", "form", true);

@@ -479,10 +479,39 @@ function resumeForm(){
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
 
-                $("#lblRedac").html("Elaboró: " + arrayCarta[t].usuario_redactor);
-                $("#lblJurid").html("Revisó: " + arrayCarta[t].usuario_juridico);
-                $("#lblConsul").html("Validó: " + arrayCarta[t].usuario_consultor);
-                $("#lblGeren").html("Aprobó: " + arrayCarta[t].usuario_gerente);
+                //- Cargar usuarios asignados -//
+                $.getJSON("index.php/form/get_Asigned_Users/" + arrayCarta[t].usuario_redactor + "/" + arrayCarta[t].usuario_consultor + "/" + arrayCarta[t].usuario_juridico + "/" + arrayCarta[t].usuario_gerente , function(objRData){
+                    arrayAsigUsr = objRData;
+                    if (arrayAsigUsr.length > 0){
+
+                        for (var us = arrayAsigUsr.length -1; t >=0; t--){
+
+                            switch (arrayAsigUsr[us].a01Tipo){
+
+                            case '5':
+                            $("#lblRedac").html("Elaboró: " + arrayAsigUsr[us].a01Nombres);
+                            break;
+
+                            case '6':
+                            $("#lblConsul").html("Validó: " + arrayAsigUsr[us].a01Nombres);
+                            break;
+
+                            case '7':
+                            $("#lblJurid").html("Revisó: " + arrayAsigUsr[us].a01Nombres);
+                            break;
+
+                            case '8':
+                            $("#lblGeren").html("Aprobó: " + arrayAsigUsr[us].a01Nombres);
+                            break;
+
+                            default:
+                            break;
+                            }
+
+                        }
+
+                    }
+                });
 
                 var limpiar = $("#hfContent").val().replace(/(?:\\[rnt])+/gi,"");
                 limpiar = limpiar.replace(/<p>&quot;<\/p>/g,"");

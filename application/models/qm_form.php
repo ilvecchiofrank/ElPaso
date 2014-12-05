@@ -274,10 +274,10 @@ class QM_Form extends CI_Model {
 
     /*Obtener informacion de una carta especifica*/
     public function get_letter_info($letterId){
-        $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
-        $dataArray = $query->result();
+      $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
+      $dataArray = $query->result();
 
-        return $dataArray;
+      return $dataArray;
     }
 
     /*Consultar si la tutela ya tiene acciones juridicas*/
@@ -291,6 +291,14 @@ class QM_Form extends CI_Model {
     /*Consultar si existe alguna carta en estado pendiente o proceso*/
     public function get_letter_exist($cedula){
       $query = $this->db->query("SELECT id_respuesta FROM t49web_respuestas_tutelas WHERE estado != 3 AND cedula = $cedula");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Consultar los usuarios asignados a la carta*/
+    public function get_asigned_users($redactor, $consultor, $juridico, $gerente){
+      $query = $this->db->query("SELECT a01codigo, a01Nombres, a01Tipo FROM `t01web_usuarios` WHERE `a01Codigo` IN('$redactor', '$consultor', '$juridico', '$gerente')");
       $dataArray = $query->result();
 
       return $dataArray;
