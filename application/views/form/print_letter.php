@@ -33,7 +33,7 @@
         <div class="row">
           <table style='width:95%'>
             <tr>
-              <td style='width:50%; text-align: left;'>PQ-UGS-ECO-1548-56</td>
+              <td style='width:50%; text-align: left;'>[PQ-UGS-ECO-1548-56]</td>
               <td style='width:50%; text-align: right;'><img alt="Emgesa" src="public/img/logoprint.gif" class="img-responsive" style="float: right";></td>
             </tr>
           </table>
@@ -45,28 +45,76 @@
             </tr>
             <tr>
               <td>Neiva,</td>
-              <td style="text-align: right;">formulario</td>
+              <td style="text-align: right;">[formulario]</td>
             </tr>
           </table>
           <br/>
           <table>
             <tr>
-              <td>Señor:</td>
+              <td>[Señor:]</td>
             </tr>
             <tr>
-              <td>Nombres_Apellidos</td>
+              <td>[Nombres_Apellidos]</td>
             </tr>
             <tr>
-              <td>Dirección:</td>
+              <td>[Dirección:]</td>
             </tr>
             <tr>
-              <td>Barriovereda</td>
+              <td>[Barriovereda]</td>
             </tr>
             <tr>
-              <td>Teléfono:</td>
+              <td>[Teléfono:]</td>
             </tr>
             <tr>
-              <td>MunicipioResid - DeptoResid</td>
+              <td>[MunicipioResid - DeptoResid]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[Asunto: T(tipologias de la carta). Censo Quimbo T135/13]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[respetado señor apellido,]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[cuerpo de la carta]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td><img alt="Firma" src="public/img/letter_sign.png" class="img-responsive"></td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[nombre de quien firma]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[Elaboró: R]</td>
+            </tr>
+            <tr>
+              <td>[Revisó: J]</td>
+            </tr>
+            <tr>
+              <td>[Aprobó: MP]</td>
+            </tr>
+          </table>
+          <br/>
+          <table>
+            <tr>
+              <td>[Pie de página]</td>
             </tr>
           </table>
         </div>
