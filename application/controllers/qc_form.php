@@ -613,9 +613,9 @@ class QC_Form extends QC_Controller {
 	}
 
     /* Obtener infor general dashboard */
-    public function get_Dash_Status($userId){
+    public function get_Dash_Status($userId, $rol){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_dash_status($userId));
+        echo json_encode($this->form->get_dash_status($userId, $rol));
     }
 
     /* Obtener dashboard filtrado por estado */
