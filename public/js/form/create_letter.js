@@ -461,6 +461,10 @@ function loadT8(){
                 $("#btnCCT").attr("href", 'index.php/form/cce');
                 $("#btnSuppCon").attr("target","_blank");
                 $("#btnSuppCon").attr("href", 'index.php/form/supp_con');
+
+                /*Vista impresion*/
+                $("#btnPrint").attr("target", "_blank");
+                $("#btnPrint").attr("href", 'index.php/form/print_letter/' + formulario);
             }
         }
     });

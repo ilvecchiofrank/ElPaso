@@ -139,6 +139,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /*Formulario de impresion de cartas*/
+    public function print_letter(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("print_letter", "form", true);
+            return;
+        }
+
+        redirect("/");
+    }
+
     /**
      * Metodo search
      *
