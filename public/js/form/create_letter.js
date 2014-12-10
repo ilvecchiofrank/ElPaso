@@ -329,6 +329,12 @@ function fader(){
         $("#divUpdate").fadeOut("slow");
         }
     );
+
+    $("#divClose").click( function(){
+        $("#divClose").fadeOut("slow");
+        }
+    );
+
 }
 
 //-Cargar Datos-//
@@ -547,6 +553,7 @@ function resumeForm(){
 
                 //-Revisar el estado del documento-//
                 if(arrayCarta[t].estado == 3){
+                    $("#divClose").fadeIn("slow");
                     $("#divActions").css("display", "none");
                     $("#rad_emgesa").attr('readonly', true);
                     $("#fec_carta").attr('readonly', true);
