@@ -224,3 +224,4 @@ if (isset($_GET["code"])) {
 
 <div id="divUpdate" style="z-index:1000; position:fixed; bottom:0; right:0; width:25%; display: none;" class="alert alert-success" role="alert" ><b>Guardado automatico. </b>Última modificación: 01/01/2001 01:01</div>
 <div id="divError" style="z-index:1000; position:fixed; bottom:0; right:0; width:25%; display: none;" class="alert alert-danger" role="alert" ><b>Falló el guardado. </b>Ha ocurrido un error al guardar.</div>
+<div id="divClose" style="z-index:1000; position:fixed; top:25%; left:25%; width:50%; display: none;" class="alert alert-warning" role="alert"> <h2>Atención:</h2> <br/> El formulario ya cuenta con una respuesta. Haga click aquí para ocultar este mensaje.</div>
