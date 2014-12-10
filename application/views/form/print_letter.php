@@ -45,7 +45,7 @@
             </tr>
             <tr>
               <td>Neiva,</td>
-              <td style="text-align: right;">[formulario]</td>
+              <td style="text-align: right;"><?php echo $arrPrintData[0]->formulario; ?></td>
             </tr>
           </table>
           <br/>
@@ -57,7 +57,7 @@
               <td><?php echo $arrPrintData[0]->nombre; ?> <?php echo $arrPrintData[0]->apellido; ?></td>
             </tr>
             <tr>
-              <td>Dirección: <?php echo $arrPrintData[0]->direccion; ?> </td>
+              <td>Dirección: <?php echo $arrPrintData[0]->direccion; ?></td>
             </tr>
             <tr>
               <td><?php echo $arrPrintData[0]->barrio; ?></td>
@@ -72,19 +72,19 @@
           <br/>
           <table>
             <tr>
-              <td>[Asunto: T(tipologias de la carta). Censo Quimbo T135/13]</td>
+              <td>Asunto: T(<?php echo $arrTipol[0]->tipologias; ?>). Censo Quimbo T135/13</td>
             </tr>
           </table>
           <br/>
           <table>
             <tr>
-              <td><?php if ($arrPrintData[0]->genero = 'Hombre') {echo "ResSeñor:";} else {echo "Señora:";}?></td>
+              <td><?php if ($arrPrintData[0]->genero = 'Hombre') {echo "Respetado Señor:";} else {echo "Respetada Señora:";}?></td>
             </tr>
           </table>
           <br/>
           <table>
             <tr>
-              <td>[cuerpo de la carta]</td>
+              <td><?php echo trim(str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje), '"'); ?></td>
             </tr>
           </table>
           <br/>
@@ -102,13 +102,13 @@
           <br/>
           <table>
             <tr>
-              <td>[Elaboró: R]</td>
+              <td>Elaboró: R( <?php echo $arrLetterContent[0]->usuario_redactor; ?> )</td>
             </tr>
             <tr>
-              <td>[Revisó: J]</td>
+              <td>Revisó: J( <?php echo $arrLetterContent[0]->usuario_juridico; ?> )</td>
             </tr>
             <tr>
-              <td>[Aprobó: MP]</td>
+              <td>Aprobó: Miller Perdomo</td>
             </tr>
           </table>
           <br/>

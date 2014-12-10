@@ -146,6 +146,8 @@ class QC_Form extends QC_Controller {
             $this->load->model("qm_form", "form", true);
             $arrLPageData = array();
             $arrLPageData["arrPrintData"] = $this->form->get_letter_header($formulario);
+            $arrLPageData["arrLetterContent"] = $this->form->get_letter_contents($formulario);
+            $arrLPageData["arrTipol"] = $this->form->get_cat_info($formulario);
             $this->load->vars($arrLPageData);
             $this->display_page("print_letter", "form", true);
             return;

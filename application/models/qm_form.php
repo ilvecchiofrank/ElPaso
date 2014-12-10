@@ -314,7 +314,15 @@ class QM_Form extends CI_Model {
 
     /*Precargar encabezado impresion de cartas*/
     public function get_letter_header($formulario){
-      $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08Formulario = '$formulario'");
+      $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero, ur.a08Formulario AS formulario FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08Formulario = '$formulario'");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Precargar contenido de carata para impresion*/
+    public function get_letter_contents($formulario){
+      $query = $this->db->query("SELECT rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente FROM t49web_respuestas_tutelas rt WHERE rt.formulario = '$formulario';");
       $dataArray = $query->result();
 
       return $dataArray;

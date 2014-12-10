@@ -344,7 +344,7 @@ $.getJSON("index.php/form/get_Cat_Info/" + formulario_id, function(objRData){
             $("#lblTipologia_adic").html(arrayTipCat[e].tipologias);
             $("#lblCategoria_adic").html(arrayTipCat[e].categorias);
         }
-    };
+    }
 });
 
 var categoria_id = getParameterByName("cId");
