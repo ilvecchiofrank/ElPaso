@@ -102,10 +102,13 @@
           <br/>
           <table>
             <tr>
-              <td>Elaboró: R( <?php echo $arrLetterContent[0]->usuario_redactor; ?> )</td>
+              <td>Elaboró: <?php echo $arrLetterContent[0]->usuario_redactor; ?></td>
             </tr>
             <tr>
-              <td>Revisó: J( <?php echo $arrLetterContent[0]->usuario_juridico; ?> )</td>
+              <td>Revisó: <?php echo $arrLetterContent[0]->usuario_juridico; ?></td>
+            </tr>
+            <tr>
+              <td>Validó: <?php echo $arrLetterContent[0]->usuario_consultor; ?></td>
             </tr>
             <tr>
               <td>Aprobó: Miller Perdomo</td>
