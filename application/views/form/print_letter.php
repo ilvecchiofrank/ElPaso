@@ -51,7 +51,7 @@
           <br/>
           <table>
             <tr>
-              <td><?php if (sizeof($arrPrintData[0]->genero) > 5) {echo "Señor:";} else {echo "Señora:";}?></td>
+              <td><?php if (strlen($arrPrintData[0]->genero) > 5) {echo "Señor:";} else {echo "Señora:";}?></td>
             </tr>
             <tr>
               <td><?php echo $arrPrintData[0]->nombre; ?> <?php echo $arrPrintData[0]->apellido; ?></td>
@@ -78,7 +78,7 @@
           <br/>
           <table>
             <tr>
-              <td><?php if (sizeof($arrPrintData[0]->genero) > 5) { echo "Respetado Señor:"; } else { echo "Respetada Señora:"; }?></td>
+              <td><?php if (strlen($arrPrintData[0]->genero) > 5) { echo "Respetado Señor:"; } else { echo "Respetada Señora:"; }?></td>
             </tr>
           </table>
           <br/>
