@@ -54,19 +54,19 @@
               <td>[Señor:]</td>
             </tr>
             <tr>
-              <td>[Nombres_Apellidos]</td>
+              <td><?php echo $arrPrintData[0]->nombre; ?> <?php echo $arrPrintData[0]->apellido; ?></td>
             </tr>
             <tr>
-              <td>[Dirección:]</td>
+              <td>Dirección: <?php echo $arrPrintData[0]->direccion; ?> </td>
             </tr>
             <tr>
-              <td>[Barriovereda]</td>
+              <td><?php echo $arrPrintData[0]->barrio; ?></td>
             </tr>
             <tr>
-              <td>[Teléfono:]</td>
+              <td>Teléfono: <?php echo $arrPrintData[0]->telefono; ?></td>
             </tr>
             <tr>
-              <td>[MunicipioResid - DeptoResid]</td>
+              <td><?php echo $arrPrintData[0]->mpo; ?> - <?php echo $arrPrintData[0]->depto; ?></td>
             </tr>
           </table>
           <br/>

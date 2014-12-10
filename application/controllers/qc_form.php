@@ -140,8 +140,13 @@ class QC_Form extends QC_Controller {
     }
 
     /*Formulario de impresion de cartas*/
-    public function print_letter(){
+    public function print_letter($formulario){
         if($this->session->userdata("isLoggedIn")){
+
+            $this->load->model("qm_form", "form", true);
+            $arrLPageData = array();
+            $arrLPageData["arrPrintData"] = $this->form->get_letter_header($formulario);
+            $this->load->vars($arrLPageData);
             $this->display_page("print_letter", "form", true);
             return;
         }
