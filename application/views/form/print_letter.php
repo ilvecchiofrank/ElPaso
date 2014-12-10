@@ -51,7 +51,7 @@
           <br/>
           <table>
             <tr>
-              <td>[Señor:]</td>
+              <td><?php if ($arrPrintData[0]->genero = 'Hombre') {echo "Señor:";} else {echo "Señora:";}?></td>
             </tr>
             <tr>
               <td><?php echo $arrPrintData[0]->nombre; ?> <?php echo $arrPrintData[0]->apellido; ?></td>
@@ -78,7 +78,7 @@
           <br/>
           <table>
             <tr>
-              <td>[respetado señor apellido,]</td>
+              <td><?php if ($arrPrintData[0]->genero = 'Hombre') {echo "ResSeñor:";} else {echo "Señora:";}?></td>
             </tr>
           </table>
           <br/>
@@ -113,9 +113,15 @@
           </table>
           <br/>
           <table>
-            <tr>
-              <td>[Pie de página]</td>
-            </tr>
+              <tr>
+                <td>Oficina Bogotá: Cra 11 # 82 – 76 Piso 4 – Bogotá, Colombia –  (571) 219 0330</td>
+              </tr>
+              <tr>
+                <td>Oficina Garzón: Cra 10  # 4-32 – Huila, Colombia –  (578) 8334484 / Oficina Gigante: Calle 2 # 3-57 – Huila, Colombia – (578) 8325290</td>
+              </tr>
+              <tr>
+                <td>www.emgesa.com.co</td>
+              </tr>
           </table>
         </div>
       </div>
