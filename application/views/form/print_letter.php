@@ -90,7 +90,7 @@
           <br/>
           <table>
             <tr>
-              <td><img alt="Firma" src="public/img/letter_sign.png" class="img-responsive"></td>
+              <td style = "display: inline-block; border-bottom: 1px solid #000; width: 250px; height: 120px;" ></td>
             </tr>
           </table>
           <br/>

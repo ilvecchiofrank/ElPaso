@@ -378,6 +378,13 @@ var tipologia_id = getParameterByName("tId");
     $("#putBack").css("display", "none");
     }
 
+    //-Imprimir-//
+    if($("#hfUserType").val() != 1){
+        if($("#hfUserType").val() != 6){
+            $("#btnPrint").css("display", "none");
+        }
+    }
+
 	//-Acciones boton devolver-//
 	$("#putBack").click( function(){
 			if( $("#divDevolver").css('display') == 'none' ){
