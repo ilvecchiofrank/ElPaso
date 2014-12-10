@@ -386,7 +386,7 @@ var tipologia_id = getParameterByName("tId");
 
     //-Imprimir-//
     if($("#hfUserType").val() != 1){
-        if($("#hfUserType").val() != 6){
+        if($("#hfUserType").val() != 8){
             $("#btnPrint").css("display", "none");
         }
     }
