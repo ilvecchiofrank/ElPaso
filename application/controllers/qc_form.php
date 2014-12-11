@@ -636,9 +636,9 @@ class QC_Form extends QC_Controller {
     }
 
     /* Obtener dashboard filtrado por estado */
-    public function get_Dash_Filtered($userId, $statusId){
+    public function get_Dash_Filtered($userId, $statusId, $rol){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_dash_filtered($userId, $statusId));
+        echo json_encode($this->form->get_dash_filtered($userId, $statusId, $rol));
     }
 
     /*Obtener listado de pqr por numero de cedula*/

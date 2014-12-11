@@ -5,9 +5,10 @@ loadDash();
 function loadDash(){
     var uid = getParameterByName("uId");
     var tipo = getParameterByName("statId");
+    var rol = getParameterByName("rId");
     var tabLetters = "";
 
-    $.getJSON("index.php/form/get_Dash_Filtered/" + uid + "/" + tipo, function(objRData){
+    $.getJSON("index.php/form/get_Dash_Filtered/" + uid + "/" + tipo + "/" + rol, function(objRData){
         arrayLetters = objRData;
         if (arrayLetters.length >= 1){
              tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Vulnerable</th><th scope='col'>Detalle</th></tr></thead><tbody>";

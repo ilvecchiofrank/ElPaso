@@ -26,27 +26,27 @@ function loadDash(){
                 switch(arrayStats[s].estado) {
                     case '1':
                     $("#btnStatNew").attr("target","_blank");
-                    $("#btnStatNew").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado);
+                    $("#btnStatNew").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado + '&rId=' + rol);
                     $("#btnStatNew").html("Nuevos ( " + arrayStats[s].conteo + " )");
                     pendingStats = pendingStats + parseInt(arrayStats[s].conteo);
                         break;
 
                     case '2':
                     $("#btnStatSaved").attr("target","_blank");
-                    $("#btnStatSaved").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado);
+                    $("#btnStatSaved").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnStatSaved").html("Guardados ( " + arrayStats[s].conteo + " )");
                     pendingStats = pendingStats + parseInt(arrayStats[s].conteo);
                         break;
 
                     case '3':
                     $("#btnStatClosed").attr("target","_blank");
-                    $("#btnStatClosed").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado);
+                    $("#btnStatClosed").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnStatClosed").html("Cerrados ( " + arrayStats[s].conteo + " )");
                         break;
 
                     case '4':
                     $("#btnStatReturned").attr("target","_blank");
-                    $("#btnStatReturned").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado);
+                    $("#btnStatReturned").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnStatReturned").html("Devueltos para mi ( " + arrayStats[s].conteo + " )");
                     pendingStats = pendingStats + parseInt(arrayStats[s].conteo);
                         break;
@@ -61,7 +61,7 @@ function loadDash(){
 
                     case '7':
                     $("#btnStatReturned2").attr("target","_blank");
-                    $("#btnStatReturned2").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado);
+                    $("#btnStatReturned2").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnStatReturned2").html("Devueltos por mi ( " + arrayStats[s].conteo + " )");
                         break;
 
