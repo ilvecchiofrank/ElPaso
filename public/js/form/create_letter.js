@@ -409,7 +409,7 @@ var tipologia_id = getParameterByName("tId");
         $.ajax({
                 url: "index.php/form/do_finishLetters/" + getParameterByName("letId"),
                 type: "POST",
-                data: { csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "cuerpo_mensaje": JSON.stringify(contenido), "categoria": categoria_id, "tipologia": tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm":JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
+                data: { csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario,  "cuerpo_mensaje": JSON.stringify(contenido), "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm":JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                 success: function(result){
                     //Finalizado ok
                     window.location.href = 'index.php/form/print_letter/' + formulario;
