@@ -384,10 +384,18 @@ var tipologia_id = getParameterByName("tId");
     $("#putBack").css("display", "none");
     }
 
-    //-Imprimir-//
+    //-Validaciones gerente-//
+    if($("#hfUserType").val() == 8 ){
+        $("#saveClose").css("display", "none");
+        $("#putBack").css("display", "none");
+        $("#btnRecat").css("display", "none");
+    }
+
+    //-Imprimir Finalizar-//
     if($("#hfUserType").val() != 1){
         if($("#hfUserType").val() != 8){
             $("#btnPrint").css("display", "none");
+            $("#btnFinish").css("display", "none");
         }
     }
 

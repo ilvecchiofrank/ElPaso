@@ -186,6 +186,7 @@ if (isset($_GET["code"])) {
         <button id='saveClose' class='btn btn-danger btn-md'>Guardar y Cerrar</button>
         <button id='putBack' class='btn btn-warning btn-md'>Devolver</button>
         <button id='btnRecat' class='btn btn-info btn-md'>Recategorizar</button>
+        <a id='btnFinish' class="btn btn-danger btn-md">Terminar</a>
         <a id='btnPrint' class="btn btn-default btn-md">Imprimir</a>
       </div>
 
