@@ -808,6 +808,33 @@ class QC_Form extends QC_Controller {
             echo $resultInsert;
     }
 
+    /*Metodo que Finaliza la carta de respuesta a tutelas*/
+    public function do_finishLetters($letterId){
+        $this->load->model("qm_form", "form", true);
+        $arrayData = array();
+
+        if(!empty($_POST["dataForm"])){
+            $arrayDataFromView = json_decode($_POST["dataForm"]);
+            foreach ($arrayDataFromView as $itemKey => $itemValue) {
+                $arrayData[$itemValue->name] = $itemValue->value;
+            }
+        }
+
+        /*Asignar estado finalizado*/
+        $arrayData["estado"] = '8';
+        $arrayData["finalizada"] = '1';
+
+        $this->form->do_setLetterProps($arrayData);
+        $resultInsert = $this->form->do_updateLetter($letterId);
+
+        if ($resultInsert == true){
+            echo "ok";
+        }else{
+            echo $resultInsert;
+        }
+
+    }
+
     /*Metodo que actualiza la carta de respuesta a las tutelas*/
     public function do_updateLetters($letterId){
         $this->load->model("qm_form", "form", true);
