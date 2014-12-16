@@ -88,7 +88,7 @@ if (isset($_GET["code"])) {
               </th>
               <tr>
                 <td>
-                  <label id="lblAsunto" name="lblAsunto">T-02 Solicitud complementar info.</label>
+                  <label id="lblAsunto" name="lblAsunto">Respuesta Censo sentencia T135/13</label>
                 </td>
               </tr>
             </table>
