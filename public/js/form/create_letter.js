@@ -387,7 +387,6 @@ var tipologia_id = getParameterByName("tId");
     //-Validaciones gerente-//
     if($("#hfUserType").val() == 8 ){
         $("#saveClose").css("display", "none");
-        $("#putBack").css("display", "none");
         $("#btnRecat").css("display", "none");
     }
 
