@@ -72,7 +72,8 @@
           <br/>
           <table>
             <tr>
-              <td>Asunto: T(<?php echo $arrTipol[0]->tipologias; ?>). Censo Quimbo T135/13</td>
+              <!-- <td>Asunto: T(<?php echo $arrTipol[0]->tipologias; ?>). Censo Quimbo T135/13</td> -->
+              <td>Asunto: Respuesta Censo sentencia T135/13</td>
             </tr>
           </table>
           <br/>
