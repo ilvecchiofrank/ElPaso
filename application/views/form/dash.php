@@ -27,6 +27,7 @@
                 <td><a id='btnStatClosed' class='btn btn-warning btn-md'>Cerrados ( 0 )</a></td>
                 <td><a id='btnStatReturned' class='btn btn-danger btn-md'>Devueltos para mí ( 0 )</a></td>
                 <td><a id='btnStatReturned2' class='btn btn-primary btn-md'>Devueltos por mí ( 0 )</a></td>
+                <td><a id='btnFinished' class='btn btn-danger btn-md'>Finalizados ( 0 )</a></td>
                 <!-- <td><a id='btnStatRecat'>Recategorizados?</a></td> -->
               </tr>
             </table>
