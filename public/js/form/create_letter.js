@@ -581,7 +581,7 @@ function resumeForm(){
                 }
 
                 //-Revisar el estado del documento-//
-                if(arrayCarta[t].estado == 3 || arrayCarta[t].estado == 4 || arrayCarta[t].estado == 8){
+                if(arrayCarta[t].estado == 3 || arrayCarta[t].estado == 7 || arrayCarta[t].estado == 8){
                     $("#divClose").fadeIn("slow");
                     $("#divActions").css("display", "none");
                     $("#rad_emgesa").attr('readonly', true);
