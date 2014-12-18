@@ -322,7 +322,15 @@ class QM_Form extends CI_Model {
 
     /*Precargar contenido de carata para impresion*/
     public function get_letter_contents($formulario){
-      $query = $this->db->query("SELECT rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente FROM t49web_respuestas_tutelas rt WHERE rt.formulario = '$formulario';");
+      $query = $this->db->query("SELECT rt.ult_actualizacion, rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente FROM t49web_respuestas_tutelas rt WHERE rt.formulario = '$formulario' ORDER BY rt.ult_actualizacion DESC");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Consultar iniciales del usuario*/
+    public function get_user_init($usuario_id){
+      $query = $this->db->query("SELECT a01Inicial FROM t01web_usuarios WHERE a01codigo = '$usuario_id'");
       $dataArray = $query->result();
 
       return $dataArray;

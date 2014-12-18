@@ -387,7 +387,6 @@ var tipologia_id = getParameterByName("tId");
     //-Validaciones gerente-//
     if($("#hfUserType").val() == 8 ){
         $("#saveClose").css("display", "none");
-        $("#putBack").css("display", "none");
         $("#btnRecat").css("display", "none");
     }
 
@@ -583,9 +582,22 @@ function resumeForm(){
                 }
 
                 //-Revisar el estado del documento-//
-                if(arrayCarta[t].estado == 3){
+                if(arrayCarta[t].estado == 3 || arrayCarta[t].estado == 7){
                     $("#divClose").fadeIn("slow");
                     $("#divActions").css("display", "none");
+                    $("#rad_emgesa").attr('readonly', true);
+                    $("#fec_carta").attr('readonly', true);
+                    CKEDITOR.instances['contenido'].setReadOnly(true);
+                    clearInterval(autoGuardar);
+                }
+
+                if(arrayCarta[t].estado == 8){
+                    $("#divClose").fadeIn("slow");
+                    $("#saveInfo").css("display", "none");
+                    $("#saveClose").css("display", "none");
+                    $("#putBack").css("display", "none");
+                    $("#btnRecat").css("display", "none");
+                    $("#btnFinish").css("display", "none");
                     $("#rad_emgesa").attr('readonly', true);
                     $("#fec_carta").attr('readonly', true);
                     CKEDITOR.instances['contenido'].setReadOnly(true);

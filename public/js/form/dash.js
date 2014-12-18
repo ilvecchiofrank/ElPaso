@@ -16,6 +16,14 @@ function loadDash(){
         $("#btnStatReturned2").css("display", "none");
     }
 
+    if (rol==8){
+        $("#btnStatReturned").css("display", "none");
+    }
+    else
+    {
+        $("#btnFinished").css("display", "none");
+    }
+
     $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
         if (arrayStats.length >0 ) {
@@ -63,6 +71,12 @@ function loadDash(){
                     $("#btnStatReturned2").attr("target","_blank");
                     $("#btnStatReturned2").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnStatReturned2").html("Devueltos por mi ( " + arrayStats[s].conteo + " )");
+                        break;
+
+                    case '8':
+                    $("#btnFinished").attr("target","_blank");
+                    $("#btnFinished").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
+                    $("#btnFinished").html("Finalizados ( " + arrayStats[s].conteo + " )");
                         break;
 
                     default:
