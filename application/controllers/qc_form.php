@@ -140,13 +140,12 @@ class QC_Form extends QC_Controller {
     }
 
     /*Formulario de impresion de cartas*/
-    public function print_letter($formulario){
+    public function print_letter($formulario, $id_respuesta){
         if($this->session->userdata("isLoggedIn")){
-
             $this->load->model("qm_form", "form", true);
             $arrLPageData = array();
             $arrLPageData["arrPrintData"] = $this->form->get_letter_header($formulario);
-            $arrLPageData["arrLetterContent"] = $this->form->get_letter_contents($formulario);
+            $arrLPageData["arrLetterContent"] = $this->form->get_letter_contents($id_respuesta);
             $arrLPageData["arrTipol"] = $this->form->get_cat_info($formulario);
             $arrLPageData["usr_Red"] = $this->form->get_user_init($arrLPageData["arrLetterContent"][0]->usuario_redactor);
             $arrLPageData["usr_Con"] = $this->form->get_user_init($arrLPageData["arrLetterContent"][0]->usuario_consultor);
@@ -826,6 +825,7 @@ class QC_Form extends QC_Controller {
         /*Asignar estado finalizado*/
         $arrayData["estado"] = '8';
         $arrayData["finalizada"] = '1';
+        $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
 
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_updateLetter($letterId);

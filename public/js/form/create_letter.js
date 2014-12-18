@@ -405,15 +405,17 @@ var tipologia_id = getParameterByName("tId");
         var cedula = getParameterByName("docId");
         var formulario = getParameterByName("formCode");
         var estado = 8;
+        var carta_id = getParameterByName("letId");
+        var cuerpo_carta = CKEDITOR.instances['contenido'].getData();
 
         $.ajax({
                 url: "index.php/form/do_finishLetters/" + getParameterByName("letId"),
                 type: "POST",
-                data:{ csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria": categoria_id, "tipologia": tipologia_id, "formulario": formulario_id, "cedula": cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray()) },
+                data:{ csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "estado": estado, "cuerpo_mensaje": JSON.stringify(cuerpo_carta), "categoria": categoria_id, "tipologia": tipologia_id, "formulario": formulario_id, "cedula": cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray()) },
 
                 success: function(result){
                     if(result == "ok"){
-                        window.location.href = 'index.php/form/print_letter/' + formulario;
+                        window.location.href = 'index.php/form/print_letter/' + formulario + '/' + carta_id;
                     }else{
                         console.log("error");
                     }
@@ -470,6 +472,7 @@ var tipologia_id = getParameterByName("tId");
 function loadT8(){
     var cedula = getParameterByName("docId");
 	var formulario = getParameterByName("formCode");
+    var carta_id = getParameterByName("letId");
     $.getJSON("index.php/form/get_Tut_Answ_Header/" + cedula, function(objRData){
         arrayT8 = objRData;
         if(arrayT8.length > 0){
@@ -507,7 +510,7 @@ function loadT8(){
 
                 /*Vista impresion*/
                 $("#btnPrint").attr("target", "_blank");
-                $("#btnPrint").attr("href", 'index.php/form/print_letter/' + formulario);
+                $("#btnPrint").attr("href", 'index.php/form/print_letter/' + formulario + '/' + carta_id);
             }
         }
     });
@@ -588,6 +591,7 @@ function resumeForm(){
                     $("#rad_emgesa").attr('readonly', true);
                     $("#fec_carta").attr('readonly', true);
                     CKEDITOR.instances['contenido'].setReadOnly(true);
+                    $("#txt_Devolver").attr('readonly', true);
                     clearInterval(autoGuardar);
                 }
 
@@ -600,6 +604,7 @@ function resumeForm(){
                     $("#btnFinish").css("display", "none");
                     $("#rad_emgesa").attr('readonly', true);
                     $("#fec_carta").attr('readonly', true);
+                    $("#txt_Devolver").attr('readonly', true);
                     CKEDITOR.instances['contenido'].setReadOnly(true);
                     clearInterval(autoGuardar);
                 }
