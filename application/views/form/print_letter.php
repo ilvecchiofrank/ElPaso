@@ -103,13 +103,13 @@
           <br/>
           <table>
             <tr>
-              <td>Elaboró: <?php echo $arrLetterContent[0]->usuario_redactor; ?></td>
+              <td>Elaboró: <?php echo $usr_Red[0]->a01Inicial; ?></td>
             </tr>
             <tr>
-              <td>Revisó: <?php echo $arrLetterContent[0]->usuario_juridico; ?></td>
+              <td>Revisó: <?php echo $usr_Con[0]->a01Inicial; ?></td>
             </tr>
             <tr>
-              <td>Validó: <?php echo $arrLetterContent[0]->usuario_consultor; ?></td>
+              <td>Validó: <?php echo $usr_Jur[0]->a01Inicial; ?></td>
             </tr>
             <tr>
               <td>Aprobó: Miller Perdomo</td>

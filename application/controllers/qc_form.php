@@ -148,6 +148,9 @@ class QC_Form extends QC_Controller {
             $arrLPageData["arrPrintData"] = $this->form->get_letter_header($formulario);
             $arrLPageData["arrLetterContent"] = $this->form->get_letter_contents($formulario);
             $arrLPageData["arrTipol"] = $this->form->get_cat_info($formulario);
+            $arrLPageData["usr_Red"] = $this->form->get_user_init($arrLPageData["arrLetterContent"][0]->usuario_redactor);
+            $arrLPageData["usr_Con"] = $this->form->get_user_init($arrLPageData["arrLetterContent"][0]->usuario_consultor);
+            $arrLPageData["usr_Jur"] = $this->form->get_user_init($arrLPageData["arrLetterContent"][0]->usuario_juridico);
             $this->load->vars($arrLPageData);
             $this->display_page("print_letter", "form", true);
             return;
