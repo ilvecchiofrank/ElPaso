@@ -155,11 +155,8 @@ if (isset($_GET["code"])) {
           </div>
           <div id='divCierre' name='divCierre'>
             <label id='lblDespedida'>Cordialmente,</label>
-            <br/>
             <label id='lblSigner' style='display: none'>MILLER AUGUSTO PERDOMO</label>
-            <br/>
             <label id='lblSignerWork' style='display: none'>Responsable de Desarrollo Económico</label>
-            <br/>
             <label id='lblSignerEnterprise' style='display: none'>Proyecto Hidroeléctrico El Quimbo</label>
             <br/>
             <br/>
