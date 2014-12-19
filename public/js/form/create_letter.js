@@ -408,6 +408,8 @@ var tipologia_id = getParameterByName("tId");
         var carta_id = getParameterByName("letId");
         var cuerpo_carta = CKEDITOR.instances['contenido'].getData();
 
+console.log(cuerpo_carta);
+
         $.ajax({
                 url: "index.php/form/do_finishLetters/" + getParameterByName("letId"),
                 type: "POST",
