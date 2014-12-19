@@ -394,7 +394,7 @@ class QM_Form extends CI_Model {
     /*Establecer las propiedades de la respuesta a la tutela en un array*/
     public function do_setLetterProps($arrayDataFromView){
 
-var_dump( "depura" . $arrayDataFromView);
+var_dump($arrayDataFromView);
 
       $this->arrayLetterProps = array(
         'cedula'=> (isset($arrayDataFromView['cedula'])) ? $arrayDataFromView['cedula'] : null,
