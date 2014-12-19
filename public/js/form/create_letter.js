@@ -581,7 +581,6 @@ function resumeForm(){
                 //CKEDITOR.instances['contenido'].setData(arrayCarta[t].cuerpo_mensaje);
 
                 if(arrayCarta[t].txt_Devolver != null && arrayCarta[t].txt_Devolver.length > 2){
-                    console.log('Mostrar devolver ' + arrayCarta[t].txt_Devolver);
                     $("#txt_Devolver").val(arrayCarta[t].txt_Devolver);
                     $("#divDevolver").css("display", "block");
                 }
