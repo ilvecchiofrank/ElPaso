@@ -112,7 +112,7 @@
               <td>Validó: <?php echo $usr_Jur[0]->a01Inicial; ?></td>
             </tr>
             <tr>
-              <td>Aprobó: Miller Perdomo</td>
+              <td>Aprobó: MP</td>
             </tr>
           </table>
           <br/>
