@@ -548,7 +548,6 @@ class QM_Form extends CI_Model {
             if($key == "fecha_creacion" && $value == "0000-00-00 00:00:00"){
               $query = $this->db->query("update t49web_respuestas_tutelas set fecha_creacion = now() WHERE id_respuesta = $idLetter");
             }else{
-              var_dump("update t49web_respuestas_tutelas set $key = '$value' WHERE id_respuesta = $idLetter");
               $query = $this->db->query("update t49web_respuestas_tutelas set $key = '$value' WHERE id_respuesta = $idLetter");
             }
 
