@@ -542,13 +542,12 @@ class QM_Form extends CI_Model {
       try {
         $this->db->where("id_respuesta", $idLetter);
 
-var_dump($this->arrayLetterPropsUpd);
-
         //$this->db->update('t49web_respuestas_tutelas', $this->arrayLetterPropsUpd);
         foreach ($this->arrayLetterPropsUpd as $key => $value) {
           if ($value != null){
             if($key == "fecha_creacion" && $value == "0000-00-00 00:00:00"){
               $query = $this->db->query("update t49web_respuestas_tutelas set fecha_creacion = now() WHERE id_respuesta = $idLetter");
+              var_dump("update t49web_respuestas_tutelas set fecha_creacion = now() WHERE id_respuesta = $idLetter");
             }else{
               $query = $this->db->query("update t49web_respuestas_tutelas set $key = '$value' WHERE id_respuesta = $idLetter");
             }
