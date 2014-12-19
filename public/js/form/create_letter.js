@@ -417,7 +417,7 @@ console.log(cuerpo_carta);
 
                 success: function(result){
                     if(result == "ok"){
-                        //window.location.href = 'index.php/form/print_letter/' + formulario + '/' + carta_id;
+                        window.location.href = 'index.php/form/print_letter/' + formulario + '/' + carta_id;
                     }else{
                         console.log("error");
                     }

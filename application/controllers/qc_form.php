@@ -830,11 +830,11 @@ class QC_Form extends QC_Controller {
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_updateLetter($letterId);
 
-/*        if ($resultInsert == true){
+        if ($resultInsert == true){
             echo "ok";
         }else{
             echo $resultInsert;
-        }*/
+        }
 
     }
 
