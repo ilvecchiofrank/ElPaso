@@ -822,12 +822,12 @@ class QC_Form extends QC_Controller {
             }
         }
 
-var_dump($_POST["cuerpo_mensaje"]);
-
         /*Asignar estado finalizado*/
         $arrayData["estado"] = '8';
         $arrayData["finalizada"] = '1';
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
+
+var_dump($arrayData);
 
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_updateLetter($letterId);
