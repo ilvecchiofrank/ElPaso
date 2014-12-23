@@ -41,6 +41,20 @@ if (isset($_GET["code"])) {
             </table>
           </div>
 
+          <div id='entrev' class='form-group'>
+            <br/>
+            <legend>Entrevistas antes del censo:</legend>
+            <table id='tableEntrevResults' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+          </div>
+
           <div id='docuIdentifica' class='form-group' style='display: none'>
               <label for='txtCedula'>Número de Identificación:</label>
               <br/>

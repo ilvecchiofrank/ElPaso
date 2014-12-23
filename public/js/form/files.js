@@ -3,7 +3,7 @@ $(document).ready(function () {
 loadControlValues();
 
 loadTutelas();
-
+loadEntrev();
 loadpqrs();
 
 $("#txtIdentificador").html(getParameterByName("formCode"));
@@ -19,7 +19,6 @@ if (formCode == 'undefined'){
 function loadpqrs(){
     var cedula = getParameterByName("docId");
     var tablapqr = "";
-    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Pqr/" + cedula, function(objRData){
         arrayPqrs = objRData;
 
@@ -31,7 +30,7 @@ function loadpqrs(){
                 var ruta = arrayPqrs[p].path.replace("Q:emgesaCD/", "https://emgesa.s3.amazonaws.com/CD/");
                 tablapqr += "<tr><td>" + arrayPqrs[p].tipo + "</td><td>" + arrayPqrs[p].año + "</td><td>" + arrayPqrs[p].radicado + "</td><td>" + arrayPqrs[p].caso + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
             }
-console.log(tablapqr);
+
         }
         else
         {
@@ -40,14 +39,38 @@ console.log(tablapqr);
 
         tablapqr += "</tbody></table><br/>";
         $("#tablePqrsResults").html(tablapqr);
-    $(".modal").modal('hide');
     });
+}
+
+function loadEntrev(){
+    var cedula = getParameterByName("docId");
+    var tablaentrev = "";
+    $.getJSON("index.php/form/get_Entrev/" + cedula, function(objRData){
+        arrayEntrev = objRData;
+        if (arrayEntrev.length >=1) {
+            tablaentrev += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Actividad</th><th scope='col'>Fecha Entrevista</th><th scope='col'>Observaciones</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+
+            for (var e = arrayEntrev.length - 1; e >= 0; e--) {
+            var ruta = "http://emgesa.s3.amazonaws.com/CD/" + arrayEntrev[e].PATH;
+            tablaentrev += "<tr><td>" + arrayEntrev[e].ACTIVIDAD + "</td><td>" + arrayEntrev[e].FECHA_ENTREVISTA + "</td><td>" + arrayEntrev[e].OBSERVACIONES + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+            }
+
+        }
+        else
+        {
+            $("#tableEntrevResults").css("display","none");
+        }
+
+        tablaentrev += "</tbody></table><br/>";
+        $("#tableEntrevResults").html(tablaentrev);
+
+    });
+
 }
 
 function loadTutelas(){
     var cedula = getParameterByName("docId");
     var tabtutelas = "";
-    $(".modal").modal('show');
     $.getJSON("index.php/form/get_Tutelas/" + cedula, function(objRData){
         arrayTutelas = objRData;
 
@@ -67,14 +90,12 @@ function loadTutelas(){
 
         tabtutelas += "</tbody></table><br/>";
         $("#tableTutelasResults").html(tabtutelas);
-    $(".modal").modal('hide');
     });
 }
 
 function loadControlValues(){
     var code = getParameterByName("formCode");
     var tabla = "";
-    $(".modal").modal('show');
     $.getJSON("index.php/form/get_FilesN/" + code, function(objRData){
         arrayNDocuments = objRData;
 
@@ -136,7 +157,7 @@ function loadControlValues(){
                 case "Formato No VÃ¡lido":
                     tipo = "Formato No Válido";
                     break;
-                    
+
                 case "Video":
                     tipo = "Video";
                     break;
@@ -148,7 +169,7 @@ function loadControlValues(){
             tabla += "</tbody></table><br/>";
             $("#tableResults").html(tabla);
         }
-        $(".modal").modal('hide');
+
     });
 }
 
@@ -160,4 +181,11 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+});
+
+
+$(document).ajaxStart(function() {
+    $(".modal").modal('show');
+}).ajaxStop(function() {
+    $(".modal").modal('hide');
 });

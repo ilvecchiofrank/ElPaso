@@ -764,7 +764,7 @@ class QM_Form extends CI_Model {
         metodo que obtiene los pqr por numero de cedula*/
     public function get_pqr($cedula){
     try {
-            //Generamos el query
+        //Generamos el query
         $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula'");
         //$SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
         $dataArray = $SQLResult->result();
@@ -773,6 +773,20 @@ class QM_Form extends CI_Model {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+    }
+
+    /*Metodo get entrev
+        metodo que obtiene las entrevistas por numero de cedula*/
+    public function get_entrev($cedula){
+      try {
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT ACTIVIDAD, FECHA_ENTREVISTA, OBSERVACIONES, PATH FROM t64web_entrevistas WHERE CEDULA = '$cedula'");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
     }
 
     /*Metodo get_n_act_b

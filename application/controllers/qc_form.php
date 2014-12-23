@@ -649,6 +649,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_pqr($cedula));
     }
 
+    /*Obtener listado de entrevistas por numero de cedula*/
+    public function get_Entrev($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_entrev($cedula));
+    }
+
     /*Cargar Info Empleo*/
     public function get_Empleo($cedula){
         $this->load->model("qm_form", "form", true);
