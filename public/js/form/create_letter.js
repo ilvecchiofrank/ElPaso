@@ -269,6 +269,7 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
+            $("#saveClose").css("display", "none");
             saveNotify(undefined,'C');
          });
 
@@ -408,8 +409,6 @@ var tipologia_id = getParameterByName("tId");
         var carta_id = getParameterByName("letId");
         var cuerpo_carta = CKEDITOR.instances['contenido'].getData();
 
-console.log(cuerpo_carta);
-
         $.ajax({
                 url: "index.php/form/do_finishLetters/" + getParameterByName("letId"),
                 type: "POST",
@@ -435,7 +434,6 @@ console.log(cuerpo_carta);
 
                 //Validar contenido
                 if ($("#txt_Devolver").val().length > 3) {
-                    console.log("Devolver");
                     //llamar proceso de devolucion
                     var cedula = getParameterByName("docId");
                     var formulario_id = getParameterByName("formCode");
