@@ -643,6 +643,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_dash_filtered($userId, $statusId, $rol));
     }
 
+    /* Obetener dashboard para impresion */
+    public function get_Dash_Finished(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dash_finished());
+    }
+
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);

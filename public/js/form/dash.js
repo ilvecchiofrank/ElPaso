@@ -24,7 +24,43 @@ function loadDash(){
         $("#btnFinished").css("display", "none");
     }
 
-    $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
+    //Usuario impresor
+    if (rol==9){
+    //Query impresion
+    $("#dash_status").css("display", "none");
+    
+    $.getJSON("index.php/form/get_Dash_Finished/", function(objRData){
+        arrayLetters = objRData;
+        if (arrayLetters.length >= 1){
+             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Vulnerable</th><th scope='col'>Imprimir</th></tr></thead><tbody>";
+
+             for (var t = arrayLetters.length -1; t >=0; t--){
+                var ruta = "index.php/form/print_letter/" + arrayLetters[t].formulario + "/" + arrayLetters[t].id_respuesta;
+
+                if (arrayLetters[t].vulnerable == "Si"){
+                    var vulnerable = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].vulnerable + "</td>";
+                }else{
+                    var vulnerable = "<td>" + arrayLetters[t].vulnerable + "</td>";
+                }
+
+                tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Imprimir</a>" + "</td></tr>";
+            }
+
+        }
+        else
+        {
+            $("#dash_letters").css("display","none");
+        }
+        tabLetters += "</tbody></table><br/>";
+        $("#tableLetters").html(tabLetters);
+    });
+
+    console.log('impresor');
+    }
+    else //Query normal
+    {
+
+        $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
@@ -121,6 +157,9 @@ function loadDash(){
         $("#tableLetters").html(tabLetters);
     //$(".modal").modal('hide');
     });
+
+    }
+
 }
 
 //-Extraer parametros QueryString-//
