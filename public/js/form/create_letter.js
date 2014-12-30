@@ -269,6 +269,7 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
+        console.log("Desaparece!");
             $("#saveClose").css("display", "none");
             saveNotify(undefined,'C');
          });
