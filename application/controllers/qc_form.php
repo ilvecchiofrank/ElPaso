@@ -890,15 +890,15 @@ class QC_Form extends QC_Controller {
                 //Switch para determinar el nuevo modulo actual
                 switch ($_POST["modulo_actual"]) {
                     case '5':
-                        $arrayCreateData["modulo_actual"] = '7';
-                        break;
-
-                    case '7':
                         $arrayCreateData["modulo_actual"] = '6';
                         break;
 
-                    case '6':
+                    case '7':
                         $arrayCreateData["modulo_actual"] = '8';
+                        break;
+
+                    case '6':
+                        $arrayCreateData["modulo_actual"] = '7';
                         break;
 
                     default:
@@ -993,15 +993,15 @@ class QC_Form extends QC_Controller {
                 //Switch para determinar el nuevo modulo actual
                 switch ($_POST["modulo_actual"]) {
                     case '6':
-                        $arrayCreateData["modulo_actual"] = '7';
-                        break;
-
-                    case '7':
                         $arrayCreateData["modulo_actual"] = '5';
                         break;
 
-                    case '8':
+                    case '7':
                         $arrayCreateData["modulo_actual"] = '6';
+                        break;
+
+                    case '8':
+                        $arrayCreateData["modulo_actual"] = '7';
                         break;
 
                     default:
