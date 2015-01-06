@@ -106,6 +106,10 @@ if (isset($_GET["code"])) {
             <br/>
           </div>
 
+          <div id='bloque1' name='bloque1'>
+            <label id='lblBloque1'></label>
+          </div>
+
           <div id='divControles' name='divControles'>
             <table>
               <tr>
@@ -153,6 +157,11 @@ if (isset($_GET["code"])) {
 
             <br/>
           </div>
+
+          <div id='bloque2' name='bloque2'>
+            <label id='lblBloque2'></label>
+          </div>
+
           <div id='divCierre' name='divCierre'>
             <label id='lblDespedida'>Cordialmente,</label>
             <label id='lblSigner' style='display: none'>MILLER AUGUSTO PERDOMO</label>

@@ -709,6 +709,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_tutela_info($tutelaId));
     }
 
+    /*Cargar bloques de carta*/
+    public function get_Letter_Blocks(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_letter_blocks());
+    }
+
     /*Cargar informacion de cartas fase1*/
     public function get_Letter_Info($letterId){
         $this->load->model("qm_form", "form", true);

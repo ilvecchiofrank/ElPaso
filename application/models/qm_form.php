@@ -280,6 +280,14 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Obtener los bloques de las cartas*/
+    public function get_letter_blocks(){
+      $query = $this->db->query("SELECT Cuerpo_txt FROM t51web_bloque_contenido ORDER BY Ordenamiento");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /*Consultar si la tutela ya tiene acciones juridicas*/
     public function get_tutela_exist($tutelaId){
       $query = $this->db->query("SELECT id_tutela FROM t42web_accion_juridica WHERE id_tutela = $tutelaId");

@@ -269,7 +269,6 @@ function saveForm(){
          });
 
        $("#saveClose").click( function(){
-        console.log("Desaparece!");
             $("#saveClose").css("display", "none");
             saveNotify(undefined,'C');
          });
@@ -379,6 +378,17 @@ var tipologia_id = getParameterByName("tId");
 
             }
         }
+    });
+
+    //-Llenar campos de bloques-//
+    $.getJSON("index.php/form/get_Letter_Blocks/", function(objRData){
+        arrayBlock = objRData;
+        console.table(arrayBlock);
+        if (arrayBlock.length > 0){
+            $("#lblBloque1").html(arrayBlock[0].Cuerpo_txt + " " + formulario_id + " " + arrayBlock[1].Cuerpo_txt);
+            $("#lblBloque2").html(arrayBlock[2].Cuerpo_txt + "<br/><br/>" + arrayBlock[3].Cuerpo_txt + "<br/><br/>" + arrayBlock[4].Cuerpo_txt + $("#lblSaludo").html() + " " + arrayBlock[5].Cuerpo_txt + " -Si/no cumple- " + arrayBlock[6].Cuerpo_txt);
+        }
+
     });
 
     //-Validaciones de rol-//
@@ -534,28 +544,23 @@ function resumeForm(){
                 $.getJSON("index.php/form/get_Asigned_Users/" + arrayCarta[t].usuario_redactor + "/" + arrayCarta[t].usuario_consultor + "/" + arrayCarta[t].usuario_juridico + "/" + arrayCarta[t].usuario_gerente , function(objRData){
                     arrayAsigUsr = objRData;
                     if (arrayAsigUsr.length > 0){
-                        console.log(arrayAsigUsr);
                         for (var us = arrayAsigUsr.length -1; us >=0; us--){
 
                             switch (arrayAsigUsr[us].a01Tipo){
 
                             case '5':
-                            console.log("elaboro");
                             $("#lblRedac").html("Elaboró: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '6':
-                            console.log("valido");
                             $("#lblConsul").html("Validó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '7':
-                            console.log("reviso");
                             $("#lblJurid").html("Revisó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '8':
-                            console.log("aprobo");
                             $("#lblGeren").html("Aprobó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
