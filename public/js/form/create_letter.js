@@ -384,8 +384,8 @@ var tipologia_id = getParameterByName("tId");
     $.getJSON("index.php/form/get_Letter_Blocks/", function(objRData){
         arrayBlock = objRData;
         if (arrayBlock.length > 0){
-            $("#lblBloque1").html(arrayBlock[0].Cuerpo_txt + " " + formulario_id + " " + arrayBlock[1].Cuerpo_txt);
-            $("#lblBloque2").html(arrayBlock[2].Cuerpo_txt + "<br/><br/>" + arrayBlock[3].Cuerpo_txt + "<br/><br/>" + arrayBlock[4].Cuerpo_txt + $("#lblSaludo").html() + " " + arrayBlock[5].Cuerpo_txt + " -Si/no cumple- " + arrayBlock[6].Cuerpo_txt);
+            $("#lblBloque1").html(arrayBlock[0].Cuerpo_txt + " " + formulario_id + " " + arrayBlock[1].Cuerpo_txt  + "<br/><br/>" +  arrayBlock[2].Cuerpo_txt);
+            $("#lblBloque2").html(arrayBlock[3].Cuerpo_txt + "<br/><br/>" + arrayBlock[4].Cuerpo_txt + $("#lblSaludo").html() + " " + arrayBlock[5].Cuerpo_txt + " -Si/no cumple- " + arrayBlock[6].Cuerpo_txt);
         }
 
     });
