@@ -920,6 +920,18 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Metodo get_no_residentes
+    metodo que obtiene la informacion de la tabla de no residentes*/
+    public function get_no_residentes($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT nr.`Nombres_trabajadores`, nr.`Empleado_Contratista`, nr.`Municipio`, nr.`Vereda`, nr.`Nombre_Predio`, nr.`Propietarios`, nr.`Nombre_Encuestado` FROM `tmp_no_residentes` nr WHERE nr.`CC` = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /**Metodo get_empleo
     metodo que obtiene la informacion de la vista electrohuila*/
     public function get_empleo($cedula){

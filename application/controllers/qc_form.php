@@ -685,6 +685,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_electro($cedula));
     }
 
+    /*Cargar info No Residentes*/
+    public function get_No_Residentes($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_no_residentes($cedula));
+    }
+
     /*Cargar departamentos*/
     public function get_Dpto(){
         $this->load->model("qm_form", "form", true);

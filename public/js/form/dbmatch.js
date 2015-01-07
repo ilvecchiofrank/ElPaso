@@ -43,9 +43,23 @@ function loadResid(){
 
 //-Cargar Compensación No Residentes-//
 function loadNoResid(){
-    //console.log("No residentes");
+    console.log("No residentes");
     var cedula = getParameterByName("docId");
     var tablanoresid = "";
+    $.getJSON("index.php/form/get_No_Residentes/" + cedula, function(objRData){
+        arrayNr = objRData;
+        console.table(arrayNr);
+        if (arrayNr.length >=1){
+            tablanoresid += "<table border ='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Nombres</td><td>Empleado</td><td>Municipio</td><td>Vereda</td><td>Nombre Predio</td><td>Propietarios</td><td>Nombre Encuestado</td></tr>";
+            for (var i = arrayNr.length - 1; i >= 0; i--) {
+                tablanoresid += "<tr><td>" + arrayNr[i].Nombres_trabajadores + "</td><td>" + arrayNr[i].Empleado_Contratista + "</td><td>" + arrayNr[i].Municipio + "</td><td>" + arrayNr[i].Vereda + "</td><td>" + arrayNr[i].Nombre_Predio + "</td><td>" + arrayNr[i].Propietarios + "</td><td>" + arrayNr[i].Nombre_Encuestado + "</td></tr>";
+            }
+        }else{
+            $("#tableCompNoResidentes").css("display", "none");
+        }
+            tablanoresid += "</tbody></table>";
+            $("#tableCompNoResidentes").html(tablanoresid);
+    });
 }
 
 //-Cargar Pescadores-//
