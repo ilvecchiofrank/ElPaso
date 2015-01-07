@@ -106,10 +106,10 @@
               <td>Elaboró: <?php echo $usr_Red[0]->a01Inicial; ?></td>
             </tr>
             <tr>
-              <td>Revisó: <?php echo $usr_Con[0]->a01Inicial; ?></td>
+              <td>Validó: <?php echo $usr_Jur[0]->a01Inicial; ?></td>
             </tr>
             <tr>
-              <td>Validó: <?php echo $usr_Jur[0]->a01Inicial; ?></td>
+              <td>Revisó: <?php echo $usr_Con[0]->a01Inicial; ?></td>
             </tr>
             <tr>
               <td>Aprobó: MP</td>
