@@ -40,9 +40,9 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
-            <table id='tableCompResidentes' class='table table-striped'>
             <legend>Compensación Residentes</legend>
             <br/>
+            <table id='tableCompResidentes' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
@@ -52,9 +52,9 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <legend>Compensación No Residentes</legend>
+            <br/>
             <table id='tableCompNoResidentes' class='table table-striped'>
-              <legend>Compensación No Residentes</legend>
-              <br/>
               <thead>
                 <tbody>
                   <tr>

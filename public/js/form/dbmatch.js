@@ -48,7 +48,6 @@ function loadNoResid(){
     var tablanoresid = "";
     $.getJSON("index.php/form/get_No_Residentes/" + cedula, function(objRData){
         arrayNr = objRData;
-        console.table(arrayNr);
         if (arrayNr.length >=1){
             tablanoresid += "<table border ='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Nombres</td><td>Empleado</td><td>Municipio</td><td>Vereda</td><td>Nombre Predio</td><td>Propietarios</td><td>Nombre Encuestado</td></tr>";
             for (var i = arrayNr.length - 1; i >= 0; i--) {
