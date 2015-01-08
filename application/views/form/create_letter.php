@@ -135,13 +135,13 @@ if (isset($_GET["code"])) {
                 </td>
               </tr>
               <tr>
-                <td colspan='2'>
+                <td colspan='3'>
                   <br/>
                   <a id='btnCert' href="#" class="btn btn-default btn-md">Certificaciones</a>
                   <a id='btnTutela' href="#" class="btn btn-success btn-md">Tutelas</a>
                   <a id='btnAnswer' href="#" class="btn btn-warning btn-md">Respuestas</a>
                   <a id='btnDBMatch' href="#" class="btn btn-info btn-md">Cruces BD</a>
-                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Concepto Comité de Expertos</a>
+                  <a id='btnCCT' href="#" class="btn btn-danger btn-md">Mesa Técnica</a>
                   <a id='btnSuppCon' href="#" class="btn btn-default btn-md">Conceptos de soporte</a>
                 </td>
               </tr>
