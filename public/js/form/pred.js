@@ -8,10 +8,10 @@ function loadPred(){
     $.getJSON("index.php/form/get_Pred/" + formulario , function(objRData){
         arrayPred = objRData;
         if (arrayPred.length > 0){
-            tabpred += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Formulario</th><th scope='col'>Pregunta</th><th scope='col'>Fecha</th><th scope='col'>Estado</th><th scope='col'>a09O01</th><th scope='col'>a09O02</th><th scope='col'>a09O03</th><th scope='col'>a09O04</th><th scope='col'>a09O05</th><th scope='col'>a09O06</th><th scope='col'>a09O07</th><th scope='col'>a09O08</th><th scope='col'>a09O09</th><th scope='col'>a09O10</th><th scope='col'>Código catastral</th></tr></thead><tbody>";
+            tabpred += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Código Municipio</th><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Predio</th><th scope='col'>Propietario</th><th scope='col'>Código Catastral</th><th scope='col'>Fuente</th><th scope='col'>Año</th></tr></thead><tbody>";
 
             for (var c = arrayPred.length -1; c >=0; c--){
-                tabpred += "<tr><td>" + arrayPred[c].a09Formulario + "</td><td>" + arrayPred[c].a09Pregunta + "</td><td>" + arrayPred[c].a09Fecha + "</td><td>" + arrayPred[c].a09Estado + "</td><td>" + arrayPred[c].a09O01 + "</td><td>" + arrayPred[c].a09O02 + "</td><td>" + arrayPred[c].a09O03 + "</td><td>" + arrayPred[c].a09O04 + "</td><td>" + arrayPred[c].a09O05 + "</td><td>" + arrayPred[c].a09O06 + "</td><td>" + arrayPred[c].a09O07 + "</td><td>" + arrayPred[c].a09O08 + "</td><td>" + arrayPred[c].a09O09 + "</td><td>" + arrayPred[c].a09O10 + "</td><td>" + arrayPred[c].cod_catastral + "</td></tr>";
+                tabpred += "<tr><td>" + arrayPred[c].mpo_cod + "</td><td>" + arrayPred[c].mpo + "</td><td>" + arrayPred[c].vereda + "</td><td>" + arrayPred[c].predio + "</td><td>" + arrayPred[c].propietario + "</td><td>" + arrayPred[c].cod_catastral + "</td><td>" + arrayPred[c].fuente + "</td><td>" + arrayPred[c].annio + "</td></tr>";
             }
         }
         else

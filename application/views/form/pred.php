@@ -21,6 +21,8 @@
           <div id='pred' clas='form-group'>
             <br/>
             <legend>Información predial:</legend>
+            <br/>
+            <label>1. Fuente encuesta censo 2014, respuesta a preguntas</label>
             <table id='tablePredResults' class='table table-striped'>
               <thead>
                 <tbody>
