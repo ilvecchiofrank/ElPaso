@@ -4,6 +4,7 @@ loadPred();
 
 function loadPred(){
     var tabpred = "";
+    var tabfont = "";
     var formulario = getParameterByName("formCode");
     $.getJSON("index.php/form/get_Pred/" + formulario , function(objRData){
         arrayPred = objRData;
@@ -21,8 +22,26 @@ function loadPred(){
 
         tabpred += "</body></table><br/>";
         $("#tablePredResults").html(tabpred);
-        //$(".modal").modal('hide');
     });
+
+    $.getJSON("index.php/form/get_Pred_Font/" + formulario, function(objRData){
+        arrayPredFont = objRData;
+        console.table(arrayPredFont);
+        if (arrayPredFont.length > 0) {
+            tabfont += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>FECH</th><th scope='col'>C</th><th scope='col'>F.I</th><th scope='col'>F.F</th><th scope='col'>TIPO_P</th><th scope='col'>NOMBRE</th><th scope='col'>DOC</th><th scope='col'>NIT_P</th><th scope='col'>NOM</th><th scope='col'>NIT</th><th scope='col'>DESC</th><th scope='col'>VALOR</th><th scope='col'>U</th><th scope='col'>C</th><th scope='col'>DES</th><th scope='col'>DIREC</th><th scope='col'>Z</th><th scope='col'>B</th><th scope='col'>TIPO</th><th scope='col'>OTRA</th><th scope='col'>PER</th><th scope='col'>NOMBR</th><th scope='col'>CARG</th><th scope='col'>OBS</th><th scope='col'>M</th><th scope='col'>V</th><th scope='col'>P</th><th scope='col'>OTR</th><th scope='col'>OT</th><th scope='col'>OT</th><th scope='col'>COD</th></tr></thead>";
+
+            for (var i = arrayPredFont.length - 1; i >= 0; i--) {
+                tabfont += "<tr><td>" + arrayPredFont[i].FECHA_EXPEDICION + "</td><td>" + arrayPredFont[i].CARGO + "</td><td>" + arrayPredFont[i].FECHA_INICIO + "</td><td>" + arrayPredFont[i].FECHA_FIN + "</td><td>" + arrayPredFont[i].TIPO_PERSONA_JURIDICA + "</td><td>" + arrayPredFont[i].NOMBRE_PERSONA_JURIDICA  + "</td><td>" + arrayPredFont[i].DOC_IDENTIFICACION + "</td><td>" + arrayPredFont[i].NIT_PERSONA_JURIDICA + "</td><td>" + arrayPredFont[i].NOMBRE_EMPRESA + "</td><td>" + arrayPredFont[i].NIT_EMPRESA + "</td><td>" + arrayPredFont[i].DESCRIP_RELACION + "</td><td>" + arrayPredFont[i].VALORES_CERTIFICADOS  + "</td><td>" + arrayPredFont[i].UNIDADES + "</td><td>" + arrayPredFont[i].CANTIDAD + "</td><td>" + arrayPredFont[i].DESCRIP_UNIDADES + "</td><td>" + arrayPredFont[i].DIRECCION_CERTIFICACION + "</td><td>" + arrayPredFont[i].ZONA + "</td><td>" + arrayPredFont[i].BARRIO + "</td><td>" + arrayPredFont[i].TIPO_CERTIFICACION + "</td><td>" + arrayPredFont[i].OTRA_DESCRIP_UNIDADES + "</td><td>" + arrayPredFont[i].PERSONA_FIGURA + "</td><td>" + arrayPredFont[i].NOMBRE_PERSONA_FIRMA + "</td><td>" + arrayPredFont[i].CARGO_PERSONA_FIRMA + "</td><td>" + arrayPredFont[i].OBSERVACIONES + "</td><td>" + arrayPredFont[i].MUNICIPIO + "</td><td>" + arrayPredFont[i].VEREDA + "</td><td>" + arrayPredFont[i].PREDIO + "</td><td>" + arrayPredFont[i].OTRO_MUNICIPIO + "</td><td>" + arrayPredFont[i].OTRA_VEREDA + "</td><td>" + arrayPredFont[i].OTRO_PREDIO + "</td><td>" + arrayPredFont[i].COD_CATASTRAL + "</td></tr>";
+            };
+
+        }else{
+            $("#font").css("display","none");
+        }
+
+        tabfont += "</body></table><br/>";
+        $("#tableFontResults").html(tabfont);
+    });
+
 }
 
 //-Extraer parametros QueryString-//

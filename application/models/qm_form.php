@@ -998,6 +998,15 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Metodo get_pred_font
+    metodo que obtiene la informacion de fuente certificaciones*/
+    public function get_pred_font($formulario){
+      $SQLResult = $this->db->query("SELECT * FROM `v16web_certificadores_t17consolidado` WHERE `FORMULARIO` = '$formulario'");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
+
     /**
      * Método do_search
      *

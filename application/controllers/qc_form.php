@@ -629,6 +629,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_pred($formulario));
     }
 
+    /* Obtener informacion de fuente certificaciones */
+    public function get_Pred_Font($formulario){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_pred_font($formulario));
+    }
+
     /* Obtener conceptos de soporte */
     public function get_Supp_con(){
         $this->load->model("qm_form", "form", true);

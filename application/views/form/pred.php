@@ -18,7 +18,7 @@
           <div id='controls'>
           <br/>
 
-          <div id='pred' clas='form-group'>
+          <div id='pred' class='form-group'>
             <br/>
             <legend>Información predial:</legend>
             <br/>
@@ -33,6 +33,19 @@
               </thead>
             </table>
           </div>
+        </div>
+        <div id='font'class='form-group'>
+          <br/>
+          <label>2. Fuente certificaciones</label>
+            <table id='tableFontResults' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
         </div>
         </br>
       </div>
