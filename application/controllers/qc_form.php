@@ -80,6 +80,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Fromulario para consultar informacion predial */
+    public function pred(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("pred", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario para consultar el dash por estados */
     public function dash_filter(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -611,6 +621,12 @@ class QC_Form extends QC_Controller {
     public function get_Cce(){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_cce());
+    }
+
+    /* Obtener informacion predial */
+    public function get_Pred($formulario){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_pred($formulario));
     }
 
     /* Obtener conceptos de soporte */

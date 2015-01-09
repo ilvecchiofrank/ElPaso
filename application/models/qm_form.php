@@ -927,7 +927,7 @@ class QM_Form extends CI_Model {
         $SQLResult = $this->db->query("SELECT nr.`Nombres_trabajadores`, nr.`Empleado_Contratista`, nr.`Municipio`, nr.`Vereda`, nr.`Nombre_Predio`, nr.`Propietarios`, nr.`Nombre_Encuestado` FROM `tmp_no_residentes` nr WHERE nr.`CC` = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
-      } catch (Exception $exc) {
+      } catch (Exception $exc){
         echo $exc->getTraceAsString();
       }
     }
@@ -988,6 +988,15 @@ class QM_Form extends CI_Model {
 
         return $dataArray;
       }
+
+    /*Metodo get_pred
+    metodo que obtiene la informacion predial*/
+    public function get_pred($formulario){
+      $SQLResult = $this->db->query("SELECT * FROM `t09web_usuario_respuestasn_CODCATASTRAL` urc INNER JOIN `v19web_predios_cod_catastral_t09` cc9 ON urc.`a09Formulario` = cc9.`a09Formulario` WHERE cc9.`a09Formulario` = '$formulario'");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
 
     /**
      * Método do_search

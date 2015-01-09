@@ -143,6 +143,7 @@ if (isset($_GET["code"])) {
                   <a id='btnDBMatch' href="#" class="btn btn-info btn-md">Cruces BD</a>
                   <a id='btnCCT' href="#" class="btn btn-danger btn-md">Mesa Técnica</a>
                   <a id='btnSuppCon' href="#" class="btn btn-default btn-md">Conceptos de soporte</a>
+                  <a id='btnPred' href="#" class="btn btn-success btn-md">Información predial</a>
                 </td>
               </tr>
             </table>

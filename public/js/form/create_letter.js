@@ -517,6 +517,8 @@ function loadT8(){
                 $("#btnCCT").attr("href", 'index.php/form/cce');
                 $("#btnSuppCon").attr("target","_blank");
                 $("#btnSuppCon").attr("href", 'index.php/form/supp_con');
+                $("#btnPred").attr("target","_blank");
+                $("#btnPred").attr("href", 'index.php/form/pred?formCode=' + formulario);
 
                 /*Vista impresion*/
                 $("#btnPrint").attr("target", "_blank");
