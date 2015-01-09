@@ -172,9 +172,9 @@ if (isset($_GET["code"])) {
             <br/>
             <label id='lblRedac'>Elaboró:</label>
             <br/>
-            <label id='lblJurid'>Revisó:</label>
+            <label id='lblConsul'>Revisó:</label>
             <br/>
-            <label id='lblConsul'>Validó:</label>
+            <label id='lblJurid'>Validó:</label>
             <br/>
             <label id='lblGeren'>Aprobó:</label>
             <br/>

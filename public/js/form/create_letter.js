@@ -554,11 +554,11 @@ function resumeForm(){
                             break;
 
                             case '6':
-                            $("#lblConsul").html("Validó: " + arrayAsigUsr[us].a01Nombres);
+                            $("#lblConsul").html("Revisó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '7':
-                            $("#lblJurid").html("Revisó: " + arrayAsigUsr[us].a01Nombres);
+                            $("#lblJurid").html("Validó: " + arrayAsigUsr[us].a01Nombres);
                             break;
 
                             case '8':
