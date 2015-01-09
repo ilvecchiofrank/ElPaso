@@ -992,7 +992,7 @@ class QM_Form extends CI_Model {
     /*Metodo get_pred
     metodo que obtiene la informacion predial*/
     public function get_pred($formulario){
-      $SQLResult = $this->db->query("SELECT * FROM `t09web_usuario_respuestasn_CODCATASTRAL` urc INNER JOIN `v19web_predios_cod_catastral_t09` cc9 ON urc.`a09Formulario` = cc9.`a09Formulario` WHERE cc9.`a09Formulario` = '$formulario'");
+      $SQLResult = $this->db->query("SELECT * FROM v19web_predios_cod_catastral_t09 v JOIN tmp_base b ON b.form =v.a09Formulario WHERE v.a09Formulario='$formulario'");
       $dataArray = $SQLResult->result();
 
       return $dataArray;

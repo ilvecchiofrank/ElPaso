@@ -26,7 +26,6 @@ function loadPred(){
 
     $.getJSON("index.php/form/get_Pred_Font/" + formulario, function(objRData){
         arrayPredFont = objRData;
-        console.table(arrayPredFont);
         if (arrayPredFont.length > 0) {
             tabfont += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>FECH</th><th scope='col'>C</th><th scope='col'>F.I</th><th scope='col'>F.F</th><th scope='col'>TIPO_P</th><th scope='col'>NOMBRE</th><th scope='col'>DOC</th><th scope='col'>NIT_P</th><th scope='col'>NOM</th><th scope='col'>NIT</th><th scope='col'>DESC</th><th scope='col'>VALOR</th><th scope='col'>U</th><th scope='col'>C</th><th scope='col'>DES</th><th scope='col'>DIREC</th><th scope='col'>Z</th><th scope='col'>B</th><th scope='col'>TIPO</th><th scope='col'>OTRA</th><th scope='col'>PER</th><th scope='col'>NOMBR</th><th scope='col'>CARG</th><th scope='col'>OBS</th><th scope='col'>M</th><th scope='col'>V</th><th scope='col'>P</th><th scope='col'>OTR</th><th scope='col'>OT</th><th scope='col'>OT</th><th scope='col'>COD</th></tr></thead>";
 
