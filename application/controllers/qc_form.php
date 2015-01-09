@@ -80,6 +80,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario para consulta geografica de veredas y predios*/
+    public function map_record(){
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("map_record", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Fromulario para consultar informacion predial */
     public function pred(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -633,6 +643,12 @@ class QC_Form extends QC_Controller {
     public function get_Pred_Font($formulario){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_pred_font($formulario));
+    }
+
+    /* Obtener informacion geologica de vereda */
+    public function get_Geo_Mpo($municipio){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_geo_mpo($municipio));
     }
 
     /* Obtener conceptos de soporte */

@@ -1007,6 +1007,15 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Metodo get_geo_mpo
+    metodo que obtiene la info geologica del municipio*/
+    public function get_geo_mpo($municipio){
+      $SQLResult = $this->db->query("SELECT * FROM `t67web_extent_veredas` WHERE VEREDA = '$municipio'");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
+
     /**
      * Método do_search
      *
