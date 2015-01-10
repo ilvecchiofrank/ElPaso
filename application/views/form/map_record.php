@@ -20,15 +20,27 @@
 
           <div id='map' class='form-group'>
             <br/>
-            <legend id='lgndTitulo'>Ficha:</legend>
-            <label id='lblSubTitulo'>Información a nivel</label>
+            <legend id='lgndTitulo'>Ficha Veredal:</legend>
+            <label id='lblSubTitulo'>Información a nivel Vereda</label>
             <table style="width: 65%">
               <tr>
                 <td style="width: 50%"><label id='lblMpo'></label></td>
                 <td style="width: 50%"><label id='lblVda'></label></td>
               </tr>
             </table>
-            <table id='tableMapResults' class='table table-striped'>
+            <label>Fuente: Respuestas encuesta 2014</label>
+            <table id='tableMapResults1' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <label>Fuente: Certificaciones adjuntadas</label>
+            <table id='tableMapResults2' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
@@ -41,7 +53,33 @@
 
           <div id='geo'>
             <br/>
-            <img id='imgMpo' src="public/img/veredas/hola.png" alt="Mapa" style="width:100%">
+            <img id='imgMpo' src="" alt="Mapa" style="width:100%">
+          </div>
+
+          <div id='veredal'>
+          <br/>
+            <table id='tableVerResults' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+          </div>
+
+          <div id='predial'>
+          <br/>
+            <table id='tablePredResults' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
           </div>
 
         </div>
