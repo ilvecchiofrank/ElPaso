@@ -651,6 +651,18 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_geo_mpo($municipio));
     }
 
+    /*Obtener la tabla pre1 de vista veredal*/
+    public function get_Map_Pre1($vereda){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_map_pre1($vereda));
+    }
+
+    /*Obtener la taba pre2 de la vista veredal*/
+    public function get_Map_Pre2($vereda){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_map_pre2($vereda));
+    }
+
     /* Obtener la primera tabla de vista municipal */
     public function get_Map_Record_1($vereda){
         $this->load->model("qm_form", "form", true);

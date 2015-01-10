@@ -10,19 +10,57 @@ function loadRecord(){
     var tabmap = "";
     var tabMR = "";
     var tabMR2 = "";
+    var tabPre1 = "";
+    var tabPre2 = "";
 
     $("#lblVda").html("Vereda: " + vereda);
     $("#lblMpo").html("Municipio: " + municipio);
 
     //Carga de tablas iniciales
+    $.getJSON("index.php/form/get_Map_Pre1/" + vereda, function(objRData){
+        arrayPre1 = objRData;
+
+        if (arrayPre1.length > 0) {
+            tabPre1 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>"
+
+            for (var i = arrayPre1.length - 1; i >= 0; i--) {
+                tabPre1 += "<tr><td>" + arrayPre1[i].municipio + "</td><td>" + arrayPre1[i].VEREDA + "</td><td>" + arrayPre1[i].AREA + "</td><td>" + arrayPre1[i].JORNALES_AÑO + "</td><td>" + arrayPre1[i].empleos_permanentes + "</td></tr>";
+            };
+
+        }else{
+            $("#pre1").css("display", "none");
+        }
+
+        tabPre1 += "</body></table><br/>";
+        $("#tablePre1Results").html(tabPre1);
+    });
+
+    $.getJSON("index.php/form/get_Map_Pre2/" + vereda, function(objRData){
+        arrayPre2 = objRData;
+
+        if (arrayPre2.length > 0) {
+            tabPre2 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso del suelo</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>"
+
+            for (var i = arrayPre2.length - 1; i >= 0; i--) {
+                tabPre2 += "<tr><td>" + arrayPre2[i].municipio + "</td><td>" + arrayPre2[i].VEREDA + "</td><td>" + arrayPre2[i].USO_SUELO + "</td><td>" + arrayPre2[i].AREA + "</td><td>" + arrayPre2[i].JORNALES_AÑO + "</td><td>" + arrayPre2[i].empleos_permanentes + "</td></tr>";
+            };
+
+        }else{
+            $("#pre2").css("display", "none");
+        }
+
+        tabPre2 += "</body></table><br/>";
+        $("#tablePre2Results").html(tabPre2);
+    });
+
     $.getJSON("index.php/form/get_Map_Record_1/" + vereda, function(objRData){
         arrayMR1 = objRData;
 
         if (arrayMR1.length > 0) {
-            tabMR += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>"
+            tabMR += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>"
 
             for (var i = arrayMR1.length - 1; i >= 0; i--) {
-                tabMR += "<tr><td>" + arrayMR1[i].MUNICIPIO + "</td><td>" + arrayMR1[i].VEREDA + "</td><td>" + arrayMR1[i].EMPLEOS_PERMANENTES + "</td><td>" + arrayMR1[i].JORNALES_AÑO + "</td></tr>"
+                tabMR += "<tr><td>" + arrayMR1[i].MUNICIPIO + "</td><td>" + arrayMR1[i].VEREDA + "</td><td>" + arrayMR1[i].EMPLEOS_PERMANENTES + "</td><td>" + arrayMR1[i].JORNALES_AÑO + "</td></tr>";
             };
 
         }else{
@@ -35,7 +73,7 @@ function loadRecord(){
 
     $.getJSON("index.php/form/get_Map_Record_2/" + vereda, function(objRData){
         arrayMR2 = objRData;
-console.table(arrayMR2);
+
         if (arrayMR2.length > 0) {
             tabMR2 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>"
 

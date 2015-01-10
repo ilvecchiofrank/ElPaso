@@ -28,6 +28,35 @@
                 <td style="width: 50%"><label id='lblVda'></label></td>
               </tr>
             </table>
+            <br/>
+            <div id='pre1' class='form-group'>
+              <br/>
+              <label>Área, jornales y empleos permanentes por año por hectarea TOTAL</label>
+              <table id='tablePre1Results' class='table table-striped'>
+                <thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </thead>
+              </table>
+            </div>
+          
+            <div id='pre2' class='form-group'>
+              <br/>
+              <label>Área, jornales y empleos permanentes por año por hectarea por USO</label>
+              <table id='tablePre2Results' class='table table-striped'>
+                <thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </thead>
+              </table>
+            </div>
+
             <label>Fuente: Respuestas encuesta 2014</label>
             <table id='tableMapResults1' class='table table-striped'>
               <thead>

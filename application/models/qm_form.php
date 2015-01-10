@@ -1016,6 +1016,24 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Metodo get_map_pre1
+    netodo que obtiene la tabla pre1 de vista veredal*/
+    public function get_map_pre1($vereda){
+      $SQLResult = $this->db->query("SELECT * FROM `v30_web_uso_jornales_vereda_total` WHERE `VEREDA` = '" . urldecode($vereda) . "'");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
+
+    /*Metodo get_map_pre2
+    metodo que obtiene la tabla pre2 de vista veredal*/
+    public function get_map_pre2($vereda){
+      $SQLResult = $this->db->query("SELECT * FROM `v29_web_uso_jornales_vereda` WHERE `VEREDA` = '" . urldecode($vereda) . "'");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
+
     /*Metodo get_map_record_1
     metodo que obtiene la primera tabla de vista municipal*/
     public function get_map_record_1($vereda){
