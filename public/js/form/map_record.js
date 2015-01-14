@@ -7,11 +7,13 @@ function loadRecord(){
     var vereda = getParameterByName("Vd");
     var municipio = getParameterByName("Mp");
     var predio = getParameterByName("Pr");
+    //Variables de tablas
     var tabmap = "";
     var tabMR = "";
     var tabMR2 = "";
     var tabPre1 = "";
     var tabPre2 = "";
+    var tabVer6 = "";
 
     $("#lblVda").html("Vereda: " + vereda);
     $("#lblMpo").html("Municipio: " + municipio);
@@ -91,7 +93,7 @@ function loadRecord(){
 
     $.getJSON("index.php/form/get_Veredas_Table_6/" + vereda + "/" + municipio, function(objRData){
         arrayTab6 = objRData;
-
+console.log("antes de");
         if (arrayTab6.length > 0) {
             tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Nombre_predio</th><th scope='col'>Area_ha</th><th scope='col'>Area_Afectada</th><th scope='col'>Porc_Afectacion_Predio</th></tr></thead>";
 
@@ -102,7 +104,7 @@ function loadRecord(){
         }else{
             $("#tableVer6").css("display", "none");
         }
-
+console.log("despues de");
         tabVer6 += "</body></table><br/>";
         $("#tableVer6").html(tabVer6);
 
