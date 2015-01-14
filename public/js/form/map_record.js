@@ -118,6 +118,9 @@ function loadRecord(){
     }else{
         //Predio
         $("#veredal").css("display", "none");
+
+    
+
     }
 
     // $.getJSON("index.php/form/get_Cce", function(objRData){

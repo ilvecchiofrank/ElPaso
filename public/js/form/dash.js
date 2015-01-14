@@ -28,7 +28,7 @@ function loadDash(){
     if (rol==9){
     //Query impresion
     $("#dash_status").css("display", "none");
-    
+
     $.getJSON("index.php/form/get_Dash_Finished/", function(objRData){
         arrayLetters = objRData;
         if (arrayLetters.length >= 1){
