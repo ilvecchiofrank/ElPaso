@@ -1052,6 +1052,15 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Metodo get_veredas_table_6
+    metodo que obtiene la informacion de predios para la tabla 6 de veredas*/
+    public function get_veredas_table_6($vereda, $municipio){
+      $SQLResult = $this->db->query("SELECT `Nombre_Predio`, `Area_ha`, `Area_Afectada`, `Porc_Afectacion_Predio` FROM `t25web_predioscenso` WHERE municipio = '$municipio' AND vereda = '$vereda' ORDER BY `Nombre_Predio`");
+      $dataArray = $SQLResult->result();
+
+      return $dataArray;
+    }
+
     /**
      * Método do_search
      *

@@ -675,6 +675,12 @@ class QC_Form extends QC_Controller {
         echo json_encode($this->form->get_map_record_2($vereda));
     }
 
+    /*Obtener la tabla informacion de predios*/
+    public function get_Veredas_Table_6($vereda, $municipio){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_veredas_table_6($vereda, $municipio));
+    }
+
     /* Obtener conceptos de soporte */
     public function get_Supp_con(){
         $this->load->model("qm_form", "form", true);

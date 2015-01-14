@@ -20,8 +20,8 @@
 
           <div id='map' class='form-group'>
             <br/>
-            <legend id='lgndTitulo'>Ficha Veredal:</legend>
-            <label id='lblSubTitulo'>1. Información a nivel Vereda</label>
+            <legend id='lgndTitulo'>FICHA VEREDAL:</legend>
+            <label id='lblSubTitulo' style="font-size: 16px;">1. INFORMACIÓN A NIVEL VEREDA</label>
             <table style="width: 65%">
               <tr>
                 <td style="width: 50%"><label id='lblMpo'></label></td>
@@ -31,7 +31,7 @@
             <br/>
             <div id='pre1' class='form-group'>
               <br/>
-              <label>2. Área, jornales y empleos permanentes por año por hectarea TOTAL</label>
+              <label style="font-size: 16px;">2. ÁREA, JORNALES Y EMPLEOS PERMANENTES POR AÑO POR HECTAREA TOTAL</label>
               <table id='tablePre1Results' class='table table-striped'>
                 <thead>
                   <tbody>
@@ -45,7 +45,7 @@
 
             <div id='pre2' class='form-group'>
               <br/>
-              <label>3. Área, jornales y empleos permanentes por año por hectarea por USO</label>
+              <label style="font-size: 16px;">3. ÁREA, JORNALES Y EMPLEOS PERMANENTES POR AÑO POR HECTAREA POR USO</label>
               <table id='tablePre2Results' class='table table-striped'>
                 <thead>
                   <tbody>
@@ -57,7 +57,7 @@
               </table>
             </div>
 
-            <label>4. Fuente: Respuestas encuesta 2014</label>
+            <label style="font-size: 16px;">4. FUENTE: RESPUESTAS ENCUESTA 2014</label>
             <table id='tableMapResults1' class='table table-striped'>
               <thead>
                 <tbody>
@@ -68,7 +68,7 @@
               </thead>
             </table>
             <br/>
-            <label>5. Fuente: Certificaciones adjuntadas</label>
+            <label style="font-size: 16px;">5. FUENTE: CERTIFICACIONES ADJUNTADAS</label>
             <table id='tableMapResults2' class='table table-striped'>
               <thead>
                 <tbody>
@@ -87,7 +87,8 @@
 
           <div id='veredal'>
           <br/>
-            <table id='tableVerResults' class='table table-striped'>
+          <label style="font-size: 16px;">6. INFORMACIÓN DE PREDIOS</label>
+            <table id='tableVer6' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
