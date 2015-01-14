@@ -91,9 +91,14 @@ function loadRecord(){
         $("#tableMapResults2").html(tabMR2);
     });
 
+    if (tipo == "2") {
+        //Vereda
+        $("#imgMpo").attr("src", "public/img/veredas/" + vereda + ".png");
+        $("#predial").css("display", "none");
+
     $.getJSON("index.php/form/get_Veredas_Table_6/" + vereda + "/" + municipio, function(objRData){
         arrayTab6 = objRData;
-console.log("antes de");
+
         if (arrayTab6.length > 0) {
             tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Nombre_predio</th><th scope='col'>Area_ha</th><th scope='col'>Area_Afectada</th><th scope='col'>Porc_Afectacion_Predio</th></tr></thead>";
 
@@ -104,16 +109,12 @@ console.log("antes de");
         }else{
             $("#tableVer6").css("display", "none");
         }
-console.log("despues de");
+
         tabVer6 += "</body></table><br/>";
         $("#tableVer6").html(tabVer6);
 
     });
 
-    if (tipo == "2") {
-        //Vereda
-        $("#imgMpo").attr("src", "public/img/veredas/" + vereda + ".png");
-        $("#predial").css("display", "none");
     }else{
         //Predio
         $("#veredal").css("display", "none");

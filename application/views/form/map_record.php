@@ -101,7 +101,8 @@
 
           <div id='predial'>
           <br/>
-            <table id='tablePredResults' class='table table-striped'>
+          <label style="font-size: 16px;">TABLA 6.INFORMACIÓN DETALLADA PREDIO</label>
+            <table id='tablePred6' class='table table-striped'>
               <thead>
                 <tbody>
                   <tr>
