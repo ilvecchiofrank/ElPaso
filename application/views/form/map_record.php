@@ -21,7 +21,7 @@
           <div id='map' class='form-group'>
             <br/>
             <legend id='lgndTitulo'>Ficha Veredal:</legend>
-            <label id='lblSubTitulo'>Información a nivel Vereda</label>
+            <label id='lblSubTitulo'>1. Información a nivel Vereda</label>
             <table style="width: 65%">
               <tr>
                 <td style="width: 50%"><label id='lblMpo'></label></td>
@@ -31,7 +31,7 @@
             <br/>
             <div id='pre1' class='form-group'>
               <br/>
-              <label>Área, jornales y empleos permanentes por año por hectarea TOTAL</label>
+              <label>2. Área, jornales y empleos permanentes por año por hectarea TOTAL</label>
               <table id='tablePre1Results' class='table table-striped'>
                 <thead>
                   <tbody>
@@ -42,10 +42,10 @@
                 </thead>
               </table>
             </div>
-          
+
             <div id='pre2' class='form-group'>
               <br/>
-              <label>Área, jornales y empleos permanentes por año por hectarea por USO</label>
+              <label>3. Área, jornales y empleos permanentes por año por hectarea por USO</label>
               <table id='tablePre2Results' class='table table-striped'>
                 <thead>
                   <tbody>
@@ -57,7 +57,7 @@
               </table>
             </div>
 
-            <label>Fuente: Respuestas encuesta 2014</label>
+            <label>4. Fuente: Respuestas encuesta 2014</label>
             <table id='tableMapResults1' class='table table-striped'>
               <thead>
                 <tbody>
@@ -68,7 +68,7 @@
               </thead>
             </table>
             <br/>
-            <label>Fuente: Certificaciones adjuntadas</label>
+            <label>5. Fuente: Certificaciones adjuntadas</label>
             <table id='tableMapResults2' class='table table-striped'>
               <thead>
                 <tbody>
