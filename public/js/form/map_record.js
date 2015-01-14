@@ -118,6 +118,7 @@ function loadRecord(){
     }else{
         //Predio
         $("#veredal").css("display", "none");
+        $("#lgndTitulo").html("FICHA PREDIAL");
 
     $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda, function(objRData){
         arrayTab6 = objRData;
