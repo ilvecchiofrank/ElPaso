@@ -23,11 +23,11 @@ function loadRecord(){
         arrayPre1 = objRData;
 
         if (arrayPre1.length > 0) {
-            tabPre1 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>"
+            tabPre1 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>";
 
             for (var i = arrayPre1.length - 1; i >= 0; i--) {
                 tabPre1 += "<tr><td>" + arrayPre1[i].municipio + "</td><td>" + arrayPre1[i].VEREDA + "</td><td>" + arrayPre1[i].AREA + "</td><td>" + arrayPre1[i].JORNALES_AÑO + "</td><td>" + arrayPre1[i].empleos_permanentes + "</td></tr>";
-            };
+            }
 
         }else{
             $("#pre1").css("display", "none");
@@ -41,11 +41,11 @@ function loadRecord(){
         arrayPre2 = objRData;
 
         if (arrayPre2.length > 0) {
-            tabPre2 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso del suelo</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>"
+            tabPre2 += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso del suelo</th><th scope='col'>Área</th><th scope='col'>Jornales año</th><th scope='col'>Empleos permanentes</th></tr></thead>";
 
             for (var i = arrayPre2.length - 1; i >= 0; i--) {
                 tabPre2 += "<tr><td>" + arrayPre2[i].municipio + "</td><td>" + arrayPre2[i].VEREDA + "</td><td>" + arrayPre2[i].USO_SUELO + "</td><td>" + arrayPre2[i].AREA + "</td><td>" + arrayPre2[i].JORNALES_AÑO + "</td><td>" + arrayPre2[i].empleos_permanentes + "</td></tr>";
-            };
+            }
 
         }else{
             $("#pre2").css("display", "none");
@@ -59,11 +59,11 @@ function loadRecord(){
         arrayMR1 = objRData;
 
         if (arrayMR1.length > 0) {
-            tabMR += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>"
+            tabMR += "<table border='1' cellpadding='1' cellspacing='1' style='width: 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>";
 
             for (var i = arrayMR1.length - 1; i >= 0; i--) {
                 tabMR += "<tr><td>" + arrayMR1[i].MUNICIPIO + "</td><td>" + arrayMR1[i].VEREDA + "</td><td>" + arrayMR1[i].EMPLEOS_PERMANENTES + "</td><td>" + arrayMR1[i].JORNALES_AÑO + "</td></tr>";
-            };
+            }
 
         }else{
             $("#tableMapResults1").css("display", "none");
@@ -77,11 +77,11 @@ function loadRecord(){
         arrayMR2 = objRData;
 
         if (arrayMR2.length > 0) {
-            tabMR2 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>"
+            tabMR2 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Empleos permanentes</th><th scope='col'>Jornales año</th></tr></thead>";
 
             for (var i = arrayMR2.length - 1; i >= 0; i--) {
-                tabMR2 += "<tr><td>" + arrayMR2[i].MUNICIPIO + "</td><td>" + arrayMR2[i].VEREDA + "</td><td>" + arrayMR2[i].EMPLEOS_PERMANENTES + "</td><td>" + arrayMR2[i].JORNALES_AÑO + "</td></tr>"
-            };
+                tabMR2 += "<tr><td>" + arrayMR2[i].MUNICIPIO + "</td><td>" + arrayMR2[i].VEREDA + "</td><td>" + arrayMR2[i].EMPLEOS_PERMANENTES + "</td><td>" + arrayMR2[i].JORNALES_AÑO + "</td></tr>";
+            }
 
         }else{
             $("#tableMapResults2").css("display", "none");
@@ -104,7 +104,7 @@ function loadRecord(){
 
             for (var i = arrayTab6.length - 1; i >= 0; i--) {
                 tabVer6 += "<tr><td>" + arrayTab6[i].Nombre_Predio + "</td><td>" + arrayTab6[i].Area_ha + "</td><td>" + arrayTab6[i].Area_Afectada + "</td><td>" + arrayTab6[i].Porc_Afectacion_Predio + "</td></tr>";
-            };
+            }
 
         }else{
             $("#tableVer6").css("display", "none");
@@ -119,7 +119,24 @@ function loadRecord(){
         //Predio
         $("#veredal").css("display", "none");
 
-    
+    $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda, function(objRData){
+        arrayTab6 = objRData;
+
+        if (arrayTab6.length > 0) {
+            tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso_Suelo</th><th scope='col'>Area</th><th scope='col'>Jornales_Año</th><th scope='col'>Empleos_permanentes</th></tr></thead>";
+
+            for (var i = arrayTab6.length - 1; i >= 0; i--) {
+                tabVer6 += "<tr><td>" + arrayTab6[i].municipio + "</td><td>" + arrayTab6[i].vereda + "</td><td>" + arrayTab6[i].USO_SUELO + "</td><td>" + arrayTab6[i].AREA + "</td><td>" + arrayTab6[i].JORNALES_ANNIO + "</td><td>" + arrayTab6[i].empleos_permanentes + "</td></tr>";
+            }
+
+        }else{
+            $("#tablePred6").css("display", "none");
+        }
+
+        tabVer6 += "</body></table><br/>";
+        $("#tablePred6").html(tabVer6);
+
+    });
 
     }
 
