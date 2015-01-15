@@ -7,6 +7,7 @@ function loadRecord(){
     var vereda = getParameterByName("Vd");
     var municipio = getParameterByName("Mp");
     var predio = getParameterByName("Pr");
+    var cod_catastral = getParameterByName("cCat");
     //Variables de tablas
     var tabmap = "";
     var tabMR = "";
@@ -119,6 +120,8 @@ function loadRecord(){
         //Predio
         $("#veredal").css("display", "none");
         $("#lgndTitulo").html("FICHA PREDIAL");
+        console.log("predio " + predio);
+        $("#imgMpo").attr("src", "public/img/predios/" + cod_catastral + ".png");
 
     $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda, function(objRData){
         arrayTab6 = objRData;
