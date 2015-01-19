@@ -94,7 +94,7 @@ function loadRecord(){
 
     if (tipo == "2") {
         //Vereda
-        $("#imgMpo").attr("src", "public/img/veredas/" + vereda + ".png");
+        $("#imgMpo").attr("src", "https://s3.amazonaws.com/emgesa/MAPAS/VEREDAS/" + vereda + ".png");
         $("#predial").css("display", "none");
 
     $.getJSON("index.php/form/get_Veredas_Table_6/" + vereda + "/" + municipio, function(objRData){
@@ -121,7 +121,7 @@ function loadRecord(){
         $("#veredal").css("display", "none");
         $("#lgndTitulo").html("FICHA PREDIAL");
         console.log("predio " + predio);
-        $("#imgMpo").attr("src", "public/img/predios/" + cod_catastral + ".png");
+        $("#imgMpo").attr("src", "https://s3.amazonaws.com/emgesa/MAPAS/PREDIOS/" + cod_catastral + ".jpg");
 
     $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda, function(objRData){
         arrayTab6 = objRData;

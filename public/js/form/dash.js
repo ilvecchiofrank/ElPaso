@@ -167,6 +167,7 @@ function loadDash(){
                         break;
                     default:
                         var responsables = "";
+                        break;
                 }
 
                 //Filas de tabla
