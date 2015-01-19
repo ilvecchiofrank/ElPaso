@@ -123,14 +123,16 @@ function loadRecord(){
         console.log("predio " + predio);
         $("#imgMpo").attr("src", "https://s3.amazonaws.com/emgesa/MAPAS/PREDIOS/" + cod_catastral + ".jpg");
 
-    $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda, function(objRData){
+    $.getJSON("index.php/form/get_Predios_Table_6/" + municipio + "/" + vereda + "/" + cod_catastral , function(objRData){
         arrayTab6 = objRData;
 
         if (arrayTab6.length > 0) {
-            tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso_Suelo</th><th scope='col'>Area</th><th scope='col'>Jornales_Año</th><th scope='col'>Empleos_permanentes</th></tr></thead>";
+            //tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Municipio</th><th scope='col'>Vereda</th><th scope='col'>Uso_Suelo</th><th scope='col'>Area</th><th scope='col'>Jornales_Año</th><th scope='col'>Empleos_permanentes</th></tr></thead>";
+            tabVer6 += "<table border='1' cellpadding='1' cellspacing='1' style='width 95%'><thead><tr><th scope='col'>Nombre Predio</th><th scope='col'>Uso</th><th scope='col'>Área</th><th scope='col'>Jornales Año</th><th scope='col'>Empleos Permanentes</th></tr></thead>";
 
             for (var i = arrayTab6.length - 1; i >= 0; i--) {
-                tabVer6 += "<tr><td>" + arrayTab6[i].municipio + "</td><td>" + arrayTab6[i].vereda + "</td><td>" + arrayTab6[i].USO_SUELO + "</td><td>" + arrayTab6[i].AREA + "</td><td>" + arrayTab6[i].JORNALES_ANNIO + "</td><td>" + arrayTab6[i].empleos_permanentes + "</td></tr>";
+                //tabVer6 += "<tr><td>" + arrayTab6[i].municipio + "</td><td>" + arrayTab6[i].vereda + "</td><td>" + arrayTab6[i].USO_SUELO + "</td><td>" + arrayTab6[i].AREA + "</td><td>" + arrayTab6[i].JORNALES_ANNIO + "</td><td>" + arrayTab6[i].empleos_permanentes + "</td></tr>";
+                tabVer6 += "<tr><td>" + arrayTab6[i].Nombre_Predio + "</td><td>" + arrayTab6[i].USO + "</td><td>" + arrayTab6[i].AREA + "</td><td>" + arrayTab6[i].Jornales_anio + "</td><td>" + arrayTab6[i].empleos_permanentes + "</td></tr>";
             }
 
         }else{

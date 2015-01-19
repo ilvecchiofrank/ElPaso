@@ -1064,8 +1064,9 @@ class QM_Form extends CI_Model {
 
     /*Metodo get_predios_table6
     metodo que obtiene la informacion de predios para la tabla 6 de predios*/
-    public function get_predios_table_6($municipio, $vereda){
-      $SQLResult = $this->db->query("SELECT municipio, vereda, `USO_SUELO`, AREA, `JORNALES_ANNIO`, `empleos_permanentes` FROM `t68web_uso_predios_jornales` WHERE municipio = '" . urldecode($municipio) . "' AND vereda = '" . urldecode($vereda) . "'");
+    public function get_predios_table_6($municipio, $vereda, $predio){
+      //$SQLResult = $this->db->query("SELECT municipio, vereda, `USO_SUELO`, AREA, `JORNALES_ANNIO`, `empleos_permanentes` FROM `t68web_uso_predios_jornales` WHERE municipio = '" . urldecode($municipio) . "' AND vereda = '" . urldecode($vereda) . "'");
+      $SQLResult = $this->db->query("SELECT `Nombre_Predio`, USO_SUELO AS USO, AREA, `JORNALES_ANNIO` AS Jornales_anio, empleos_permanentes FROM `v31_web_predios_uso` WHERE municipio = '" . urldecode($municipio) . "' AND vereda = '" . urldecode($vereda) . "' AND COD_CATAS = '$predio'");
       $dataArray = $SQLResult->result();
 
       return $dataArray;

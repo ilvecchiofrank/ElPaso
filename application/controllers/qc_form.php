@@ -682,9 +682,9 @@ class QC_Form extends QC_Controller {
     }
 
     /*Obtener la tabla informacion de predios vista predio*/
-    public function get_Predios_Table_6($municipio, $vereda){
+    public function get_Predios_Table_6($municipio, $vereda, $predio){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_predios_table_6($municipio, $vereda));
+        echo json_encode($this->form->get_predios_table_6($municipio, $vereda, $predio));
     }
 
     /* Obtener conceptos de soporte */
