@@ -171,6 +171,10 @@ function loadControlValues(){
             tabla += "</tbody></table><br/>";
             $("#tableResults").html(tabla);
         }
+        else
+        {
+            $("#tableResults").css("display", "none");
+        }
 
     });
 
@@ -245,6 +249,10 @@ function loadControlValues(){
 
             tablaBefore += "</tbody></table><br/>";
             $("#tableEntrevResults").html(tablaBefore);
+        }
+        else
+        {
+            $("#tableEntrevResults").css("display", "none");
         }
 
     });

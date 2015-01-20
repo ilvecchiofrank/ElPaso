@@ -399,7 +399,7 @@ class QM_Form extends CI_Model {
     public function get_CertFiles($code){
         try {
             //Generamos el query
-            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 1" );
+            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 1  ORDER BY a18TipoArchivo DESC" );
             $dataArray = $query->result();
             return $dataArray;
         } catch (Exception $exc) {
@@ -412,7 +412,7 @@ class QM_Form extends CI_Model {
     public function get_CertFilesBefore($code){
         try {
             //Generamos el query
-            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 2" );
+            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 2  ORDER BY a18TipoArchivo DESC" );
             $dataArray = $query->result();
             return $dataArray;
         } catch (Exception $exc) {
