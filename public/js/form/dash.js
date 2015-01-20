@@ -158,6 +158,7 @@ function loadDash(){
                     var vulnerable = "<td>" + arrayLetters[t].vulnerable + "</td>";
                 }
 
+                //Mostrar responsables por rol
                 switch(rol) {
                     case '8':
                         var responsables = "E:" + arrayLetters[t].E + " - " + "R:" + arrayLetters[t].R + " - " + "V:" + arrayLetters[t].V;
@@ -170,6 +171,19 @@ function loadDash(){
                         break;
                 }
 
+                //Boton para terminar desde el dash
+                var btn_Finish_Dash = "";
+
+                switch(rol){
+                    case '8':
+                        //btn_Finish_Dash = "<a href='" + rol + "' target='_blank' class='btn btn-danger'>Terminar</a>";
+                        btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
+                        break;
+                    default:
+                        btn_Finish_Dash = "";
+                        break;
+                }
+
                 //Filas de tabla
                 switch(rol){
                     case '5':
@@ -179,7 +193,7 @@ function loadDash(){
                         tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
                         break;
                     default:
-                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + responsables + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
+                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + responsables + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + btn_Finish_Dash + "</td></tr>";
                         break;
                 }
             }
@@ -213,3 +227,21 @@ $(document).ajaxStart(function() {
 }).ajaxStop(function() {
     $(".modal").modal('hide');
 });
+
+function finishDash(carta){
+
+    $.ajax({
+    url: "index.php/form/do_Finish_Dash/",
+    type: "POST",
+    data: { csrf_test_name: get_csrf_hash, "idLetter": carta},
+    success: function(result){
+        if(result == "ok"){
+            location.reload();
+        }else{
+            //console.log("finalizado error");
+        }
+    }
+    });
+
+}
+

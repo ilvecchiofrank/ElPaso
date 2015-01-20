@@ -609,6 +609,17 @@ class QC_Form extends QC_Controller {
         echo json_encode($arrLResponse);
     }
 
+    /*Finalizar carta desde dashboard*/
+    public function do_Finish_Dash(){
+        $this->load->model("qm_form", "form", true);
+        $resultInsert = $this->form->do_finish_dash($_POST["idLetter"]);
+
+        if ($resultInsert == true)
+            echo "ok";
+        else
+            echo $resultInsert;
+    }
+
     /* Obtener listado de archivos por certificacion - Censo 2014*/
     public function get_FilesN($code) {
         $this->load->model("qm_form", "form", true);

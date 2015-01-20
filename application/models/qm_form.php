@@ -589,6 +589,16 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Finalizar carta desde dashboard*/
+    public function do_finish_dash($idLetter){
+      try {
+        $query = $this->db->query("UPDATE t49web_respuestas_tutelas SET estado = 8, finalizada = 1 WHERE id_respuesta = $idLetter");
+        return true;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
     /**
      * Metodo get_next_chapter
      *
