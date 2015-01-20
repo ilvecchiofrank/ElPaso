@@ -395,11 +395,24 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
-    /* Obtener archivos relacionados con la certificacion*/
+    /* Obtener archivos relacionados con la certificacion - Censo 2014*/
     public function get_CertFiles($code){
         try {
             //Generamos el query
-            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code' ORDER BY a18TipoArchivo DESC" );
+            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 1" );
+            $dataArray = $query->result();
+            return $dataArray;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+    }
+
+    /* Obtener archivos relacionados con la certificacion - Entrevistas antes del censo*/
+    public function get_CertFilesBefore($code){
+        try {
+            //Generamos el query
+            $query = $this->db->query("SELECT * FROM t18web_scanner WHERE a18codigo = '$code'  AND a18TipoArchivo_consecutivo = 2" );
             $dataArray = $query->result();
             return $dataArray;
         } catch (Exception $exc) {

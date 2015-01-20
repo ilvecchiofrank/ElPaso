@@ -609,10 +609,16 @@ class QC_Form extends QC_Controller {
         echo json_encode($arrLResponse);
     }
 
-    /* Obtener listado de archivos por certificacion*/
+    /* Obtener listado de archivos por certificacion - Censo 2014*/
     public function get_FilesN($code) {
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_CertFiles($code));
+    }
+
+    /* Obtener listado de archivos por certificacion - Entrevistas antes censo */
+    public function get_FilesNBefore($code){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_CertFilesBefore($code));
     }
 
     /* Obtener listado de tutelas por numero de cedula*/
