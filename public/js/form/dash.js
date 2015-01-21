@@ -175,6 +175,9 @@ function loadDash(){
                 var btn_Finish_Dash = "";
 
                 switch(rol){
+                    case '6':
+                        btn_Finish_Dash ="<button class='btn btn-warning' onclick='finishCloseDash(" + arrayLetters[t].id_respuesta + ")'>Guardar y Cerrar</button>";
+                        break;
                     case '8':
                         //btn_Finish_Dash = "<a href='" + rol + "' target='_blank' class='btn btn-danger'>Terminar</a>";
                         btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
@@ -238,10 +241,26 @@ function finishDash(carta){
         if(result == "ok"){
             location.reload();
         }else{
-            //console.log("finalizado error");
+            //console.log("Error");
         }
     }
     });
 
 }
 
+function finishCloseDash(carta){
+    console.log("guardar y cerrar" + carta);
+    $.ajax({
+    url: "index.php/form/do_Finish_Close_Dash/",
+    type: "POST",
+    data:{ csrf_test_name: get_csrf_hash, "idLetter": carta},
+    success: function(result){
+        if(result == "ok"){
+            console.log("terminado ok");
+            //location.reload();
+        }else{
+            //console.log("Error")
+        }
+    }
+    });
+}

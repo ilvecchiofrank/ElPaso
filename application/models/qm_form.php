@@ -274,7 +274,8 @@ class QM_Form extends CI_Model {
 
     /*Obtener informacion de una carta especifica*/
     public function get_letter_info($letterId){
-      $query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
+      //$query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
+      $query = $this->db->query("SELECT * FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -558,6 +559,7 @@ class QM_Form extends CI_Model {
     /*Insertar la carta de respuesta*/
     public function do_createLetter(){
       try {
+        var_dump($this->arrayLetterProps);
         $this->db->insert('t49web_respuestas_tutelas', $this->arrayLetterProps);
         $query = $this->db->query('SELECT max(id_respuesta) as id from t49web_respuestas_tutelas');
         $row = $query->row_array();
@@ -593,6 +595,16 @@ class QM_Form extends CI_Model {
     public function do_finish_dash($idLetter){
       try {
         $query = $this->db->query("UPDATE t49web_respuestas_tutelas SET estado = 8, finalizada = 1 WHERE id_respuesta = $idLetter");
+        return true;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Guardar y cerrar carta desde dashboard*/
+    public function do_finish_close_dash($idLetter){
+      try {
+        $query = $this->db->query("UPDATE t49web_respuestas_tutelas SET estado = 3 WHERE id_respuesta = $idLetter");
         return true;
       } catch (Exception $e) {
         echo $e->getTraceAsString();

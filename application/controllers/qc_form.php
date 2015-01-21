@@ -620,6 +620,49 @@ class QC_Form extends QC_Controller {
             echo $resultInsert;
     }
 
+    /*Guardar y cerrar carta desde dashboard*/
+    public function do_Finish_Close_Dash(){
+        $this->load->model("qm_form", "form", true);
+        $resultInsert = $this->form->do_finish_close_dash($_POST["idLetter"]);
+
+        //Validar el estado de la transaccion para crear registro nuevo
+        if ($resultInsert == true) {
+
+            //Se crea el registro nuevo para el historico
+            $arrayCreateData = $arrayName = array();
+
+            //Se traen los datos del registro anterior
+            $arrayAnterior = $this->form->get_letter_info($_POST["idLetter"]);
+            $arrayCreateData["cedula"] = $arrayAnterior[0]->cedula;
+            $arrayCreateData["tipologia"] = $arrayAnterior[0]->tipologia;
+            $arrayCreateData["categoria"] = $arrayAnterior[0]->categoria;
+            $arrayCreateData["cuerpo_mensaje"] = $arrayAnterior[0]->cuerpo_mensaje;
+            $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
+            $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
+            $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
+            $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
+            $arrayCreateData["formulario"] = $arrayAnterior[0]->formulario;
+            $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+
+            //Se asigna modulo actual al juridico
+            $arrayCreateData["modulo_actual"] = '7';
+            $arrayCreateData["estado"] = '1';
+
+            $this->form->do_setLetterProps($arrayCreateData);
+            $resultInsert = $this->form->do_createLetter();
+
+            if ($resultInsert > 0){
+                echo "ok";
+            }else{
+                echo $resultInsert;
+            }
+
+        }
+
+    }
+
     /* Obtener listado de archivos por certificacion - Censo 2014*/
     public function get_FilesN($code) {
         $this->load->model("qm_form", "form", true);
