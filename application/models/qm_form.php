@@ -1062,7 +1062,7 @@ class QM_Form extends CI_Model {
 
     /*Metodo get_map_pre2
     metodo que obtiene la tabla pre2 de vista veredal*/
-    public function get_map_pre2($vereda){
+    public function get_map_pre2($vereda, $municipio){
       $SQLResult = $this->db->query("SELECT * FROM `v29_web_uso_jornales_vereda` WHERE municipio = '" . urldecode($municipio) . "' AND `VEREDA` = '" . urldecode($vereda) . "'");
       $dataArray = $SQLResult->result();
 
@@ -1071,8 +1071,8 @@ class QM_Form extends CI_Model {
 
     /*Metodo get_map_record_1
     metodo que obtiene la primera tabla de vista municipal*/
-    public function get_map_record_1($vereda){
-      $SQLResult = $this->db->query("SELECT * FROM v28web_reporte_jornales_vereda_t9 WHERE `VEREDA` = '" . urldecode($vereda) . "'");
+    public function get_map_record_1($vereda, $municipio){
+      $SQLResult = $this->db->query("SELECT * FROM v28web_reporte_jornales_vereda_t9 WHERE MUNICIPIO = '" . urldecode($municipio) . "' AND  `VEREDA` = '" . urldecode($vereda) . "'");
       $dataArray = $SQLResult->result();
 
       return $dataArray;
@@ -1080,8 +1080,8 @@ class QM_Form extends CI_Model {
 
     /*Metodo get_map_record_2
     metodo que obtiene la segunda tabla de vista municipal*/
-    public function get_map_record_2($vereda){
-      $SQLResult = $this->db->query("SELECT * FROM `v24web_reporte_jornales_vereda_certificaciones` WHERE `VEREDA` = '" .urldecode($vereda) . "'");
+    public function get_map_record_2($vereda, $municipio){
+      $SQLResult = $this->db->query("SELECT * FROM `v24web_reporte_jornales_vereda_certificaciones` WHERE  MUNICIPIO = '" . urldecode($municipio) . "' AND  `VEREDA` = '" .urldecode($vereda) . "'");
       $dataArray = $SQLResult->result();
 
       return $dataArray;
