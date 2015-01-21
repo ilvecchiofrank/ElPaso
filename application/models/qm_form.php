@@ -559,7 +559,6 @@ class QM_Form extends CI_Model {
     /*Insertar la carta de respuesta*/
     public function do_createLetter(){
       try {
-        var_dump($this->arrayLetterProps);
         $this->db->insert('t49web_respuestas_tutelas', $this->arrayLetterProps);
         $query = $this->db->query('SELECT max(id_respuesta) as id from t49web_respuestas_tutelas');
         $row = $query->row_array();
