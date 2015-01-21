@@ -256,8 +256,7 @@ function finishCloseDash(carta){
     data:{ csrf_test_name: get_csrf_hash, "idLetter": carta},
     success: function(result){
         if(result == "ok"){
-            console.log("terminado ok");
-            //location.reload();
+            location.reload();
         }else{
             //console.log("Error")
         }
