@@ -712,27 +712,27 @@ class QC_Form extends QC_Controller {
     }
 
     /*Obtener la tabla pre1 de vista veredal*/
-    public function get_Map_Pre1($vereda){
+    public function get_Map_Pre1($vereda, $municipio){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_map_pre1($vereda));
+        echo json_encode($this->form->get_map_pre1($vereda, $municipio));
     }
 
     /*Obtener la taba pre2 de la vista veredal*/
-    public function get_Map_Pre2($vereda){
+    public function get_Map_Pre2($vereda, $municipio){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_map_pre2($vereda));
+        echo json_encode($this->form->get_map_pre2($vereda, $municipio));
     }
 
     /* Obtener la primera tabla de vista municipal */
-    public function get_Map_Record_1($vereda){
+    public function get_Map_Record_1($vereda, $municipio){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_map_record_1($vereda));
+        echo json_encode($this->form->get_map_record_1($vereda, $municipio));
     }
 
     /* Obtener la segunda tabla de vista municipal */
-    public function get_Map_Record_2($vereda){
+    public function get_Map_Record_2($vereda, $municipio){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_map_record_2($vereda));
+        echo json_encode($this->form->get_map_record_2($vereda, $municipio));
     }
 
     /*Obtener la tabla informacion de predios vista vereda*/

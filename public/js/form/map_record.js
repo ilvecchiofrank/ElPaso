@@ -20,7 +20,7 @@ function loadRecord(){
     $("#lblMpo").html("Municipio: " + municipio);
 
     //Carga de tablas iniciales
-    $.getJSON("index.php/form/get_Map_Pre1/" + vereda, function(objRData){
+    $.getJSON("index.php/form/get_Map_Pre1/" + vereda + "/" + municipio, function(objRData){
         arrayPre1 = objRData;
 
         if (arrayPre1.length > 0) {
@@ -38,7 +38,7 @@ function loadRecord(){
         $("#tablePre1Results").html(tabPre1);
     });
 
-    $.getJSON("index.php/form/get_Map_Pre2/" + vereda, function(objRData){
+    $.getJSON("index.php/form/get_Map_Pre2/" + vereda + "/" + municipio, function(objRData){
         arrayPre2 = objRData;
 
         if (arrayPre2.length > 0) {
@@ -56,7 +56,7 @@ function loadRecord(){
         $("#tablePre2Results").html(tabPre2);
     });
 
-    $.getJSON("index.php/form/get_Map_Record_1/" + vereda, function(objRData){
+    $.getJSON("index.php/form/get_Map_Record_1/" + vereda + "/" + municipio , function(objRData){
         arrayMR1 = objRData;
 
         if (arrayMR1.length > 0) {
@@ -74,7 +74,7 @@ function loadRecord(){
         $("#tableMapResults1").html(tabMR);
     });
 
-    $.getJSON("index.php/form/get_Map_Record_2/" + vereda, function(objRData){
+    $.getJSON("index.php/form/get_Map_Record_2/" + vereda + "/" + municipio, function(objRData){
         arrayMR2 = objRData;
 
         if (arrayMR2.length > 0) {
