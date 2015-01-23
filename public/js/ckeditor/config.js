@@ -26,6 +26,14 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
+// config.keystrokes = [
+    // [ CKEDITOR.CTRL + 86, 'link' ]
+// ];
+
+config.blockedKeystrokes = [
+    [ CKEDITOR.CTRL + 86 ]
+];
+	
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscrip, Source, Anchor, UIColor';
