@@ -396,6 +396,14 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener datos firmante */
+    public function get_letter_signature($id_respuesta){
+      $query = $this->db->query("SELECT CASE WHEN firma = 0 THEN 'JHON JAIRO HUERTAS' ELSE 'ANTONIO SARMIENTO' END AS firma FROM t49web_respuestas_tutelas WHERE id_respuesta = $id_respuesta");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener archivos relacionados con la certificacion - Censo 2014*/
     public function get_CertFiles($code){
         try {

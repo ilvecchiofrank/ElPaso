@@ -97,7 +97,7 @@
           <br/>
           <table>
             <tr>
-              <td>[nombre de quien firma]</td>
+              <td><?php echo $usr_Firma[0]->firma; ?></td>
             </tr>
           </table>
           <br/>
