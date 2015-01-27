@@ -179,6 +179,20 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /*Formulario de impresion de cartas*/
+    public function print_lite($formulario, $id_respuesta){
+        if($this->session->userdata("isLoggedIn")){
+            $this->load->model("qm_form", "form", true);
+            $arrLPageData = array();
+            $arrLPageData["arrLetterContent"] = $this->form->get_letter_contents($id_respuesta);
+            $this->load->vars($arrLPageData);
+            $this->display_page("print_lite", "form", true);
+            return;
+        }
+
+        redirect("/");
+    }
+
     /**
      * Metodo search
      *
