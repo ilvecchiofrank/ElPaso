@@ -193,6 +193,53 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /*Controlador para generar y descargar pdf de cartas*/
+    public function print_file($inRSearch = null, $stRType = null){
+        if($this->session->userdata("isLoggedIn")){
+            $this->load->model("qm_form", "form", true);
+
+            if (!is_null($inRSearch)){
+                $this->session->set_userdata("inRFormID", $inRSearch);
+            }
+
+            if ($this->session->userdata("inRFormID")){
+
+                $this->load->model("qm_form", "form", true);
+                $this->load->model("qm_user", "user", true);
+                $arrLPageData = array();
+
+                /*Obtener los datos del formulario*/
+                $arrLForm = $this->form->get_form();
+                $arrLPageData["arrRForm"] = $arrLForm;
+                $arrLPageData["arrRChapter"] = $this->form->get_chapters("A");
+                $arrLPageData["arrRAnswers"] = $this->user->get_answers();
+                $arrLPageData["arrRChapterB"] = $this->form->get_chapterb($inRSearch);
+                $arrLPageData["arrRChapterC"] = $this->form->get_chapterc($inRSearch);
+                $arrLPageData["arrCoordB"] = $this->form->get_coordb($inRSearch);
+                $arrLPageData["arrCoordC"] = $this->form->get_coordc($inRSearch);
+                $arrLPageData["arrNActB"] = $this->form->get_n_act_b($inRSearch);
+                $arrLPageData["arrNActC"] = $this->form->get_n_act_c($inRSearch);
+                $arrLPageData["arrProg"] = $this->form->get_programs($inRSearch);
+                $arrLPageData["arrFamiliar"] = $this->form->get_familiar($inRSearch);
+                $arrLPageData["arrFiles"] = $this->form->get_form_docs($inRSearch);
+                $arrLPageData["stRType"] = $stRType;
+                $this->load->vars($arrLPageData);
+                //$this->display_page("print_full", "form", true);
+                //return;
+
+            }
+
+            /*PDF*/
+            $this->load->library('html2pdf');
+            $this->html2pdf->folder('./assets/pdfs/');
+            $this->html2pdf->filename( 'test' . '.pdf');
+            $this->html2pdf->paper('letter', 'portrait');
+            $this->html2pdf->html('Hola mundo');
+            $this->html2pdf->create('download');
+            return;
+        }
+    }
+
     /**
      * Metodo search
      *

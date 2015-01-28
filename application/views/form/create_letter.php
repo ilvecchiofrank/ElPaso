@@ -164,6 +164,21 @@ if (isset($_GET["code"])) {
             <label id='lblBloque2'></label>
           </div>
 
+          <div id='divAplica'>
+            <label>Reúne los requisitos?  </label><label id="lblAplica" style="color:red"></label>
+            <br/>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="radio" name="firma" value="1"> Si
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="firma" value="2"> No
+                </label>
+            </div>
+            <br/>
+            <br/>
+          </div>
+
           <div id='divCierre' name='divCierre'>
             <label id='lblDespedida'>Cordialmente,</label>
             <label id='lblSigner' style='display: none'>MILLER AUGUSTO PERDOMO</label>

@@ -5,7 +5,6 @@ loadT8();
 loadData();
 resumeForm();
 $(".modal").modal('hide');
-
 //loadMun();
 
 saveForm();
@@ -62,6 +61,19 @@ var fillEditor = setInterval(
         $("#cke_32").css("display","none");
     }, 4000
 );
+
+function prevalida(){
+
+//Validar seleccion del campo reune los requisitos
+var radio = $('input:radio[name="firma"]:checked');
+if(radio.length == 0)//No se ha seleccionado nada
+   {
+       $("#lblAplica").html("*Campo obligatorio");
+       return;
+   }
+    $("#lblAplica").html("");
+
+}
 
 function autosave(){
     saveNotify('auto');
@@ -265,15 +277,42 @@ function updDepto(){
 
 function saveForm(){
        $("#saveInfo").click( function(){
+            //Validar seleccion del campo reune los requisitos
+            var radio = $('input:radio[name="firma"]:checked');
+            if(radio.length == 0)//No se ha seleccionado nada
+               {
+                   $("#lblAplica").html("*Campo obligatorio");
+                   return;
+               }
+                $("#lblAplica").html("");
+
             saveNotify('no','G');
          });
 
        $("#saveClose").click( function(){
+            //Validar seleccion del campo reune los requisitos
+            var radio = $('input:radio[name="firma"]:checked');
+            if(radio.length == 0)//No se ha seleccionado nada
+               {
+                   $("#lblAplica").html("*Campo obligatorio");
+                   return;
+               }
+                $("#lblAplica").html("");
+
             $("#saveClose").css("display", "none");
             saveNotify(undefined,'C');
          });
 
        $("#btnRecat").click( function(){
+
+            //Validar seleccion del campo reune los requisitos
+            var radio = $('input:radio[name="firma"]:checked');
+            if(radio.length == 0)//No se ha seleccionado nada
+               {
+                   $("#lblAplica").html("*Campo obligatorio");
+                   return;
+               }
+                $("#lblAplica").html("");
 
             if( $("#divDevolver").css('display') == 'none' ){
             $("#lblDevolver").html('Motivo de la recategorización:');
@@ -412,6 +451,15 @@ var tipologia_id = getParameterByName("tId");
     //-Acciones boton Finalizar-//
     $("#btnFinish").click( function(){
 
+        //Validar seleccion del campo reune los requisitos
+        var radio = $('input:radio[name="firma"]:checked');
+        if(radio.length == 0)//No se ha seleccionado nada
+           {
+               $("#lblAplica").html("*Campo obligatorio");
+               return;
+           }
+            $("#lblAplica").html("");
+
         var tipo_usuario = $("#hfUserType").val();
         var cedula = getParameterByName("docId");
         var formulario = getParameterByName("formCode");
@@ -436,6 +484,16 @@ var tipologia_id = getParameterByName("tId");
 
 	//-Acciones boton devolver-//
 	$("#putBack").click( function(){
+
+            //Validar seleccion del campo reune los requisitos
+            var radio = $('input:radio[name="firma"]:checked');
+            if(radio.length == 0)//No se ha seleccionado nada
+               {
+                   $("#lblAplica").html("*Campo obligatorio");
+                   return;
+               }
+                $("#lblAplica").html("");
+
 			if( $("#divDevolver").css('display') == 'none' ){
             $("#lblDevolver").html('Motivo de la devolución:');
 			$("#divDevolver").css('display', 'block');
@@ -540,6 +598,7 @@ function resumeForm(){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
+                $("#firma").val(arrayCarta[t].firma);
 
                 //- Cargar usuarios asignados -//
                 $.getJSON("index.php/form/get_Asigned_Users/" + arrayCarta[t].usuario_redactor + "/" + arrayCarta[t].usuario_consultor + "/" + arrayCarta[t].usuario_juridico + "/" + arrayCarta[t].usuario_gerente , function(objRData){

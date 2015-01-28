@@ -452,6 +452,7 @@ class QM_Form extends CI_Model {
         'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
         'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null,
         'vulnerable'=> (isset($arrayDataFromView['vulnerable'])) ? $arrayDataFromView['vulnerable'] : 0,
+        'firma'=> (isset($arrayDataFromView['firma'])) ? $arrayDataFromView['firma'] : 0,
         'fecha_creacion' => date("Y-m-d H:i:s")
         );
 
@@ -473,7 +474,8 @@ class QM_Form extends CI_Model {
         'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
         'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
         'vulnerable'=> (isset($arrayDataFromView['vulnerable'])) ? $arrayDataFromView['vulnerable'] : 0,
-        'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null
+        'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null,
+        'firma'=> (isset($arrayDataFromView['firma'])) ? $arrayDataFromView['firma'] : 0
         );
 
     }
