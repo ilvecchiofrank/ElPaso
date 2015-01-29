@@ -229,13 +229,40 @@ class QC_Form extends QC_Controller {
 
             }
 
+/*$buffer = file_get_contents($htmlfile);
+$page = '<page backtop="7mm" backbottom="7mm" backleft="10mm" backright="50mm" style="font-size: 2px; text-align: center;">'. $buffer .'</page> ';
+//Cargamos la libreria HTML2PDF alojada en el directorio Libraries de nuestra aplicación
+$this->load->library('html2pdf/html2pdf');
+//Instanciamos el objeto HTML2PDF enviando como parametros: 1. Orientacion, 2: Tamaño, 3. Lenguaje
+$html2pdf = new HTML2PDF('P','A4','es');
+//Agregamos el contenido previamente concatenado a la estructura basica de la libreria
+$html2pdf->WriteHTML($page);
+//Generamos el archivo de salida como pdf
+$html2pdf->Output($nombreArchivo.'.pdf');*/
+
             /*PDF*/
-            $this->load->library('html2pdf');
-            $this->html2pdf->folder('./assets/pdfs/');
+            //$this->load->library('html2pdf');
+            require_once(APPPATH .'libraries/html2pdf/html2pdf.class.php');
+            /*$this->html2pdf->folder('./assets/pdfs/');
             $this->html2pdf->filename( 'test' . '.pdf');
             $this->html2pdf->paper('letter', 'portrait');
-            $this->html2pdf->html('Hola mundo');
-            $this->html2pdf->create('download');
+            $carta = 'http://localhost:120/quimbo2/index.php/form/print_file/ad479a68-01f2-11e4-8895-00ff80801d89/83914';
+            //$carta = 'http://www.google.com';
+            //$url = file_get_contents($carta);
+            //var_dump($url);
+            //$this->html2pdf->getHtmlFromPage($carta);
+            //*/
+            $data = array(
+                'title' => 'PDF Created',
+                'message' => 'Hello World!'
+            );
+            //Load html view
+            //$this->html2pdf->html($this->load->view('print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914', $data, true));
+            //
+            $html2pdf = new HTML2PDF('P','A4','fr');
+            $html = $html2pdf->getHtmlFromPage('http://localhost:120/quimbo2/index.php/form/print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914');
+            $html2pdf->WriteHTML($html);
+            $html2pdf->Output('download.pdf');
             return;
         }
     }
@@ -1124,7 +1151,7 @@ class QC_Form extends QC_Controller {
                 //Se traen los datos de usuarios del registro anterior
                 $arrayAnterior = $this->form->get_letter_info($letterId);
                 $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-                //$arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+                $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
                 $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
                 $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
                 $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
