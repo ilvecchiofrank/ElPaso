@@ -1214,7 +1214,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             //Se traen los datos de usuarios del registro anterior
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-            //$arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
@@ -1302,6 +1302,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
 			$arrayCreateData["estado"] = '1';
 			$arrayCreateData["modulo_actual"] = 6;
