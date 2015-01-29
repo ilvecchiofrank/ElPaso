@@ -698,9 +698,10 @@ class QC_Form extends QC_Controller {
             $arrayCreateData["cedula"] = $arrayAnterior[0]->cedula;
             $arrayCreateData["tipologia"] = $arrayAnterior[0]->tipologia;
             $arrayCreateData["categoria"] = $arrayAnterior[0]->categoria;
+            $arrayCreateData["firma"] = $arrayAnterior[0]->firma;
             $arrayCreateData["cuerpo_mensaje"] = $arrayAnterior[0]->cuerpo_mensaje;
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-            //$arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
