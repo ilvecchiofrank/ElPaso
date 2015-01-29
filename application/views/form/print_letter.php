@@ -91,7 +91,10 @@
           <br/>
           <table>
             <tr>
-              <td style = "display: inline-block; border-bottom: 1px solid #000; width: 250px; height: 120px;" ></td>
+              <?php echo '<img src="public/img/signature' . $arrLetterContent[0]->firma . '.jpg">' ?>
+            </tr>
+            <tr>
+              <td style = "display: inline-block; border-bottom: 1px solid #000; width: 250px;" ></td>
             </tr>
           </table>
           <br/>
