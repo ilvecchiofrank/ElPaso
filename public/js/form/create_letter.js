@@ -598,7 +598,10 @@ function resumeForm(){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
-                $("#firma").val(arrayCarta[t].firma);
+                console.log("Valor firma " + arrayCarta[t].firma);
+                //$("#firma").val(arrayCarta[t].firma);
+                $("input[type='radio'][value='" + arrayCarta[t].firma + "']").parent().trigger('click');
+                console.log("Valor campo firma " + $("#firma").val());
 
                 //- Cargar usuarios asignados -//
                 $.getJSON("index.php/form/get_Asigned_Users/" + arrayCarta[t].usuario_redactor + "/" + arrayCarta[t].usuario_consultor + "/" + arrayCarta[t].usuario_juridico + "/" + arrayCarta[t].usuario_gerente , function(objRData){
