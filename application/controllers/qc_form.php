@@ -263,6 +263,23 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $html = $html2pdf->getHtmlFromPage('http://localhost:120/quimbo2/index.php/form/print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914');
             $html2pdf->WriteHTML($html);
             $html2pdf->Output('download.pdf');
+
+
+
+            //PDF CI
+            $this->load->library('html2pdf');
+            $this->html2pdf->folder('./assets/pdfs/');
+            $this->html2pdf->filename( 'test' . '.pdf');
+            $this->html2pdf->paper('letter', 'portrait');
+
+            $data = array(
+                'title' => 'ad479a68-01f2-11e4-8895-00ff80801d89',
+                'message' => '83914'
+            );
+
+            $this->html2pdf->html($this->load->view('print_full', $data, true));
+            $this->html2pdf->create('download');
+
             return;
         }
     }
@@ -1298,7 +1315,6 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             //Se traen los datos de usuarios del registro anterior
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-            //$arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;

@@ -1,3 +1,25 @@
+<?php
+ob_start();
+?>
+<page backtop="15cm" backbottom="15cm" backleft="200000mm" backright="2cm"> 
+      <page_header> 
+           Page header
+      </page_header> 
+      <page_footer> 
+          <table>
+              <tr>
+                <td>Oficina Bogotá: Cra 11 # 82 – 76 Piso 4 – Bogotá, Colombia –  (571) 219 0330</td>
+              </tr>
+              <tr>
+                <td>Oficina Garzón: Cra 10  # 4-32 – Huila, Colombia –  (578) 8334484 / Oficina Gigante: Calle 2 # 3-57 – Huila, Colombia – (578) 8325290</td>
+              </tr>
+              <tr>
+                <td>www.emgesa.com.co</td>
+              </tr>
+          </table>
+      </page_footer> 
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,7 +50,7 @@
     </style>
   </head>
   <body>
-    <section class="main-content">
+    <div class="main-content">
       <div class="container">
         <div class="row">
           <table style='width:95%'>
@@ -83,11 +105,7 @@
             </tr>
           </table>
           <br/>
-          <table>
-            <tr>
-              <td><?php echo trim(str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje), '"'); ?></td>
-            </tr>
-          </table>
+            <?php echo trim(str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje), '"'); ?>
           <br/>
           <table>
             <tr>
@@ -119,20 +137,9 @@
             </tr>
           </table>
           <br/>
-          <table>
-              <tr>
-                <td>Oficina Bogotá: Cra 11 # 82 – 76 Piso 4 – Bogotá, Colombia –  (571) 219 0330</td>
-              </tr>
-              <tr>
-                <td>Oficina Garzón: Cra 10  # 4-32 – Huila, Colombia –  (578) 8334484 / Oficina Gigante: Calle 2 # 3-57 – Huila, Colombia – (578) 8325290</td>
-              </tr>
-              <tr>
-                <td>www.emgesa.com.co</td>
-              </tr>
-          </table>
         </div>
       </div>
-    </section>
+    </div>
   </body>
 
   <script>
@@ -142,3 +149,26 @@
 
   </script>
 </html>
+ </page>
+<?php
+$content = ob_get_clean();
+// convert to PDF
+require_once(APPPATH .'libraries/html2pdf/html2pdf.class.php');
+try
+{
+    
+    $html2pdf = new HTML2PDF('P','Letter','es', array(2, 3, 2, 3));
+    var_dump($html2pdf);
+    ob_end_clean();
+    //$html2pdf->SetMargins(20,18);
+    $html2pdf->writeHTML($content);
+    
+    //$html2pdf->Output('test.pdf'); // display only
+
+}
+catch(HTML2PDF_exception $e) {
+    echo $e;
+    exit;
+}
+
+?>
