@@ -37,7 +37,7 @@
                   <?php 
                         $arrLetterContent[0]->cuerpo_mensaje = str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje);
                         $arrLetterContent[0]->cuerpo_mensaje = str_replace("\n", "", $arrLetterContent[0]->cuerpo_mensaje);
-                        $arrLetterContent[0]->cuerpo_mensaje = str_replace("\n\t", "", $arrLetterContent[0]->cuerpo_mensaje);
+                        $arrLetterContent[0]->cuerpo_mensaje = str_replace("\t", "", $arrLetterContent[0]->cuerpo_mensaje);
                         echo trim($arrLetterContent[0]->cuerpo_mensaje, '"'); 
                    ?>
               </td>
