@@ -28,7 +28,7 @@
     </style>
   </head>
   <body>
-    <section class="main-content">
+    <div class="main-content">
       <div class="container">
         <div class="row">
           <div class="pull-right small"><?php echo $arrRForm["a07Codigo"]; ?></div>
@@ -280,7 +280,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </body>
 
   <script>
