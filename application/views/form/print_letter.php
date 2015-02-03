@@ -95,6 +95,7 @@ ob_start();
                     $arrLetterContent[0]->cuerpo_mensaje = str_replace("&nbsp;", "", $arrLetterContent[0]->cuerpo_mensaje);
                     $arrLetterContent[0]->cuerpo_mensaje = str_replace("\n", "", $arrLetterContent[0]->cuerpo_mensaje);
                     $arrLetterContent[0]->cuerpo_mensaje = str_replace("\n\t", "", $arrLetterContent[0]->cuerpo_mensaje);
+                    $arrLetterContent[0]->cuerpo_mensaje = str_replace("\n\n", "", $arrLetterContent[0]->cuerpo_mensaje);
                     echo trim($arrLetterContent[0]->cuerpo_mensaje, '"');
                 ?>
 <!--                <br/>-->
