@@ -2,7 +2,8 @@
 ob_start();
 ?>
 <style>
-    p, li{
+    p, ol li{
+        line-height: 100%;
         text-align: justify;
     }
 </style>
@@ -22,19 +23,16 @@ ob_start();
                 <td>www.emgesa.com.co</td>
             </tr>
         </table>
-        <br/>
     </page_footer>
-
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
+<!--    <div class="main-content">
+        <div class="container">-->
+<!--            <div class="row">-->
                 <table style='width:95%'>
                     <tr>
                         <td style='width:50%; text-align: left;'>[PQ-UGS-ECO-1548-56]</td>
 <!--                        <td style='width:50%; text-align: right;'><img alt="Emgesa" src="public/img/logoprint.gif" class="img-responsive" style="float: right;"></td>-->
                     </tr>
                 </table>
-                <br/>
                 <table style='width:95%'>
                     <tr>
                         <td></td>
@@ -79,7 +77,6 @@ ob_start();
                         <td>Asunto: Respuesta Censo sentencia T135/13</td>
                     </tr>
                 </table>
-                <br/>
                 <table>
                     <tr>
                         <td><?php
@@ -91,8 +88,14 @@ ob_start();
                             ?></td>
                     </tr>
                 </table>
-                <br/>
-                <?php echo trim(str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje), '"'); ?>
+<!--                <br/>-->
+                <?php 
+                    $arrLetterContent[0]->cuerpo_mensaje = str_replace("<p>&quot;</p>", "", $arrLetterContent[0]->cuerpo_mensaje);
+                    $arrLetterContent[0]->cuerpo_mensaje = str_replace("<p>&nbsp;</p>", "", $arrLetterContent[0]->cuerpo_mensaje);
+                    $arrLetterContent[0]->cuerpo_mensaje = str_replace("&nbsp;", "", $arrLetterContent[0]->cuerpo_mensaje);
+                    echo trim($arrLetterContent[0]->cuerpo_mensaje, '"');
+                ?>
+<!--                <br/>-->
                 <br/>
                 <table>
                     <tr>
@@ -123,21 +126,17 @@ ob_start();
                         <td>Aprobó: MP</td>
                     </tr>
                 </table>
-                <br/>
-            </div>
-        </div>
-    </div>
 </page>
 <?php
     $content = ob_get_clean();
-// convert to PDF
+    // convert to PDF
 require_once(APPPATH . 'libraries/html2pdf/html2pdf.class.php');
 try {
 
     $html2pdf = new HTML2PDF('P', 'LETTER', 'es', true, 'UTF-8', array(20, 30, 20, 30));
     ob_end_clean();
     $html2pdf->setDefaultFont('Arial');
-    $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
+    $html2pdf->writeHTML($content);
     $html2pdf->Output('test.pdf');
 } catch (HTML2PDF_exception $e) {
     echo $e;
