@@ -323,7 +323,7 @@ class QM_Form extends CI_Model {
 
     /*Precargar encabezado impresion de cartas*/
     public function get_letter_header($formulario){
-      $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero, ur.a08Formulario AS formulario FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08Formulario = '$formulario'");
+      $query = $this->db->query("SELECT ur.a08AP01 AS nombre, ur.a08AP02 AS apellido, ur.a08AP04 AS direccion, ur.a08AP05 AS barrio, ur.a08AP06 AS telefono, ur.a08AP07 AS telefono2, d.a05Nombre AS depto, m.a06Nombre AS mpo, pr.a04Respuesta AS genero, ur.a08Formulario AS formulario FROM t08web_usuario_respuestas ur JOIN t05web_departamentos d ON ur.a08AP03O01 = d.a05Codigo JOIN t06web_municipios m ON ur.a08AP03O02 = m.a06Codigo JOIN t04web_pregunta_respuestas pr ON ur.a08AP013 = pr.a04Codigo WHERE a08Formulario = '$formulario'");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -398,7 +398,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener datos firmante */
     public function get_letter_signature($id_respuesta){
-      $query = $this->db->query("SELECT CASE WHEN firma = 2 THEN 'John Jairo Huertas Amador<br/>Coordinador Jurídico General Proyecto Hidroeléctrico El Quimbo<br/>Gerencia Jurídica.' WHEN firma = 1 THEN 'Antonio Sarmiento G<br/>Director Proyecto<br/>Proyecto Hidroeléctrico El Quimbo' ELSE '' END AS firma FROM t49web_respuestas_tutelas WHERE id_respuesta = $id_respuesta");
+      $query = $this->db->query("SELECT CASE WHEN firma = 2 THEN '<hr><span style=\"font-weight: bold;\">JOHN JAIRO HUERTAS AMADOR</span><br/>Coordinador Jurídico General Proyecto Hidroeléctrico El Quimbo<br/>Gerencia Jurídica.' WHEN firma = 1 THEN '<hr><span style=\"font-weight: bold;\">ANTONIO SARMIENTO G</span><br/>Director Proyecto<br/>Proyecto Hidroeléctrico El Quimbo' ELSE '' END AS firma FROM t49web_respuestas_tutelas WHERE id_respuesta = $id_respuesta");
       $dataArray = $query->result();
 
       return $dataArray;
