@@ -398,7 +398,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener datos firmante */
     public function get_letter_signature($id_respuesta){
-      $query = $this->db->query("SELECT CASE WHEN firma = 2 THEN '<hr><span style=\"font-weight: bold;\">JOHN JAIRO HUERTAS AMADOR</span><br/>Coordinador Jurídico General Proyecto Hidroeléctrico El Quimbo<br/>Gerencia Jurídica.' WHEN firma = 1 THEN '<hr><span style=\"font-weight: bold;\">Antonio Sarmiento G</span><br/>Director Proyecto<br/>Proyecto Hidroeléctrico El Quimbo' ELSE '' END AS firma FROM t49web_respuestas_tutelas WHERE id_respuesta = $id_respuesta");
+      $query = $this->db->query("SELECT CASE WHEN firma = 2 THEN '<hr><span style=\"font-weight: bold;\">JOHN JAIRO HUERTAS AMADOR</span><br/>Coordinador Jurídico General Proyecto Hidroeléctrico El Quimbo<br/>Gerencia Jurídica.' WHEN firma = 1 THEN '<hr><span style=\"font-weight: bold;\">ANTONIO SARMIENTO G</span><br/>Director Proyecto<br/>Proyecto Hidroeléctrico El Quimbo' ELSE '' END AS firma FROM t49web_respuestas_tutelas WHERE id_respuesta = $id_respuesta");
       $dataArray = $query->result();
 
       return $dataArray;
