@@ -212,7 +212,7 @@ if (isset($_GET["code"])) {
         <a id='btnFinish' class="btn btn-danger btn-md">Terminar</a>
         <a id='btnPrint' class="btn btn-default btn-md">Imprimir</a>
       </div>
-
+      
         </div>
         </br>
       </div>
