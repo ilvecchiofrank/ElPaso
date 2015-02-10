@@ -277,7 +277,9 @@ class QM_Form extends CI_Model {
       //$query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
       $query = $this->db->query("SELECT * FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
       $dataArray = $query->result();
-
+      
+      $dataArray["0"]->cuerpo_mensaje = str_replace('\"', "'", $dataArray["0"]->cuerpo_mensaje);
+      
       return $dataArray;
     }
 
