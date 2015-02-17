@@ -44,11 +44,11 @@ fader();
 $("#txtCedula").html(getParameterByName("docId"));
 
 //Autosave
-/*var autoGuardar = setInterval(
+var autoGuardar = setInterval(
     function(){
         autosave();
-    }, 120000
-);*/
+    }, 1200000
+);
 
 //Cargar editor
 var fillEditor = setInterval(
@@ -76,7 +76,7 @@ if(radio.length == 0)//No se ha seleccionado nada
 }
 
 function autosave(){
-    //saveNotify('auto');
+    saveNotify('auto');
 }
 
 function check_status(boton_llama){
