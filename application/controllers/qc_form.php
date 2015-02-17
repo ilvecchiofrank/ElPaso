@@ -158,6 +158,17 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
+    
+    /* Formulario de entrevista no. 1*/
+    public function form_interview_1($id){
+        if ($this->session->userdata("isLoggedIn")) {
+            $data = array('id' => $id);
+            $this->load->vars($data);
+            $this->display_page("form_interview_1", "form");
+            return;
+        }
+        redirect("/");
+    }
 
     /*Formulario de impresion de cartas*/
     public function print_letter($formulario, $id_respuesta){
