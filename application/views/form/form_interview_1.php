@@ -29,124 +29,124 @@
                     </label>
                 </div>
                 <div class="panel-body">
-                    <label id='preguntano1'>1. Número de formulario seleccionado:</label><br/>
-                    <label id='preguntano0'><span style="font-size: 1.5em;" class="label label-info"><?php echo $id; ?></span></label><br/>
+                    <label>1. Número de formulario seleccionado:</label><br/>
+                    <label><span style="font-size: 1.5em;" class="label label-info"><?php echo $id; ?></span></label><br/>
                     <label>2. Departamento y municipio actual de residencia (A3 Registro Censo 2014):</label>
-                    <label id='preguntano0'>Departamento:</label><br/>
-                    <select class="form-control">
+                    <label>Departamento:</label><br/>
+                    <select id="pregunta2Departamento" class="saveSelect form-control">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
                     <label>Municipio:</label><br/>
-                    <select class="form-control">
+                    <select id="pregunta2Municipio" class="saveSelect form-control">
                         <option>Seleccione Municipio...</option>
                     </select>
                     <br/>
                     <legend></legend>
-                    <label id='preguntano3'>3. Dirección (A4 Censo 2014):</label><br/>
-                    <textarea class="form-control"></textarea><br/>
+                    <label >3. Dirección (A4 Censo 2014):</label><br/>
+                    <textarea id='preguntano3' class="saveTextarea form-control"></textarea><br/>
                     <legend></legend>
-                    <label id='preguntano4'>4. Zona:</label><br/>
-                    <input type='text' class="form-control"><br/>  
+                    <label >4. Zona:</label><br/>
+                    <input id='preguntano4' type='text' class="saveText form-control"><br/>  
                     <legend></legend>
-                    <label id='preguntano5'>5. Nombres del entrevistado (como aparece en el formulario de registro del Censo 2014):</label><br/>
-                    <input type='text' class="form-control"><br/>
+                    <label >5. Nombres del entrevistado (como aparece en el formulario de registro del Censo 2014):</label><br/>
+                    <input id='preguntano5' type='text' class="saveText form-control"><br/>
                     <legend></legend>
-                    <label id='preguntano6'>6. Apellidos del entrevistado (como aparece en el formulario de registro del Censo 2014):</label><br/>
-                    <input type='text' class="form-control"><br/>            
+                    <label >6. Apellidos del entrevistado (como aparece en el formulario de registro del Censo 2014):</label><br/>
+                    <input id='preguntano6' type='text' class="saveText form-control"><br/>            
                     <legend></legend>
-                    <label id='preguntano7'>7. Edad actual del entrevistado (calcule la edad de acuerdo a la casilla A11 del registro del Censo 2014):</label><br/>
-                    <input type='text' class="form-control"><br/>
+                    <label >7. Edad actual del entrevistado (calcule la edad de acuerdo a la casilla A11 del registro del Censo 2014):</label><br/>
+                    <input type='text' class="saveText form-control"><br/>
                     <legend></legend>
                     <label id='preguntano8'>8. ¿Existe cambio en el municipio de residencia entre el 2008 y la actualidad? (verifique con casillas A3 y B1 del registro)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
-                            <input type="radio" name="pregunta8" value="1"> Si
+                            <input type="radio" name="pregunta8" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="pregunta8" value="2"> No
+                            <input type="radio" name="pregunta8" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
                     <br/>
                     <legend></legend>
-                    <label id='preguntano9'>9. Actividad económica del entrevistado en el 2008 (Código registrado en la casilla B7 del registro del censo 2014).</label><br/>
-                    <input type='text' class="form-control"><br/>
+                    <label >9. Actividad económica del entrevistado en el 2008 (Código registrado en la casilla B7 del registro del censo 2014).</label><br/>
+                    <input id='preguntano9' type='text' class="saveText form-control"><br/>
                     <legend></legend>
-                    <label id='preguntano1'>10. ¿A qué cadena productiva se integra esta actividad económica?</label><br/>
-                    <label id='preguntano0'> Código de cadena productiva</label><br/>
-                    <input type='text' class="form-control"><br/>            
-                    <label id='preguntano0'> ¿Otro Cual?</label><br/>
-                    <input type='text' class="form-control"><br/>
+                    <label>10. ¿A qué cadena productiva se integra esta actividad económica?</label><br/>
+                    <label>Código de cadena productiva</label><br/>
+                    <input id="preguntano10" type='text' class="saveText form-control"><br/>            
+                    <label>¿Otro Cual?</label><br/>
+                    <input id="preguntano10OtroCual" type='text' class="saveText form-control"><br/>
                     <legend></legend>
-                    <label id='preguntano1'>11. ¿En el proceso de registro el entrevistado autorizó el habeas data? (el cual se mantiene hasta el momento)</label><br/>
+                    <label>11. ¿En el proceso de registro el entrevistado autorizó el habeas data? (el cual se mantiene hasta el momento)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
-                            <input type="radio" name="pregunta11" value="1"> Si
+                            <input type="radio" name="preguntano11" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="pregunta11" value="2"> No
+                            <input type="radio" name="preguntano11" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
                     <br/>
                     <legend></legend>
-                    <label id='preguntano1'>12. Números de teléfono registrados (casilla A6 del Censo 2014):</label><br/>
+                    <label>12. Números de teléfono registrados (casilla A6 del Censo 2014):</label><br/>
                     <label>Telefono 1</label>
-                    <input type='text' class="form-control"><br/>
-                    <label>Telefono 2</label>
-                    <input type='text' class="form-control"><br/>
+                    <input id="preguntano12Telefono1" type='text' class="form-control"><br/>
+                    <label >Telefono 2</label>
+                    <input id="preguntano12Telefono2" type='text' class="form-control"><br/>
                     <legend></legend>
-                    <label id='preguntano1'>13. Fecha de la comunicación por parte de EMGESA de la realización de la entrevista:</label><br/>
-                    <input type='date' class="form-control"><br/>
+                    <label>13. Fecha de la comunicación por parte de EMGESA de la realización de la entrevista:</label><br/>
+                    <input id="preguntano13" type='date' class="saveText form-control"><br/>
                     <label id='preguntano1'>14. ¿Se pudo realizar la entrevista?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
-                            <input type="radio" name="pregunta11" value="1"> Si
+                            <input type="radio" name="pregunta14" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="pregunta11" value="2"> No
+                            <input type="radio" name="pregunta14" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
                     <br/>
                     <legend></legend>
-                    <label id='preguntanoP'>Para el diligenciamiento de las preguntas 15 a 19 solicite el documento de identidad del entrevistado 0</label><br/>
-                    <textarea class="form-control"></textarea><br/>
-                    <label id='preguntano1'>15. Tipo de documento:</label><br/>
-                    <select class="form-control">
+                    <label>Para el diligenciamiento de las preguntas 15 a 19 solicite el documento de identidad del entrevistado</label><br/>
+                    <label >15. Tipo de documento:</label><br/>
+                    <select id='preguntano15' class="saveSelect form-control">
                         <option>Seleccione Tipo de documento...</option>
                     </select>
-                    <label id='preguntano1'>16. Número de documento:</label><br/>
-                    <input type='text' class="form-control"><br/>
-                    <label id='preguntano1'>17. ¿El tipo y número de documento de identidad coincide con el registrado en el censo 2014?</label><br/>
+                    <br/>
+                    <label >16. Número de documento:</label><br/>
+                    <input type='text' id='preguntano16' class="saveText form-control"><br/>
+                    <label >17. ¿El tipo y número de documento de identidad coincide con el registrado en el censo 2014?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
-                            <input type="radio" name="pregunta11" value="1"> Si
+                            <input type="radio" name="pregunta17" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="pregunta11" value="2"> No
+                            <input type="radio" name="pregunta17" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
                     <br/>
                     <legend></legend>
-                    <label id='preguntano1'>18. Lugar de expedición:</label><br/>
-                    <input type='text' class="form-control"><br/>
-                    <label id='preguntano0'>Departamento:</label><br/>
-                    <select class="form-control">
+                    <label>18. Lugar de expedición:</label><br/>
+                    <input id="preguntano18" type='text' class="saveText form-control"><br/>
+                    <label>Departamento:</label><br/>
+                    <select id="preguntano18Departamento" class="saveSelect form-control">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
-                    <label id='preguntano1'>19. Fecha de expedición:</label><br/>
-                    <input type='date' class="form-control"><br/>
-                    <label id='preguntano2'>20. ¿Se autorizó la grabación de la entrevista?</label><br/>
+                    <label>19. Fecha de expedición:</label><br/>
+                    <input id='preguntano19' type='date' class="saveText form-control"><br/>
+                    <label>20. ¿Se autorizó la grabación de la entrevista?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
-                            <input type="radio" name="pregunta11" value="1"> Si
+                            <input type="radio" name="pregunta20" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="pregunta11" value="2"> No
+                            <input type="radio" name="pregunta20" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
@@ -154,120 +154,241 @@
                     <legend></legend>
                 </div>
             </div>
-            <label id='preguntanoB'>B. DATOS GENERALES DEL ENTREVISTADO</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>21. ¿Hay cambio de residencia? (diligencie de acuerdo a la pregunta 8)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>22. ¿Cuál fue la principal razón por la que cambió de residencia?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>23. Si pudiera, ¿volvería al lugar en donde residía en el 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>24. ¿Considera que el PHEQ tuvo que ver con su decisión de cambiar su residencia?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>25. ¿Cuántas personas hacían parte de su hogar en agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>26. ¿ Tiene el recibo de pago de energía eléctrica solicitado?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>27. Del recibo solicitado diligencie la siguiente información: (estos datos deben tomarse del recibo físico)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 a.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 b.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 c.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 d.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 e.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>28. ¿Cuál es su nivel educativo y el último año aprobado en ese nivel?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Nivel educativo:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Ninguno</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Preescolar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Primaria</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Secundaria</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Media</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Técnico profesional</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Tegnológico</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Universitario</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Especialización</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Maestría</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Doctorado</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano2'>29. ¿Cuál es el nombre de la institución en la que cursó el último año aprobado?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 a.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 b.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>30. ¿Entre el 2008 y el presente ha recibido algún tipo de curso o formación para el trabajo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>31. ¿Quién o quienes le han brindado estos cursos o formación? (puede seleccionar más de una opción)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 a.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 b.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 c.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoB'>B. DATOS GENERALES DEL ENTREVISTADO (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>32. ¿Desea usted recibir formación para fortalecer sus capacidades y obtener un mejor trabajo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>33. ¿En qué área le interesaría recibir esta formación?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        B. DATOS GENERALES DEL ENTREVISTADO
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>21. ¿Hay cambio de residencia? (diligencie de acuerdo a la pregunta 8)</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta21" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta21" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>22. ¿Cuál fue la principal razón por la que cambió de residencia?</label><br/>
+                    <textarea id="preguntano22" class="saveTextarea form-control"></textarea><br/>
+                    <legend></legend>
+                    <label>23. Si pudiera, ¿volvería al lugar en donde residía en el 2008?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta23" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta23" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <label>¿Por qué?</label><br/>
+                    <input id="preguntano23Porque" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label id='preguntano2'>24. ¿Considera que el PHEQ tuvo que ver con su decisión de cambiar su residencia?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta24" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta24" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <label>¿Por qué?</label><br/>
+                    <input id="preguntano24Porque" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>25. ¿Cuántas personas hacían parte de su hogar en agosto de 2008?</label><br/>
+                    <input id="preguntano25" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>26. ¿ Tiene el recibo de pago de energía eléctrica solicitado?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta26" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta26" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>27. Del recibo solicitado diligencie la siguiente información: (estos datos deben tomarse del recibo físico)</label><br/>
+                    <label>a. ¿El nombre de la persona en el recibo es el mismo del entrevistado?</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta27a" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta27a" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>b. ¿La dirección del recibo es la misma registrada por el entrevistado? (pregunta 3 de este formulario)</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta27b" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta27b" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>c. El estrato que aparece en el recibo</label>
+                    <label>(tenga en cuenta las homologaciones para estrato del manual)</label>
+                    <input id="preguntano27c" type='text' class="saveText form-control"><br/>
+                    <label>d. ¿Se cuenta con un medidor o contador?</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta27d" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta27d" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <label>Registre el consumo en kw/h del último mes</label>
+                    <input id="preguntano27dConsumoUltimoMes" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>e. ¿Cuál es el valor a pagar del recibo?</label>
+                    <label>(registre el valor en pesos sin puntos ni comas)</label>
+                    $<input id="preguntano27e" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>28. ¿Cuál es su nivel educativo y el último año aprobado en ese nivel?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="1"> Ninguno
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="2"> Preescolar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="3"> Primaria
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="4"> Secundaria
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="5"> Media
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="6"> Ténico profesional
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="7"> Tecnológico
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="8"> Universitario
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="9"> Especialización
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="10"> Maestría
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta28" class="saveCheck" value="11"> Doctorado
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label >29. ¿Cuál es el nombre de la institución en la que cursó el último año aprobado?</label><br/>
+                    <label >a. Nombre de institución:</label><br/>
+                    <input id="preguntano29" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label >b. ¿En qué municipio se ubica o ubicaba?</label><br/>
+                    <select id="preguntano29Municipio" class="saveSelect form-control">
+                        <option>
+                            Seleccione Muncipio...
+                        </option>
+                    </select>
+                    <br/>
+                    <legend></legend>
+                    <label>30. ¿Entre el 2008 y el presente ha recibido algún tipo de curso o formación para el trabajo?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta30" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta30" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label id='preguntano3'>31. ¿Quién o quienes le han brindado estos cursos o formación? (puede seleccionar más de una opción)</label><br/>
+                    <label>a. EMGESA o el PHEQ</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta31a" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta31a" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>b. El SENA </label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta31b" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta31b" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>c. Otra entidad, ¿Cuál?</label><br/>
+                    <input id="preguntano31c" type='text' class="saveText form-control"><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta31c" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta31c" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        B. DATOS GENERALES DEL ENTREVISTADO (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>32. ¿Desea usted recibir formación para fortalecer sus capacidades y obtener un mejor trabajo?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="pregunta32" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta32" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>33. ¿En qué área le interesaría recibir esta formación?</label><br/>
+                    <input id="preguntano33" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                </div>
+            </div>
             <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008</label><br/>
             <textarea class="form-control"></textarea><br/>
             <textarea class="form-control"></textarea><br/>
