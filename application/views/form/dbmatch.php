@@ -94,7 +94,31 @@ if (isset($_GET["code"])) {
             </table>
             <br/>
             <table id='tableElectro' class='table table-striped'>
-              <legend id-'labelElectro'>ElectroHuila</legend>
+              <legend id='labelElectro'>ElectroHuila</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableSalvoconducto' class='table table-striped'>
+              <legend id="Salvoconductos">Salvoconductos</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableAprovechamientoForestal' class='table table-striped'>
+              <legend id="AprovechamientoForestal">Aprovechamiento Forestal</legend>
               <br/>
               <thead>
                 <tbody>

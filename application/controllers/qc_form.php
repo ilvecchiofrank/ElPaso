@@ -936,6 +936,18 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
     }
+    
+    /*Cargar Info Salvoconducto*/
+    public function get_Salvoconducto($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_salvoconducto($cedula));
+    }
+    
+    /*Cargar Info Salvoconducto*/
+    public function get_AprobForestal($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_aprobforestal($cedula));
+    }
 
     /*Cargar info No Residentes*/
     public function get_No_Residentes($cedula){
