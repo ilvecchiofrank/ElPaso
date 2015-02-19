@@ -158,6 +158,17 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
+    
+    /* Formulario de entrevista no. 1*/
+    public function form_interview_1($id){
+        if ($this->session->userdata("isLoggedIn")) {
+            $data = array('id' => $id);
+            $this->load->vars($data);
+            $this->display_page("form_interview_1", "form");
+            return;
+        }
+        redirect("/");
+    }
 
     /*Formulario de impresion de cartas*/
     public function print_letter($formulario, $id_respuesta){
@@ -924,6 +935,18 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Electro($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
+    }
+    
+    /*Cargar Info Salvoconducto*/
+    public function get_Salvoconducto($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_salvoconducto($cedula));
+    }
+    
+    /*Cargar Info Salvoconducto*/
+    public function get_AprobForestal($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_aprobforestal($cedula));
     }
 
     /*Cargar info No Residentes*/

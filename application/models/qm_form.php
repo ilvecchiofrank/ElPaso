@@ -966,6 +966,32 @@ class QM_Form extends CI_Model {
         echo $exc->getTraceAsString();
       }
     }
+    
+    /**Metodo get_salvoconducto
+    metodo que obtiene la informacion de la vista t71*/
+    public function get_salvoconducto($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t71web_salvoconductos_cam WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+    
+    /**Metodo get_salvoconducto
+    metodo que obtiene la informacion de la vista t72*/
+    public function get_aprobforestal($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t72web_aproforestal WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
 
     /*Metodo get_no_residentes
     metodo que obtiene la informacion de la tabla de no residentes*/
