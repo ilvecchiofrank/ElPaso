@@ -158,7 +158,27 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
-    
+
+    /* Panel de control de reportes*/
+    public function reports(){
+        if ($this->session->userdata("isLoggedIn")){
+            $this->display_page("reports", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Vista detalles de reporte*/
+    public function report_details(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("report_details", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario de entrevista no. 1*/
     public function form_interview_1($id){
         if ($this->session->userdata("isLoggedIn")) {
