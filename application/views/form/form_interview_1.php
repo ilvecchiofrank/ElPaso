@@ -10,6 +10,13 @@
     h1, h2, h3, h4{
         font-weight: bold;
     }
+    
+    #tablepreg44 thead tr th {
+        text-align: center;
+    }
+    #tablepreg44 tbody tr td {
+        padding: 1em 1em 1em 1em;
+    }
 </style>
 <section class="main-content">
     <div class="container">
@@ -60,7 +67,7 @@
                     <legend></legend>
                     <label id='preguntano8'>8. ¿Existe cambio en el municipio de residencia entre el 2008 y la actualidad? (verifique con casillas A3 y B1 del registro)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta8" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -81,7 +88,7 @@
                     <legend></legend>
                     <label>11. ¿En el proceso de registro el entrevistado autorizó el habeas data? (el cual se mantiene hasta el momento)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="preguntano11" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -101,7 +108,7 @@
                     <input id="preguntano13" type='date' class="saveText form-control"><br/>
                     <label id='preguntano1'>14. ¿Se pudo realizar la entrevista?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta14" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -121,7 +128,7 @@
                     <input type='text' id='preguntano16' class="saveText form-control"><br/>
                     <label >17. ¿El tipo y número de documento de identidad coincide con el registrado en el censo 2014?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta17" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -142,7 +149,7 @@
                     <input id='preguntano19' type='date' class="saveText form-control"><br/>
                     <label>20. ¿Se autorizó la grabación de la entrevista?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta20" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -163,7 +170,7 @@
                 <div class="panel-body">
                     <label>21. ¿Hay cambio de residencia? (diligencie de acuerdo a la pregunta 8)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta21" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -178,7 +185,7 @@
                     <legend></legend>
                     <label>23. Si pudiera, ¿volvería al lugar en donde residía en el 2008?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta23" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -191,7 +198,7 @@
                     <legend></legend>
                     <label id='preguntano2'>24. ¿Considera que el PHEQ tuvo que ver con su decisión de cambiar su residencia?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta24" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -207,7 +214,7 @@
                     <legend></legend>
                     <label>26. ¿ Tiene el recibo de pago de energía eléctrica solicitado?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta26" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -220,7 +227,7 @@
                     <label>27. Del recibo solicitado diligencie la siguiente información: (estos datos deben tomarse del recibo físico)</label><br/>
                     <label>a. ¿El nombre de la persona en el recibo es el mismo del entrevistado?</label>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta27a" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -232,7 +239,7 @@
                     <legend></legend>
                     <label>b. ¿La dirección del recibo es la misma registrada por el entrevistado? (pregunta 3 de este formulario)</label>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta27b" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -247,7 +254,7 @@
                     <input id="preguntano27c" type='text' class="saveText form-control"><br/>
                     <label>d. ¿Se cuenta con un medidor o contador?</label>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta27d" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -264,7 +271,7 @@
                     <legend></legend>
                     <label>28. ¿Cuál es su nivel educativo y el último año aprobado en ese nivel?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="checkbox" name="pregunta28" class="saveCheck" value="1"> Ninguno
                         </label>
                         <label class="btn btn-primary">
@@ -315,7 +322,7 @@
                     <legend></legend>
                     <label>30. ¿Entre el 2008 y el presente ha recibido algún tipo de curso o formación para el trabajo?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta30" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -328,7 +335,7 @@
                     <label id='preguntano3'>31. ¿Quién o quienes le han brindado estos cursos o formación? (puede seleccionar más de una opción)</label><br/>
                     <label>a. EMGESA o el PHEQ</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta31a" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -340,7 +347,7 @@
                     <legend></legend>
                     <label>b. El SENA </label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta31b" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -353,7 +360,7 @@
                     <label>c. Otra entidad, ¿Cuál?</label><br/>
                     <input id="preguntano31c" type='text' class="saveText form-control"><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta31c" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -374,7 +381,7 @@
                 <div class="panel-body">
                     <label>32. ¿Desea usted recibir formación para fortalecer sus capacidades y obtener un mejor trabajo?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary active">
+                        <label class="btn btn-primary">
                             <input type="radio" name="pregunta32" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
@@ -389,273 +396,686 @@
                     <legend></legend>
                 </div>
             </div>
-            <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>34. ¿A qué actividad dedicaba usted la mayor parte del tiempo en agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Trabajar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Buscar trabajo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Oficios del hogar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Estudiar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Otra actividad, ¿cuál? _____________________________________</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Estaba incapacitado permanentemente para trabajar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>35. Además de realizar esta actividad, ¿Tenía un negocio o trabajo por el que recibía ingresos en agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>36. ¿Qué hacía en ese trabajo o actividad? (sea lo más detallado posible)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>37. ¿Con que frecuencia realizó este trabajo durante el mes de agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Todas las semanas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Algunas semanas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 De vez en cuando</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>38. ¿Cuántas horas a la semana dedicaba a este trabajo en agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Horas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano3'>39. Desde enero hasta agosto de 2008, ¿durante cuántos meses realizó este trabajó?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Número de meses</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>40. ¿Cuál era el nombre de la empresa, negocio, finca o persona donde trabajaba?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>41. ¿En dónde estaba ubicada esa empresa,negocio,finca o persona donde usted trabajaba?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Departamento</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Barrio o vereda:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>42. ¿A qué actividad se dedicaba principalmente la empresa, negocio, finca o persona  donde usted trabajaba?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>43. ¿Usted era el propietario de la empresa, negocio o finca?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoE'>Entrevistador: Revise la documentación entregada por el entrevistado en el momento de  su inscripción en el Censo y verifique que la informacion reportada en materia de actividad laboral, nombre de empresa, finca, negocio o persona para quien laboraba coincida  0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>44.   ¿La información reportada en la preguntas anteriores coincide con lo reportado por las certificaciones entregadas en el proceso de inscripción del censo 2014?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoE'>Entrevistador: De acuerdo a la narración de las preguntas 36, 40, 41, 42 y 43, así como de la información que el entrevistado haya adjuntado con anterioridad a la entrevista diligencie el cuadro que aparece a continuación 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Posición ocupacional</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 1. Obrero o empleado de empresa particular</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 2. Trabajador o ayudante sin remuneración</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 3. Jornalero o peón</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 4. Trabajador por cuenta propia</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 5. Patrón o empleador</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 6. Otro, ¿cuál?_________________________</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>45. ¿Para realizar ese trabajo tenía algún tipo de contrato?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>46. Antes de descuentos (Salud, pensión u otros descuentos de nómina), ¿Cuánto ganó usted el mes de agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 (Excluya pagos en especie)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>47. Además del salario en dinero en agosto de 2008, ¿usted recibía como parte de pago de su trabajo:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 a.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 b.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 c.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>48. Además del salario en dinero, en agosto de 2008, ¿usted recibía una parte del producto como parte de pago de su trabajo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano4'>49. ¿La empresa, negocio o persona que le contrataba fue reubicada por la ejecución del PHEQ?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>50. ¿Sabe usted, dónde se ubica actualmente dicha empresa negocio o persona?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoP'>Pase a pregunta 107 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            "<label id='preguntanoE'>Entrevistador: De acuerdo a la clasificación hecha en  el cuadro de cruce entre posición ocupacional y cadena productiva que se encuentra antes de la pregunta 45,  proceda de la siguiente manera:
-                Si la cadena es código 1 a 5,  y la posición ocupacional 4 o 5 continúe con la pregunta 51, relacionada con actividades agricolas
-                Si la cadena es código 6, y la posición ocupacional 4 o 5,  pase a la pregunta 60 relacionada con sector forestal
-                Si la cadena es código 7, y la posición ocupacional 4 o 5, pase a la pregunta 67, sobre actividades pecuarias
-                Si la cadena es código 8, y la posición ocupacional 4 o 5, pase a la pregunta 73 relacionada con actividades de pesca
-                Si la cadena es código 9, y la posición ocupacional 4 o 5, pase a la pregunta 81, relacionada con actividades mineras o extractivas
-                Si la cadena es código 10, y la posición ocupacional 4 o 5, pase a pregunta 87, relacionada con actividades de transporte de  mercancías o insumos                                                                                                                                                                                                                                                       Si la cadena es código 11, y la posición ocupacional 4 o 5, pase a pregunta 92, relacionadas con actividades de transporte de pasajeros
-                Si la cadena es código 12, y la posición ocupacional 4 o 5, pase a la pregunta 97, relacionada con actividades comerciales
-                Si la cadena es código 13, pase a la pregunta 104 0</label><br/>"
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>51. En la finca donde usted trabajaba ¿Cuál era el área destinada para ese cultivo en el 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Área</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>52. ¿Hacía rotación de ese cultivo con otro tipo de cultivos?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>52A. ¿Asociaba ese cultivo con otro tipo de cultivos?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>53. ¿Las labores de siembra, mantenimiento y cosecha del cultivo las realizaba sólo o con otras personas?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Solo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Con otras personas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano5'>54. Cuántas personas pagadas y no pagadas le ayudaban en ese cultivo y que labores desarrollaban?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Etapa</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Siembra</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Mantenimiento</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Cosecha</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>34. ¿A qué actividad dedicaba usted la mayor parte del tiempo en agosto de 2008?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="1"> Trabajar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="2"> Buscar Trabajo
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="3"> Oficios del Hogar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="4"> Estudiar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="5"> Otra Actividad
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta34" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>¿Cual?</label>
+                    <input id="preguntano34" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>35. Además de realizar esta actividad, ¿Tenía un negocio o trabajo por el que recibía ingresos en agosto de 2008?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta35" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta35" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>36. ¿Qué hacía en ese trabajo o actividad? (sea lo más detallado posible)</label><br/>
+                    <textarea id='preguntano36' class="saveTextarea form-control"></textarea><br/>
+                    <label id='preguntano3'>37. ¿Con que frecuencia realizó este trabajo durante el mes de agosto de 2008?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta37" class="saveRadio" value="1"> Todas las semanas
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta37" class="saveRadio" value="2"> Algunas semanas
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta37" class="saveRadio" value="3"> De vez en cuando
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legen></legen>
+                    <label>Número de días por semana</label>
+                    <input id="preguntano37Numerodiasporsemana" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Número de semanas</label>
+                    <input id="preguntano37NumeroSemanas" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Número de días</label>
+                    <input id="preguntano37Numerodias" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>38. ¿Cuántas horas a la semana dedicaba a este trabajo en agosto de 2008?</label><br/>
+                    <label>Horas</label><br/>
+                    <input id="preguntano38" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>39. Desde enero hasta agosto de 2008, ¿durante cuántos meses realizó este trabajó?</label><br/>
+                    <label>Número de meses</label><br/>
+                    <input id="preguntano39" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label >40. ¿Cuál era el nombre de la empresa, negocio, finca o persona donde trabajaba?</label><br/>
+                    <input id="preguntano40" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>41. ¿En dónde estaba ubicada esa empresa,negocio,finca o persona donde usted trabajaba?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label>Departamento:</label><br/>
+                    <select id="pregunta41Departamento" class="saveSelect form-control">
+                        <option>Seleccione Departamento...</option>
+                    </select>
+                    <br/>
+                    <label>Municipio:</label><br/>
+                    <select id="pregunta41Municipio" class="saveSelect form-control">
+                        <option>Seleccione Municipio...</option>
+                    </select>
+                    <br/>
+                    <label>Barrio o vereda:</label><br/>
+                    <select id="pregunta41Barrio" class="saveSelect form-control">
+                        <option>Seleccione Barrio o Vereda...</option>
+                    </select>
+                    <br/>
+                    <legend></legend>
+                    <label >42. ¿A qué actividad se dedicaba principalmente la empresa, negocio, finca o persona  donde usted trabajaba?</label><br/>
+                    <textarea id='preguntano42' class="saveTextarea form-control"></textarea>
+                    <legend></legend>
+                    <br/>
+                    <label id='preguntano4'>43. ¿Usted era el propietario de la empresa, negocio o finca?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta43" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta43" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>Entrevistador: Revise la documentación entregada por el entrevistado en el momento de  su inscripción en el Censo y verifique que la informacion reportada en materia de actividad laboral, nombre de empresa, finca, negocio o persona para quien laboraba coincida  0</label><br/>
+                    <label>44.   ¿La información reportada en la preguntas anteriores coincide con lo reportado por las certificaciones entregadas en el proceso de inscripción del censo 2014?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta44" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta44" class="saveRadio" value="2"> No
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta44" class="saveRadio" value="3"> No se adjuntaron certificaciones
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Entrevistador: De acuerdo a la narración de las preguntas 36, 40, 41, 42 y 43, así como de la información que el entrevistado haya adjuntado con anterioridad a la entrevista diligencie el cuadro que aparece a continuación</label>
+                    <br/>
+                    <table id="tablepreg44">
+                        <thead>
+                            <tr>
+                                <th>Posición ocupacional</th>
+                                <th>Cadena Productiva</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Obrero o empleado de empresa particular</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2. Trabajador o ayudante sin remuneración</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3. Jornalero o peón</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3 class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4. Trabajador por cuenta propia</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5. Patrón o empleador</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6. Otro, ¿cuál?</td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="1"> 1. Tabaco
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="2"> 2. Maíz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="3"> 3. Arroz
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="4"> 4. Cacao
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="5"> 5. Pasifloras
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="6"> 6. Forestal
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="10"> 10. Transporte de insumos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="12"> 12. Comercialización de productos
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>45. ¿Para realizar ese trabajo tenía algún tipo de contrato?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta45" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta45" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>El contrato era verbal o escrito?</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta45TipoContrato" class="saveRadio" value="1"> Verbal
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta45TipoContrato" class="saveRadio" value="2"> Escrito
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>46. Antes de descuentos (Salud, pensión u otros descuentos de nómina), ¿Cuánto ganó usted el mes de agosto de 2008?</label><br/>
+                    <label>(Excluya pagos en especie) Valor en pesos:</label><br/>
+                    <input id="preguntano46" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>47. Además del salario en dinero en agosto de 2008, ¿usted recibía como parte de pago de su trabajo:</label><br/>
+                    <label>a. Vivienda</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47a" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47a" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47atipo" class="saveRadio" value="1"> Permanente
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47atipo" class="saveRadio" value="2"> Temporal
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47a3" class="saveRadio" value="1"> Individual
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47a3" class="saveRadio" value="2"> Para el hogar
+                        </label>
+                    </div>
+                    <label>Area Ocupada</label>
+                    <input id="preguntano47AreaOcupada" type='text' class="saveText form-control"> mts2<br/>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>b. Alimentación</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47b" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47b" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47btipo" class="saveRadio" value="1"> Permanente
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47btipo" class="saveRadio" value="2"> Temporal
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47b3" class="saveRadio" value="1"> Individual
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47b3" class="saveRadio" value="2"> Para el hogar
+                        </label>
+                    </div>
+                    <label>Comidas principales</label>
+                    <input id="preguntano47ComidasPrincipales" type='text' class="saveText form-control"> día<br/>
+                    <label>Onces o refrigerios</label>
+                    <input id="preguntano47Onces" type='text' class="saveText form-control"> día<br/>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>c. Transporte</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47c" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47c" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47ctipo" class="saveRadio" value="1"> Permanente
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47ctipo" class="saveRadio" value="2"> Temporal
+                        </label>
+                    </div>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47c3" class="saveRadio" value="1"> Individual
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta47c3" class="saveRadio" value="2"> Para el hogar
+                        </label>
+                    </div>
+                    <label>Tipo de Vehiculo</label>
+                    <input id="preguntano47ComidasPrincipales" type='text' class="saveText form-control"><br/>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>48. Además del salario en dinero, en agosto de 2008, ¿usted recibía una parte del producto como parte de pago de su trabajo?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta48" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta48" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>¿Qué proporción recibía? (registre la cantidad en porcentaje)</label>
+                    <input id="preguntano48Porcentaje" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>49. ¿La empresa, negocio o persona que le contrataba fue reubicada por la ejecución del PHEQ?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta49" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta49" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>50. ¿Sabe usted, dónde se ubica actualmente dicha empresa negocio o persona?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta50" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta50" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Departamento</label>
+                    <input id="preguntano50Departamento" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Municipio</label>
+                    <input id="preguntano50Municipio" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Dirección</label>
+                    <input id="preguntano50Dirección" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Nombre de la persona de cotacto</label>
+                    <input id="preguntano50Personacontacto" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label>Teléfonos</label>
+                    <input id="preguntano50Teléfonos" type='text' class="saveText form-control"><br/>
+                    <legend></legend>
+                    <label id='preguntanoE'>Entrevistador: De acuerdo a la clasificación hecha en  el cuadro de cruce entre posición ocupacional y cadena productiva que se encuentra antes de la pregunta 45,  proceda de la siguiente manera:
+                        Si la cadena es código 1 a 5,  y la posición ocupacional 4 o 5 continúe con la pregunta 51, relacionada con actividades agricolas
+                        Si la cadena es código 6, y la posición ocupacional 4 o 5,  pase a la pregunta 60 relacionada con sector forestal
+                        Si la cadena es código 7, y la posición ocupacional 4 o 5, pase a la pregunta 67, sobre actividades pecuarias
+                        Si la cadena es código 8, y la posición ocupacional 4 o 5, pase a la pregunta 73 relacionada con actividades de pesca
+                        Si la cadena es código 9, y la posición ocupacional 4 o 5, pase a la pregunta 81, relacionada con actividades mineras o extractivas
+                        Si la cadena es código 10, y la posición ocupacional 4 o 5, pase a pregunta 87, relacionada con actividades de transporte de  mercancías o insumos                                                                                                                                                                                                                                                       Si la cadena es código 11, y la posición ocupacional 4 o 5, pase a pregunta 92, relacionadas con actividades de transporte de pasajeros
+                        Si la cadena es código 12, y la posición ocupacional 4 o 5, pase a la pregunta 97, relacionada con actividades comerciales
+                        Si la cadena es código 13, pase a la pregunta 104 0</label><br/>
+
+                    <label id='preguntano5'>51. En la finca donde usted trabajaba ¿Cuál era el área destinada para ese cultivo en el 2008?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Área</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano5'>52. ¿Hacía rotación de ese cultivo con otro tipo de cultivos?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Sí.</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 No.</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano5'>52A. ¿Asociaba ese cultivo con otro tipo de cultivos?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Sí.</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 No.</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano5'>53. ¿Las labores de siembra, mantenimiento y cosecha del cultivo las realizaba sólo o con otras personas?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Solo</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Con otras personas</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano5'>54. Cuántas personas pagadas y no pagadas le ayudaban en ese cultivo y que labores desarrollaban?</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Etapa</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Siembra</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Mantenimiento</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <label id='preguntano0'>0 Cosecha</label><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                    <textarea class="form-control"></textarea><br/>
+                </div>
+            </div>
             <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
             <textarea class="form-control"></textarea><br/>
             <label id='preguntano5'>55. ¿Qué tipo de abonos o fertilizantes utilizaba para este cultivo?</label><br/>
