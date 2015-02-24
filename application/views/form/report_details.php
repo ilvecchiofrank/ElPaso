@@ -9,7 +9,11 @@
               <legend id='lgndTitle'>.</legend>
           </div>
           <br/>
-
+          <div id='fecha'>
+            <label class="btn btn-success btn-md" id='fechaCorte'></label>
+          </div>
+          <br/>
+          <br/>
           <div id='reports' class='form-group'>
             <table id='tableReports' class='table table-striped'>
               <thead>
