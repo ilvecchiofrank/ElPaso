@@ -4,7 +4,6 @@ loadReport(getParameterByName("tId"));
 reportDate();
 
 function loadReport(tipo){
-console.log(tipo);
     switch(tipo){
 
         case '1':
@@ -59,28 +58,63 @@ $("#fechaCorte").html(today);
 
 function loadReportData(reporte){
     var tablareporte = "";
+    var totalRegistros = 0;
+    var nuevos = 0;
+    var guardados = 0;
+    var devueltos = 0;
+    var finalizados = 0;
 
-/*   $.getJSON("index.php/form/get_Pqr/" + cedula, function(objRData){
-        arrayPqrs = objRData;
+    switch (reporte){
 
-        if(arrayPqrs.length >= 1){
+        //Reporte Gerente
+        case '5':
+        $.getJSON("index.php/form/get_Report_Gerente", function(objRData){
+            arrayReport = objRData;
+            if(arrayReport.length >0){
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    totalRegistros = totalRegistros + parseInt(arrayReport[i].conteo);
 
-            tablapqr += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Tipo</th><th scope='col'>Año</th><th scope='col'>Radicado</th><th scope='col'>Caso</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+                    switch(arrayReport[i].estado){
+                        //Nuevo
+                        case '1':
+                        nuevos = parseInt(arrayReport[i].conteo);
+                        break;
 
-            for (var p = arrayPqrs.length -1; p >=0; p--){
-                var ruta = arrayPqrs[p].path.replace("Q:emgesaCD/", "https://emgesa.s3.amazonaws.com/CD/");
-                tablapqr += "<tr><td>" + arrayPqrs[p].tipo + "</td><td>" + arrayPqrs[p].año + "</td><td>" + arrayPqrs[p].radicado + "</td><td>" + arrayPqrs[p].caso + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+                        //Guardado
+                        case '2':
+                        guardados = parseInt(arrayReport[i].conteo);
+                        break;
+
+                        //Devuelto historico
+                        case '7':
+                        devueltos = parseInt(arrayReport[i].conteo);
+                        break;
+
+                        //Finalizado
+                        case '8':
+                        finalizados = parseInt(arrayReport[i].conteo);
+                        break;
+
+                        default:
+                        break;
+
+                    }
+
+                }
+
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Redactor</th><th scope='col'>Nuevo</th><th scope='col'>Guardado</th><th scope='col'>Devuelto Histórico</th><th scope='col'>Finalizado</th><th scope='col'>Total</th></tr></thead><tbody>";
+                tablareporte += "<tr><td>Gerente</td><td>" + nuevos + "</td><td>" + guardados + "</td><td>" + devueltos + "</td><td>" + finalizados + "</td><td>" + totalRegistros + "</td></tr>";
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+
             }
-
-        }
-        else
-        {
-            $("tablePqrsResults").css("display","none");
-        }
-
-        tablapqr += "</tbody></table><br/>";
-        $("#tablePqrsResults").html(tablapqr);
-    });*/
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+        });
+        break;
+    }
 
 }
 

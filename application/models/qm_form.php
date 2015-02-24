@@ -390,6 +390,14 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener reporte general gerente */
+    public function get_report_gerente(){
+      $query = $this->db->query("SELECT u.`a01Nombres` ,rt.estado, wec.nombre_estado_carta,  COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  JOIN `t01web_usuarios` u ON u.`a01Codigo`=rt.`usuario_gerente` WHERE rt.`modulo_actual` = 8 GROUP BY u.`a01Nombres` , rt.estado, wec.nombre_estado_carta;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener conceptos de soporte */
     public function get_supp_con(){
       $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");
