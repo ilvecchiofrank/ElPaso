@@ -66,6 +66,15 @@ function loadReportData(reporte){
 
     switch (reporte){
 
+        //Reporte General
+        case '1':
+        $.getJSON("index.php/form/get_Report_General", function(objRData){
+            arrayReport = objRData;
+            console.log(arrayReport);
+            console.table(arrayReport);
+        });
+        break;
+
         //Reporte Gerente
         case '5':
         $.getJSON("index.php/form/get_Report_Gerente", function(objRData){

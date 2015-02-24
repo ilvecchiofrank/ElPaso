@@ -921,6 +921,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_dash_finished());
     }
 
+    /* Obtener reporte general*/
+    public function get_Report_General(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_general());
+    }
+
     /* Obtener reporte general gerente*/
     public function get_Report_Gerente(){
         $this->load->model("qm_form", "form", true);
