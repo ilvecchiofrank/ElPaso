@@ -27,7 +27,7 @@ function loadDash(){
     //Usuario impresor
     if (rol==9){
     //Boton reportes
-    $("#report_action").html("<a id='btnCert' href='index.php/form/reports' target='_blank' class='btn btn-success btn-md'>Consultar Reportes</a>");
+    $("#report_action").html("<a id='btnReport' href='index.php/form/reports' target='_blank' class='btn btn-success btn-md'>Consultar Reportes</a>");
 
     //Query impresion
     $("#dash_status").css("display", "none");

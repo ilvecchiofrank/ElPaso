@@ -158,7 +158,27 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
-    
+
+    /* Panel de control de reportes*/
+    public function reports(){
+        if ($this->session->userdata("isLoggedIn")){
+            $this->display_page("reports", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Vista detalles de reporte*/
+    public function report_details(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("report_details", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario de entrevista no. 1*/
     public function form_interview_1($id){
         if ($this->session->userdata("isLoggedIn")) {
@@ -899,6 +919,18 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Dash_Finished(){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_dash_finished());
+    }
+
+    /* Obtener reporte general*/
+    public function get_Report_General(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_general());
+    }
+
+    /* Obtener reporte general gerente*/
+    public function get_Report_Gerente(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_gerente());
     }
 
     /*Obtener listado de pqr por numero de cedula*/

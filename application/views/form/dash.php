@@ -33,7 +33,7 @@
             </table>
             <br/>
           </div>
-          <div id='report_action'></div>
+          <div id="report_action" style="margin: 0 auto; width: 100px;"></div>
           <div id='dash_letters' class='form-group'>
             <br/>
             <legend>Inicio</legend>
