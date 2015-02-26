@@ -443,6 +443,18 @@ class QM_Form extends CI_Model {
         //Cerrados Gerente
         $html .= "<td>" . $dataArray[0]->GERENTES . "</td>";
 
+        $query = $this->db->query("SELECT COUNT(formulario) AS TERMINADOS FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=1;");
+        $dataArray = $query->result();
+
+        //Terminados
+        $html .= "<td>" . $dataArray[0]->TERMINADOS . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(formulario) AS NOASIG FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=0 AND rt.`modulo_actual`=0;");
+        $dataArray = $query->result();
+
+        //Sin asignar
+        $html .= "<td>" . $dataArray[0]->NOASIG . "</td>";
+
         //Fin fila
         $html .= "</tr>";
 
