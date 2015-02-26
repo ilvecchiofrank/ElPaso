@@ -443,6 +443,18 @@ class QM_Form extends CI_Model {
         //Cerrados Gerente
         $html .= "<td>" . $dataArray[0]->GERENTES . "</td>";
 
+        $query = $this->db->query("SELECT COUNT(formulario) AS TERMINADOS FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=1;");
+        $dataArray = $query->result();
+
+        //Terminados
+        $html .= "<td>" . $dataArray[0]->TERMINADOS . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(formulario) AS NOASIG FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=0 AND rt.`modulo_actual`=0;");
+        $dataArray = $query->result();
+
+        //Sin asignar
+        $html .= "<td>" . $dataArray[0]->NOASIG . "</td>";
+
         //Fin fila
         $html .= "</tr>";
 
@@ -453,6 +465,30 @@ class QM_Form extends CI_Model {
         echo $exc->getTraceAsString();
       }
 
+    }
+
+    /*Obtener reporte redactores*/
+    public function get_report_redactor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM redactor r GROUP BY r.`a01Nombres`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte consultores*/
+    public function get_report_consultor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM consultor r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte juridicos*/
+    public function get_report_juridico(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM juridico r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
     }
 
     /* Obtener reporte general gerente */

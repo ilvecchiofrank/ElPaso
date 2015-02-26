@@ -70,8 +70,33 @@ function loadReportData(reporte){
         case '1':
         $.getJSON("index.php/form/get_Report_General", function(objRData){
             arrayReport = objRData;
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Redactor (Pend.)</th><th scope='col'>Redactor (Cerr.)</th><th scope='col'>Coordinador (Pend.)</th><th scope='col'>Coordinador (Cerr.)</th><th scope='col'>Juridico (Pend.)</th><th scope='col'>Juridico (Cerr.)</th><th scope='col'>Gerente (Pend.)</th><th scope='col'>Gerente (Cerr.)</th><th scope='col'>Terminados</th><th scope='col'>Sin asignar</th></tr></thead><tbody>";
+            tablareporte += arrayReport;
             console.log(arrayReport);
-            console.table(arrayReport);
+            tablareporte += "</tbody></table><br/>";
+            $("#tableReports").html(tablareporte);
+        });
+        break;
+
+        //Reporte redactores
+        case '2':
+        $.getJSON("index.php/form/get_Report_Redactor", function(objRData){
+            arrayReport = objRData;
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayReport.length >0){
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].a01Nombres + "</td><td>" + arrayReport[i].ESTADO + "</td><td>" + arrayReport[i].TOTAL + "</td></tr>";
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+
         });
         break;
 
