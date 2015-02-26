@@ -2265,7 +2265,7 @@
                         </tbody>
                     </table>
                     <label id='preguntano8'>82. ¿Las labores de extracción las realizaba sólo o con otras personas?</label><br/>
-                                        <div class="btn-group" data-toggle="buttons">
+                    <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
                             <input type="radio" name="pregunta82" class="saveRadio" value="1"> Solo
                         </label>
@@ -2427,499 +2427,1212 @@
                     <legend></legend>
                 </div>
             </div>
-            <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano8'>87. Entre los meses de enero y agosto de 2008, ¿Qué rutas cubría y con qué frecuencia? (pida al entrevistado que sea lo más específico con la ubicación de los situios de inicio y finalización de cada ruta)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Rutas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano8'>88. ¿Qué tipo de productos trasportaba y con qué tipo de vehículos lo hacía?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Clase de productos</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano8'>89. ¿El transporte de estos productos lo realizaba sólo o con otras personas?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Solo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Con otras personas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>90. ¿Cuántas personas pagadas y no pagadas le ayudaban y para que labores?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Número total de personas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>91. ¿Quiénes eran sus principales clientes en la zona de influencia del PHEQ y dónde se ubicaban?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Clientes</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>91A. ¿Dónde adquiría los insumos (Gasolina, lubricantes, repuestos entre otros) que utilizaba para realizar esta actividad? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Tipo de insumo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoP'>Pase a la pregunta 104 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Entre los meses de enero y agosto de 2008, ¿Qué rutas cubría con qué frecuencia y cuántas personas por frecuencia transportaba? (pida al entrevistado que sea lo más específico con la ubicación de los sitios de inicio y finalización de cada ruta)</label><br/>
-            <label id='preguntano9'>92. 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Rutas (Inicio, intermedias, fin)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoC'>C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>93. ¿Qué tipo de vehículos utilizaba y cuál era su capacidad?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Vehículo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>94. ¿Esta actividad la  realizaba sólo o con otras personas?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Solo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Con otras personas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>95. ¿Cuántas personas pagadas y no pagadas le ayudaban y para que labores?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Número total de personas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>96.  ¿Se encontraba afiliado o asociado a alguna empresa?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Si</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>96A. ¿Dónde adquiría los insumos (Gasolina, lubricantes, repuestos entre otros) que utilizaba para realizar esta actividad? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Tipo de insumo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoP'>Pase a la pregunta 104 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>97. Durante el mes de agosto de 2008, ¿Qué productos, Qué cantidades y con que frecuencia comercializaba?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Tipo de productos</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>98. ¿Comercializaba sus productos en forma estacionaria o ambulante?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Estacionaria</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Ambulante</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano9'>99. En agosto de 2008, ¿cuántos establecimientos tenía para comercializar sus productos y en donde estaban ubicados?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Nro.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 1</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 2</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 3</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 4</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoP'>Pase a la pregunta 101 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoB'>B. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>100. Entre los meses de enero y agosto de 2008, ¿Qué recorrido hacía  para vender sus productos y con que frecuencia lo realizaba? (pida al entrevistado que sea lo más específico con la ubicación de los situios de inicio y finalización de cada ruta)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Recorrido</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>101. Entre los meses de enero y agosto de 2008, ¿A quién(es) le compraba los productos que comercializaba?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Tipo de producto</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>102. ¿Para comercializar sus productos utilizaba algún vehículo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>103. ¿El vehículo era de su propiedad o contratado?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 En un vehículo propio</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 En un vehículo contratado</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>104. ¿Cuál fue la ganancia neta por esa actividad o negocio durante el mes de agosto de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 $</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>105. ¿Cuál fue su ganancia neta por esa actividad o negocio entre los meses de septiembre de 2007 y julio de 2008?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 $</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>106. Entre enero y agosto de 2008, ¿Cuántos meses trabajo en esa empresa, negocio o finca o para esa persona?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Número de meses</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoD'>D. SITUACIÓN LABORAL ACTUAL</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>107. ¿En este momento continúa realizando  el mismo trabajo o negocio?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>108. ¿A qué actividad dedicó usted la mayor parte del tiempo la semana pasada?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Trabajar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Buscar trabajo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Oficios del hogar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Estudiar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Otra actividad, ¿cuál?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Estaba incapacitado permanentemente para trabajar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>109. Ademas de realizar esta actividad, ¿Tenía la semana pasada un negocio o trabajo por el que recibía ingresos?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>110. ¿Qué hace en ese trabajo? (sea lo más detallado posible)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoD'>D. SITUACIÓN LABORAL ACTUAL (continuación)</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>111. ¿Con que frecuencia realizó este trabajo el mes pasado?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 El mes completo</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Menos del mes</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>112. ¿Cuántas horas a la semana trabaja normalmente?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Horas</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>113. ¿Desde hace cuántos meses realiza este trabajo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Número de meses</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>114. ¿Cuál es el nombre de la empresa, negocio,  finca o persona donde o para la cual trabaja?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>115. ¿En dónde está ubicado esa empresa, negocio o finca donde trabaja?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Departamento</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Barrio o vereda:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>116. ¿A que actividad se dedica principalmente la empresa o negocio en la que usted realiza su trabajo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>117. En este trabajo usted es:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Obrero o empleado de empresa particular</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Obrero o empleado del gobierno</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Empleado doméstico</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Jornalero o peón</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Trabajador po cuenta propia</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Patrón o empleador</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Trabajador sin remuneración</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>118. Antes de descuentos, ¿Cuánto ganó usted el mes pasado en este empleo?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 $</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>119. ¿Para realizar este trabajo tiene algún tipo de contrato?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Sí.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoP'>Pase a la pregunta 121 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>120. ¿Cuál fue la ganacia neta por esa actividad o negocio durante el mes pasado?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 $</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>121. ¿Entre septiembre de 2008 y la actualidad, qué ha cambiado en su situación laboral?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>122. ¿Por qué considera que el PHEQ ha afectado su situación laboral?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoE'>E. CONSIDERACIONES GENERALES DEL ENTREVISTADO SOBRE LA COMPENSACIÓN Y LA INSCRIPCIÓN</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>123. En sus palabras, ¿qué es una compensación, cuándo se aplica y quienes tienen derecho a recibirla?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>124. ¿Por qué cuándo el proyecto hizo censos en el 2008 y 2009, usted no fue incluído?</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoF'>F. OBSERVACIONES DEL ENTREVISTADOR</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>125. Apreciación del entevistador sobre la consistencia de las respuestas:</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>126. Observaciones sobre la afectación en el desarrollo de su trabajo entre 2008 y la actualidad</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>127. Otras observaciones</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoG'>G. CONTROL DE LA ENTREVISTA</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>128. Fecha de aplicación de la entrevista</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>129. Nombre del entrevistador</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 CC.</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano1'>130. Resultado final de la entrevista</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Competa</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 Incompleta</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntano0'>0 No se pudo realizar</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <label id='preguntanoF'>Firma del entrevistado 0</label><br/>
-            <textarea class="form-control"></textarea><br/>
-            <textarea class="form-control"></textarea><br/>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>87. Entre los meses de enero y agosto de 2008, ¿Qué rutas cubría y con qué frecuencia? (pida al entrevistado que sea lo más específico con la ubicación de los situios de inicio y finalización de cada ruta)</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Rutas</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano87a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano87b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano87a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano87b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano87a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano87b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano87a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano87b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano87a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano87b5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>88. ¿Qué tipo de productos trasportaba y con qué tipo de vehículos lo hacía?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Clase de productos</th>
+                                <th colspan="3">Tipo de vehículo</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>Tipo de marca</th>
+                                <th>Modelo</th>
+                                <th>Capacidad (Ton)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano88a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88b1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88c1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88d1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano88a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88b2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88c2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88d2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano88a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88b3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88c3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88d3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano88a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88b4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88c4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano88d4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>89. ¿El transporte de estos productos lo realizaba sólo o con otras personas?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta89" class="saveRadio" value="1"> Solo
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta89" class="saveRadio" value="2"> Con otras personas
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label >90. ¿Cuántas personas pagadas y no pagadas le ayudaban y para que labores?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Número total de personas</th>
+                                <th>Número de personas pagas</th>
+                                <th>Número de personas no pagas</th>
+                                <th>Labores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano90a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90a4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano90b1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90b2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90b3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano90c1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90c2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90c3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano90c4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>91. ¿Quiénes eran sus principales clientes en la zona de influencia del PHEQ y dónde se ubicaban?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Clientes</th>
+                                <th>Ubicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label id='preguntano9'>91A. ¿Dónde adquiría los insumos (Gasolina, lubricantes, repuestos entre otros) que utilizaba para realizar esta actividad? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tipo de insumo</th>
+                                <th>Nombre del sitio de compra</th>
+                                <th>Dirección y Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91aa1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ab1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ac1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91aa2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ab2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ac2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91aa3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ab3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ac3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano91aa4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ab4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano91ac4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>92. Entre los meses de enero y agosto de 2008, ¿Qué rutas cubría con qué frecuencia y cuántas personas por frecuencia transportaba? (pida al entrevistado que sea lo más específico con la ubicación de los sitios de inicio y finalización de cada ruta)</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Rutas(Inicio, intermedias, fin)</th>
+                                <th>Frecuencia</th>
+                                <th>Número de personas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano92a6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92b6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano92c6" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                </div>  
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>93. ¿Qué tipo de vehículos utilizaba y cuál era su capacidad?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Vehículo</th>
+                                <th>Capacidad (pasajeros)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano93a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano93b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano93a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano93b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano93a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano93b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano93a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano93b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano93a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano93b5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>94. ¿Esta actividad la  realizaba sólo o con otras personas?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta94" class="saveRadio" value="1"> Solo
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta94" class="saveRadio" value="2"> Con otras personas
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>95. ¿Cuántas personas pagadas y no pagadas le ayudaban y para que labores?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Número total de personas</th>
+                                <th>Número de personas pagas</th>
+                                <th>Número de personas no pagas</th>
+                                <th>Labores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano95a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95a4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano95b1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95b2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95b3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano95c1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95c2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95c3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano95c4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>96.  ¿Se encontraba afiliado o asociado a alguna empresa?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta96" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta96" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Nombre de la empresa</label>
+                    <input id="preguntano96NombreEmpresa" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>96A. ¿Dónde adquiría los insumos (Gasolina, lubricantes, repuestos entre otros) que utilizaba para realizar esta actividad? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tipo de insumo</th>
+                                <th>Nombre del sitio de compra</th>
+                                <th>Dirección y Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano96aa1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ab1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ac1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano96aa2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ab2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ac2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano96aa3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ab3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ac3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano96aa4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ab4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano96ac4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label id='preguntano9'>97. Durante el mes de agosto de 2008, ¿Qué productos, Qué cantidades y con que frecuencia comercializaba?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tipo de productos</th>
+                                <th>Cantidad</th>
+                                <th>Unidad de medida</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano97a6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97b6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97c6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano97d6" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>98. ¿Comercializaba sus productos en forma estacionaria o ambulante?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta98" class="saveRadio" value="1"> Estacionaria
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta98" class="saveRadio" value="2"> Ambulante
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>99. En agosto de 2008, ¿cuántos establecimientos tenía para comercializar sus productos y en donde estaban ubicados?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nro.</th>
+                                <th>Nombre</th>
+                                <th>Ubicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <input id="preguntano99a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <input id="preguntano99a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <input id="preguntano99a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <input id="preguntano99a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <input id="preguntano99a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>
+                                    <input id="preguntano99a6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano99b6" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        B. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>100. Entre los meses de enero y agosto de 2008, ¿Qué recorrido hacía  para vender sus productos y con que frecuencia lo realizaba? (pida al entrevistado que sea lo más específico con la ubicación de los situios de inicio y finalización de cada ruta)</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Recorrido</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano100a6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano100b6" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>101. Entre los meses de enero y agosto de 2008, ¿A quién(es) le compraba los productos que comercializaba?</label><br/>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tipo de producto</th>
+                                <th>Datos del proveedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a1" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b1" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a2" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b2" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a3" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b3" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a4" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b4" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a5" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b5" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="preguntano101a6" type='text' class="saveText form-control" />
+                                </td>
+                                <td>
+                                    <input id="preguntano101b6" type='text' class="saveText form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <legend></legend>
+                    <label>102. ¿Para comercializar sus productos utilizaba algún vehículo?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta102" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta102" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>103. ¿El vehículo era de su propiedad o contratado?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta103" class="saveRadio" value="1"> En vehículo propio
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta103" class="saveRadio" value="2"> En un vehículo contratado
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Tipo de vehículo</label><br/>
+                    <input id="preguntano103TipoVehiculo" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>Nombre de la persona de contacto</label><br/>
+                    <input id="preguntano103PersonaContacto" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>Teléfonos</label><br/>
+                    <input id="preguntano103Telefonos" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>104. ¿Cuál fue la ganancia neta por esa actividad o negocio durante el mes de agosto de 2008?</label><br/>
+                    $<input id="preguntano104" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>105. ¿Cuál fue su ganancia neta por esa actividad o negocio entre los meses de septiembre de 2007 y julio de 2008?</label><br/>
+                    $<input id="preguntano105" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label id='preguntano1'>106. Entre enero y agosto de 2008, ¿Cuántos meses trabajo en esa empresa, negocio o finca o para esa persona?</label><br/>
+                    <label>Número de meses</label>
+                    <input id="preguntano106" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        D. SITUACIÓN LABORAL ACTUAL
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label id='preguntano1'>107. ¿En este momento continúa realizando  el mismo trabajo o negocio?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta107" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta107" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label id='preguntano1'>108. ¿A qué actividad dedicó usted la mayor parte del tiempo la semana pasada?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="1"> Trabajar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="2"> Buscar Trabajo
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="3"> Oficios del Hogar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="4"> Estudiar
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="5"> Otra Actividad
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox" name="pregunta108" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>¿Cual?</label>
+                    <input id="preguntano108" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label id='preguntano1'>109. Ademas de realizar esta actividad, ¿Tenía la semana pasada un negocio o trabajo por el que recibía ingresos?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta109" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta109" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>110. ¿Qué hace en ese trabajo? (sea lo más detallado posible)</label><br/>
+                    <textarea id="preguntano110" class="form-control saveTextarea"></textarea><br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        D. SITUACIÓN LABORAL ACTUAL (continuación)
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>111. ¿Con que frecuencia realizó este trabajo el mes pasado?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta111" class="saveRadio" value="1"> El mes completo
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta111" class="saveRadio" value="2"> Menos del mes
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Número de días</label>
+                    <input id="preguntano111NumeroDias" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>112. ¿Cuántas horas a la semana trabaja normalmente?</label><br/>
+                    <label>Horas</label>
+                    <input id="preguntano112" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label id='preguntano1'>113. ¿Desde hace cuántos meses realiza este trabajo?</label><br/>
+                    <label>Número de meses</label>
+                    <input id="preguntano113" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>114. ¿Cuál es el nombre de la empresa, negocio,  finca o persona donde o para la cual trabaja?</label><br/>
+                    <textarea id='preguntano114' class="form-control saveTextarea"></textarea><br/>
+                    <legend></legend>
+                    <label id='preguntano1'>115. ¿En dónde está ubicado esa empresa, negocio o finca donde trabaja?</label><br/>
+                    <label>Departamento:</label><br/>
+                    <select id="pregunta115Departamento" class="saveSelect form-control">
+                        <option>Seleccione Departamento...</option>
+                    </select>
+                    <br/>
+                    <label>Municipio:</label><br/>
+                    <select id="pregunta115Municipio" class="saveSelect form-control">
+                        <option>Seleccione Municipio...</option>
+                    </select>
+                    <br/>
+                    <label>Barrio o Vereda:</label><br/>
+                    <select id="pregunta115Barrio" class="saveSelect form-control">
+                        <option>Seleccione Barrio o Vereda...</option>
+                    </select>
+                    <br/>
+                    <legend></legend>
+                    <label>116. ¿A que actividad se dedica principalmente la empresa o negocio en la que usted realiza su trabajo?</label><br/>
+                    <textarea id='preguntano116' class="form-control saveTextarea"></textarea><br/>
+                    <legend></legend>
+                    <label>117. En este trabajo usted es:</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="1"> Obrero o empleado de empresa particular
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="2"> Obrero o empleado del gobierno
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="3"> Empleado doméstico
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="4"> Jornalero o peón
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="5"> Trabajador po cuenta propia
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="6"> Patrón o empleador
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta117" class="saveCheck" value="7"> Trabajador sin remuneración
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>118. Antes de descuentos, ¿Cuánto ganó usted el mes pasado en este empleo?</label><br/>
+                    <label>$</label>
+                    <input id="preguntano118" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>119. ¿Para realizar este trabajo tiene algún tipo de contrato?</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta119" class="saveRadio" value="1"> Si
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta119" class="saveRadio" value="2"> No
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>El contrato es verbal o escrito?</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta119Tipo" class="saveRadio" value="1"> Verbal
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta119Tipo" class="saveRadio" value="2"> Escrito
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label >120. ¿Cuál fue la ganacia neta por esa actividad o negocio durante el mes pasado?</label><br/>
+                    <label>$</label>
+                    <input id="preguntano120" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>121. ¿Entre septiembre de 2008 y la actualidad, qué ha cambiado en su situación laboral?</label><br/>
+                    <textarea id='preguntano121' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                    <label >122. ¿Por qué considera que el PHEQ ha afectado su situación laboral?</label><br/>
+                    <textarea id='preguntano122' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        E. CONSIDERACIONES GENERALES DEL ENTREVISTADO SOBRE LA COMPENSACIÓN Y LA INSCRIPCIÓN
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>123. En sus palabras, ¿qué es una compensación, cuándo se aplica y quienes tienen derecho a recibirla?</label><br/>
+                    <textarea id='preguntano123' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                    <label>124. ¿Por qué cuándo el proyecto hizo censos en el 2008 y 2009, usted no fue incluído?</label><br/>
+                    <textarea id='preguntano124' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        E. CONSIDERACIONES GENERALES DEL ENTREVISTADO SOBRE LA COMPENSACIÓN Y LA INSCRIPCIÓN
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label id='preguntanoF'>F. OBSERVACIONES DEL ENTREVISTADOR</label><br/>
+                    <label>125. Apreciación del entevistador sobre la consistencia de las respuestas:</label><br/>
+                    <textarea id='preguntano125' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                    <label>126. Observaciones sobre la afectación en el desarrollo de su trabajo entre 2008 y la actualidad</label><br/>
+                    <textarea id='preguntano126' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                    <label>127. Otras observaciones</label><br/>
+                    <textarea id='preguntano127' class="form-control saveTextarea" ></textarea><br/>
+                    <legend></legend>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        G. CONTROL DE LA ENTREVISTA
+                    </h3>
+                </div>
+                <div class="panel-body">                    
+                    <label>128. Fecha de aplicación de la entrevista</label><br/>
+                    <input id="preguntano128" type='date' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>Hora de inicio</label>
+                    <input id="preguntano128Inicio" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>Hora de finalización</label>
+                    <input id="preguntano128Finalizacion" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>129. Nombre del entrevistador</label><br/>
+                    <label>Nombre del Entrevistador</label>
+                    <input id="preguntano129" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>CC.</label>
+                    <input id="preguntano129CC" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                    <label>130. Resultado final de la entrevista</label><br/>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta130" class="saveRadio" value="1"> Completa
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta130" class="saveRadio" value="2"> Incompleta
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta130" class="saveRadio" value="2"> No se pudo realizar
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Motivo</label>
+                    <input id="preguntano130Motivo" type='text' class="saveText form-control" /><br/>
+                    <legend></legend>
+                </div>
+            </div>
         </div>
     </div>
 </section>
