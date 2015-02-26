@@ -78,6 +78,28 @@ function loadReportData(reporte){
         });
         break;
 
+        //Reporte redactores
+        case '2':
+        $.getJSON("index.php/form/get_Report_Redactor", function(objRData){
+            arrayReport = objRData;
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayReport.length >0){
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].a01Nombres + "</td><td>" + arrayReport[i].ESTADO + "</td><td>" + arrayReport[i].TOTAL + "</td></tr>";
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+
+        });
+        break;
+
         //Reporte Gerente
         case '5':
         $.getJSON("index.php/form/get_Report_Gerente", function(objRData){

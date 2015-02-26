@@ -467,6 +467,30 @@ class QM_Form extends CI_Model {
 
     }
 
+    /*Obtener reporte redactores*/
+    public function get_report_redactor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM redactor r GROUP BY r.`a01Nombres`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte consultores*/
+    public function get_report_consultor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM consultor r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte juridicos*/
+    public function get_report_juridico(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM juridico r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener reporte general gerente */
     public function get_report_gerente(){
       $query = $this->db->query("SELECT u.`a01Nombres` ,rt.estado, wec.nombre_estado_carta,  COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  JOIN `t01web_usuarios` u ON u.`a01Codigo`=rt.`usuario_gerente` WHERE rt.`modulo_actual` = 8 GROUP BY u.`a01Nombres` , rt.estado, wec.nombre_estado_carta;");
