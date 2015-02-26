@@ -936,7 +936,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     /* Obtener reporte consultores*/
     public function get_Report_Consultor(){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_resport_consultor());
+        echo json_encode($this->form->get_report_consultor());
     }
 
     /* Obtener reporte juridicos*/
