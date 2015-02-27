@@ -58,6 +58,7 @@ $("#fechaCorte").html(today);
 
 function loadReportData(reporte){
     var tablareporte = "";
+    var tablatotal = "";
     var totalRegistros = 0;
     var nuevos = 0;
     var guardados = 0;
@@ -76,10 +77,34 @@ function loadReportData(reporte){
             tablareporte += "</tbody></table><br/>";
             $("#tableReports").html(tablareporte);
         });
+
+        $("#report_total").css("display", "none");
+
         break;
 
         //Reporte redactores
         case '2':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Redactor", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
         $.getJSON("index.php/form/get_Report_Redactor", function(objRData){
             arrayReport = objRData;
             tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
@@ -190,6 +215,7 @@ function loadReportData(reporte){
             {
                 $("#tableReports").css("display","none");
             }
+            $("#report_total").css("display", "none");
         });
         break;
     }

@@ -475,6 +475,30 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Obtener totales redactores*/
+    public function get_report_total_redactor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM redactor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales consultores*/
+    public function get_report_total_consultor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM consultor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales juridicos*/
+    public function get_report_total_juridico(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM juridico tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /*Obtener reporte consultores*/
     public function get_report_consultor(){
       $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM consultor r GROUP BY r.`a01Nombres` ");

@@ -927,6 +927,24 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_report_general());
     }
 
+    /* Obtener totales redactores*/
+    public function get_Report_Total_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_redactor());
+    }
+
+    /* Obtener totales consultores*/
+    public function get_Report_Total_Consultor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_consultor());
+    }
+
+    /* Obtener totales juridicos*/
+    public function get_Report_Total_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_juridico());
+    }
+
     /* Obtener reporte redactores*/
     public function get_Report_Redactor(){
         $this->load->model("qm_form", "form", true);

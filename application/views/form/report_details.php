@@ -14,6 +14,19 @@
           </div>
           <br/>
           <br/>
+          <div id='report_total' class='form-group'>
+            <table id='tableTotal' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <br/>
+          </div>
           <div id='reports' class='form-group'>
             <table id='tableReports' class='table table-striped'>
               <thead>
