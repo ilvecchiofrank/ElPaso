@@ -942,7 +942,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     /* Obtener totales juridicos*/
     public function get_Report_Total_Juridico(){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_report_juridico());
+        echo json_encode($this->form->get_report_total_juridico());
     }
 
     /* Obtener reporte redactores*/

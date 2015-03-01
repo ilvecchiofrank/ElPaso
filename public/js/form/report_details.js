@@ -127,6 +127,27 @@ function loadReportData(reporte){
 
         //Reporte consultores
         case '3':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Consultor", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
         $.getJSON("index.php/form/get_Report_Consultor", function(objRData){
             arrayReport = objRData;
             tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
@@ -149,6 +170,27 @@ function loadReportData(reporte){
 
         //Reporte juridicos
         case '4':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Juridico", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
         $.getJSON("index.php/form/get_Report_Juridico", function(objRData){
             arrayReport = objRData;
             tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
