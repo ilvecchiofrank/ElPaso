@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    var idFormT08 = '<?php echo $id; ?>';
+    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+</script>
 <style>
     label{
         display: block;
@@ -54,7 +59,26 @@
                     <textarea id='preguntano3' class="saveTextarea form-control"></textarea><br/>
                     <legend></legend>
                     <label >4. Zona:</label><br/>
-                    <input id='preguntano4' type='text' class="saveText form-control" /><br/>  
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta4" class="saveRadio" value="1"> Urbana
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta4" class="saveRadio" value="2"> Rural
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>Barrio</label>
+                    <select id="pregunta4Barrio" class="saveSelect form-control">
+                        <option>Seleccione Barrio...</option>
+                    </select>
+                    <legend></legend>
+                    <label>Vereda</label>
+                    <select id="pregunta4Vereda" class="saveSelect form-control">
+                        <option>Seleccione Vereda...</option>
+                    </select>
                     <legend></legend>
                     <label >5. Nombres del entrevistado (como aparece en el formulario de registro del Censo 2014):</label><br/>
                     <input id='preguntano5' type='text' class="saveText form-control" /><br/>
@@ -63,7 +87,7 @@
                     <input id='preguntano6' type='text' class="saveText form-control" /><br/>            
                     <legend></legend>
                     <label >7. Edad actual del entrevistado (calcule la edad de acuerdo a la casilla A11 del registro del Censo 2014):</label><br/>
-                    <input type='text' class="saveText form-control" /><br/>
+                    <input id='preguntano7' type='text' class="saveText form-control" /><br/>
                     <legend></legend>
                     <label id='preguntano8'>8. ¿Existe cambio en el municipio de residencia entre el 2008 y la actualidad? (verifique con casillas A3 y B1 del registro)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
@@ -89,10 +113,10 @@
                     <label>11. ¿En el proceso de registro el entrevistado autorizó el habeas data? (el cual se mantiene hasta el momento)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="radio" name="preguntano11" class="saveRadio" value="1"> Si
+                            <input type="radio" name="pregunta11" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="preguntano11" class="saveRadio" value="2"> No
+                            <input type="radio" name="pregunta11" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>
@@ -100,13 +124,22 @@
                     <legend></legend>
                     <label>12. Números de teléfono registrados (casilla A6 del Censo 2014):</label><br/>
                     <label>Telefono 1</label>
-                    <input id="preguntano12Telefono1" type='text' class="form-control"><br/>
+                    <input id="preguntano12Telefono1" type='text' class="saveText form-control"><br/>
                     <label >Telefono 2</label>
-                    <input id="preguntano12Telefono2" type='text' class="form-control"><br/>
+                    <input id="preguntano12Telefono2" type='text' class="saveText form-control"><br/>
                     <legend></legend>
                     <label>13. Fecha de la comunicación por parte de EMGESA de la realización de la entrevista:</label><br/>
                     <input id="preguntano13" type='date' class="saveText form-control"><br/>
-                    <label id='preguntano1'>14. ¿Se pudo realizar la entrevista?</label><br/>
+                    <legend></legend>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="radio" name="pregunta13" class="saveRadio" value="2"> N/D
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <legend></legend>
+                    <label>14. ¿Se pudo realizar la entrevista?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
                             <input type="radio" name="pregunta14" class="saveRadio" value="1"> Si
@@ -117,6 +150,9 @@
                     </div>
                     <br/>
                     <br/>
+                    <legend></legend>
+                    <label>¿Por qué?</label><br/>
+                    <input id="preguntano14Porque" type='date' class="saveText form-control"><br/>
                     <legend></legend>
                     <label>Para el diligenciamiento de las preguntas 15 a 19 solicite el documento de identidad del entrevistado</label><br/>
                     <label >15. Tipo de documento:</label><br/>
@@ -139,12 +175,18 @@
                     <br/>
                     <legend></legend>
                     <label>18. Lugar de expedición:</label><br/>
-                    <input id="preguntano18" type='text' class="saveText form-control" /><br/>
                     <label>Departamento:</label><br/>
                     <select id="preguntano18Departamento" class="saveSelect form-control">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
+                    <legend></legend>
+                    <label>Municipio:</label><br/>
+                    <select id="preguntano18Municipio" class="saveSelect form-control">
+                        <option>Seleccione Municipio...</option>
+                    </select>
+                    <br/>
+                    <legend></legend>
                     <label>19. Fecha de expedición:</label><br/>
                     <input id='preguntano19' type='date' class="saveText form-control"><br/>
                     <label>20. ¿Se autorizó la grabación de la entrevista?</label><br/>
@@ -158,6 +200,9 @@
                     </div>
                     <br/>
                     <br/>
+                    <legend></legend>
+                    <label>¿Por qué?</label><br/>
+                    <input id="preguntano20Porque" type='date' class="saveText form-control"><br/>
                     <legend></legend>
                 </div>
             </div>
@@ -224,6 +269,9 @@
                     <br/>
                     <br/>
                     <legend></legend>
+                    <label>¿Por qué?</label><br/>
+                    <input id="preguntano26Porque" type='date' class="saveText form-control"><br/>
+                    <legend></legend>
                     <label>27. Del recibo solicitado diligencie la siguiente información: (estos datos deben tomarse del recibo físico)</label><br/>
                     <label>a. ¿El nombre de la persona en el recibo es el mismo del entrevistado?</label>
                     <div class="btn-group" data-toggle="buttons">
@@ -270,6 +318,7 @@
                     $<input id="preguntano27e" type='text' class="saveText form-control" /><br/>
                     <legend></legend>
                     <label>28. ¿Cuál es su nivel educativo y el último año aprobado en ese nivel?</label><br/>
+                    <label>Último grado o año aprobado (marque con una X el grado o año):</label>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
                             <input type="checkbox" name="pregunta28" class="saveCheck" value="1"> Ninguno
@@ -375,7 +424,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        B. DATOS GENERALES DEL ENTREVISTADO (continuación)
+                        
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -480,7 +529,6 @@
                     <input id="preguntano40" type='text' class="saveText form-control" /><br/>
                     <legend></legend>
                     <label>41. ¿En dónde estaba ubicada esa empresa,negocio,finca o persona donde usted trabajaba?</label><br/>
-                    <textarea class="form-control"></textarea><br/>
                     <label>Departamento:</label><br/>
                     <select id="pregunta41Departamento" class="saveSelect form-control">
                         <option>Seleccione Departamento...</option>
@@ -518,7 +566,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                        
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -592,6 +640,8 @@
                                             <input type="checkbox" name="pregunta44_1" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_1Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                             <tr>
@@ -638,6 +688,8 @@
                                             <input type="checkbox" name="pregunta44_2" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_2Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                             <tr>
@@ -648,7 +700,7 @@
                                             <input type="checkbox" name="pregunta44_3" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3 class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
                                             <input type="checkbox" name="pregunta44_3" class="saveCheck" value="3"> 3. Arroz
@@ -684,6 +736,8 @@
                                             <input type="checkbox" name="pregunta44_3" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_3Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                             <tr>
@@ -730,6 +784,8 @@
                                             <input type="checkbox" name="pregunta44_4" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_4Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                             <tr>
@@ -776,10 +832,15 @@
                                             <input type="checkbox" name="pregunta44_5" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_5Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>6. Otro, ¿cuál?</td>
+                                <td>
+                                    6. Otro, ¿cuál?<br/>
+                                    <input id="preguntano44_6CualHeader" type='text' class="saveText form-control" />
+                                </td>
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
@@ -822,6 +883,8 @@
                                             <input type="checkbox" name="pregunta44_6" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
+                                    <br/>
+                                    <input id="preguntano44_6Cual" type='text' class="saveText form-control" />
                                 </td>
                             </tr>
                         </tbody>
@@ -945,7 +1008,7 @@
                         </label>
                     </div>
                     <label>Tipo de Vehiculo</label>
-                    <input id="preguntano47ComidasPrincipales" type='text' class="saveText form-control" /><br/>
+                    <input id="preguntano47TipoVehiculo" type='text' class="saveText form-control" /><br/>
                     <br/>
                     <br/>
                     <legend></legend>
@@ -981,7 +1044,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        C. SITUACIÓN LABORAL EN AGOSTO DE 2008 (continuación)
+                        
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -1012,16 +1075,13 @@
                     <label>Teléfonos</label>
                     <input id="preguntano50Teléfonos" type='text' class="saveText form-control" /><br/>
                     <legend></legend>
-                    <label id='preguntanoE'>Entrevistador: De acuerdo a la clasificación hecha en  el cuadro de cruce entre posición ocupacional y cadena productiva que se encuentra antes de la pregunta 45,  proceda de la siguiente manera:
-                        Si la cadena es código 1 a 5,  y la posición ocupacional 4 o 5 continúe con la pregunta 51, relacionada con actividades agricolas
-                        Si la cadena es código 6, y la posición ocupacional 4 o 5,  pase a la pregunta 60 relacionada con sector forestal
-                        Si la cadena es código 7, y la posición ocupacional 4 o 5, pase a la pregunta 67, sobre actividades pecuarias
-                        Si la cadena es código 8, y la posición ocupacional 4 o 5, pase a la pregunta 73 relacionada con actividades de pesca
-                        Si la cadena es código 9, y la posición ocupacional 4 o 5, pase a la pregunta 81, relacionada con actividades mineras o extractivas
-                        Si la cadena es código 10, y la posición ocupacional 4 o 5, pase a pregunta 87, relacionada con actividades de transporte de  mercancías o insumos                                                                                                                                                                                                                                                       Si la cadena es código 11, y la posición ocupacional 4 o 5, pase a pregunta 92, relacionadas con actividades de transporte de pasajeros
-                        Si la cadena es código 12, y la posición ocupacional 4 o 5, pase a la pregunta 97, relacionada con actividades comerciales
-                        Si la cadena es código 13, pase a la pregunta 104 0</label><br/>
-
+                    <label id='preguntanoE'>Entrevistador: 
+                    De acuerdo a la clasificación hecha en el cuadro de cruce entre posición ocupacional y cadena productiva que se encuentra antes de la pregunta 45, proceda de la siguiente manera: <br/><br/>
+                    Si la cadena es código 1 a 5, y la posición ocupacional 4 o 5 continúe con la pregunta 51, relacionada con actividades agricolas Si la cadena es código 6, y la posición ocupacional 4 o 5, pase a la pregunta 60 relacionada con sector forestal <br/><br/>
+                    Si la cadena es código 7, y la posición ocupacional 4 o 5, pase a la pregunta 67, sobre actividades pecuarias Si la cadena es código 8, y la posición ocupacional 4 o 5, pase a la pregunta 73 relacionada con actividades de pesca<br/><br/>
+                    Si la cadena es código 9, y la posición ocupacional 4 o 5, pase a la pregunta 81, relacionada con actividades mineras o extractivas Si la cadena es código 10, y la posición ocupacional 4 o 5, pase a pregunta 87, relacionada con actividades de transporte de mercancías o insumos<br/><br/>
+                    Si la cadena es código 11, y la posición ocupacional 4 o 5, pase a pregunta 92, relacionadas con actividades de transporte de pasajeros Si la cadena es código 12, y la posición ocupacional 4 o 5, pase a la pregunta 97, relacionada con actividades comerciales Si la cadena es código 13, pase a la pregunta 104<br/><br/></label><br/>
+                    <legend></legend>
                     <label>51. En la finca donde usted trabajaba ¿Cuál era el área destinada para ese cultivo en el 2008?</label><br/>
                     <label>Area</label><br/>
                     <input id='preguntano51Area' type='text' class="saveText form-control" /><br/>
@@ -1272,7 +1332,7 @@
                     <textarea id='preguntano59a' class="form-control saveTextarea" ></textarea><br/>
                     <legend></legend>
                     <label>Modo de obtención</label><br/>
-                    <textarea id='preguntano59a' class="form-control saveTextarea" ></textarea><br/>
+                    <textarea id='preguntano59b' class="form-control saveTextarea" ></textarea><br/>
                     <legend></legend>
                     <label>60. ¿Cuál era el área destinada para la producción forestal en el 2008?</label><br/>
                     <label>Area</label><br/>
@@ -1639,7 +1699,7 @@
                     <textarea id='preguntano65a' class="form-control saveTextarea" ></textarea><br/>
                     <legend></legend>
                     <label>Modo de obtención</label><br/>
-                    <textarea id='preguntano65a' class="form-control saveTextarea" ></textarea><br/>
+                    <textarea id='preguntano65b' class="form-control saveTextarea" ></textarea><br/>
                     <legend></legend>
                     <label>66. ¿Tenía permiso para realizar la explotación forestal?</label><br/>
                     <div class="btn-group" data-toggle="buttons">

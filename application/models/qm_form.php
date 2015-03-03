@@ -1865,4 +1865,52 @@ class QM_Form extends CI_Model {
 
         return true;
     }
+    /**
+     * Método do_save_interview_1
+     *
+     * Método guarda la información de la tabla t76_web_interview_1
+     *
+     * @return array
+     */
+    public function do_save_interview_1($IdFormInterview, $IsText, $Column, $Value, $IdFormT08) {
+        try {
+            if($IdFormInterview == "0"){
+                $query = "insert into t76web_interview_1 (codigo_formulario, usuario_id) values ('$IdFormT08', '" . $this->session->userdata("inRUserID"). "' )";
+                $this->db->query($query);
+                $data = $this->db->query("select max(id) as id from t76web_interview_1")->result();
+                $IdFormInterview = $data[0]->id;
+            }
+            
+            $query = "update t76web_interview_1 set usuario_id = '" . $this->session->userdata("inRUserID")  . "', $Column = ";
+            
+            if ($IsText) {
+                $query .= "'$Value' ";
+            } else {
+                $query .= "$Value ";
+            }
+            $query .= "where id = $IdFormInterview";
+            $this->db->query($query);
+            
+            return $IdFormInterview;
+            
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    /**
+     * Método getInfoInterviewOne
+     *
+     * Método obtiene la información de la entrevista no. 1
+     *
+     * @return array
+     */
+    public function getInfoInterviewOne($IdFormT08) {
+        try {
+            $query = "select * from t76web_interview_1 where codigo_formulario = '$IdFormT08'";
+            return  $this->db->query($query)->result();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 }

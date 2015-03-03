@@ -1544,4 +1544,34 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_files($codeForm));
     }
+    
+    /**
+     * Método do_saveInterviewOne
+     *
+     * Método que guarda la información de la entrevista 1
+     */
+
+    function do_saveInterviewOne(){
+        
+        $IdFormInterview = $_POST["IdFormInterview"];
+        $Column = $_POST["Column"];
+        $Value = $_POST["Value"];
+        $IsText = $_POST["IsText"];
+        $IdFormT08 = $_POST["IdFormT08"];
+        
+        $this->load->model("qm_form", "form", true);
+        echo $this->form->do_save_interview_1($IdFormInterview, $IsText, $Column, $Value, $IdFormT08);
+    }
+    /**
+     * Método getInfoInterviewOne
+     *
+     * Método que obtiene la información de la entrevista no. 1 por codigo de form
+     */
+
+    function getInfoInterviewOne(){
+        $IdFormT08 = $_POST["IdFormT08"];
+        
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->getInfoInterviewOne($IdFormT08));
+    }
 }
