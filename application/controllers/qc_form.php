@@ -1004,6 +1004,24 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
     }
+
+    /*Cargar Info BovinaICA*/
+    public function get_BovinaICA($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_bovinaica($cedula));
+    }
+
+    /*Cargar Info Matadero_Gte*/
+    public function get_Matadero_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_matadero_gte($cedula));
+    }
+
+    /*Cargar Info Expendedores_Carne_Gte*/
+    public function get_Expendedores_Carne_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_expendedores_carne_gte($cedula));
+    }
     
     /*Cargar Info Salvoconducto*/
     public function get_Salvoconducto($cedula){
