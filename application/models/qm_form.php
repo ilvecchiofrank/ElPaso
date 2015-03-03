@@ -1131,7 +1131,7 @@ class QM_Form extends CI_Model {
     public function get_bovinaica($cedula){
       try{
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT * FROM t73web_bovina_ica WHERE cc = '$cedula'");
+        $SQLResult = $this->db->query("SELECT * FROM t73web_bovina_ica WHERE cc = '$cedula' or cedula = '$cedula' ");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
