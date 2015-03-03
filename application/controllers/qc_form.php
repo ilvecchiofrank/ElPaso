@@ -158,7 +158,27 @@ class QC_Form extends QC_Controller {
 
         redirect("/");
     }
-    
+
+    /* Panel de control de reportes*/
+    public function reports(){
+        if ($this->session->userdata("isLoggedIn")){
+            $this->display_page("reports", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
+    /* Vista detalles de reporte*/
+    public function report_details(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("report_details", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Formulario de entrevista no. 1*/
     public function form_interview_1($id){
         if ($this->session->userdata("isLoggedIn")) {
@@ -901,6 +921,54 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_dash_finished());
     }
 
+    /* Obtener reporte general*/
+    public function get_Report_General(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_general());
+    }
+
+    /* Obtener totales redactores*/
+    public function get_Report_Total_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_redactor());
+    }
+
+    /* Obtener totales consultores*/
+    public function get_Report_Total_Consultor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_consultor());
+    }
+
+    /* Obtener totales juridicos*/
+    public function get_Report_Total_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_juridico());
+    }
+
+    /* Obtener reporte redactores*/
+    public function get_Report_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_redactor());
+    }
+
+    /* Obtener reporte consultores*/
+    public function get_Report_Consultor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_consultor());
+    }
+
+    /* Obtener reporte juridicos*/
+    public function get_Report_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_juridico());
+    }
+
+    /* Obtener reporte general gerente*/
+    public function get_Report_Gerente(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_gerente());
+    }
+
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);
@@ -935,6 +1003,24 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Electro($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
+    }
+
+    /*Cargar Info BovinaICA*/
+    public function get_BovinaICA($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_bovinaica($cedula));
+    }
+
+    /*Cargar Info Matadero_Gte*/
+    public function get_Matadero_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_matadero_gte($cedula));
+    }
+
+    /*Cargar Info Expendedores_Carne_Gte*/
+    public function get_Expendedores_Carne_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_expendedores_carne_gte($cedula));
     }
     
     /*Cargar Info Salvoconducto*/

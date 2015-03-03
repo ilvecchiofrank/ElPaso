@@ -390,6 +390,139 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener reporte general */
+    public function get_report_general(){
+
+      try {
+        $html="";
+        $query = $this->db->query("SELECT DISTINCT (SELECT COUNT(formulario) FROM `t49web_respuestas_tutelas` rt1 WHERE rt1.modulo_actual=5 AND rt1.`estado` IN (1,2,4)) + (SELECT COUNT(formulario) FROM `t49web_respuestas_tutelas` rt2 WHERE rt2.`modulo_actual`=6 AND rt2.`usuario_consultor`='2437d92d-d402-11e3-8578-0019fe78698h' AND rt2.`estado` IN (1,2,4)) AS REDACTORES FROM `t49web_respuestas_tutelas` rt;");
+        $dataArray = $query->result();
+
+        //Pendientes Redactor
+        $html .= "<tr><td>" . $dataArray[0]->REDACTORES . "</td>";
+
+        $query = $this->db->query("SELECT DISTINCT (SELECT COUNT(DISTINCT formulario) FROM `t49web_respuestas_tutelas` rt1 WHERE rt1.modulo_actual=5 AND rt1.`estado` IN (3)) + (SELECT COUNT(DISTINCT formulario) FROM `t49web_respuestas_tutelas` rt2 WHERE rt2.`modulo_actual`=6 AND rt2.`usuario_consultor`='2437d92d-d402-11e3-8578-0019fe78698h' AND rt2.`estado` IN (3)) AS REDACTORES FROM `t49web_respuestas_tutelas` rt;");
+        $dataArray = $query->result();
+
+        //Cerrados Redactor
+        $html .= "<td>" . $dataArray[0]->REDACTORES . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS COORDINADORES FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=6 AND rt.`estado` IN (1,2,4) AND rt.`usuario_consultor`<>'2437d92d-d402-11e3-8578-0019fe78698h';");
+        $dataArray = $query->result();
+
+        //Pendientes Coordinador
+        $html .= "<td>" . $dataArray[0]->COORDINADORES . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS COORDINADORES FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=6 AND rt.`estado` IN (3) AND rt.`usuario_consultor`<>'2437d92d-d402-11e3-8578-0019fe78698h';");
+        $dataArray = $query->result();
+
+        //Cerrados Coordinador
+        $html .= "<td>" . $dataArray[0]->COORDINADORES . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS JURIDICOS FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=7 AND rt.`estado` IN (1,2,4)");
+        $dataArray = $query->result();
+
+        //Pendientes Juridico
+        $html .= "<td>" . $dataArray[0]->JURIDICOS . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS JURIDICOS FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=7 AND rt.`estado` IN (3)");
+        $dataArray = $query->result();
+
+        //Cerrados Juridico
+        $html .= "<td>" . $dataArray[0]->JURIDICOS . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS GERENTES FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=8 AND rt.`estado` IN (1,2,4)");
+        $dataArray = $query->result();
+
+        //Pendientes Gerente
+        $html .= "<td>" . $dataArray[0]->GERENTES . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) AS GERENTES FROM `t49web_respuestas_tutelas` rt WHERE rt.modulo_actual=8 AND rt.`estado` IN (8)");
+        $dataArray = $query->result();
+
+        //Cerrados Gerente
+        $html .= "<td>" . $dataArray[0]->GERENTES . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) as TERMINADOS FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=1;");
+        $dataArray = $query->result();
+
+        //Terminados
+        $html .= "<td>" . $dataArray[0]->TERMINADOS . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) as NOASIG FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=0 AND rt.`modulo_actual`=0;");
+        $dataArray = $query->result();
+
+        //Sin asignar
+        $html .= "<td>" . $dataArray[0]->NOASIG . "</td>";
+
+        //Fin fila
+        $html .= "</tr>";
+
+        return $html;
+
+
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+
+    }
+
+    /*Obtener reporte redactores*/
+    public function get_report_redactor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM redactor r GROUP BY r.`a01Nombres`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales redactores*/
+    public function get_report_total_redactor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM redactor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales consultores*/
+    public function get_report_total_consultor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM consultor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales juridicos*/
+    public function get_report_total_juridico(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM juridico tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte consultores*/
+    public function get_report_consultor(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM consultor r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener reporte juridicos*/
+    public function get_report_juridico(){
+      $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM juridico r GROUP BY r.`a01Nombres` ");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener reporte general gerente */
+    public function get_report_gerente(){
+      $query = $this->db->query("SELECT u.`a01Nombres` ,rt.estado, wec.nombre_estado_carta,  COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  JOIN `t01web_usuarios` u ON u.`a01Codigo`=rt.`usuario_gerente` WHERE rt.`modulo_actual` = 8 GROUP BY u.`a01Nombres` , rt.estado, wec.nombre_estado_carta;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener conceptos de soporte */
     public function get_supp_con(){
       $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");
@@ -986,6 +1119,45 @@ class QM_Form extends CI_Model {
       try{
         //Generamos el query
         $SQLResult = $this->db->query("SELECT * FROM t72web_aproforestal WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_bovinaica
+    metodo que obtiene la informacion de la tabla 73*/
+    public function get_bovinaica($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t73web_bovina_ica WHERE cc = '$cedula' or cedula = '$cedula' ");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_matadero_gte
+    metodo que obtiene la informacion de la tabla 74*/
+    public function get_matadero_gte($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t74web_matadero_gte WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_expendedores_carne_gte
+    metodo que obtiene la informacion de la tabla 74*/
+    public function get_expendedores_carne_gte($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t75web_expen_carne_gte WHERE cc_nit = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){

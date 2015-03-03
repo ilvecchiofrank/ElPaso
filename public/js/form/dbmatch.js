@@ -2,16 +2,17 @@ $(document).ready(function() {
 
     $("#txtCedula").html(getParameterByName("docId"));
 
-    $(".modal").modal('show');
     loadEmpleo();
     loadResid();
     loadNoResid();
     loadPesca();
     loadTransp();
     loadElectro();
+    loadBovinaICA();
+    loadMatadero_Gte();
+    loadExpendedores_Carne_Gte();
     loadSalvoconducto();
     loadAprobForestal();
-    $(".modal").modal('hide');
 });
 //loadCenso();
 
@@ -132,6 +133,75 @@ function loadElectro() {
     //$(".modal").modal('hide');
 }
 
+//-Cargar Bovina ICA-//
+function loadBovinaICA() {
+    console.log("BovinaICA");
+    var cedula = getParameterByName("docId");
+    var tablabovina = "";
+    //$(".modal").modal('show');
+    $.getJSON("index.php/form/get_BovinaICA/" + cedula, function(objRData) {
+        arrayBovina = objRData;
+        if (arrayBovina.length >= 1) {
+            tablabovina += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Num</td><td>No Guía</td><td>Fecha</td><td>Autoriza a</td><td>C.C.</td><td>Finca Origen</td><td>Propietario Finca</td><td>Mun Finca Orig</td><td>Dpto Finca Orig</td><td>Finca Destino</td><td>Prop. Finca Destino</td><td>Mun. Finca Destino</td><td>Depto. Finca Destino</td><td>Especie</td><td>Total Animales</td><td>Placa Vehiculo</td><td>Empresa</td><td>Ruta</td><td>Conductor</td><td>Cédula</td></tr>";
+            for (var e = arrayBovina.length - 1; e >= 0; e--) {
+                tablabovina += "<tr><td>" + arrayBovina[e].num + "</td><td>" + arrayBovina[e].no_guia + "</td><td>" + arrayBovina[e].fecha + "</td><td>" + arrayBovina[e].autoriza_a + "</td><td>" + arrayBovina[e].cc + "</td><td>" + arrayBovina[e].finca_origen + "</td><td>" + arrayBovina[e].propietario_finca_orig + "</td><td>" + arrayBovina[e].mun_finca_orig + "</td><td>" + arrayBovina[e].dpto_finca_orig + "</td><td>" + arrayBovina[e].finca_destino + "</td><td>" + arrayBovina[e].propietario_finca_dest + "</td><td>" + arrayBovina[e].mun_finca_dest + "</td><td>" + arrayBovina[e].depto_finca_dest + "</td><td>" + arrayBovina[e].especie + "</td><td>" + arrayBovina[e].total_animales + "</td><td>" + arrayBovina[e].placa_vehiculo + "</td><td>" + arrayBovina[e].empresa + "</td><td>" + arrayBovina[e].ruta + "</td><td>" + arrayBovina[e].conductor + "</td><td>" + arrayBovina[e].cedula + "</td></tr>";
+            }
+        } else {
+            $("#tableBovinaIca").css("display", "none");
+            $("#labelBovinaIca").css("display", "none");
+        }
+        tablabovina += "</tbody></table>";
+        $("#tableBovinaIca").html(tablabovina);
+    });
+    //$(".modal").modal('hide');
+}
+
+//-Cargar Matadero_Gte-//
+function loadMatadero_Gte() {
+    console.log("Matadero_Gte");
+    var cedula = getParameterByName("docId");
+    var tablamataderogte = "";
+    //$(".modal").modal('show');
+    $.getJSON("index.php/form/get_Matadero_Gte/" + cedula, function(objRData) {
+        arrayMatadero = objRData;
+        if (arrayMatadero.length >= 1) {
+            tablamataderogte += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Nombres</td><td>Cedula</td><td>Teléfono</td></tr>";
+            for (var e = arrayMatadero.length - 1; e >= 0; e--) {
+                tablamataderogte += "<tr><td>" + arrayMatadero[e].nombres + "</td><td>" + arrayMatadero[e].cc + "</td><td>" + arrayMatadero[e].telefono + "</td></tr>";
+            }
+        } else {
+            $("#tableMataderoGigante").css("display", "none");
+            $("#labelMataderoGigante").css("display", "none");
+        }
+        tablamataderogte += "</tbody></table>";
+        $("#tableMataderoGigante").html(tablamataderogte);
+    });
+    //$(".modal").modal('hide');
+}
+
+//-Cargar Expendedores_Carne_Gte-//
+function loadExpendedores_Carne_Gte() {
+    console.log("Expendedores_Carne_Gte");
+    var cedula = getParameterByName("docId");
+    var tablaexpendedoresgte = "";
+    //$(".modal").modal('show');
+    $.getJSON("index.php/form/get_Expendedores_Carne_Gte/" + cedula, function(objRData) {
+        arrayExp = objRData;
+        if (arrayExp.length >= 1) {
+            tablaexpendedoresgte += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Censo</td><td>Inscrip.</td><td>Razón Social</td><td>Nombres Propietario</td><td>CC. Nit</td><td>Teléfono</td><td>Dirección</td><td>Carne Res</td><td>Pollo</td><td>Pescado</td><td>Cerdo</td><td>Vísceras Blancas</td><td>Cabezas</td><td>Bufalo</td><td>Vísceras Rojas</td><td>Independiente</td><td>Super Mini</td><td>Plaza</td><td>Realiza Inscripción</td></tr>";
+            for (var e = arrayExp.length - 1; e >= 0; e--) {
+                tablaexpendedoresgte += "<tr><td>" + arrayExp[e].censo + "</td><td>" + arrayExp[e].inscrip + "</td><td>" + arrayExp[e].razon_social + "</td><td>" + arrayExp[e].nombres_propietario + "</td><td>" + arrayExp[e].cc_nit + "</td><td>" + arrayExp[e].telefono + "</td><td>" + arrayExp[e].direccion + "</td><td>" + arrayExp[e].carne_res +  "</td><td>" + arrayExp[e].pollo + "</td><td>" + arrayExp[e].pescado + "</td><td>" + arrayExp[e].cerdo + "</td><td>" + arrayExp[e].visceras_blancas + "</td><td>" + arrayExp[e].cabezas + "</td><td>" + arrayExp[e].bufalo + "</td><td>" + arrayExp[e].visceras_rojas + "</td><td>" + arrayExp[e].independiente + "</td><td>" + arrayExp[e].super_minimercado +  "</td><td>" + arrayExp[e].plaza_mercado +  "</td><td>" + arrayExp[e].realiza_inscripcion_sanitaria + "</td></tr>";
+            }
+        } else {
+            $("#tableExpendedoresCarneGigante").css("display", "none");
+            $("#labelExpendedoresCarneGigante").css("display", "none");
+        }
+        tablaexpendedoresgte += "</tbody></table>";
+        $("#tableExpendedoresCarneGigante").html(tablaexpendedoresgte);
+    });
+    //$(".modal").modal('hide');
+}
+
 //-Cargar Salvoconductos-//
 function loadSalvoconducto() {
     console.log("Salvoconducto");
@@ -188,3 +258,8 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+$(document).ajaxStart(function() {
+    $(".modal").modal('show');
+}).ajaxStop(function() {
+    $(".modal").modal('hide');
+});
