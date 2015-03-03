@@ -199,7 +199,7 @@ function loadDash(){
                         tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + arrayLetters[t].ult_actualizacion + "</td>" + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
                         break;
                     default:
-                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + "<td>" + responsables + "</td><td>" + arrayLetters[t].ult_actualizacion + "</td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + btn_Finish_Dash + "</td></tr>";
+                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + responsables + "</td><td>" + arrayLetters[t].ult_actualizacion + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + btn_Finish_Dash + "</td></tr>";
                         break;
                 }
             }
