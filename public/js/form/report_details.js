@@ -58,6 +58,7 @@ $("#fechaCorte").html(today);
 
 function loadReportData(reporte){
     var tablareporte = "";
+    var tablatotal = "";
     var totalRegistros = 0;
     var nuevos = 0;
     var guardados = 0;
@@ -70,17 +71,127 @@ function loadReportData(reporte){
         case '1':
         $.getJSON("index.php/form/get_Report_General", function(objRData){
             arrayReport = objRData;
-            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Redactor (Pend.)</th><th scope='col'>Redactor (Cerr.)</th><th scope='col'>Coordinador (Pend.)</th><th scope='col'>Coordinador (Cerr.)</th><th scope='col'>Juridico (Pend.)</th><th scope='col'>Juridico (Cerr.)</th><th scope='col'>Gerente (Pend.)</th><th scope='col'>Gerente (Cerr.)</th><th scope='col'>Terminados</th><th scope='col'>Sin asignar</th></tr></thead><tbody>";
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Redactor (Pend.)</th><th scope='col'>Redactor (Cerr.)</th><th scope='col'>Coordinador (Pend.)</th><th scope='col'>Coordinador (Cerr.)</th><th scope='col'>Juridico (Pend.)</th><th scope='col'>Juridico (Cerr.)</th><th scope='col'>Gerente (Pend.)</th><th scope='col'>Gerente (Cerr.)</th><th scope='col'>Cartas Enviadas - Terminados</th><th scope='col'>Tip 6 - Sin asignar</th></tr></thead><tbody>";
             tablareporte += arrayReport;
             console.log(arrayReport);
             tablareporte += "</tbody></table><br/>";
             $("#tableReports").html(tablareporte);
         });
+
+        $("#report_total").css("display", "none");
+
         break;
 
         //Reporte redactores
         case '2':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Redactor", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
         $.getJSON("index.php/form/get_Report_Redactor", function(objRData){
+            arrayReport = objRData;
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayReport.length >0){
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].a01Nombres + "</td><td>" + arrayReport[i].ESTADO + "</td><td>" + arrayReport[i].TOTAL + "</td></tr>";
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+
+        });
+        break;
+
+        //Reporte consultores
+        case '3':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Consultor", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
+        $.getJSON("index.php/form/get_Report_Consultor", function(objRData){
+            arrayReport = objRData;
+            tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayReport.length >0){
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].a01Nombres + "</td><td>" + arrayReport[i].ESTADO + "</td><td>" + arrayReport[i].TOTAL + "</td></tr>";
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+
+        });
+        break;
+
+        //Reporte juridicos
+        case '4':
+
+        //Totales
+        $.getJSON("index.php/form/get_Report_Total_Juridico", function(objRData){
+            arrayTotal = objRData;
+            tablatotal += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
+
+            if (arrayTotal.length >0) {
+                for (var i = arrayTotal.length - 1; i >= 0; i--) {
+                    tablatotal += "<tr><td>" + arrayTotal[i].nombre_estado_carta + "</td><td>" + arrayTotal[i].TOTAL + "</td></tr>";
+                }
+
+                tablatotal += "</tbody></table><br/>";
+                $("#tableTotal").html(tablatotal);
+            }
+            else
+            {
+                $("#report_total").css("display", "none");
+            }
+
+        });
+
+        $.getJSON("index.php/form/get_Report_Juridico", function(objRData){
             arrayReport = objRData;
             tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Nombres</th><th scope='col'>Estado</th><th scope='col'>Total</th></tr></thead><tbody>";
 
@@ -146,6 +257,7 @@ function loadReportData(reporte){
             {
                 $("#tableReports").css("display","none");
             }
+            $("#report_total").css("display", "none");
         });
         break;
     }

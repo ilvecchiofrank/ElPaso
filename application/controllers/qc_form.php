@@ -927,6 +927,24 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_report_general());
     }
 
+    /* Obtener totales redactores*/
+    public function get_Report_Total_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_redactor());
+    }
+
+    /* Obtener totales consultores*/
+    public function get_Report_Total_Consultor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_consultor());
+    }
+
+    /* Obtener totales juridicos*/
+    public function get_Report_Total_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_total_juridico());
+    }
+
     /* Obtener reporte redactores*/
     public function get_Report_Redactor(){
         $this->load->model("qm_form", "form", true);
@@ -936,7 +954,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     /* Obtener reporte consultores*/
     public function get_Report_Consultor(){
         $this->load->model("qm_form", "form", true);
-        echo json_encode($this->form->get_resport_consultor());
+        echo json_encode($this->form->get_report_consultor());
     }
 
     /* Obtener reporte juridicos*/
@@ -985,6 +1003,24 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Electro($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_electro($cedula));
+    }
+
+    /*Cargar Info BovinaICA*/
+    public function get_BovinaICA($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_bovinaica($cedula));
+    }
+
+    /*Cargar Info Matadero_Gte*/
+    public function get_Matadero_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_matadero_gte($cedula));
+    }
+
+    /*Cargar Info Expendedores_Carne_Gte*/
+    public function get_Expendedores_Carne_Gte($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_expendedores_carne_gte($cedula));
     }
     
     /*Cargar Info Salvoconducto*/

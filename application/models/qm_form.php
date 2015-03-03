@@ -443,13 +443,13 @@ class QM_Form extends CI_Model {
         //Cerrados Gerente
         $html .= "<td>" . $dataArray[0]->GERENTES . "</td>";
 
-        $query = $this->db->query("SELECT COUNT(formulario) AS TERMINADOS FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=1;");
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) as TERMINADOS FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=1;");
         $dataArray = $query->result();
 
         //Terminados
         $html .= "<td>" . $dataArray[0]->TERMINADOS . "</td>";
 
-        $query = $this->db->query("SELECT COUNT(formulario) AS NOASIG FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=0 AND rt.`modulo_actual`=0;");
+        $query = $this->db->query("SELECT COUNT(DISTINCT formulario) as NOASIG FROM `t49web_respuestas_tutelas` rt WHERE rt.`cartas_enviadas`=0 AND rt.`modulo_actual`=0;");
         $dataArray = $query->result();
 
         //Sin asignar
@@ -470,6 +470,30 @@ class QM_Form extends CI_Model {
     /*Obtener reporte redactores*/
     public function get_report_redactor(){
       $query = $this->db->query("SELECT  r.`a01Nombres`, GROUP_CONCAT(r.nombre_estado_carta ,r.conteo  SEPARATOR ' - ') ESTADO, SUM(r.conteo) AS TOTAL FROM redactor r GROUP BY r.`a01Nombres`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales redactores*/
+    public function get_report_total_redactor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM redactor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales consultores*/
+    public function get_report_total_consultor(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM consultor tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /*Obtener totales juridicos*/
+    public function get_report_total_juridico(){
+      $query = $this->db->query("SELECT tab.nombre_estado_carta, SUM(tab.conteo) AS TOTAL FROM juridico tab GROUP BY tab.nombre_estado_carta ORDER BY tab.`estado`");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -1095,6 +1119,45 @@ class QM_Form extends CI_Model {
       try{
         //Generamos el query
         $SQLResult = $this->db->query("SELECT * FROM t72web_aproforestal WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_bovinaica
+    metodo que obtiene la informacion de la tabla 73*/
+    public function get_bovinaica($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t73web_bovina_ica WHERE cc = '$cedula' or cedula = '$cedula' ");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_matadero_gte
+    metodo que obtiene la informacion de la tabla 74*/
+    public function get_matadero_gte($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t74web_matadero_gte WHERE cc = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      }catch(Exception $exc){
+        echo $exc->getTraceAsString();
+      }
+    }
+
+    /**Metodo get_expendedores_carne_gte
+    metodo que obtiene la informacion de la tabla 74*/
+    public function get_expendedores_carne_gte($cedula){
+      try{
+        //Generamos el query
+        $SQLResult = $this->db->query("SELECT * FROM t75web_expen_carne_gte WHERE cc_nit = '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       }catch(Exception $exc){
