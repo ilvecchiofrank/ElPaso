@@ -87,7 +87,7 @@
                     <input id='preguntano6' type='text' class="saveText form-control" /><br/>            
                     <legend></legend>
                     <label >7. Edad actual del entrevistado (calcule la edad de acuerdo a la casilla A11 del registro del Censo 2014):</label><br/>
-                    <input type='text' class="saveText form-control" /><br/>
+                    <input id='preguntano7' type='text' class="saveText form-control" /><br/>
                     <legend></legend>
                     <label id='preguntano8'>8. ¿Existe cambio en el municipio de residencia entre el 2008 y la actualidad? (verifique con casillas A3 y B1 del registro)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
@@ -113,10 +113,10 @@
                     <label>11. ¿En el proceso de registro el entrevistado autorizó el habeas data? (el cual se mantiene hasta el momento)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="radio" name="preguntano11" class="saveRadio" value="1"> Si
+                            <input type="radio" name="pregunta11" class="saveRadio" value="1"> Si
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="preguntano11" class="saveRadio" value="2"> No
+                            <input type="radio" name="pregunta11" class="saveRadio" value="2"> No
                         </label>
                     </div>
                     <br/>

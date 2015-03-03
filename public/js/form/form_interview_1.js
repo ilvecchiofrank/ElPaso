@@ -6,11 +6,11 @@
 var idFormInterview = 0;
 
 $(document).ready(function() {
+    getInfoInterviewOne();
     saveText();
     saveTextarea();
     saveRadio();
     saveCheck();
-    getInfoInterviewOne();
 });
 
 function saveText() {
