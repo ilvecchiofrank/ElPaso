@@ -36,6 +36,26 @@ function loadReport(tipo){
         loadReportData(tipo);
         break;
 
+        case '7':
+        $("#lgndTitle").html("Reporte Tipologías Redactor");
+        loadReportData(tipo);
+        break;
+
+        case '8':
+        $("#lgndTitle").html("Reporte Categorías Jurídico");
+        loadReportData(tipo);
+        break;
+
+        case '9':
+        $("#lgndTitle").html("Reporte Tipologías Jurídico");
+        loadReportData(tipo);
+        break;
+
+        case '10':
+        $("#lgndTitle").html("Reporte Tipologías Gerente");
+        loadReportData(tipo);
+        break;
+
         default:
         console.log(":(");
         break;
@@ -290,18 +310,90 @@ function loadReportData(reporte){
 
         //Reporte tipologias redactor
         case '7':
+        $.getJSON("index.php/form/get_Report_Tip_Redactor", function(objRData){
+            arrayReport = objRData;
+            if (arrayReport.length >0) {
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Nombre estado carta</th><th scope='col'>Tipología</th><th scope='col'>Conteo</th></tr><tbody>";
+
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].nombre_estado_carta + "</td><td>" + arrayReport[i].tipologia + "</td><td>" + arrayReport[i].conteo + "</td></tr>" ;
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+            $("#report_total").css("display", "none");
+        });
         break;
 
         //Reporte categorias juridico
         case '8':
+        $.getJSON("index.php/form/get_Report_Cat_Juridico", function(objRData){
+            arrayReport = objRData;
+            if (arrayReport.length >0) {
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Nombre estado carta</th><th scope='col'>Categoría</th><th scope='col'>Conteo</th></tr><tbody>";
+
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].nombre_estado_carta + "</td><td>" + arrayReport[i].categoria + "</td><td>" + arrayReport[i].conteo + "</td></tr>" ;
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+            $("#report_total").css("display", "none");
+        });
         break;
 
         //Reporte tipologias juridico
         case '9':
+        $.getJSON("index.php/form/get_Report_Tip_Juridico", function(objRData){
+            arrayReport = objRData;
+            if (arrayReport.length >0) {
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Nombre estado carta</th><th scope='col'>Tipología</th><th scope='col'>Conteo</th></tr><tbody>";
+
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].nombre_estado_carta + "</td><td>" + arrayReport[i].tipologia + "</td><td>" + arrayReport[i].conteo + "</td></tr>" ;
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+            $("#report_total").css("display", "none");
+        });
         break;
 
         //Reporte tipologias gerente
         case '10':
+        $.getJSON("index.php/form/get_Report_Tip_Gerente", function(objRData){
+            arrayReport = objRData;
+            if (arrayReport.length >0) {
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>Nombre estado carta</th><th scope='col'>Tipología</th><th scope='col'>Conteo</th></tr><tbody>";
+
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].nombre_estado_carta + "</td><td>" + arrayReport[i].tipologia + "</td><td>" + arrayReport[i].conteo + "</td></tr>" ;
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+            $("#report_total").css("display", "none");
+        });
         break;
 
     }
