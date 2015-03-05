@@ -6,11 +6,7 @@
 var idFormInterview = 0;
 
 $(document).ready(function() {
-    getInfoInterviewOne();
-    saveText();
-    saveTextarea();
-    saveRadio();
-    saveCheck();
+    loadDepartamentos();
 });
 
 function saveText() {
@@ -90,7 +86,7 @@ function saveRadio() {
 
 function saveCheck() {
     $(".saveCheck").change(function() {
-        var idElementDom = $(this).attr("name");
+        var idElementDom = $(this).attr("id");
         $.ajax({
             url: "index.php/form/do_saveInterviewOne",
             type: "POST",
@@ -114,7 +110,7 @@ function saveCheck() {
 }
 
 function saveSelect() {
-    $(".saveCheck").change(function() {
+    $(".saveSelect").change(function() {
         var idElementDom = $(this).attr("id");
         $.ajax({
             url: "index.php/form/do_saveInterviewOne",
@@ -155,12 +151,41 @@ function getInfoInterviewOne() {
                     }
                     else if (key.substring(0, 8) == "pregunta") {
                         $("input[name='" + key + "'][value='" + value + "']").parent().trigger("click");
+                        if($("input[name='" + key + "'][value='" + value + "']").length == 0){
+                            $("input[id='" + key + "'][value='" + value + "']").parent().trigger("click");
+                            if($("input[id='" + key + "'][value='" + value + "']").length == 0)
+                            {
+                                $("#" + key).val(value);
+                                $("#" + key).trigger("change");
+                            }
+                        }
                     }
                 });
             }
+            
+            saveText();
+            saveTextarea();
+            saveRadio();
+            saveCheck();
+            saveSelect();
         },
         error: function(error) {
             alert(error);
         }
+    });
+}
+
+function loadDepartamentos(){
+    $(".departamentos").change(function(){
+        var munChildId = $(this).attr("mun-child-id");
+         $.getJSON("index.php/form/get_Mpo/" + $(this).val(), function(objRData){
+            $("#" + munChildId).html(objRData);
+        });
+    });
+    
+    //Cargar listado de departamentos
+    $.getJSON("index.php/form/get_Dpto/", function(objRData){
+        $(".departamentos").html(objRData);
+        getInfoInterviewOne();
     });
 }

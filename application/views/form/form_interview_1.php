@@ -45,7 +45,7 @@
                     <label><span style="font-size: 1.5em;" class="label label-info"><?php echo $id; ?></span></label><br/>
                     <label>2. Departamento y municipio actual de residencia (A3 Registro Censo 2014):</label>
                     <label>Departamento:</label><br/>
-                    <select id="pregunta2Departamento" class="saveSelect form-control">
+                    <select id="pregunta2Departamento" mun-child-id="pregunta2Municipio" class="saveSelect form-control departamentos">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
@@ -176,7 +176,7 @@
                     <legend></legend>
                     <label>18. Lugar de expedición:</label><br/>
                     <label>Departamento:</label><br/>
-                    <select id="preguntano18Departamento" class="saveSelect form-control">
+                    <select id="preguntano18Departamento" mun-child-id="preguntano18Municipio" class="saveSelect form-control departamentos">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
@@ -321,37 +321,37 @@
                     <label>Último grado o año aprobado (marque con una X el grado o año):</label>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="1"> Ninguno
+                            <input type="checkbox" id="pregunta28a" class="saveCheck" value="1"> Ninguno
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="2"> Preescolar
+                            <input type="checkbox" id="pregunta28b" class="saveCheck" value="2"> Preescolar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="3"> Primaria
+                            <input type="checkbox" id="pregunta28c" class="saveCheck" value="3"> Primaria
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="4"> Secundaria
+                            <input type="checkbox" id="pregunta28d" class="saveCheck" value="4"> Secundaria
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="5"> Media
+                            <input type="checkbox" id="pregunta28e" class="saveCheck" value="5"> Media
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="6"> Ténico profesional
+                            <input type="checkbox" id="pregunta28f" class="saveCheck" value="6"> Ténico profesional
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="7"> Tecnológico
+                            <input type="checkbox" id="pregunta28g" class="saveCheck" value="7"> Tecnológico
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="8"> Universitario
+                            <input type="checkbox" id="pregunta28h" class="saveCheck" value="8"> Universitario
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="9"> Especialización
+                            <input type="checkbox" id="pregunta28i" class="saveCheck" value="9"> Especialización
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="10"> Maestría
+                            <input type="checkbox" id="pregunta28j" class="saveCheck" value="10"> Maestría
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta28" class="saveCheck" value="11"> Doctorado
+                            <input type="checkbox" id="pregunta28k" class="saveCheck" value="11"> Doctorado
                         </label>
                     </div>
                     <br/>
@@ -455,22 +455,22 @@
                     <label>34. ¿A qué actividad dedicaba usted la mayor parte del tiempo en agosto de 2008?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="1"> Trabajar
+                            <input type="checkbox" id="pregunta34a" class="saveCheck" value="1"> Trabajar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="2"> Buscar Trabajo
+                            <input type="checkbox" id="pregunta34b" class="saveCheck" value="2"> Buscar Trabajo
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="3"> Oficios del Hogar
+                            <input type="checkbox" id="pregunta34c" class="saveCheck" value="3"> Oficios del Hogar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="4"> Estudiar
+                            <input type="checkbox" id="pregunta34d" class="saveCheck" value="4"> Estudiar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="5"> Otra Actividad
+                            <input type="checkbox" id="pregunta34e" class="saveCheck" value="5"> Otra Actividad
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta34" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
+                            <input type="checkbox" id="pregunta34f" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
                         </label>
                     </div>
                     <br/>
@@ -530,7 +530,7 @@
                     <legend></legend>
                     <label>41. ¿En dónde estaba ubicada esa empresa,negocio,finca o persona donde usted trabajaba?</label><br/>
                     <label>Departamento:</label><br/>
-                    <select id="pregunta41Departamento" class="saveSelect form-control">
+                    <select id="pregunta41Departamento" mun-child-id="pregunta41Municipio" class="saveSelect form-control departamentos">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
@@ -601,43 +601,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_1a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_1b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_1c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_1d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_1e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_1f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_1g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_1h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_1i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_1j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_1k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_1l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_1" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_1m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -649,43 +649,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_2a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_2b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_2c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_2d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_2e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_2f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_2g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_2h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_2i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_2j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_2k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_2l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_2" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_2m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -697,43 +697,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_3a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_3b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_3c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_3d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_3e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_3f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_3g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_3h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_3i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_3j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_3k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_3l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_3" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_3m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -745,43 +745,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_4a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_4b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_4c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_4d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_4e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_4f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_4g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_4h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_4i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_4j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_4k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_4l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_4" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_4m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -793,43 +793,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_5a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_5b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_5c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_5d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_5e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_5f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_5g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_5h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_5i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_5j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_5k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_5l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_5" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_5m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -844,43 +844,43 @@
                                 <td>
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="1"> 1. Tabaco
+                                            <input type="checkbox" id="pregunta44_6a" class="saveCheck" value="1"> 1. Tabaco
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="2"> 2. Maíz
+                                            <input type="checkbox" id="pregunta44_6b" class="saveCheck" value="2"> 2. Maíz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="3"> 3. Arroz
+                                            <input type="checkbox" id="pregunta44_6c" class="saveCheck" value="3"> 3. Arroz
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="4"> 4. Cacao
+                                            <input type="checkbox" id="pregunta44_6d" class="saveCheck" value="4"> 4. Cacao
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="5"> 5. Pasifloras
+                                            <input type="checkbox" id="pregunta44_6e" class="saveCheck" value="5"> 5. Pasifloras
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="6"> 6. Forestal
+                                            <input type="checkbox" id="pregunta44_6f" class="saveCheck" value="6"> 6. Forestal
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
+                                            <input type="checkbox" id="pregunta44_6g" class="saveCheck" value="7"> 7. Pecuaria (Carne o Leche)
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="8"> 8. Pesca o acuicultura
+                                            <input type="checkbox" id="pregunta44_6h" class="saveCheck" value="8"> 8. Pesca o acuicultura
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
+                                            <input type="checkbox" id="pregunta44_6i" class="saveCheck" value="9"> 9. Extracción de minerales no metálicos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="10"> 10. Transporte de insumos
+                                            <input type="checkbox" id="pregunta44_6j" class="saveCheck" value="10"> 10. Transporte de insumos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="11"> 11. Transporte de pasajeros
+                                            <input type="checkbox" id="pregunta44_6k" class="saveCheck" value="11"> 11. Transporte de pasajeros
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="12"> 12. Comercialización de productos
+                                            <input type="checkbox" id="pregunta44_6l" class="saveCheck" value="12"> 12. Comercialización de productos
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" name="pregunta44_6" class="saveCheck" value="13"> 13. Otra, ¿cuál?
+                                            <input type="checkbox" id="pregunta44_6m" class="saveCheck" value="13"> 13. Otra, ¿cuál?
                                         </label>
                                     </div>
                                     <br/>
@@ -1249,7 +1249,7 @@
                     <label>56. ¿Dónde adquiría los abonos o  fertilizantes que utilizaba para este cultivo? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta56" class="saveCheck" value="1"> N/A
+                            <input type="checkbox" id="pregunta56a" class="saveCheck" value="1"> N/A
                         </label>
                     </div>
                     <br/>
@@ -2031,7 +2031,7 @@
                     <label>72B. ¿Dónde adquiría los insumos (terneros, vacunas, insumos para la producción de derivados entre otros) que utilizaba para la producción pecuaria? (Nombre, dirección y telefono del proveedor si los compraba)</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta72b" class="saveCheck" value="1"> N/A
+                            <input type="checkbox" id="pregunta72b" class="saveCheck" value="1"> N/A
                         </label>
                     </div>
                     <br/>
@@ -3455,22 +3455,22 @@
                     <label id='preguntano1'>108. ¿A qué actividad dedicó usted la mayor parte del tiempo la semana pasada?</label><br/>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="1"> Trabajar
+                            <input type="checkbox" id="pregunta108a" class="saveCheck" value="1"> Trabajar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="2"> Buscar Trabajo
+                            <input type="checkbox" id="pregunta108b" class="saveCheck" value="2"> Buscar Trabajo
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="3"> Oficios del Hogar
+                            <input type="checkbox" id="pregunta108c" class="saveCheck" value="3"> Oficios del Hogar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="4"> Estudiar
+                            <input type="checkbox" id="pregunta108d" class="saveCheck" value="4"> Estudiar
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="5"> Otra Actividad
+                            <input type="checkbox" id="pregunta108e" class="saveCheck" value="5"> Otra Actividad
                         </label>
                         <label class="btn btn-primary">
-                            <input type="checkbox" name="pregunta108" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
+                            <input type="checkbox" id="pregunta108f" class="saveCheck" value="6"> Estaba incapacitado permanentemente para trabajar
                         </label>
                     </div>
                     <br/>
@@ -3531,7 +3531,7 @@
                     <legend></legend>
                     <label id='preguntano1'>115. ¿En dónde está ubicado esa empresa, negocio o finca donde trabaja?</label><br/>
                     <label>Departamento:</label><br/>
-                    <select id="pregunta115Departamento" class="saveSelect form-control">
+                    <select id="pregunta115Departamento" mun-child-id="pregunta115Municipio" class="saveSelect form-control departamentos">
                         <option>Seleccione Departamento...</option>
                     </select>
                     <br/>
