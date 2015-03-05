@@ -542,6 +542,46 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener reporte tipologias redactor */
+    public function get_report_tip_redactor(){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, rt.tipologia, COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t01web_usuarios u ON u.a01Codigo=rt.usuario_redactor WHERE rt.modulo_actual = 5 OR rt.usuario_consultor='2437d92d-d402-11e3-8578-0019fe78698h' GROUP BY rt.estado, wec.nombre_estado_carta, rt.tipologia;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener reporte categorias redactor */
+    public function get_report_cat_redactor(){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, rt.categoria, COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t01web_usuarios u ON u.a01Codigo=rt.usuario_redactor WHERE rt.modulo_actual = 5 OR rt.usuario_consultor='2437d92d-d402-11e3-8578-0019fe78698h' GROUP BY rt.estado, wec.nombre_estado_carta, rt.categoria;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener reporte tipologias juridico */
+    public function get_report_tip_juridico(){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, rt.tipologia, COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t01web_usuarios u ON u.a01Codigo=rt.usuario_redactor WHERE rt.modulo_actual = 7 GROUP BY rt.estado, wec.nombre_estado_carta, rt.tipologia;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener reporte categorias juridico */
+    public function get_report_cat_juridico(){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, rt.categoria, COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t01web_usuarios u ON u.a01Codigo=rt.usuario_redactor WHERE rt.modulo_actual = 7 GROUP BY rt.estado, wec.nombre_estado_carta, rt.categoria;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
+    /* Obtener reporte tipologias gerente */
+    public function get_report_tip_gerente(){
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, rt.tipologia, COUNT(DISTINCT formulario) AS conteo FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t01web_usuarios u ON u.a01Codigo=rt.usuario_redactor WHERE rt.modulo_actual = 8 GROUP BY rt.estado, wec.nombre_estado_carta, rt.tipologia;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener conceptos de soporte */
     public function get_supp_con(){
       $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");

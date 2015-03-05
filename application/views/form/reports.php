@@ -17,14 +17,16 @@
                   <tr>
                     <td><a id='btnReportGral' href='index.php/form/report_details?tId=1' target='_blank' class='btn btn-default btn-md'>General</a></td>
                     <td><a id='btnReportRedactor' href='index.php/form/report_details?tId=2' target='_blank' class='btn btn-success btn-md'>Redactor</a></td>
-                  </tr>
-                  <tr>
                     <td><a id='btnReportCoord' href='index.php/form/report_details?tId=3' target='_blank' class='btn btn-warning btn-md'>Coordinador</a></td>
                     <td><a id='btnReportValida' href='index.php/form/report_details?tId=4' target='_blank' class='btn btn-info btn-md'>Validador Jurídico</a></td>
+                    <td><a id='btnReportGerente' href='index.php/form/report_details?tId=5' target='_blank' class='btn btn-danger btn-md'>Gerente</a></td>
                   </tr>
                   <tr>
-                    <td><a id='btnReportGerente' href='index.php/form/report_details?tId=5' target='_blank' class='btn btn-danger btn-md'>Gerente</a></td>
-                    <td></td>
+                    <td><a id='btnReportRedactorCat' href='index.php/form/report_details?tId=6' target='_blank' class='btn btn-success btn-md'>Redactor - Categorias</a></td>
+                    <td><a id='btnReportRedactorTip' href='index.php/form/report_details?tId=7' target='_blank' class='btn btn-default btn-md'>Redactor - Tipologías</a></td>
+                    <td><a id='btnReportJuridicoCat' href='index.php/form/report_details?tId=8' target='_blank' class='btn btn-info btn-md'>Juridico - Categorias</a></td>
+                    <td><a id='btnReportJuridicoTip' href='index.php/form/report_details?tId=9' target='_blank' class='btn btn-warning btn-md'>Juridico - Tipologías</a></td>
+                    <td><a id='btnReportGerenteTip' href='index.php/form/report_details?tId=10' target='_blank' class='btn btn-danger btn-md'>Gerente - Tipologías</a></td>
                   </tr>
                 </tbody>
               </thead>
