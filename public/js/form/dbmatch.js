@@ -13,6 +13,7 @@ $(document).ready(function() {
     loadExpendedores_Carne_Gte();
     loadSalvoconducto();
     loadAprobForestal();
+    loadSisben();
 });
 //loadCenso();
 
@@ -21,7 +22,7 @@ function loadEmpleo() {
     console.log("Empleo");
     var cedula = getParameterByName("docId");
     var tablaempleo = "";
-    //$(".modal").modal('show');
+
     $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData) {
         arrayEmpleo = objRData;
         if (arrayEmpleo.length >= 1) {
@@ -35,7 +36,7 @@ function loadEmpleo() {
         tablaempleo += "</tbody></table>";
         $("#tableEmpleo").html(tablaempleo);
     });
-    //$(".modal").modal('hide');
+
 }
 
 //-Cargar Compensación Residentes-//
@@ -129,6 +130,28 @@ function loadElectro() {
         }
         tablaelectro += "</tbody></table>";
         $("#tableElectro").html(tablaelectro);
+    });
+    //$(".modal").modal('hide');
+}
+
+//-Cargar Sisben-//
+function loadSisben() {
+    console.log("Sisben");
+    var cedula = getParameterByName("docId");
+    var tablasisben = "";
+    $.getJSON("index.php/form/get_Sisben/" + cedula, function(objRData) {
+        arraySisben = objRData;
+        if (arraySisben.length >= 1) {
+            tablasisben += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Departamento</td><td>Municipio</td><td>Fecha encuesta</td><td>No Orden Informante</td><td>No Orden Persona</td><td>Fecha nacimiento</td><td>Parentesco jefe del hogar</td><td>Estado Civil</td><td>Conyugue</td><td>Trabaja al interior del hogar</td><td>Discapacidad permanente</td><td>Percibe ingresos</td><td>Total ingresos mensuales</td><td>Nivel</td><td>Puntaje</td></tr>";
+            for (var e = arraySisben.length - 1; e >= 0; e--) {
+                tablasisben += "<tr><td>" + arraySisben[e].Departamento + "</td><td>" + arraySisben[e].Municipio + "</td><td>" + arraySisben[e].Fecha_de_encuesta + "</td><td>" + arraySisben[e].No_Orden_del_Informante_calificado + "</td><td>" + arraySisben[e].No_Orden_persona + "</td><td>" + arraySisben[e].Fecha_nacimiento + "</td><td>" + arraySisben[e].Parentesco_con_el_jefe_del_hogar + "</td><td>" + arraySisben[e].Estado_civil + "</td><td>" + arraySisben[e].Conyugue + "</td><td>" + arraySisben[e].Trabaja_al_interior_de_este_hogar_como_servicio_do + "</td><td>" + arraySisben[e].Discapacidad_permanente + "</td><td>" + arraySisben[e].Percibe_ingresos + "</td><td>" + arraySisben[e].Total_ingresos_mensuales + "</td><td>" + arraySisben[e].Nivel + "</td><td>" + arraySisben[e].Puntaje + "</td></tr>";
+            }
+        } else {
+            $("#tableSisben").css("display", "none");
+            $("#labelSisben").css("display", "none");
+        }
+        tablasisben += "</tbody></table>";
+        $("#tableSisben").html(tablasisben);
     });
     //$(".modal").modal('hide');
 }

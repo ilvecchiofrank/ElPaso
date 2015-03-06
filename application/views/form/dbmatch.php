@@ -130,7 +130,7 @@ if (isset($_GET["code"])) {
             </table>
             <br/>
             <table id='tableBovinaIca' class='table table-striped'>
-              <legend id="BovinaIca">Bovina ICA</legend>
+              <legend id="labelBovinaIca">Bovina ICA</legend>
               <br/>
               <thead>
                 <tbody>
@@ -142,7 +142,7 @@ if (isset($_GET["code"])) {
             </table>
             <br/>
             <table id='tableMataderoGigante' class='table table-striped'>
-              <legend id="MataderoGigante">Matadero Gigante</legend>
+              <legend id="labelMataderoGigante">Matadero Gigante</legend>
               <br/>
               <thead>
                 <tbody>
@@ -154,7 +154,19 @@ if (isset($_GET["code"])) {
             </table>
             <br/>
             <table id='tableExpendedoresCarneGigante' class='table table-striped'>
-              <legend id="ExpendedoresCarneGigante">Expendedores Carne Gigante</legend>
+              <legend id="labelExpendedoresCarneGigante">Expendedores Carne Gigante</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableSisben' class='table table-striped'>
+              <legend id="labelSisben">Sisben</legend>
               <br/>
               <thead>
                 <tbody>

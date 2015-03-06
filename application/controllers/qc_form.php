@@ -969,6 +969,36 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_report_gerente());
     }
 
+    /* Obtener reporte tipologias redactor*/
+    public function get_Report_Tip_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_tip_redactor());
+    }
+
+    /* Obtener reporte categorias redactor*/
+    public function get_Report_Cat_Redactor(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_cat_redactor());
+    }
+
+    /* Obtener reporte tipologias juridico*/
+    public function get_Report_Tip_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_tip_juridico());
+    }
+
+    /* Obtener reporte categorias juridico*/
+    public function get_Report_Cat_Juridico(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_cat_juridico());
+    }
+
+    /* Obtener reporte tipologias gerente*/
+    public function get_Report_Tip_Gerente(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_tip_gerente());
+    }
+
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);
@@ -1015,6 +1045,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Matadero_Gte($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_matadero_gte($cedula));
+    }
+
+    /*Cargar Info Sisben*/
+    public function get_Sisben($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_sisben($cedula));
     }
 
     /*Cargar Info Expendedores_Carne_Gte*/
