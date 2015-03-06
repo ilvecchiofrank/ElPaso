@@ -1228,7 +1228,7 @@ class QM_Form extends CI_Model {
     metodo que obtiene la informacion de la tabla 77*/
     public function get_sisben($cedula){
       try {
-        $SQLResult = $this->db->query("SELECT Departamento, Municipio, Fecha_de_encuesta, No_Orden_del_Informante_calificado, No_Orden_persona, Fecha_nacimiento, Parentesco_con_el_jefe_del_hogar, Estado_civil, Conyugue, Trabaja_al_interior_de_este_hogar_como_servicio_do, Discapacidad_permanente, Percibe_ingresos, Total_ingresos_mensuales, Nivel, Puntaje FROM `t77web_sisben` WHERE Numero_doc_identidad = '$cedula'");
+        $SQLResult = $this->db->query("SELECT wd.a05Nombre AS Departamento, wm.`a06Nombre` AS Municipio, ws.Fecha_de_encuesta, ws.No_Orden_del_Informante_calificado, ws.No_Orden_persona, ws.Fecha_nacimiento, ws.Parentesco_con_el_jefe_del_hogar, ws.Estado_civil, ws.Conyugue, ws.Trabaja_al_interior_de_este_hogar_como_servicio_do, ws.Discapacidad_permanente, ws.Percibe_ingresos, ws.Total_ingresos_mensuales, ws.Nivel, ws.Puntaje  FROM t77web_sisben ws JOIN t05web_departamentos wd ON ws.`Departamento` = wd.a05DANE JOIN t06web_municipios wm ON ws.`Mpo` = wm.`a06DANE` WHERE ws.`Numero_doc_identidad` =  '$cedula'");
         $dataArray = $SQLResult->result();
         return $dataArray;
       } catch (Exception $exc) {

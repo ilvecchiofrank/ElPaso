@@ -22,7 +22,7 @@ function loadEmpleo() {
     console.log("Empleo");
     var cedula = getParameterByName("docId");
     var tablaempleo = "";
-    //$(".modal").modal('show');
+
     $.getJSON("index.php/form/get_Empleo/" + cedula, function(objRData) {
         arrayEmpleo = objRData;
         if (arrayEmpleo.length >= 1) {
@@ -36,7 +36,7 @@ function loadEmpleo() {
         tablaempleo += "</tbody></table>";
         $("#tableEmpleo").html(tablaempleo);
     });
-    //$(".modal").modal('hide');
+
 }
 
 //-Cargar Compensación Residentes-//
