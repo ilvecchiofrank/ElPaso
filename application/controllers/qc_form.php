@@ -1047,6 +1047,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_matadero_gte($cedula));
     }
 
+    /*Cargar Info Sisben*/
+    public function get_Sisben($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_sisben($cedula));
+    }
+
     /*Cargar Info Expendedores_Carne_Gte*/
     public function get_Expendedores_Carne_Gte($cedula){
         $this->load->model("qm_form", "form", true);

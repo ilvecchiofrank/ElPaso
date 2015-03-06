@@ -1224,6 +1224,18 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /**Metodo get_sisben
+    metodo que obtiene la informacion de la tabla 77*/
+    public function get_sisben($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT Departamento, Municipio, Fecha_de_encuesta, No_Orden_del_Informante_calificado, No_Orden_persona, Fecha_nacimiento, Parentesco_con_el_jefe_del_hogar, Estado_civil, Conyugue, Trabaja_al_interior_de_este_hogar_como_servicio_do, Discapacidad_permanente, Percibe_ingresos, Total_ingresos_mensuales, Nivel, Puntaje FROM `t77web_sisben` WHERE Numero_doc_identidad = '$cedula'");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $exc) {
+        echo $exc->getTraceAsString();
+      }
+    }
+
     /*Metodo get_no_residentes
     metodo que obtiene la informacion de la tabla de no residentes*/
     public function get_no_residentes($cedula){

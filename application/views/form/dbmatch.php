@@ -165,6 +165,18 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <table id='tableSisben' class='table table-striped'>
+              <legend id="labelSisben">Sisben</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
           </div>
 
         </div>
