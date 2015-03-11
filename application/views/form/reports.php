@@ -28,6 +28,9 @@
                     <td><a id='btnReportJuridicoTip' href='index.php/form/report_details?tId=9' target='_blank' class='btn btn-warning btn-md'>Juridico - Tipologías</a></td>
                     <td><a id='btnReportGerenteTip' href='index.php/form/report_details?tId=10' target='_blank' class='btn btn-danger btn-md'>Gerente - Tipologías</a></td>
                   </tr>
+                  <tr>
+                    <td><a id='btnReportTipGeneral' href='index.php/form/report_details?tId=11' target='_blank' class='btn btn-info btn-md'>General -Tipologias</a></td>
+                  </tr>
                 </tbody>
               </thead>
             </table>

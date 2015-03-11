@@ -56,6 +56,11 @@ function loadReport(tipo){
         loadReportData(tipo);
         break;
 
+        case '11':
+        $("#lgndTitle").html("Reporte General Tipologías");
+        loadReportData(tipo);
+        break;
+
         default:
         console.log(":(");
         break;
@@ -383,6 +388,28 @@ function loadReportData(reporte){
 
                 for (var i = arrayReport.length - 1; i >= 0; i--) {
                     tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].nombre_estado_carta + "</td><td>" + arrayReport[i].tipologia + "</td><td>" + arrayReport[i].conteo + "</td></tr>" ;
+                }
+
+                tablareporte += "</tbody></table><br/>";
+                $("#tableReports").html(tablareporte);
+            }
+            else
+            {
+                $("#tableReports").css("display","none");
+            }
+            $("#report_total").css("display", "none");
+        });
+        break;
+
+        //Tipologias general
+        case '11':
+        $.getJSON("index.php/form/get_Report_Tip_General", function(objRData){
+            arrayReport = objRData;
+            if (arrayReport.length >0) {
+                tablareporte += "<table border='1' cellpadding='1' cellspacing='1' style='width: 85%'><thead><tr><th scope='col'>Estado</th><th scope='col'>1</th><th scope='col'>2</th><th scope='col'>3</th><th scope='col'>4</th><th scope='col'>5</th><th scope='col'>6</th><th scope='col'>7</th><th scope='col'>8</th><th scope='col'>9</th><th scope='col'>10</th><th scope='col'>11</th><th scope='col'>12</th><th scope='col'>13</th><th scope='col'>14</th><th scope='col'>15</th><th scope='col'>16</th><th scope='col'>17</th><th scope='col'>18</th><th scope='col'>19</th><th scope='col'>20</th><th scope='col'>21</th><th scope='col'>22</th><th scope='col'>23</th><th scope='col'>Total</th></tr><tbody>";
+
+                for (var i = arrayReport.length - 1; i >= 0; i--) {
+                    tablareporte += "<tr><td>" + arrayReport[i].estado + "</td><td>" + arrayReport[i].t_1 + "</td><td>" + arrayReport[i].t_2 + "</td><td>" + arrayReport[i].t_3 + "</td><td>" + arrayReport[i].t_4 + "</td><td>" + arrayReport[i].t_5 + "</td><td>" + arrayReport[i].t_6 + "</td><td>" + arrayReport[i].t_7 + "</td><td>" + arrayReport[i].t_8 + "</td><td>" + arrayReport[i].t_9 + "</td><td>" + arrayReport[i].t_10 + "</td><td>" + arrayReport[i].t_11 + "</td><td>" + arrayReport[i].t_12 + "</td><td>" + arrayReport[i].t_13 + "</td><td>" + arrayReport[i].t_14 + "</td><td>" + arrayReport[i].t_15 + "</td><td>" + arrayReport[i].t_16 + "</td><td>" + arrayReport[i].t_17 + "</td><td>" + arrayReport[i].t_18 + "</td><td>" + arrayReport[i].t_19 + "</td><td>" + arrayReport[i].t_20 + "</td><td>" + arrayReport[i].t_21 + "</td><td>" + arrayReport[i].t_22 + "</td><td>" + arrayReport[i].t_23 + "</td><td>" + arrayReport[i].Total + "</td></tr>" ;
                 }
 
                 tablareporte += "</tbody></table><br/>";

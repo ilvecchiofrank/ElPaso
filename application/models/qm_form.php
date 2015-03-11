@@ -582,6 +582,15 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /* Obtener reporte tipologias general*/
+    public function get_report_tip_general(){
+      $query = $this->db->query("CALL proc_ReporteTip ()");
+      $query = $this->db->query("SELECT * FROM t78web_report_tipologias");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener conceptos de soporte */
     public function get_supp_con(){
       $query = $this->db->query("SELECT * FROM t61web_conceptos_soporte");
