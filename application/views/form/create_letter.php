@@ -41,9 +41,13 @@ if (isset($_GET["code"])) {
             <br/>
           </div>
           <div id='divEncabezado' class='form-group'>
-            <label id="lblConsecutivo" name="lblConsecutivo">PQ-UGS-ECO-1548-56</label>
+            <!-- <label id="lblConsecutivo" name="lblConsecutivo">PQ-UGS-ECO-1548-56</label> -->
             <br/>
             <table>
+              <tr>
+                <td>Radicado: <input type="text" name="rad_emgesa" style="width: 300px" id="rad_emgesa" class='form-control'></td>
+                <br/>
+              </tr>
               <tr>
                 <td>
                   <label id="lblSenor" name="lblSenor">Señor</label>

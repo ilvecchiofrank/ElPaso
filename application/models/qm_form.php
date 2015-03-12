@@ -333,7 +333,7 @@ class QM_Form extends CI_Model {
 
     /*Precargar contenido de carata para impresion*/
     public function get_letter_contents($id_respuesta){
-      $query = $this->db->query("SELECT rt.firma, rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente FROM t49web_respuestas_tutelas rt WHERE rt.id_respuesta = $id_respuesta");
+      $query = $this->db->query("SELECT rt.firma, rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente, rt.rad_emgesa FROM t49web_respuestas_tutelas rt WHERE rt.id_respuesta = $id_respuesta");
       $dataArray = $query->result();
 
       return $dataArray;

@@ -6,7 +6,6 @@ loadData();
 resumeForm();
 $(".modal").modal('hide');
 //loadMun();
-
 saveForm();
 fader();
 
