@@ -290,7 +290,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             //Load html view
             //$this->html2pdf->html($this->load->view('print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914', $data, true));
             //
-            $html2pdf = new HTML2PDF('P','A4','fr');
+            $html2pdf = new HTML2PDF('P','A4','fr', true, 'UTF-8', array(0, 0, 0, 0));
             $html = $html2pdf->getHtmlFromPage('http://localhost:120/quimbo2/index.php/form/print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914');
             $html2pdf->WriteHTML($html);
             $html2pdf->Output('download.pdf');
@@ -309,6 +309,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             );
 
             $this->html2pdf->html($this->load->view('print_full', $data, true));
+            $this->html2pdf->SetMargins(10,1);
             $this->html2pdf->create('download');
 
             return;
