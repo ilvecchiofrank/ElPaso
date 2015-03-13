@@ -277,9 +277,9 @@ class QM_Form extends CI_Model {
       //$query = $this->db->query("SELECT cuerpo_mensaje, fec_carta, rad_emgesa, txt_Devolver, estado, usuario_redactor, usuario_consultor, usuario_juridico, usuario_gerente, fec_carta, rad_emgesa, vulnerable FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
       $query = $this->db->query("SELECT * FROM t49web_respuestas_tutelas WHERE id_respuesta = $letterId");
       $dataArray = $query->result();
-      
+
       $dataArray["0"]->cuerpo_mensaje = str_replace('\"', "'", $dataArray["0"]->cuerpo_mensaje);
-      
+
       return $dataArray;
     }
 
@@ -333,7 +333,7 @@ class QM_Form extends CI_Model {
 
     /*Precargar contenido de carata para impresion*/
     public function get_letter_contents($id_respuesta){
-      $query = $this->db->query("SELECT rt.firma, rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente, rt.rad_emgesa FROM t49web_respuestas_tutelas rt WHERE rt.id_respuesta = $id_respuesta");
+      $query = $this->db->query("SELECT rt.firma, rt.tipologia, rt.cuerpo_mensaje, rt.usuario_redactor, rt.usuario_juridico, rt.usuario_consultor, rt.usuario_gerente, rt.rad_emgesa, rt.rad_stick FROM t49web_respuestas_tutelas rt WHERE rt.id_respuesta = $id_respuesta");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -648,6 +648,7 @@ class QM_Form extends CI_Model {
         'cuerpo_mensaje'=> (isset($arrayDataFromView['cuerpo_mensaje'])) ? $arrayDataFromView['cuerpo_mensaje'] : null,
         'fec_carta'=> (isset($arrayDataFromView['fec_carta'])) ? $arrayDataFromView['fec_carta'] : null,
         'rad_emgesa'=> (isset($arrayDataFromView['rad_emgesa'])) ? $arrayDataFromView['rad_emgesa'] : null,
+        'rad_stick'=> (isset($arrayDataFromView['rad_stick'])) ? $arrayDataFromView['rad_stick'] : 0,
         'txt_Devolver'=> (isset($arrayDataFromView['txt_Devolver'])) ? $arrayDataFromView['txt_Devolver'] : null,
         'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
         'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
@@ -671,6 +672,7 @@ class QM_Form extends CI_Model {
         'cuerpo_mensaje'=> (isset($arrayDataFromView['cuerpo_mensaje'])) ? $arrayDataFromView['cuerpo_mensaje'] : null,
         'fec_carta'=> (isset($arrayDataFromView['fec_carta'])) ? $arrayDataFromView['fec_carta'] : null,
         'rad_emgesa'=> (isset($arrayDataFromView['rad_emgesa'])) ? $arrayDataFromView['rad_emgesa'] : null,
+        'rad_stick'=> (isset($arrayDataFromView['rad_stick'])) ? $arrayDataFromView['rad_stick'] : 0,
         'txt_Devolver'=> (isset($arrayDataFromView['txt_Devolver'])) ? $arrayDataFromView['txt_Devolver'] : null,
         'usuario_redactor'=> (isset($arrayDataFromView['usuario_redactor'])) ? $arrayDataFromView['usuario_redactor'] : null,
         'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
