@@ -44,25 +44,21 @@ ob_start();
                 <table align="right" border="0" cellpadding="0" cellspacing="0" style="width: 25%;">
                     <tbody>
                         <tr>
-                            <td>CENSO QUIMBO</td>
-                        </tr>
-                        <tr>
-                            <td>Radicado: <?php echo $arrLetterContent[0]->rad_stick; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Documento Externo</td>
-                        </tr>
-                        <tr>
-                            <td><?php echo $arrLetterContent[0]->fec_carta; ?> 00:00</td>
-                        </tr>
-                        <tr>
-                            <td>N&uacute;mero de Folios: 0</td>
-                        </tr>
-                        <tr>
-                            <td>Cantidad de Anexos: 0</td>
-                        </tr>
-                        <tr>
-                            <td>Tipo de Anexo: null</td>
+                            <td>
+                        <p><span style="font-size:9px;"><span style="font-family:arial,helvetica,sans-serif;">CENSO QUIMBO
+                        <br/>
+                        Radicado: <?php echo $arrLetterContent[0]->rad_stick; ?>
+                        <br/>
+                        Documento Externo
+                        <br/>
+                        <?php echo $arrLetterContent[0]->fec_carta; ?> 00:00
+                        <br/>
+                        N&uacute;mero de Folios: 0
+                        <br/>
+                        Cantidad de Anexos: 0
+                        <br/>
+                        Tipo de Anexo: null </span></span></p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
