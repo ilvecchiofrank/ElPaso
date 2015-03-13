@@ -6,7 +6,6 @@ loadData();
 resumeForm();
 $(".modal").modal('hide');
 //loadMun();
-
 saveForm();
 fader();
 
@@ -598,6 +597,7 @@ function resumeForm(){
         if(arrayCarta.length > 0){
             for (var t = arrayCarta.length -1; t >=0; t--){
                 $("#rad_emgesa").val(arrayCarta[t].rad_emgesa);
+                $("#rad_stick").val(arrayCarta[t].rad_stick);
                 $("#fec_carta").val(arrayCarta[t].fec_carta);
                 $("#hfContent").val(arrayCarta[t].cuerpo_mensaje);
                 $("input[type='radio'][value='" + arrayCarta[t].firma + "']").parent().trigger('click');

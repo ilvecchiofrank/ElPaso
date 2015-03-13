@@ -290,7 +290,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             //Load html view
             //$this->html2pdf->html($this->load->view('print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914', $data, true));
             //
-            $html2pdf = new HTML2PDF('P','A4','fr');
+            $html2pdf = new HTML2PDF('P','A4','fr', true, 'UTF-8', array(0, 0, 0, 0));
             $html = $html2pdf->getHtmlFromPage('http://localhost:120/quimbo2/index.php/form/print_full/ad479a68-01f2-11e4-8895-00ff80801d89/83914');
             $html2pdf->WriteHTML($html);
             $html2pdf->Output('download.pdf');
@@ -309,6 +309,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             );
 
             $this->html2pdf->html($this->load->view('print_full', $data, true));
+            $this->html2pdf->SetMargins(10,1);
             $this->html2pdf->create('download');
 
             return;
@@ -777,6 +778,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["cuerpo_mensaje"] = $arrayAnterior[0]->cuerpo_mensaje;
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
             $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
@@ -999,6 +1001,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_report_tip_gerente());
     }
 
+    /* Obtener reporte tipologias general*/
+    public function get_Report_Tip_General(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_report_tip_general());
+    }
+
     /*Obtener listado de pqr por numero de cedula*/
     public function get_Pqr($cedula){
         $this->load->model("qm_form", "form", true);
@@ -1188,6 +1196,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
         $arrayData["formulario"] = $_POST["formulario"];
+        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        $arrayData["rad_stick"] = $_POST["rad_stick"];
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_createLetter();
@@ -1265,6 +1275,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
 		$arrayData["estado"] = $_POST["estado"];
+        //$arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        //$arrayData["rad_stick"] = $_POST["rad_stick"];
 		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
         $arrayData["formulario"] = $_POST["formulario"];
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1304,6 +1316,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 }
 
                 $arrayCreateData["estado"] = '1';
+                $arrayCreateData["rad_emgesa"] = $_POST["rad_emgesa"];
+                $arrayCreateData["rad_stick"] = $_POST["rad_stick"];
                 $arrayCreateData["cedula"] = $_POST["cedula"];
                 $arrayCreateData["categoria"] = $_POST["categoria"];
                 $arrayCreateData["tipologia"] = $_POST["tipologia"];
@@ -1313,7 +1327,6 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 //Se traen los datos de usuarios del registro anterior
                 $arrayAnterior = $this->form->get_letter_info($letterId);
                 $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-                $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
                 $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
                 $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
                 $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
@@ -1355,6 +1368,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
         $arrayData["estado"] = '7';
+        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        $arrayData["rad_stick"] = $_POST["rad_stick"];
         $arrayData["modulo_actual"] = $_POST["modulo_actual"];
         $arrayData["formulario"] = $_POST["formulario"];
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1376,7 +1391,6 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             //Se traen los datos de usuarios del registro anterior
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
-            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
@@ -1439,6 +1453,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
 		$arrayData["categoria"] = $_POST["categoria"];
 		$arrayData["tipologia"] = $_POST["tipologia"];
 		$arrayData["estado"] = $_POST["estado"];
+        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        $arrayData["rad_stick"] = $_POST["rad_stick"];
 		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
 		$arrayData["formulario"] = $_POST["formulario"];
 		$arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1463,7 +1479,6 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
-            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
 			$arrayCreateData["estado"] = '1';
 			$arrayCreateData["modulo_actual"] = 6;
