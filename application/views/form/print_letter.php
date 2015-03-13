@@ -82,7 +82,7 @@ ob_start();
                 <br/>
                 <table>
                     <tr>
-                        <td><?php
+                        <td style="width: 75%;" ><?php
                             if (strlen($arrPrintData[0]->genero) > 5) {
                                 echo "Señor:";
                             } else {
@@ -196,7 +196,7 @@ ob_start();
 require_once(APPPATH . 'libraries/html2pdf/html2pdf.class.php');
 try {
 
-    $html2pdf = new HTML2PDF('P', 'LETTER', 'es', true, 'UTF-8', array(20, 20, 20, 9));
+    $html2pdf = new HTML2PDF('P', 'LETTER', 'es', true, 'UTF-8', array(20, 10, 20, 9));
     ob_end_clean();
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content);
