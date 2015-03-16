@@ -1344,6 +1344,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 }
 
             }
+            echo "ok";
         }
         else{
             echo $resultInsert;

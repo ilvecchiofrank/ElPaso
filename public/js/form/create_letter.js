@@ -141,6 +141,8 @@ var estado = check_status(boton);
                                 }else{
                                     notify('ok');
                                 }
+                        }else{
+                            console.log('Resultado update: ' + result);
                         }
 
                             //Evaluar redireccion
@@ -175,6 +177,8 @@ var estado = check_status(boton);
                                 }else{
                                     notify('ok');
                                 }
+                            }else{
+                                console.log('Resultado insert: ' + result);
                             }
 
                             //Evaluar redireccion
@@ -286,8 +290,8 @@ function saveForm(){
                 $("#lblAplica").html("");
 
             saveNotify('no','G');
-            $("#divActions").after('<div class="alert alert-success tmpAlert" style="margin-top: 1em;" role="alert"><strong>Guardado Exitoso!</strong><br/>El formulario de almaceno con exito.</div>');
-            setTimeout("$('.tmpAlert').fadeOut();", 2000);
+            // $("#divActions").after('<div class="alert alert-success tmpAlert" style="margin-top: 1em;" role="alert"><strong>Guardado Exitoso!</strong><br/>El formulario de almaceno con exito.</div>');
+            // setTimeout("$('.tmpAlert').fadeOut();", 2000);
          });
 
        $("#saveClose").click( function(){
