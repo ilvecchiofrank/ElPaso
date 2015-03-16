@@ -447,10 +447,17 @@ var tipologia_id = getParameterByName("tId");
 
     //-Imprimir Finalizar-//
     if($("#hfUserType").val() != 1){
-        if($("#hfUserType").val() != 8){
+        if($("#hfUserType").val() != 10){
             $("#btnPrint").css("display", "none");
             $("#btnFinish").css("display", "none");
         }
+    }
+
+    //-Validaciones documental-//
+    if($("#hfUserType").val() == 10){
+        $("#saveClose").css("display", "none");
+        $("#putBack").css("display", "none");
+        $("#btnRecat").css("display", "none");
     }
 
     //-Acciones boton Finalizar-//
@@ -468,7 +475,7 @@ var tipologia_id = getParameterByName("tId");
         var tipo_usuario = $("#hfUserType").val();
         var cedula = getParameterByName("docId");
         var formulario = getParameterByName("formCode");
-        var estado = 8;
+        var estado = 10;
         var carta_id = getParameterByName("letId");
         var cuerpo_carta = CKEDITOR.instances['contenido'].getData();
 
