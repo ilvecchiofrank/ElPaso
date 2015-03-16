@@ -1066,13 +1066,13 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_expendedores_carne_gte($cedula));
     }
-    
+
     /*Cargar Info Salvoconducto*/
     public function get_Salvoconducto($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_salvoconducto($cedula));
     }
-    
+
     /*Cargar Info Salvoconducto*/
     public function get_AprobForestal($cedula){
         $this->load->model("qm_form", "form", true);
@@ -1311,6 +1311,10 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                         $arrayCreateData["modulo_actual"] = '7';
                         break;
 
+                    case '8':
+                        $arrayCreateData["modulo_actual"] = '10';
+                        break;
+
                     default:
                         break;
                 }
@@ -1415,6 +1419,10 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
 
                     case '8':
                         $arrayCreateData["modulo_actual"] = '7';
+                        break;
+
+                    case '10':
+                        $arrayCreateData["modulo_actual"] = '10';
                         break;
 
                     default:

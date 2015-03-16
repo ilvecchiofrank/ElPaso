@@ -183,6 +183,10 @@ function loadDash(){
                         break;
                     case '8':
                         //btn_Finish_Dash = "<a href='" + rol + "' target='_blank' class='btn btn-danger'>Terminar</a>";
+                        //btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
+                        btn_Finish_Dash ="<button class='btn btn-warning' onclick='finishCloseDash(" + arrayLetters[t].id_respuesta + ")'>Guardar y Cerrar</button>";
+                        break;
+                    case '10':
                         btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
                         break;
                     default:
