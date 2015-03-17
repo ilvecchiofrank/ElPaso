@@ -1464,8 +1464,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
 		$arrayData["categoria"] = $_POST["categoria"];
 		$arrayData["tipologia"] = $_POST["tipologia"];
 		$arrayData["estado"] = $_POST["estado"];
-        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
-        $arrayData["rad_stick"] = $_POST["rad_stick"];
+        //$arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        //$arrayData["rad_stick"] = $_POST["rad_stick"];
 		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
 		$arrayData["formulario"] = $_POST["formulario"];
 		$arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1488,6 +1488,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
