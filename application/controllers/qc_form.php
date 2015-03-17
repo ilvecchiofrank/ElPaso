@@ -780,6 +780,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
+            $arrayCreateData["usuario_documental"] = $arrayAnterior[0]->usuario_documental;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
@@ -787,7 +788,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
 
             //Se asigna modulo actual al juridico
-            $arrayCreateData["modulo_actual"] = '7';
+            $arrayCreateData["modulo_actual"] = $_POST["Modulo"];
             $arrayCreateData["estado"] = '1';
 
             $this->form->do_setLetterProps($arrayCreateData);
