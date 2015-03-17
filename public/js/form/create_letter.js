@@ -353,6 +353,7 @@ function saveForm(){
 							//console.log("recategorizado!");
 						}else{
 							//console.log("error");
+                            console.log("Resultado inesperado: " + result);
 						}
 					}
 					});
