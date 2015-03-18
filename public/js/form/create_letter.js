@@ -524,15 +524,17 @@ var tipologia_id = getParameterByName("tId");
                     var id_usuario = $("#hfUserId").val();
                     var contenido = CKEDITOR.instances.contenido.getData();
                     var estado = 7;//7 es el estado devuelto para el historico
-
+console.log("inicia devolucion");
                     $.ajax({
                         url: "index.php/form/do_getBackLetter/" + getParameterByName("letId"),
                         type: "POST",
                         data:{ csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario, "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria": categoria_id, "tipologia": tipologia_id, "formulario": formulario_id, "cedula": cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray()) },
                         success: function(result){
                             if(result == "ok"){
-                                //console.log("Devuelto!");
+                                console.log("Devuelto!");
                                 window.close();
+                            }else{
+                                console.log("Resultado: " + result );
                             }
                         }
                     });
