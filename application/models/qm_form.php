@@ -403,7 +403,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener info general del dashboard del usuario */
     public function get_dash_status($usuario, $rol){
-      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo  FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ) AND rt.`modulo_actual` = $rol GROUP BY rt.estado, wec.nombre_estado_carta;");
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo  FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' OR rt.usuario_documental = '$usuario' ) AND rt.`modulo_actual` = $rol GROUP BY rt.estado, wec.nombre_estado_carta;");
       $dataArray = $query->result();
 
       return $dataArray;
