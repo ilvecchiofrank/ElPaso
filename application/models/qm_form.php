@@ -283,6 +283,27 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Obtener tipos de comunicaciones adicionales*/
+    public function get_comad_list(){
+      $query = $this->db->query("SELECT tip_comunic_id, CONCAT(orden, ' - ', descripcion) AS elemento FROM (SELECT * FROM t80web_tipo_comunic ORDER BY orden ASC) AS tabla");
+      $dataArray = $query->result();
+
+      $html = "<option value=''>Seleccione...</option>";
+      foreach ($dataArray as $comad => $objComad) {
+        $html .= "<option value='$objComad->tip_comunic_id'>" . $objComad->elemento . "</option>";
+      }
+
+      return $html;
+    }
+
+    /*Obtener comunicaciones adicionales*/
+    public function get_comad($formulario){
+      $query = $this->db->query("SELECT tipo_comunic, fecha, observaciones FROM t79web_comunic_adic WHERE formulario = '$formulario'");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /*Obtener los bloques de las cartas*/
     public function get_letter_blocks(){
       $query = $this->db->query("SELECT Cuerpo_txt FROM t51web_bloque_contenido ORDER BY Ordenamiento");

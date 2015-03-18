@@ -130,6 +130,14 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario comunicaciones especiales*/
+    public function comad(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("comad", "form");
+            return;
+        }
+    }
+
     /* Formulario para consultar cartas de respuesta */
     public function pre_letter(){
         if($this->session->userdata("isLoggedIn")) {
@@ -1174,6 +1182,18 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Tipologias_List(){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_tipologias_list());
+    }
+
+    /*Metodo que carga la lista de tipos de comunicaiones adicionales*/
+    public function get_Comad_List(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_comad_list());
+    }
+
+    /*Metodo que carga las comunicaciones adicionales*/
+    public function get_Comad($formulario){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_comad($formulario));
     }
 
     /*Metodo que carga la tabla de cce filtrada por tipologia y categoria*/

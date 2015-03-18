@@ -200,7 +200,7 @@ function showResponseSearch(responseText, statusText, xhr, $form) {
 							$(objLAction).append(" ").append(objLAnchorPF);
                             $(objLAction).append(" ").append(objLAnchorCRBD);
                             $(objLAction).append(" ").append(objLAnchorJA);
-                            $(objLAction).append(" ").append(objLAnchorRJ);
+                            //$(objLAction).append(" ").append(objLAnchorRJ);
                             break;
 
                         default:
