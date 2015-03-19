@@ -186,7 +186,7 @@ ob_start();
                         <td>Validó: <?php echo $usr_Jur[0]->a01Inicial; ?></td>
                     </tr>
                     <tr>
-                        <td>Aprobó: MP</td>
+                        <td><!-- Aprobó: MP --></td>
                     </tr>
                 </table>
 </page>
