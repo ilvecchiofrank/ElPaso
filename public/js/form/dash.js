@@ -146,13 +146,21 @@ function loadDash(){
         }
     });
 
-    //Fix para usuario documental
-    //
+    //Fix para estadisticas usuario documental
+    $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
+        arrayStats = objRData;
+
+        if (arrayStats.length > 0){
+            $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + '10'  + '&rId=' + rol);
+            $("#btnPrint").html("Imprimir ( " + arrayStats[s].conteo + " )");
+        }
+
+    });
 
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
-        console.table
+        //console.table(arrayLetters);
         if (arrayLetters.length >= 1){
 
             //Encabezado de tabla
