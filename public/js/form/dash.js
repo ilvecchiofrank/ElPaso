@@ -26,6 +26,9 @@ function loadDash(){
 
     if (rol != 10){
         $("#btnPrint").css("display", "none");
+    }else{
+        $("#btnStatReturned").css("display", "none");
+        $("#btnStatClosed").css("display", "none");
     }
 
     //Usuario impresor
@@ -142,6 +145,9 @@ function loadDash(){
             $("#dash_status").css("display","none");
         }
     });
+
+    //Fix para usuario documental
+    //
 
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
