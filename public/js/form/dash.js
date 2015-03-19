@@ -69,7 +69,7 @@ function loadDash(){
     }
     else //Query normal
     {
-
+console.log("traer status dash");
         $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
         if (arrayStats.length >0 ) {
@@ -145,7 +145,7 @@ function loadDash(){
             $("#dash_status").css("display","none");
         }
     });
-
+console.log("Inicia fix estadisticas");
     //Fix para estadisticas usuario documental
     $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
         arrayStats = objRData;
