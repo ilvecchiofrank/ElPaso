@@ -152,7 +152,7 @@ console.log("Inicia fix estadisticas");
         console.table(arrayStats);
         if (arrayStats.length > 0){
             $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + '10'  + '&rId=' + rol);
-            $("#btnPrint").html("Imprimir ( " + arrayStats[s].conteo + " )");
+            $("#btnPrint").html("Imprimir ( " + arrayStats[0].conteo + " )");
         }
 console.log("Termina fix");
     });
