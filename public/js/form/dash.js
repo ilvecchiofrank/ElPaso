@@ -24,6 +24,10 @@ function loadDash(){
         $("#btnFinished").css("display", "none");
     }
 
+    if (rol != 10){
+        $("#btnPrint").css("display", "none");
+    }
+
     //Usuario impresor
     if (rol==9){
     //Boton reportes
