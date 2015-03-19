@@ -421,7 +421,6 @@ class QM_Form extends CI_Model {
 
     /*Fix para dash de usuario documental*/
     public function get_fix_dash_docum($usuario){
-      var_dump('entra query fix');
       $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo FROM  t49web_respuestas_tutelas rt  JOIN t59web_estados_carta wec  ON rt.estado = wec.id_estado_carta WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' OR rt.usuario_documental = '$usuario') AND rt.`modulo_actual` = 10 AND estado = 8 GROUP BY rt.estado, wec.nombre_estado_carta;");
       $dataArray = $query->result();
 

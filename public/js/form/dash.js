@@ -149,7 +149,7 @@ console.log("Inicia fix estadisticas");
     //Fix para estadisticas usuario documental
     $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
         arrayStats = objRData;
-console.log(arrayStats);
+        console.table(arrayStats);
         if (arrayStats.length > 0){
             $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + '10'  + '&rId=' + rol);
             $("#btnPrint").html("Imprimir ( " + arrayStats[s].conteo + " )");
