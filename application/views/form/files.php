@@ -91,7 +91,7 @@ if (isset($_GET["code"])) {
 
           <div id="radicanex" class='form-group'>
             <br/>
-            <legend>Radicados Anexos Censo:</legend>
+            <legend>PQR's Anexo Censo:</legend>
             <table id='tableRadicAnexResults' class='table table-striped'>
               <thead>
                 <tbody>
