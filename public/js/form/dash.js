@@ -24,6 +24,10 @@ function loadDash(){
         $("#btnFinished").css("display", "none");
     }
 
+    if (rol != 10){
+        $("#btnPrint").css("display", "none");
+    }
+
     //Usuario impresor
     if (rol==9){
     //Boton reportes
@@ -117,6 +121,12 @@ function loadDash(){
                     $("#btnFinished").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
                     $("#btnFinished").html("Finalizados ( " + arrayStats[s].conteo + " )");
                         break;
+
+                    case '10':
+                    $("#btnPrint").attr("target", "_blank");
+                    $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
+                    $("#btnPrint").html("Imprimir ( " + arrayStats[s].conteo + " )");
+                    break;
 
                     default:
                     console.log(":(");
