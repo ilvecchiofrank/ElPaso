@@ -1022,6 +1022,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_pqr($cedula));
     }
 
+    /*Obtener lista radicados anexos por cedula*/
+    public function get_Radicanex($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_radicanex($cedula));
+    }
+
     /*Obtener listado de entrevistas por numero de cedula*/
     public function get_Entrev($cedula){
         $this->load->model("qm_form", "form", true);

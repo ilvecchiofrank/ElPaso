@@ -5,6 +5,7 @@ loadControlValues();
 loadTutelas();
 loadEntrev();
 loadpqrs();
+loadRadicanex();
 
 $("#txtIdentificador").html(getParameterByName("formCode"));
 $("#txtCedula").html(getParameterByName("docId"));
@@ -14,6 +15,33 @@ if (formCode == 'undefined'){
   $("#formulario").css("display","none");
   $("#results").css("display","none");
   $("#docuIdentifica").css("display","block");
+}
+
+function loadRadicanex(){
+    var cedula = getParameterByName("docId");
+    var tablaRadicanex = "";
+    $.getJSON("index.php/form/get_Radicanex/" + cedula, function(objRData){
+        arrayRadicanex = objRData;
+
+        if(arrayRadicanex.length >0){
+            tablaRadicanex += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Tipo</th><th scope='col'>Cédula</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+
+
+            for (var i = arrayRadicanex.length - 1; i >= 0; i--) {
+
+                var ruta = arrayRadicanex[i].path.replace("Q:emgesaCD/", "https://emgesa.s3.amazonaws.com/CD/");
+                tablaRadicanex += "<tr><td>" + arrayRadicanex[i].tipo + "</td><td>" + arrayRadicanex[i].cedula + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver Detalle</a>" + "</td></tr>";
+
+            }
+
+            tablaRadicanex += "</tbody></table><br/>";
+            $("#tableRadicAnexResults").html(tablaRadicanex);
+
+        }else{
+            $("#tableRadicAnexResults").css("display", "none");
+        }
+
+    });
 }
 
 function loadpqrs(){

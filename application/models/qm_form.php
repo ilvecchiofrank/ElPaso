@@ -1064,6 +1064,21 @@ class QM_Form extends CI_Model {
         }
     }
 
+    /*Metodo get_radicanex
+        metodo que obtiene los radicados anexos por cedula*/
+    public function get_radicanex($cedula){
+
+      try {
+        $SQLResult = $this->db->query("SELECT tipo, cedula, path FROM t21web_pqr WHERE cedula = $cedula");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      } catch (Exception $e) {
+          echo $e->getTraceAsString();
+      }
+
+    }
+
     /*Metodo get entrev
         metodo que obtiene las entrevistas por numero de cedula*/
     public function get_entrev($cedula){
