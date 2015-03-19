@@ -179,10 +179,14 @@ function loadDash(){
 
                 switch(rol){
                     case '6':
-                        btn_Finish_Dash ="<button class='btn btn-warning' onclick='finishCloseDash(" + arrayLetters[t].id_respuesta + ")'>Guardar y Cerrar</button>";
+                        btn_Finish_Dash ="<button class='btn btn-warning' onclick='finishCloseDash(" + arrayLetters[t].id_respuesta + "," + rol + ")'>Guardar y Cerrar</button>";
                         break;
                     case '8':
                         //btn_Finish_Dash = "<a href='" + rol + "' target='_blank' class='btn btn-danger'>Terminar</a>";
+                        //btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
+                        btn_Finish_Dash ="<button class='btn btn-warning' onclick='finishCloseDash(" + arrayLetters[t].id_respuesta + "," + rol + ")'>Guardar y Cerrar</button>";
+                        break;
+                    case '10':
                         btn_Finish_Dash = "<button class='btn btn-danger' onclick='finishDash(" + arrayLetters[t].id_respuesta + ")'>Terminar</button>";
                         break;
                     default:
@@ -251,12 +255,24 @@ function finishDash(carta){
 
 }
 
-function finishCloseDash(carta){
-    console.log("guardar y cerrar" + carta);
+function finishCloseDash(carta, rol){
+    //console.log("guardar y cerrar" + carta + " - " + rol);
+    var modulo = 7;
+
+    switch (rol){
+        case 8:
+        modulo = 10;
+        break;
+
+        default:
+        modulo = 7;
+        break;
+    }
+
     $.ajax({
     url: "index.php/form/do_Finish_Close_Dash/",
     type: "POST",
-    data:{ csrf_test_name: get_csrf_hash, "idLetter": carta},
+    data:{ csrf_test_name: get_csrf_hash, "idLetter": carta, "Modulo": modulo},
     success: function(result){
         if(result == "ok"){
             location.reload();

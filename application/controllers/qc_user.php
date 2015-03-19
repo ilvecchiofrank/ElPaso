@@ -72,6 +72,10 @@ class QC_User extends QC_Controller {
                 //echo"Impresor";
                 redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
                 break;
+            case 10:
+                //Documental
+                redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);
+                break;
             default:
                 redirect("form/search");
             }

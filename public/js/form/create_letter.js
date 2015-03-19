@@ -141,6 +141,8 @@ var estado = check_status(boton);
                                 }else{
                                     notify('ok');
                                 }
+                        }else{
+                            console.log('Resultado update: ' + result);
                         }
 
                             //Evaluar redireccion
@@ -175,6 +177,8 @@ var estado = check_status(boton);
                                 }else{
                                     notify('ok');
                                 }
+                            }else{
+                                console.log('Resultado insert: ' + result);
                             }
 
                             //Evaluar redireccion
@@ -286,8 +290,8 @@ function saveForm(){
                 $("#lblAplica").html("");
 
             saveNotify('no','G');
-            $("#divActions").after('<div class="alert alert-success tmpAlert" style="margin-top: 1em;" role="alert"><strong>Guardado Exitoso!</strong><br/>El formulario de almaceno con exito.</div>');
-            setTimeout("$('.tmpAlert').fadeOut();", 2000);
+            // $("#divActions").after('<div class="alert alert-success tmpAlert" style="margin-top: 1em;" role="alert"><strong>Guardado Exitoso!</strong><br/>El formulario de almaceno con exito.</div>');
+            // setTimeout("$('.tmpAlert').fadeOut();", 2000);
          });
 
        $("#saveClose").click( function(){
@@ -349,6 +353,7 @@ function saveForm(){
 							//console.log("recategorizado!");
 						}else{
 							//console.log("error");
+                            console.log("Resultado inesperado: " + result);
 						}
 					}
 					});
@@ -437,16 +442,23 @@ var tipologia_id = getParameterByName("tId");
 
     //-Validaciones gerente-//
     if($("#hfUserType").val() == 8 ){
-        $("#saveClose").css("display", "none");
+        $("#btnFinish").css("display", "none");
         $("#btnRecat").css("display", "none");
     }
 
     //-Imprimir Finalizar-//
     if($("#hfUserType").val() != 1){
-        if($("#hfUserType").val() != 8){
+        if($("#hfUserType").val() != 10){
             $("#btnPrint").css("display", "none");
             $("#btnFinish").css("display", "none");
         }
+    }
+
+    //-Validaciones documental-//
+    if($("#hfUserType").val() == 10){
+        $("#saveClose").css("display", "none");
+        $("#putBack").css("display", "none");
+        $("#btnRecat").css("display", "none");
     }
 
     //-Acciones boton Finalizar-//
@@ -464,7 +476,7 @@ var tipologia_id = getParameterByName("tId");
         var tipo_usuario = $("#hfUserType").val();
         var cedula = getParameterByName("docId");
         var formulario = getParameterByName("formCode");
-        var estado = 8;
+        var estado = 10;
         var carta_id = getParameterByName("letId");
         var cuerpo_carta = CKEDITOR.instances['contenido'].getData();
 
@@ -512,7 +524,7 @@ var tipologia_id = getParameterByName("tId");
                     var id_usuario = $("#hfUserId").val();
                     var contenido = CKEDITOR.instances.contenido.getData();
                     var estado = 7;//7 es el estado devuelto para el historico
-
+//console.log("inicia devolucion");
                     $.ajax({
                         url: "index.php/form/do_getBackLetter/" + getParameterByName("letId"),
                         type: "POST",
@@ -521,6 +533,8 @@ var tipologia_id = getParameterByName("tId");
                             if(result == "ok"){
                                 //console.log("Devuelto!");
                                 window.close();
+                            }else{
+                                console.log("Resultado: " + result );
                             }
                         }
                     });

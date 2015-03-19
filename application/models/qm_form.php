@@ -283,6 +283,27 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Obtener tipos de comunicaciones adicionales*/
+    public function get_comad_list(){
+      $query = $this->db->query("SELECT tip_comunic_id, CONCAT(orden, ' - ', descripcion) AS elemento FROM (SELECT * FROM t80web_tipo_comunic ORDER BY orden ASC) AS tabla");
+      $dataArray = $query->result();
+
+      $html = "<option value=''>Seleccione...</option>";
+      foreach ($dataArray as $comad => $objComad) {
+        $html .= "<option value='$objComad->tip_comunic_id'>" . $objComad->elemento . "</option>";
+      }
+
+      return $html;
+    }
+
+    /*Obtener comunicaciones adicionales*/
+    public function get_comad($formulario){
+      $query = $this->db->query("SELECT tipo_comunic, fecha, observaciones FROM t79web_comunic_adic WHERE formulario = '$formulario'");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /*Obtener los bloques de las cartas*/
     public function get_letter_blocks(){
       $query = $this->db->query("SELECT Cuerpo_txt FROM t51web_bloque_contenido ORDER BY Ordenamiento");
@@ -357,7 +378,7 @@ class QM_Form extends CI_Model {
       //$query = $this->db->query("SELECT * FROM (SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, rt.estado, rt.modulo_actual, max(rt.id_respuesta) as YO FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' GROUP BY rt.cedula ORDER BY CAST(tip_id AS DECIMAL) ASC, CAST(cat_id AS DECIMAL) ASC, vulnerable_id DESC, rt.estado ASC, rt.cedula ASC) AS tabla WHERE estado IN (1,2,4) and modulo_actual in (5,7,6,9)");
       //$query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, rt.estado, rt.modulo_actual FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ) AND modulo_actual = $rol AND estado IN (1, 2, 4) ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) ASC, vulnerable_id ASC, rt.estado ASC, rt.cedula ASC;");
       //$query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, wu.a01nombres AS E, wu3.a01nombres AS R, wu2.a01nombres AS V, CASE   WHEN rt.vulnerable = 0    THEN 'No'    ELSE 'Si'  END AS vulnerable, rt.vulnerable AS vulnerable_id, rt.estado, rt.modulo_actual FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec    ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt    ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc    ON rt.categoria = wc.id_categoria JOIN tmp_base tb    ON rt.cedula = tb.cc JOIN `t01web_usuarios` wu   ON rt.usuario_redactor = wu.a01Codigo JOIN `t01web_usuarios` wu2   ON (rt.`usuario_juridico` = wu2.`a01Codigo`) JOIN `t01web_usuarios` wu3  ON (rt.`usuario_consultor` = wu3.`a01Codigo`) WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario') AND modulo_actual = $rol AND estado IN (1, 2, 4) ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) ASC, vulnerable_id ASC, rt.estado ASC, rt.cedula ASC ;");
-      $query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, wu.a01nombres AS E, wu3.a01nombres AS R, wu2.a01nombres AS V, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, DATE(fc.Fecha) as Fecha, rt.estado, rt.modulo_actual FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc JOIN `t01web_usuarios` wu ON rt.usuario_redactor = wu.a01Codigo JOIN `t01web_usuarios` wu2 ON (rt.`usuario_juridico` = wu2.`a01Codigo`) JOIN `t01web_usuarios` wu3 ON (rt.`usuario_consultor` = wu3.`a01Codigo`) LEFT JOIN tmp_fecha_inicial fc ON rt.`formulario` = fc.formulario WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario') AND modulo_actual = $rol AND estado IN (1, 2, 4) ORDER BY fc.Fecha DESC, CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) ASC, rt.estado ASC, rt.cedula ASC;");
+      $query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, wu.a01nombres AS E, wu3.a01nombres AS R, wu2.a01nombres AS V, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, DATE(fc.Fecha) as Fecha, rt.estado, rt.modulo_actual FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc JOIN `t01web_usuarios` wu ON rt.usuario_redactor = wu.a01Codigo JOIN `t01web_usuarios` wu2 ON (rt.`usuario_juridico` = wu2.`a01Codigo`) JOIN `t01web_usuarios` wu3 ON (rt.`usuario_consultor` = wu3.`a01Codigo`) LEFT JOIN tmp_fecha_inicial fc ON rt.`formulario` = fc.formulario WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' OR rt.usuario_documental = '$usuario') AND modulo_actual = $rol AND estado IN (1, 2, 4) ORDER BY fc.Fecha DESC, CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) ASC, rt.estado ASC, rt.cedula ASC;");
       $dataArray = $query->result();
       return $dataArray;
     }
@@ -403,7 +424,7 @@ class QM_Form extends CI_Model {
 
     /* Obtener info general del dashboard del usuario */
     public function get_dash_status($usuario, $rol){
-      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo  FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' ) AND rt.`modulo_actual` = $rol GROUP BY rt.estado, wec.nombre_estado_carta;");
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo  FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta  WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' OR rt.usuario_documental = '$usuario' ) AND rt.`modulo_actual` = $rol GROUP BY rt.estado, wec.nombre_estado_carta;");
       $dataArray = $query->result();
 
       return $dataArray;
@@ -654,6 +675,7 @@ class QM_Form extends CI_Model {
         'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
         'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
         'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'usuario_documental'=> (isset($arrayDataFromView['usuario_documental'])) ? $arrayDataFromView['usuario_documental'] : null,
         'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null,
         'vulnerable'=> (isset($arrayDataFromView['vulnerable'])) ? $arrayDataFromView['vulnerable'] : 0,
         'firma'=> (isset($arrayDataFromView['firma'])) ? $arrayDataFromView['firma'] : 0,
@@ -678,6 +700,7 @@ class QM_Form extends CI_Model {
         'usuario_consultor'=> (isset($arrayDataFromView['usuario_consultor'])) ? $arrayDataFromView['usuario_consultor'] : null,
         'usuario_juridico'=> (isset($arrayDataFromView['usuario_juridico'])) ? $arrayDataFromView['usuario_juridico'] : null,
         'usuario_gerente'=> (isset($arrayDataFromView['usuario_gerente'])) ? $arrayDataFromView['usuario_gerente'] : null,
+        'usuario_documental'=> (isset($arrayDataFromView['usuario_documental'])) ? $arrayDataFromView['usuario_documental'] : null,
         'vulnerable'=> (isset($arrayDataFromView['vulnerable'])) ? $arrayDataFromView['vulnerable'] : 0,
         'modulo_actual'=> (isset($arrayDataFromView['modulo_actual'])) ? $arrayDataFromView['modulo_actual'] : null,
         'firma'=> (isset($arrayDataFromView['firma'])) ? $arrayDataFromView['firma'] : 0
@@ -1031,7 +1054,7 @@ class QM_Form extends CI_Model {
     public function get_pqr($cedula){
     try {
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula' AND tipo NOT IN ('Radicados Anexo Censo')");
         //$SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
         $dataArray = $SQLResult->result();
 
@@ -1039,6 +1062,21 @@ class QM_Form extends CI_Model {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+    }
+
+    /*Metodo get_radicanex
+        metodo que obtiene los radicados anexos por cedula*/
+    public function get_radicanex($cedula){
+
+      try {
+        $SQLResult = $this->db->query("SELECT tipo, cedula, path FROM t21web_pqr WHERE cedula = '$cedula' AND tipo IN ('Radicados Anexo Censo')");
+        $dataArray = $SQLResult->result();
+
+        return $dataArray;
+      } catch (Exception $e) {
+          echo $e->getTraceAsString();
+      }
+
     }
 
     /*Metodo get entrev

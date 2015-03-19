@@ -130,6 +130,14 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /* Formulario comunicaciones especiales*/
+    public function comad(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("comad", "form");
+            return;
+        }
+    }
+
     /* Formulario para consultar cartas de respuesta */
     public function pre_letter(){
         if($this->session->userdata("isLoggedIn")) {
@@ -780,6 +788,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
             $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
+            $arrayCreateData["usuario_documental"] = $arrayAnterior[0]->usuario_documental;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;
@@ -787,7 +796,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
 
             //Se asigna modulo actual al juridico
-            $arrayCreateData["modulo_actual"] = '7';
+            $arrayCreateData["modulo_actual"] = $_POST["Modulo"];
             $arrayCreateData["estado"] = '1';
 
             $this->form->do_setLetterProps($arrayCreateData);
@@ -1013,6 +1022,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_pqr($cedula));
     }
 
+    /*Obtener lista radicados anexos por cedula*/
+    public function get_Radicanex($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_radicanex($cedula));
+    }
+
     /*Obtener listado de entrevistas por numero de cedula*/
     public function get_Entrev($cedula){
         $this->load->model("qm_form", "form", true);
@@ -1066,13 +1081,13 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_expendedores_carne_gte($cedula));
     }
-    
+
     /*Cargar Info Salvoconducto*/
     public function get_Salvoconducto($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_salvoconducto($cedula));
     }
-    
+
     /*Cargar Info Salvoconducto*/
     public function get_AprobForestal($cedula){
         $this->load->model("qm_form", "form", true);
@@ -1173,6 +1188,18 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Tipologias_List(){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_tipologias_list());
+    }
+
+    /*Metodo que carga la lista de tipos de comunicaiones adicionales*/
+    public function get_Comad_List(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_comad_list());
+    }
+
+    /*Metodo que carga las comunicaciones adicionales*/
+    public function get_Comad($formulario){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_comad($formulario));
     }
 
     /*Metodo que carga la tabla de cce filtrada por tipologia y categoria*/
@@ -1311,6 +1338,10 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                         $arrayCreateData["modulo_actual"] = '7';
                         break;
 
+                    case '8':
+                        $arrayCreateData["modulo_actual"] = '10';
+                        break;
+
                     default:
                         break;
                 }
@@ -1344,6 +1375,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 }
 
             }
+            echo "ok";
         }
         else{
             echo $resultInsert;
@@ -1368,8 +1400,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
         $arrayData["estado"] = '7';
-        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
-        $arrayData["rad_stick"] = $_POST["rad_stick"];
+        //$arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        //$arrayData["rad_stick"] = $_POST["rad_stick"];
         $arrayData["modulo_actual"] = $_POST["modulo_actual"];
         $arrayData["formulario"] = $_POST["formulario"];
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1392,6 +1424,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
@@ -1414,6 +1448,10 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
 
                     case '8':
                         $arrayCreateData["modulo_actual"] = '7';
+                        break;
+
+                    case '10':
+                        $arrayCreateData["modulo_actual"] = '10';
                         break;
 
                     default:
@@ -1453,8 +1491,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
 		$arrayData["categoria"] = $_POST["categoria"];
 		$arrayData["tipologia"] = $_POST["tipologia"];
 		$arrayData["estado"] = $_POST["estado"];
-        $arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
-        $arrayData["rad_stick"] = $_POST["rad_stick"];
+        //$arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
+        //$arrayData["rad_stick"] = $_POST["rad_stick"];
 		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
 		$arrayData["formulario"] = $_POST["formulario"];
 		$arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
@@ -1477,6 +1515,8 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
             $arrayAnterior = $this->form->get_letter_info($letterId);
             $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
             $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+            $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+            $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
             $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
             $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
             $arrayCreateData["usuario_gerente"] = $arrayAnterior[0]->usuario_gerente;

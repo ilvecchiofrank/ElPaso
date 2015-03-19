@@ -89,6 +89,20 @@ if (isset($_GET["code"])) {
             </table>
           </div>
 
+          <div id="radicanex" class='form-group'>
+            <br/>
+            <legend>PQR's Anexo Censo:</legend>
+            <table id='tableRadicAnexResults' class='table table-striped'>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+          </div>
+
         </div>
     </div>
 </section>
