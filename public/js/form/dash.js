@@ -30,7 +30,9 @@ function loadDash(){
         $("#btnStatReturned").css("display", "none");
         $("#btnStatClosed").css("display", "none");
     }
+
 console.log("validar rol");
+
     //Usuario impresor
     if (rol==9){
     //Boton reportes
@@ -146,7 +148,7 @@ console.log("query normal");
             $("#dash_status").css("display","none");
         }
     });
-
+console.log("fix");
     //Fix para estadisticas usuario documental
     $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
         arrayStats = objRData;
@@ -155,11 +157,11 @@ console.log("query normal");
             $("#btnPrint").html("Imprimir ( " + arrayStats[0].conteo + " )");
         }
     });
-
+console.log("sale fix");
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
-        //console.table(arrayLetters);
+        console.table(arrayLetters);
         if (arrayLetters.length >= 1){
 
             //Encabezado de tabla
@@ -240,7 +242,7 @@ console.log("query normal");
         $("#tableLetters").html(tabLetters);
     //$(".modal").modal('hide');
     });
-
+console.log("fin");
     }
 
 }
