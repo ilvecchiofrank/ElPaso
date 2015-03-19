@@ -1032,7 +1032,9 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
     public function get_Fix_Dash_Docum($usuario){
         var_dump('fix documental - php');
         $this->load->model("qm_form", "form", true);
+        var_dump('entra modelo');
         echo json_encode($this->form->get_fix_dash_docum($usuario));
+        var_dump('sale modelo');
     }
 
     /*Obtener listado de entrevistas por numero de cedula*/

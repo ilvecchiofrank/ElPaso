@@ -419,6 +419,15 @@ class QM_Form extends CI_Model {
       return $dataArray;
     }
 
+    /*Fix para dash de usuario documental*/
+    public function get_fix_dash_docum($usuario){
+      var_dump('entra query fix');
+      $query = $this->db->query("SELECT rt.estado, wec.nombre_estado_carta, COUNT(rt.estado) AS conteo FROM  t49web_respuestas_tutelas rt  JOIN t59web_estados_carta wec  ON rt.estado = wec.id_estado_carta WHERE (rt.usuario_redactor = '$usuario' OR rt.usuario_consultor = '$usuario' OR rt.usuario_juridico = '$usuario' OR rt.usuario_gerente = '$usuario' OR rt.usuario_documental = '$usuario') AND rt.`modulo_actual` = 10 AND estado = 8 GROUP BY rt.estado, wec.nombre_estado_carta;");
+      $dataArray = $query->result();
+
+      return $dataArray;
+    }
+
     /* Obtener listado de cartas listas para imprimir*/
     public function get_dash_finished(){
       $query = $this->db->query("SELECT rt.id_respuesta, tb.nombresapellidos, rt.formulario, rt.cedula, wec.nombre_estado_carta AS texto_estado, wt.nombre_tipologia AS tipologia, wc.nombre_categoria AS categoria, rt.tipologia AS tip_id, rt.categoria AS cat_id, CASE WHEN rt.vulnerable = 0 THEN 'No' ELSE 'Si' END AS vulnerable, rt.vulnerable AS vulnerable_id, rt.estado, rt.modulo_actual FROM t49web_respuestas_tutelas rt JOIN t59web_estados_carta wec ON rt.estado = wec.id_estado_carta JOIN t54web_tipologias wt ON rt.tipologia = wt.id_tipologias JOIN t53web_categorias wc ON rt.categoria = wc.id_categoria JOIN tmp_base tb ON rt.cedula = tb.cc WHERE rt.finalizada = 1 ORDER BY CAST(tip_id AS DECIMAL) DESC, CAST(cat_id AS DECIMAL) ASC, vulnerable_id ASC, rt.estado ASC, rt.cedula ASC;");
