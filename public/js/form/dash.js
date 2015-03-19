@@ -72,6 +72,7 @@ console.log("validar rol");
 console.log("query normal");
         $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
+        console.table(arrayStats);
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
 
