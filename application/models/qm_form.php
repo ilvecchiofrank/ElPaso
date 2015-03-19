@@ -1054,7 +1054,7 @@ class QM_Form extends CI_Model {
     public function get_pqr($cedula){
     try {
         //Generamos el query
-        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula'");
+        $SQLResult = $this->db->query("SELECT año, tipo, path, radicado, caso FROM t21web_pqr WHERE cedula = '$cedula' AND tipo NOT IN ('Radicados Anexo Censo')");
         //$SQLResult = $this->db->query("SELECT numero_proceso, temas, path FROM t19web_tutelas WHERE cedula = '$cedula'");
         $dataArray = $SQLResult->result();
 
@@ -1069,7 +1069,7 @@ class QM_Form extends CI_Model {
     public function get_radicanex($cedula){
 
       try {
-        $SQLResult = $this->db->query("SELECT tipo, cedula, path FROM t21web_pqr WHERE cedula = $cedula");
+        $SQLResult = $this->db->query("SELECT tipo, cedula, path FROM t21web_pqr WHERE cedula = '$cedula' AND tipo IN ('Radicados Anexo Censo')");
         $dataArray = $SQLResult->result();
 
         return $dataArray;
