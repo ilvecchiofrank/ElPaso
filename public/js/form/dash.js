@@ -118,6 +118,12 @@ function loadDash(){
                     $("#btnFinished").html("Finalizados ( " + arrayStats[s].conteo + " )");
                         break;
 
+                    case '10':
+                    $("#btnPrint").attr("target", "_blank");
+                    $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + arrayStats[s].estado  + '&rId=' + rol);
+                    $("#btnPrint").html("Imprimir ( " + arrayStats[s].conteo + " )");
+                    break;
+
                     default:
                     console.log(":(");
                         break;
