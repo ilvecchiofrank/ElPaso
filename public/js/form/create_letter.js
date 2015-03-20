@@ -134,7 +134,7 @@ var estado = check_status(boton);
                     type: "POST",
 					data: { csrf_test_name: get_csrf_hash, "modulo_actual": tipo_usuario,  "estado": estado, "cuerpo_mensaje": JSON.stringify(contenido), "categoria":categoria_id, "tipologia":tipologia_id, "formulario":formulario_id, "cedula":cedula, "dataForm": JSON.stringify($('#controls input, select, textarea, input[type="checkbox"]').serializeArray())},
                     success: function(result){
-                        if (result == "ok"){
+                        if (result == "ok" || result == "okok"){
                             //Guardado ok
                                 if(auto=='auto'){
                                     notify('auto');
@@ -150,7 +150,7 @@ var estado = check_status(boton);
                                 //Boton cerrar
                                 window.close();
                                 //window.location.href = "index.php/form/dash?uT=" + $("#hfUserType").val() + "&uI=" + $("#hfUserId").val();
-                                //console.log("Redirecciona");
+                                //console.log("Redirecciona act");
                             }
                             else{
                                 console.log("No redirecciona");

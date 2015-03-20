@@ -1302,17 +1302,15 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 $arrayData[$itemValue->name] = $itemValue->value;
             }
         }
-
         $arrayData["id_respuestas"] = $letterId;
 		$arrayData["cedula"] = $_POST["cedula"];
         $arrayData["categoria"] = $_POST["categoria"];
         $arrayData["tipologia"] = $_POST["tipologia"];
 		$arrayData["estado"] = $_POST["estado"];
-        //$arrayData["rad_emgesa"] = $_POST["rad_emgesa"];
-        //$arrayData["rad_stick"] = $_POST["rad_stick"];
 		$arrayData["modulo_actual"] = $_POST["modulo_actual"];
         $arrayData["formulario"] = $_POST["formulario"];
         $arrayData["cuerpo_mensaje"] = $_POST["cuerpo_mensaje"];
+
         $this->form->do_setLetterProps($arrayData);
         $resultInsert = $this->form->do_updateLetter($letterId);
 
@@ -1353,8 +1351,6 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 }
 
                 $arrayCreateData["estado"] = '1';
-                $arrayCreateData["rad_emgesa"] = $_POST["rad_emgesa"];
-                $arrayCreateData["rad_stick"] = $_POST["rad_stick"];
                 $arrayCreateData["cedula"] = $_POST["cedula"];
                 $arrayCreateData["categoria"] = $_POST["categoria"];
                 $arrayCreateData["tipologia"] = $_POST["tipologia"];
@@ -1365,6 +1361,9 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
                 $arrayAnterior = $this->form->get_letter_info($letterId);
                 $arrayCreateData["fec_carta"] = $arrayAnterior[0]->fec_carta;
                 $arrayCreateData["vulnerable"] = $arrayAnterior[0]->vulnerable;
+                $arrayCreateData["rad_emgesa"] = $arrayAnterior[0]->rad_emgesa;
+                $arrayCreateData["rad_stick"] = $arrayAnterior[0]->rad_stick;
+                $arrayCreateData["usuario_documental"] = $arrayAnterior[0]->usuario_documental;
                 $arrayCreateData["usuario_redactor"] = $arrayAnterior[0]->usuario_redactor;
                 $arrayCreateData["usuario_consultor"] = $arrayAnterior[0]->usuario_consultor;
                 $arrayCreateData["usuario_juridico"] = $arrayAnterior[0]->usuario_juridico;
