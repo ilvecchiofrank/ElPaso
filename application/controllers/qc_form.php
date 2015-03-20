@@ -120,6 +120,16 @@ class QC_Form extends QC_Controller {
         redirect("/");
     }
 
+    /*Buequeda alternativa*/
+    public function alt_search(){
+        if($this->session->userdata("isLoggedIn")){
+            $this->display_page("alt_search", "form");
+            return;
+        }
+
+        redirect("/");
+    }
+
     /* Dashboard*/
     public function dash(){
         if ($this->session->userdata("isLoggedIn")) {
@@ -564,6 +574,11 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         }
 
         redirect("/");
+    }
+
+    public function do_Alt_Search($formulario = "", $cedula = "", $nombre = "", $tipo = ""){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->do_alt_search($formulario, $cedula, $nombre, $tipo));
     }
 
     /**
