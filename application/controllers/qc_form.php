@@ -1109,6 +1109,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_florh($cedula));
     }
 
+    /*Cargar infor arroz San Isidro*/
+    public function get_San_Isidro($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_san_isidro($cedula));
+    }
+
     /*Cargar Info Salvoconducto*/
     public function get_Salvoconducto($cedula){
         $this->load->model("qm_form", "form", true);

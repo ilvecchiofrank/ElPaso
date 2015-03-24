@@ -15,6 +15,7 @@ $(document).ready(function() {
     loadAprobForestal();
     loadSisben();
     loadFlorhuila();
+    loadSanIsidro();
 });
 //loadCenso();
 
@@ -127,6 +128,26 @@ function loadFlorhuila(){
             $("#tableFlorh").html(tablaflorhuila);
         }else{
             $("#tableFlorh").css("display", "none");
+        }
+    });
+}
+
+//-Cargar San Isidro-//
+function loadSanIsidro(){
+    console.log("San isidro");
+    var cedula = getParameterByName("docId");
+    var tablaIsidro = "";
+    $.getJSON("index.php/form/get_San_Isidro/" + cedula, function(objRData){
+        arrayIsidro = objRData;
+        if (arrayIsidro.length >0) {
+            tablaIsidro += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Proveedor</td><td>Cédula</td><td>Venta</td><td>Kilos vendidos</td></tr>";
+            for (var i = arrayIsidro.length - 1; i >= 0; i--) {
+                tablaIsidro += "<tr><td>" + arrayIsidro[i].proveedor + "</td><td>" + arrayIsidro[i].cc + "</td><td>" + arrayIsidro[i].venta + "</td><td>" + arrayIsidro[i].kilos_vendidos + "</td></tr>";
+            }
+            tablaIsidro += "</tbody></table>";
+            $("#tableSanIsidro").html(tablaIsidro);
+        }else{
+            $("#tableSanIsidro").css("display", "none");
         }
     });
 }

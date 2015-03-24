@@ -189,8 +189,19 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <table id='tableSanIsidro' class='table table-striped'>
+              <legend id="labelSanIsidro">Productores de arroz San Isidro</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
           </div>
-
         </div>
       </div>
     </section>

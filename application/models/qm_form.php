@@ -1331,7 +1331,19 @@ class QM_Form extends CI_Model {
     metodo que obtiene la informacion de la tabla 81*/
     public function get_florh($cedula){
       try {
-        $SQLResult = $this->db->query("SELECT * FROM t81web_florhuila WHERE CC = $cedula");
+        $SQLResult = $this->db->query("SELECT CC, NOMBRES, APELLIDOS, OBS FROM t81web_florhuila WHERE CC = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Metodo get_san_isidro
+    metodo que obtiene la información de la tabla 84*/
+    public function get_san_isidro($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT proveedor, cc, venta, kilos_vendidos FROM t84web_arroz_sanisidro WHERE cc = $cedula");
         $dataArray = $SQLResult->result();
         return $dataArray;
       } catch (Exception $e) {
