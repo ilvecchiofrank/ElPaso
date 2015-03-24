@@ -177,6 +177,18 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <table id='tableFlorh' class='table table-striped'>
+              <legend id="labelFlorh">Productores de arroz Florhuila 2009</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
           </div>
 
         </div>

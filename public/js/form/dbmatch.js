@@ -14,6 +14,7 @@ $(document).ready(function() {
     loadSalvoconducto();
     loadAprobForestal();
     loadSisben();
+    loadFlorhuila();
 });
 //loadCenso();
 
@@ -110,6 +111,26 @@ function loadTransp() {
     //$(".modal").modal('hide');
 }
 
+//-Cargar Florhuila 2009-//
+function loadFlorhuila(){
+    console.log("Florhuila");
+    var cedula = getParameterByName("docId");
+    var tablaflorhuila = "";
+    $.getJSON("index.php/form/get_Florh/" + cedula, function(objRData) {
+        arrayFlorh = objRData;
+        if (arrayFlorh.length > 0) {
+            tablaflorhuila += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cédula</td><td>Nombres</td><td>Apellidos</td><td>Observaciones</td></tr>";
+            for (var i = arrayFlorh.length - 1; i >= 0; i--) {
+                tablaflorhuila += "<tr><td>" + arrayFlorh[i].CC + "</td><td>" + arrayFlorh[i].NOMBRES + "</td><td>" + arrayFlorh[i].APELLIDOS + "</td><td>" + arrayFlorh[i].OBS + "</td></tr>";
+            }
+            tablaflorhuila += "</tobdy></table>";
+            $("#tableFlorh").html(tablaflorhuila);
+        }else{
+            $("#tableFlorh").css("display", "none");
+        }
+    });
+}
+
 //-Cargar ElectroHuila-//
 function loadElectro() {
     console.log("Electro");
@@ -118,7 +139,7 @@ function loadElectro() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Electro/" + cedula, function(objRData) {
         arrayElectro = objRData;
-        console.log(arrayElectro);
+        //console.log(arrayElectro);
         if (arrayElectro.length >= 1) {
             tablaelectro += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Año</td><td>Mes</td><td>Municipio</td><td>Ubicación</td><td>Cédula</td><td>Dirección</td><td>Contador</td><td>Fecha Matricula</td></tr>";
             for (var e = arrayElectro.length - 1; e >= 0; e--) {
@@ -233,7 +254,7 @@ function loadSalvoconducto() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Salvoconducto/" + cedula, function(objRData) {
         var arraySalvoconducto = objRData;
-        console.log(arraySalvoconducto);
+        //console.log(arraySalvoconducto);
         if (arraySalvoconducto.length >= 1) {
             tableSalvoconducto += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>titular_aprov</td><td>volumen_mtcub</td><td>mun_proclegal</td><td>vda_proclegal</td><td>mun_origen_rutamovil</td><td>mun_destino_rutamovil</td><td>especie</td><td>vig_desde</td><td>vig_hasta</td></tr>";
             for (var e = arraySalvoconducto.length - 1; e >= 0; e--) {
@@ -257,7 +278,7 @@ function loadAprobForestal() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_AprobForestal/" + cedula, function(objRData) {
         var array = objRData;
-        console.log(array);
+        //console.log(array);
         if (array.length >= 1) {
             tableAprovechamientoForestal += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>dir_territorial</td><td>rad_solicitud</td><td>fecha_rad</td><td>tramite</td><td>nombre_usuario</td><td>apellido_usuario</td><td>mun_predio</td><td>vda_predio</td><td>rad_expediente</td></tr>";
             for (var e = array.length - 1; e >= 0; e--) {

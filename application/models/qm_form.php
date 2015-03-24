@@ -1327,6 +1327,18 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Metodo get_florh
+    metodo que obtiene la informacion de la tabla 81*/
+    public function get_florh($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT * FROM t81web_florhuila WHERE CC = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
     /*Metodo get_no_residentes
     metodo que obtiene la informacion de la tabla de no residentes*/
     public function get_no_residentes($cedula){

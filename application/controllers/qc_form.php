@@ -1103,6 +1103,12 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_expendedores_carne_gte($cedula));
     }
 
+    /*Cargar Info Florhuila 2009*/
+    public function get_Florh($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_florh($cedula));
+    }
+
     /*Cargar Info Salvoconducto*/
     public function get_Salvoconducto($cedula){
         $this->load->model("qm_form", "form", true);
