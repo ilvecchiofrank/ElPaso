@@ -31,8 +31,6 @@ function loadDash(){
         $("#btnStatClosed").css("display", "none");
     }
 
-console.log("validar rol");
-
     //Usuario impresor
     if (rol==9){
     //Boton reportes
@@ -44,18 +42,18 @@ console.log("validar rol");
     $.getJSON("index.php/form/get_Dash_Finished/", function(objRData){
         arrayLetters = objRData;
         if (arrayLetters.length >= 1){
-             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Vuln.</th><th scope='col'>Imprimir</th></tr></thead><tbody>";
+             tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Anexos Pqr</th><th scope='col'>Imprimir</th></tr></thead><tbody>";
 
              for (var t = arrayLetters.length -1; t >=0; t--){
                 var ruta = "index.php/form/print_letter/" + arrayLetters[t].formulario + "/" + arrayLetters[t].id_respuesta;
 
-                if (arrayLetters[t].vulnerable == "Si"){
-                    var vulnerable = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].vulnerable + "</td>";
+                if (arrayLetters[t].anexos_pqr == "Si"){
+                    var anexos_pqr = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].anexos_pqr + "</td>";
                 }else{
-                    var vulnerable = "<td>" + arrayLetters[t].vulnerable + "</td>";
+                    var anexos_pqr = "<td>" + arrayLetters[t].anexos_pqr + "</td>";
                 }
 
-                tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + vulnerable + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Imprimir</a>" + "</td></tr>";
+                tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + anexos_pqr + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Imprimir</a>" + "</td></tr>";
             }
 
         }
@@ -67,14 +65,12 @@ console.log("validar rol");
         $("#tableLetters").html(tabLetters);
     });
 
-    console.log('impresor');
     }
     else //Query normal
     {
-console.log("query normal");
+
         $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
-        console.table(arrayStats);
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
 
@@ -148,7 +144,7 @@ console.log("query normal");
             $("#dash_status").css("display","none");
         }
     });
-console.log("fix");
+
     //Fix para estadisticas usuario documental
     $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
         arrayStats = objRData;
@@ -157,7 +153,7 @@ console.log("fix");
             $("#btnPrint").html("Imprimir ( " + arrayStats[0].conteo + " )");
         }
     });
-console.log("sale fix");
+
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
@@ -167,23 +163,23 @@ console.log("sale fix");
             //Encabezado de tabla
             switch(rol){
                 case '5':
-                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Anexos Pqr</th><th scope='col'>Detalle</th></tr></thead><tbody>";
                     break;
                 case '7':
-                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Fecha</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Anexos Pqr</th><th scope='col'>Fecha</th><th scope='col'>Detalle</th></tr></thead><tbody>";
                     break;
                 default:
-                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Fecha</th><th scope='col'>Responsable</th><th scope='col'>Detalle</th></tr></thead><tbody>";
+                    tabLetters += "<table border='1' cellpadding='1' cellspacing='1' style='width: 65%'><thead><tr><th scope='col'>Nombre y apellidos</th><th scope='col'>Formulario</th><th scope='col'>Cédula</th><th scope='col'>Estado</th><th scope='col'>Tipología</th><th scope='col'>Categoría</th><th scope='col'>Anexos Pqr</th><th scope='col'>Fecha</th><th scope='col'>Responsable</th><th scope='col'>Detalle</th></tr></thead><tbody>";
                     break;
             }
 
              for (var t = arrayLetters.length -1; t >=0; t--){
                 var ruta = "index.php/form/create_letter?formCode=" + arrayLetters[t].formulario + "&docId=" + arrayLetters[t].cedula + "&tId=" + arrayLetters[t].tip_id + "&cId=" + arrayLetters[t].cat_id + "&letId=" + arrayLetters[t].id_respuesta;
 
-                if (arrayLetters[t].vulnerable == "Si"){
-                    var vulnerable = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].vulnerable + "</td>";
+                if (arrayLetters[t].anexos_pqr == "Si"){
+                    var anexos_pqr = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].anexos_pqr + "</td>";
                 }else{
-                    var vulnerable = "<td>" + arrayLetters[t].vulnerable + "</td>";
+                    var anexos_pqr = "<td>" + arrayLetters[t].anexos_pqr + "</td>";
                 }
 
                 //Mostrar responsables por rol
@@ -222,13 +218,13 @@ console.log("sale fix");
                 //Filas de tabla
                 switch(rol){
                     case '5':
-                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
+                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + anexos_pqr + "<td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
                         break;
                     case '7':
-                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + arrayLetters[t].Fecha + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
+                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + anexos_pqr + "<td>" + arrayLetters[t].Fecha + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + "</td></tr>";
                         break;
                     default:
-                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td><td>" + arrayLetters[t].Fecha + "</td><td>" + responsables + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + btn_Finish_Dash + "</td></tr>";
+                        tabLetters += "<tr><td>" + arrayLetters[t].nombresapellidos + "</td><td>" + arrayLetters[t].formulario + "</td><td>" + arrayLetters[t].cedula + "</td><td>" + arrayLetters[t].texto_estado + "</td><td>" + arrayLetters[t].tip_id + " - " + arrayLetters[t].tipologia + "</td><td>" + arrayLetters[t].categoria + "</td>" + anexos_pqr + "<td>" + arrayLetters[t].Fecha + "</td><td>" + responsables + "</td><td>" + "<a href='" + ruta + "' target='_blank' class='btn btn-success'>Ver</a>" + btn_Finish_Dash + "</td></tr>";
                         break;
                 }
             }
