@@ -49,9 +49,10 @@ class QC_User extends QC_Controller {
             // case 3:
             //     echo "Clasifica";
             //     break;
-            // case 4:
-            //     echo"Abogado";
-            //     break;
+            case 4:
+                //echo"Abogado";
+                redirect("form/alt_search");
+                break;
             case 5:
                 //echo "Redactor";
                 redirect("form/dash?uT=" . $tipo . "&uI=" . $uid);

@@ -26,7 +26,12 @@ function loadDash(){
 
     if (rol != 10){
         $("#btnPrint").css("display", "none");
+    }else{
+        $("#btnStatReturned").css("display", "none");
+        $("#btnStatClosed").css("display", "none");
     }
+
+console.log("validar rol");
 
     //Usuario impresor
     if (rol==9){
@@ -66,9 +71,10 @@ function loadDash(){
     }
     else //Query normal
     {
-
+console.log("query normal");
         $.getJSON("index.php/form/get_Dash_Status/" + uid + "/" + rol, function(objRData){
         arrayStats = objRData;
+        console.table(arrayStats);
         if (arrayStats.length >0 ) {
             for (var s = arrayStats.length -1; s >=0; s--){
 
@@ -142,11 +148,20 @@ function loadDash(){
             $("#dash_status").css("display","none");
         }
     });
-
+console.log("fix");
+    //Fix para estadisticas usuario documental
+    $.getJSON("index.php/form/get_Fix_Dash_Docum/" + uid, function(objRData){
+        arrayStats = objRData;
+        if (arrayStats.length > 0){
+            $("#btnPrint").attr("href", 'index.php/form/dash_filter?uId=' + uid + '&statId=' + '10'  + '&rId=' + rol);
+            $("#btnPrint").html("Imprimir ( " + arrayStats[0].conteo + " )");
+        }
+    });
+console.log("sale fix");
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
-        console.table
+        console.table(arrayLetters);
         if (arrayLetters.length >= 1){
 
             //Encabezado de tabla
@@ -227,7 +242,7 @@ function loadDash(){
         $("#tableLetters").html(tabLetters);
     //$(".modal").modal('hide');
     });
-
+console.log("fin");
     }
 
 }
