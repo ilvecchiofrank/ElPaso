@@ -14,6 +14,10 @@ $(document).ready(function() {
     loadSalvoconducto();
     loadAprobForestal();
     loadSisben();
+    loadFlorhuila();
+    loadSanIsidro();
+    loadTabacoBAT();
+    loadMineria();
 });
 //loadCenso();
 
@@ -110,6 +114,86 @@ function loadTransp() {
     //$(".modal").modal('hide');
 }
 
+//-Cargar Florhuila 2009-//
+function loadFlorhuila(){
+    console.log("Florhuila");
+    var cedula = getParameterByName("docId");
+    var tablaflorhuila = "";
+    $.getJSON("index.php/form/get_Florh/" + cedula, function(objRData) {
+        arrayFlorh = objRData;
+        if (arrayFlorh.length > 0) {
+            tablaflorhuila += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cédula</td><td>Nombres</td><td>Apellidos</td><td>Observaciones</td></tr>";
+            for (var i = arrayFlorh.length - 1; i >= 0; i--) {
+                tablaflorhuila += "<tr><td>" + arrayFlorh[i].CC + "</td><td>" + arrayFlorh[i].NOMBRES + "</td><td>" + arrayFlorh[i].APELLIDOS + "</td><td>" + arrayFlorh[i].OBS + "</td></tr>";
+            }
+            tablaflorhuila += "</tobdy></table>";
+            $("#tableFlorh").html(tablaflorhuila);
+        }else{
+            $("#tableFlorh").css("display", "none");
+        }
+    });
+}
+
+//-Cargar San Isidro-//
+function loadSanIsidro(){
+    console.log("San isidro");
+    var cedula = getParameterByName("docId");
+    var tablaIsidro = "";
+    $.getJSON("index.php/form/get_San_Isidro/" + cedula, function(objRData){
+        arrayIsidro = objRData;
+        if (arrayIsidro.length >0) {
+            tablaIsidro += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Proveedor</td><td>Cédula</td><td>Venta</td><td>Kilos vendidos</td></tr>";
+            for (var i = arrayIsidro.length - 1; i >= 0; i--) {
+                tablaIsidro += "<tr><td>" + arrayIsidro[i].proveedor + "</td><td>" + arrayIsidro[i].cc + "</td><td>" + arrayIsidro[i].venta + "</td><td>" + arrayIsidro[i].kilos_vendidos + "</td></tr>";
+            }
+            tablaIsidro += "</tbody></table>";
+            $("#tableSanIsidro").html(tablaIsidro);
+        }else{
+            $("#tableSanIsidro").css("display", "none");
+        }
+    });
+}
+
+//-Cargar Tabaco BAT-//
+function loadTabacoBAT(){
+    console.log("tabacobat");
+    var cedula = getParameterByName("docId");
+    var tablaTabaco = "";
+    $.getJSON("index.php/form/get_TabacoBAT/" + cedula, function(objRData){
+        arrayTabaco = objRData;
+        if (arrayTabaco.length > 0) {
+            tablaTabaco += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cosecha</td><td>No Contrato</td><td>Cédula</td><td>Nombre</td><td>Municipio</td><td>Vereda</td><td>Finca</td><td>H_S</td></tr>";
+            for (var i = arrayTabaco.length - 1; i >= 0; i--) {
+                tablaTabaco += "<tr><td>" + arrayTabaco[i].COSECHA + "</td><td>" + arrayTabaco[i].CONTRATO + "</td><td>" + arrayTabaco[i].CC + "</td><td>" + arrayTabaco[i].NOMBRE + "</td><td>" + arrayTabaco[i].MUNICIPIO + "</td><td>" + arrayTabaco[i].VEREDA + "</td><td>" + arrayTabaco[i].FINCA + "</td><td>" + arrayTabaco[i].H_S + "</td></tr>";
+            }
+            tablaTabaco += "</tbody></table>";
+            $("#tableTabacoBAT").html(tablaTabaco);
+        }else{
+            $("#tableTabacoBAT").css("display", "none");
+        }
+    });
+}
+
+//-Cargar mineria-//
+function loadMineria(){
+    console.log("Mineria");
+    var cedula = getParameterByName("docId");
+    var tablamineria = "";
+    $.getJSON("index.php/form/get_Mineria/" + cedula, function(objRData){
+        arrayMineria = objRData;
+        if (arrayMineria.length >0) {
+            tablamineria += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Municipio</td><td>Libro</td><td>Nombres</td><td>Cédula</td><td>Dirección</td><td>Registro</td><td>Folio</td><td>Fecha Inscripción</td></tr>";
+            for (var i = arrayMineria.length - 1; i >= 0; i--) {
+                 tablamineria += "<tr><td>" + arrayMineria[i].municipio + "</td><td>" + arrayMineria[i].libro + "</td><td>" + arrayMineria[i].nombres_apellidos + "</td><td>" + arrayMineria[i].cc + "</td><td>" + arrayMineria[i].direccion + "</td><td>" + arrayMineria[i].registro + "</td><td>" + arrayMineria[i].folio + "</td><td>" + arrayMineria[i].fecha_inscripcion + "</td></tr>";
+            }
+            tablamineria += "</tbody></table>";
+            $("#tableMineria").html(tablamineria);
+        }else{
+            $("#tableMineria").css("display", "none");
+        }
+    });
+}
+
 //-Cargar ElectroHuila-//
 function loadElectro() {
     console.log("Electro");
@@ -118,7 +202,7 @@ function loadElectro() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Electro/" + cedula, function(objRData) {
         arrayElectro = objRData;
-        console.log(arrayElectro);
+        //console.log(arrayElectro);
         if (arrayElectro.length >= 1) {
             tablaelectro += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Año</td><td>Mes</td><td>Municipio</td><td>Ubicación</td><td>Cédula</td><td>Dirección</td><td>Contador</td><td>Fecha Matricula</td></tr>";
             for (var e = arrayElectro.length - 1; e >= 0; e--) {
@@ -233,7 +317,7 @@ function loadSalvoconducto() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Salvoconducto/" + cedula, function(objRData) {
         var arraySalvoconducto = objRData;
-        console.log(arraySalvoconducto);
+        //console.log(arraySalvoconducto);
         if (arraySalvoconducto.length >= 1) {
             tableSalvoconducto += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>titular_aprov</td><td>volumen_mtcub</td><td>mun_proclegal</td><td>vda_proclegal</td><td>mun_origen_rutamovil</td><td>mun_destino_rutamovil</td><td>especie</td><td>vig_desde</td><td>vig_hasta</td></tr>";
             for (var e = arraySalvoconducto.length - 1; e >= 0; e--) {
@@ -257,7 +341,7 @@ function loadAprobForestal() {
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_AprobForestal/" + cedula, function(objRData) {
         var array = objRData;
-        console.log(array);
+        //console.log(array);
         if (array.length >= 1) {
             tableAprovechamientoForestal += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>dir_territorial</td><td>rad_solicitud</td><td>fecha_rad</td><td>tramite</td><td>nombre_usuario</td><td>apellido_usuario</td><td>mun_predio</td><td>vda_predio</td><td>rad_expediente</td></tr>";
             for (var e = array.length - 1; e >= 0; e--) {

@@ -177,8 +177,55 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <table id='tableFlorh' class='table table-striped'>
+              <legend id="labelFlorh">Productores de arroz Florhuila 2009</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableSanIsidro' class='table table-striped'>
+              <legend id="labelSanIsidro">Productores de arroz San Isidro</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableTabacoBAT' class='table table-striped'>
+              <legend id="labelTabacoBAT">Productores de tabaco BAT</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableMineria' class='table table-striped'>
+              <legend id="labelMineria">Minería</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
           </div>
-
         </div>
       </div>
     </section>

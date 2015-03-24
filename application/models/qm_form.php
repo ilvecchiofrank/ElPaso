@@ -1327,6 +1327,54 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Metodo get_florh
+    metodo que obtiene la informacion de la tabla 81*/
+    public function get_florh($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT CC, NOMBRES, APELLIDOS, OBS FROM t81web_florhuila WHERE CC = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Metodo get_san_isidro
+    metodo que obtiene la información de la tabla 84*/
+    public function get_san_isidro($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT proveedor, cc, venta, kilos_vendidos FROM t84web_arroz_sanisidro WHERE cc = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Metodo get_tabacobat
+    metodo que obtiene la informacion de la tabla 82*/
+    public function get_tabacobat($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT COSECHA, CONTRATO, CC, NOMBRE, MUNICIPIO, VEREDA, FINCA, H_S FROM t82web_tabaco WHERE CC = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Metodo det_mineria
+    metodo que obtiene la informacion de la tabla 83*/
+    public function get_mineria($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT municipio, libro, nombres_apellidos, cc, direccion, registro, folio, fecha_inscripcion FROM t83web_mineros WHERE cc = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
     /*Metodo get_no_residentes
     metodo que obtiene la informacion de la tabla de no residentes*/
     public function get_no_residentes($cedula){
