@@ -1109,10 +1109,22 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         echo json_encode($this->form->get_florh($cedula));
     }
 
-    /*Cargar infor arroz San Isidro*/
+    /*Cargar info arroz San Isidro*/
     public function get_San_Isidro($cedula){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_san_isidro($cedula));
+    }
+
+    /*Cargar info tabaco bat*/
+    public function get_TabacoBAT($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_tabacobat($cedula));
+    }
+
+    /*Cargar info mineria*/
+    public function get_Mineria($cedula){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_mineria($cedula));
     }
 
     /*Cargar Info Salvoconducto*/

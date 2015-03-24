@@ -1351,6 +1351,30 @@ class QM_Form extends CI_Model {
       }
     }
 
+    /*Metodo get_tabacobat
+    metodo que obtiene la informacion de la tabla 82*/
+    public function get_tabacobat($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT COSECHA, CONTRATO, CC, NOMBRE, MUNICIPIO, VEREDA, FINCA, H_S FROM t82web_tabaco WHERE CC = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /*Metodo det_mineria
+    metodo que obtiene la informacion de la tabla 83*/
+    public function get_mineria($cedula){
+      try {
+        $SQLResult = $this->db->query("SELECT municipio, libro, nombres_apellidos, cc, direccion, registro, folio, fecha_inscripcion FROM t83web_mineros WHERE cc = $cedula");
+        $dataArray = $SQLResult->result();
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
     /*Metodo get_no_residentes
     metodo que obtiene la informacion de la tabla de no residentes*/
     public function get_no_residentes($cedula){

@@ -201,6 +201,30 @@ if (isset($_GET["code"])) {
               </thead>
             </table>
             <br/>
+            <table id='tableTabacoBAT' class='table table-striped'>
+              <legend id="labelTabacoBAT">Productores de tabaco BAT</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
+            <table id='tableMineria' class='table table-striped'>
+              <legend id="labelMineria">Minería</legend>
+              <br/>
+              <thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
+            <br/>
           </div>
         </div>
       </div>

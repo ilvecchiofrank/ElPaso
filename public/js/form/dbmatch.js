@@ -16,6 +16,8 @@ $(document).ready(function() {
     loadSisben();
     loadFlorhuila();
     loadSanIsidro();
+    loadTabacoBAT();
+    loadMineria();
 });
 //loadCenso();
 
@@ -148,6 +150,46 @@ function loadSanIsidro(){
             $("#tableSanIsidro").html(tablaIsidro);
         }else{
             $("#tableSanIsidro").css("display", "none");
+        }
+    });
+}
+
+//-Cargar Tabaco BAT-//
+function loadTabacoBAT(){
+    console.log("tabacobat");
+    var cedula = getParameterByName("docId");
+    var tablaTabaco = "";
+    $.getJSON("index.php/form/get_TabacoBAT/" + cedula, function(objRData){
+        arrayTabaco = objRData;
+        if (arrayTabaco.length > 0) {
+            tablaTabaco += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Cosecha</td><td>No Contrato</td><td>Cédula</td><td>Nombre</td><td>Municipio</td><td>Vereda</td><td>Finca</td><td>H_S</td></tr>";
+            for (var i = arrayTabaco.length - 1; i >= 0; i--) {
+                tablaTabaco += "<tr><td>" + arrayTabaco[i].COSECHA + "</td><td>" + arrayTabaco[i].CONTRATO + "</td><td>" + arrayTabaco[i].CC + "</td><td>" + arrayTabaco[i].NOMBRE + "</td><td>" + arrayTabaco[i].MUNICIPIO + "</td><td>" + arrayTabaco[i].VEREDA + "</td><td>" + arrayTabaco[i].FINCA + "</td><td>" + arrayTabaco[i].H_S + "</td></tr>";
+            }
+            tablaTabaco += "</tbody></table>";
+            $("#tableTabacoBAT").html(tablaTabaco);
+        }else{
+            $("#tableTabacoBAT").css("display", "none");
+        }
+    });
+}
+
+//-Cargar mineria-//
+function loadMineria(){
+    console.log("Mineria");
+    var cedula = getParameterByName("docId");
+    var tablamineria = "";
+    $.getJSON("index.php/form/get_Mineria/" + cedula, function(objRData){
+        arrayMineria = objRData;
+        if (arrayMineria.length >0) {
+            tablamineria += "<table border='1' cellpadding='0' cellspacing='0' style='width: 95%;'><tbody><tr><td>Municipio</td><td>Libro</td><td>Nombres</td><td>Cédula</td><td>Dirección</td><td>Registro</td><td>Folio</td><td>Fecha Inscripción</td></tr>";
+            for (var i = arrayMineria.length - 1; i >= 0; i--) {
+                 tablamineria += "<tr><td>" + arrayMineria[i].municipio + "</td><td>" + arrayMineria[i].libro + "</td><td>" + arrayMineria[i].nombres_apellidos + "</td><td>" + arrayMineria[i].cc + "</td><td>" + arrayMineria[i].direccion + "</td><td>" + arrayMineria[i].registro + "</td><td>" + arrayMineria[i].folio + "</td><td>" + arrayMineria[i].fecha_inscripcion + "</td></tr>";
+            }
+            tablamineria += "</tbody></table>";
+            $("#tableMineria").html(tablamineria);
+        }else{
+            $("#tableMineria").css("display", "none");
         }
     });
 }
