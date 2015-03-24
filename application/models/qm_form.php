@@ -670,25 +670,32 @@ class QM_Form extends CI_Model {
     /*Busqueda alternativa para rol abogado*/
     public function do_alt_search($formulario, $cedula, $nombre, $tipo){
       try {
+        //var_dump('tipo busqueda: ' . $tipo);
         //Switch para el query
         switch ($tipo) {
           case 'form':
-            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.form = '$formulario' GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.form = '$formulario' GROUP BY tb.cc, tb.form, tb.nombresapellidos");
+          //var_dump('busqueda form');
+            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 0 AND tb.form = '$formulario' GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.form = '$formulario' GROUP BY tb.cc, tb.form, tb.nombresapellidos");
             break;
 
           case 'cedula':
-            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.cc = $cedula GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.cc = $cedula GROUP BY tb.cc, tb.form, tb.nombresapellidos");
+          //var_dump('busqueda cedula');
+            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 0 AND tb.cc = $cedula GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.cc = $cedula GROUP BY tb.cc, tb.form, tb.nombresapellidos");
             break;
 
           case 'nombre':
-            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.nombresapellidos LIKE '%$nombre%' GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.nombresapellidos LIKE '%$nombre%'GROUP BY tb.cc, tb.form, tb.nombresapellidos");
+          //var_dump('busqueda nombre');
+            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 0 AND tb.nombresapellidos LIKE '%$nombre%' GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 AND tb.nombresapellidos LIKE '%$nombre%'GROUP BY tb.cc, tb.form, tb.nombresapellidos");
             break;
 
           default:
-            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 GROUP BY tb.cc, tb.form, tb.nombresapellidos");
+          //var_dump('pailas de busqueda');
+            $query = $this->db->query("SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt LEFT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 0 GROUP BY tb.cc, tb.form, tb.nombresapellidos UNION SELECT tb.cc, tb.form, tb.nombresapellidos, MAX(rt.id_respuesta) AS id_respuesta, rt.finalizada FROM t49web_respuestas_tutelas rt RIGHT JOIN tmp_base tb ON rt.formulario = tb.form WHERE rt.finalizada = 1 GROUP BY tb.cc, tb.form, tb.nombresapellidos");
             break;
         }
 
+        $dataArray = $query->result();
+        //var_dump($dataArray);
         return $dataArray;
 
       } catch (Exception $e) {
