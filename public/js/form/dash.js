@@ -157,7 +157,7 @@ function loadDash(){
     //$(".modal").modal('show');
     $.getJSON("index.php/form/get_Dash_Works/" + uid + "/" + rol, function(objRData){
         arrayLetters = objRData;
-        console.table(arrayLetters);
+        console.log(arrayLetters);
         if (arrayLetters.length >= 1){
 
             //Encabezado de tabla
