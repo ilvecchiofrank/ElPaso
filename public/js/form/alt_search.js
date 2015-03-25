@@ -3,30 +3,28 @@ $(document).ready(function () {
 $("#results").css("display", "none");
 
 function loadResults(){
-
     var tipo = "";
-    var form = "";
-    var cedula = "";
-    var nombre = "";
+    var form = 0;
+    var cedula = 0;
+    var nombre = 0;
     var tabResult = "";
     var btnPrint = "";
 
     //Definir tipo de query
-    if($("#TxtFormNo".val != '')){
+    if($("#TxtFormNo").val() != ''){
         tipo = "form";
+        form = $("#TxtFormNo").val();
     }else{
-        if($("#TxtPersonIdentity".val != '')){
+        if($("#TxtPersonIdentity").val() != ''){
             tipo = "cedula";
+            cedula = $("#TxtPersonIdentity").val();
         }else{
-            if($("#TxtPersonName".val !='')){
+            if($("#TxtPersonName").val() !=''){
                 tipo = "nombre";
+                nombre = $("#TxtPersonName").val();
             }
         }
     }
-
-    form = $("#TxtFormNo").val();
-    cedula = $("#TxtPersonIdentity").val();
-    nombre = $("#TxtPersonName").val();
 
     $.getJSON("index.php/form/do_Alt_Search/" + form + "/" + cedula + "/" + nombre + "/" + tipo, function(objRData){
         arrayResult = objRData;

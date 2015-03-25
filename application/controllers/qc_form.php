@@ -576,7 +576,7 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         redirect("/");
     }
 
-    public function do_Alt_Search($formulario = "", $cedula = "", $nombre = "", $tipo = ""){
+    public function do_Alt_Search($formulario, $cedula, $nombre, $tipo = ""){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->do_alt_search($formulario, $cedula, $nombre, $tipo));
     }
