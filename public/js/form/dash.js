@@ -175,11 +175,12 @@ function loadDash(){
 
              for (var t = arrayLetters.length -1; t >=0; t--){
                 var ruta = "index.php/form/create_letter?formCode=" + arrayLetters[t].formulario + "&docId=" + arrayLetters[t].cedula + "&tId=" + arrayLetters[t].tip_id + "&cId=" + arrayLetters[t].cat_id + "&letId=" + arrayLetters[t].id_respuesta;
+                var anexos_pqr = "No";
 
                 if (arrayLetters[t].anexos_pqr == "Si"){
-                    var anexos_pqr = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].anexos_pqr + "</td>";
+                    anexos_pqr = "<td style ='background-color: #e67e22; color: white;'>" + arrayLetters[t].anexos_pqr + "</td>";
                 }else{
-                    var anexos_pqr = "<td>" + arrayLetters[t].anexos_pqr + "</td>";
+                    anexos_pqr = "<td>" + arrayLetters[t].anexos_pqr + "</td>";
                 }
 
                 //Mostrar responsables por rol
