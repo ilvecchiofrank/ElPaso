@@ -6,7 +6,7 @@
     <meta name="author" content="Alvaro Arturo Montenegro Silva">
     <meta name="author" content="arthvrian@yahoo.com">
     <meta name="keywords" content="quimbo, emgesa, endesa">
-    <title><?php echo $stRPageTitle; ?> | Quimbo - Emgesa</title>
+    <title><?php echo $stRPageTitle; ?> | El Paso - Emgesa</title>
     <base href="<?php echo base_url(); ?>">
     <link href="public/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="public/css/font-awesome.min.css" rel="stylesheet">

@@ -9,7 +9,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo site_url(); ?>">
-              <img alt="Emgesa" src="public/img/logo.gif" class="img-responsive">
+              <!-- <img alt="Emgesa" src="public/img/logo.gif" class="img-responsive"> -->
             </a>
           </div>
           <div class="collapse navbar-collapse" id="quimbo-nav">
