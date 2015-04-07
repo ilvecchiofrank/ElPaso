@@ -40,7 +40,9 @@ class QC_Events extends QC_Controller {
      *
      * Show dash page
      */
-    public function form() {
+    public function form($actividadid) {
+        $data = array('actividadid' => $actividadid);
+        $this->load->vars($data);
         $this->display_page("form", "events");
     }
     
@@ -52,6 +54,23 @@ class QC_Events extends QC_Controller {
             $html .= "<option value='$value->actividadtipoid'>$value->actividadtipodescripcion</option>";
         }
         echo json_encode($html);
+    }
+    
+    public function getEvent(){
+        $this->load->model("qm_events", "eventsModel", true);
+        echo json_encode($this->eventsModel->getEvent($_POST["actividadid"]));
+    }
+    
+    public function getDataEvents(){
+        $this->load->model("qm_events", "eventsModel", true);
+        $data = $this->eventsModel->searchEvents();
+        
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr><td>$value->dpto</td><td>$value->mpo</td><td>$value->tipoactividad</td><td>$value->sitioevento</td><td>$value->fechaini</td><td>$value->fechafin</td><td> <a href='index.php/events/form/$value->actividadid' class='btn btn-warning'>Editar</a> </td></tr>";
+        }
+        
+        echo $htmlTable;
     }
     
     public function save(){

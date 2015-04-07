@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    var actividadid = <?php echo $actividadid; ?>;
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
@@ -93,7 +94,7 @@
             <input id="horafin" type="time" class="form-control" />
         </div>
         <legend></legend>
-        <input style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
+        <input id="save" style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
         <br/>
         <br/>
 

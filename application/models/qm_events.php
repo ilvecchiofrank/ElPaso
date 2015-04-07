@@ -61,7 +61,16 @@ class QM_Events extends CI_Model {
     }
     
     public function searchEvents(){
-        $query = $this->db->query('SELECT *  from actividades');
+        $query = $this->db->query('SELECT a.actividadid, c.a05Nombre AS dpto, d.a06Nombre AS mpo, b.actividadtipodescripcion AS tipoactividad, a.sitionombre AS sitioevento, a.fechaini, a.fechafin FROM actividades a
+                                    INNER JOIN actividades_tipos b ON a.actividadtipoid = b.actividadtipoid
+                                    INNER JOIN t05web_departamentos c ON a.dpto = c.a05Codigo
+                                    INNER JOIN t06web_municipios d ON a.mpo = d.a06Codigo');
+        return $query->result();
+    }
+    
+    public function getEvent($id){
+        $query = $this->db->query("SELECT * FROM actividades a
+                                   where a.actividadid = $id ");
         return $query->result();
     }
 }

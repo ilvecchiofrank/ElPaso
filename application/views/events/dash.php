@@ -1,3 +1,7 @@
+<script type="text/javascript">
+    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+</script>
 <style>
     h1{
         width: 100%;
@@ -25,7 +29,7 @@
             <label>
                 Departamento:
             </label>
-            <select class="form-control">
+            <select id="departamentos" class="form-control departamentos">
                 <option>
                     Seleccione...
                 </option>
@@ -34,7 +38,7 @@
             <label>
                 Municipio:
             </label>
-            <select class="form-control">
+            <select id="municipios" class="form-control municipios">
                 <option>
                     Seleccione...
                 </option>
@@ -43,7 +47,7 @@
             <label>
                 Tipo Evento:
             </label>
-            <select class="form-control">
+            <select id="actividadTipos" class="form-control">
                 <option>
                     Seleccione...
                 </option>
@@ -66,7 +70,7 @@
         </div>
         <legend></legend>
         <input style="margin-left: 5%;" type="button" value="Buscar" class="btn btn-default" /> 
-        <a href="index.php/events/form" class="btn btn-success" >Agregar Nueva Actividad</a>
+        <a href="index.php/events/form/0" class="btn btn-success" >Agregar Nueva Actividad</a>
         <br/>
         <br/>
         <legend>Resultados de Busqueda</legend>
@@ -95,8 +99,12 @@
                         <th>
                             Fecha Fin
                         </th>
+                        <th></th>
                     </tr>
                 </thead>
+                <tbody id="contentEvents">
+                    
+                </tbody>
             </table>
         </div>
     </div>
