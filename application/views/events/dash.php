@@ -56,25 +56,25 @@
             <label>
                 Nombre del sitio:
             </label>
-            <input type="text" class="form-control" />
+            <input id="sitionombre" type="text" class="form-control" />
             
             <label>
                 Fecha inicio:
             </label>
-            <input type="date" class="form-control" />
+            <input id="fechaini" type="date" class="form-control" />
             
             <label>
                 Fecha fin
             </label>
-            <input type="date" class="form-control" />
+            <input id="fechafin" type="date" class="form-control" />
         </div>
         <legend></legend>
-        <input style="margin-left: 5%;" type="button" value="Buscar" class="btn btn-default" /> 
+        <input style="margin-left: 5%;" type="button" onclick="loadData();" value="Buscar" class="btn btn-default" /> 
         <a href="index.php/events/form/0" class="btn btn-success" >Agregar Nueva Actividad</a>
         <br/>
         <br/>
         <legend>Resultados de Busqueda</legend>
-        <input type="button" value="Quitar Filtro" class="btn btn-danger" />
+        <input type="button" onclick="window.location.reload();" value="Quitar Filtro" class="btn btn-danger" />
         <br/>
         <br/>
         <div>

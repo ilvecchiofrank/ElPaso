@@ -9,17 +9,13 @@ function loadData(){
         url: "index.php/events/getDataEvents/",
         type: "POST",
         data: {
-            "csrf_test_name": get_csrf_hash,/*
-            "actividadid": actividadid, 
+            "csrf_test_name": get_csrf_hash,
             "actividadtipoid": $("#actividadTipos").val(),
             "dpto": $("#departamentos").val(),
             "mpo": $("#municipios").val(),
             "fechaini": $("#fechaini").val(),
             "fechafin": $("#fechafin").val(),
-            "horainicio": $("#horainicio").val(),
-            "horafin": $("#horafin").val(),
-            "sitionombre": $("#sitionombre").val(),
-            "actividaddescripcion": $("#actividaddescripcion").val()*/
+            "sitionombre": $("#sitionombre").val()
         },
         success: function(data) {
             $("#contentEvents").html(data);

@@ -63,7 +63,16 @@ class QC_Events extends QC_Controller {
     
     public function getDataEvents(){
         $this->load->model("qm_events", "eventsModel", true);
-        $data = $this->eventsModel->searchEvents();
+        $array = [];
+        
+        $array["actividadtipoid"] = $_POST["actividadtipoid"];
+        $array["dpto"] = $_POST["dpto"];
+        $array["mpo"] = $_POST["mpo"];
+        $array["fechaini"] = $_POST["fechaini"];
+        $array["fechafin"] = $_POST["fechafin"];
+        $array["sitionombre"] = $_POST["sitionombre"];
+        
+        $data = $this->eventsModel->searchEvents($array);
         
         $htmlTable = "";
         foreach ($data as $key => $value) {

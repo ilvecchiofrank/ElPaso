@@ -60,11 +60,69 @@ class QM_Events extends CI_Model {
        return true;
     }
     
-    public function searchEvents(){
-        $query = $this->db->query('SELECT a.actividadid, c.a05Nombre AS dpto, d.a06Nombre AS mpo, b.actividadtipodescripcion AS tipoactividad, a.sitionombre AS sitioevento, a.fechaini, a.fechafin FROM actividades a
+    public function searchEvents($parameters){
+        $query = "SELECT a.actividadid, c.a05Nombre AS dpto, d.a06Nombre AS mpo, b.actividadtipodescripcion AS tipoactividad, a.sitionombre AS sitioevento, a.fechaini, a.fechafin FROM actividades a
                                     INNER JOIN actividades_tipos b ON a.actividadtipoid = b.actividadtipoid
                                     INNER JOIN t05web_departamentos c ON a.dpto = c.a05Codigo
-                                    INNER JOIN t06web_municipios d ON a.mpo = d.a06Codigo');
+                                    INNER JOIN t06web_municipios d ON a.mpo = d.a06Codigo";
+        $filter = false;
+        $filterQuery = "";
+        
+        if(trim($parameters['dpto']) != "Seleccione..." && trim($parameters['dpto']) != ""){
+            $filterQuery .= " a.dpto = $parameters[dpto]";
+            $filter =  true;
+        }
+        if(trim($parameters['mpo']) != "Seleccione..." && trim($parameters['mpo']) != ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.mpo = $parameters[mpo]";
+            $filter =  true;
+        }
+        if(trim($parameters['actividadtipoid']) != "Seleccione..." && trim($parameters['actividadtipoid']) != ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.actividadtipoid = $parameters[actividadtipoid]";
+            $filter =  true;
+        }
+        if(trim($parameters['sitionombre']) != ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.sitionombre like '%$parameters[sitionombre]%'";
+            $filter =  true;
+        }
+        
+        if(trim($parameters['fechaini']) != "" && trim($parameters['fechafin']) == ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.fechaini >= '$parameters[fechaini]'";
+            $filter =  true;
+        }
+        
+        if(trim($parameters['fechaini']) == "" && trim($parameters['fechafin']) != ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.fechafin <= '$parameters[fechafin]'";
+            $filter =  true;
+        }
+        
+        if(trim($parameters['fechaini']) != "" && trim($parameters['fechafin']) != ""){
+            if($filter){
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= "a.fechafin between '$parameters[fechaini]' and '$parameters[fechafin]' AND a.fechaini between '$parameters[fechaini]' and '$parameters[fechafin]'";
+            $filter =  true;
+        }
+        
+        if($filter){
+           $query .= " WHERE " . $filterQuery;
+        }
+        
+        $query = $this->db->query($query);
         return $query->result();
     }
     
