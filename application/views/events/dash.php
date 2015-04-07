@@ -66,7 +66,7 @@
         </div>
         <legend></legend>
         <input style="margin-left: 5%;" type="button" value="Buscar" class="btn btn-default" /> 
-        <input type="button" value="Agregar Nueva Actividad" class="btn btn-success" />
+        <a href="index.php/events/form" class="btn btn-success" >Agregar Nueva Actividad</a>
         <br/>
         <br/>
         <legend>Resultados de Busqueda</legend>

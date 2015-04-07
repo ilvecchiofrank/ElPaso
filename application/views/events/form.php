@@ -1,3 +1,7 @@
+<script type="text/javascript">
+    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+</script>
 <style>
     h1{
         width: 100%;
@@ -25,7 +29,7 @@
             <label>
                 Tipo Evento:
             </label>
-            <select class="form-control">
+            <select id="actividadTipos" class="form-control">
                 <option>
                     Seleccione...
                 </option>
@@ -34,7 +38,7 @@
             <label>
                 Departamento:
             </label>
-            <select class="form-control">
+            <select id="departamentos" class="form-control departamentos" >
                 <option>
                     Seleccione...
                 </option>
@@ -43,7 +47,7 @@
             <label>
                 Municipio:
             </label>
-            <select class="form-control">
+            <select id="municipios" class="form-control municipios">
                 <option>
                     Seleccione...
                 </option>
@@ -61,35 +65,35 @@
             <label>
                 Nombre del sitio:
             </label>
-            <input type="text" class="form-control" />
+            <input id="sitionombre" type="text" class="form-control" />
             
             <label>
                 Descripción de la actividad
             </label>
-            <textarea class="form-control"></textarea>
+            <textarea id="actividaddescripcion" class="form-control"></textarea>
             
             <label>
                 Fecha inicio:
             </label>
-            <input type="date" class="form-control" />
+            <input id="fechaini" type="date" class="form-control" />
             
             <label>
                 Fecha fin:
             </label>
-            <input type="date" class="form-control" />
+            <input id="fechafin" type="date" class="form-control" />
             
             <label>
                 Hora inicio:
             </label>
-            <input type="time" class="form-control" />
+            <input id="horainicio" type="time" class="form-control" />
             
             <label>
                 Hora fin:
             </label>
-            <input type="time" class="form-control" />
+            <input id="horafin" type="time" class="form-control" />
         </div>
         <legend></legend>
-        <input style="margin-left: 5%;" type="button" value="Guardar" class="btn btn-success" />
+        <input style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
         <br/>
         <br/>
 
