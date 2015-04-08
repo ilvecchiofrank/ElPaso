@@ -55,15 +55,6 @@
             </select>
             
             <label>
-                Municipios de cobertura actividad:
-            </label>
-            <select class="form-control">
-                <option>
-                    Seleccione...
-                </option>
-            </select>
-            
-            <label>
                 Nombre del sitio:
             </label>
             <input id="sitionombre" type="text" class="form-control" />
@@ -92,6 +83,47 @@
                 Hora fin:
             </label>
             <input id="horafin" type="time" class="form-control" />
+            
+            <label>
+                Departamento de cobertura:
+            </label>
+            <select id="departamentosCobertura" class="form-control departamentos" >
+                <option>
+                    Seleccione...
+                </option>
+            </select>
+            
+            <label>
+                Municipio de cobertura:
+            </label>
+            <select id="municipiosCobertura" class="form-control municipios">
+                <option>
+                    Seleccione...
+                </option>
+            </select>
+            
+            <label>Asignar Municipio de Cobertura</label>
+            <input id="set" class="btn btn-warning" onclick="asignarMunicipiosCobertura();" value="Asignar" />
+            <br/>
+            <br/>
+            <table id="tableMunicipiosCobertura" class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Departamentos de Cobertura
+                        </th>
+                        <th>
+                            Municipios de Coberturas
+                        </th>
+                        <th>
+                        
+                        </th>
+                    </tr>
+                    <tbody>
+                        
+                    </tbody>
+                </thead>
+            </table>
         </div>
         <legend></legend>
         <input id="save" style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />

@@ -12,5 +12,6 @@
     <link href="public/css/font-awesome.min.css" rel="stylesheet">
     <link href="public/css/quimbo.css" rel="stylesheet">
     <link type="image/x-icon" rel="icon" href="favicon.ico">
+    <link href="public/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>

@@ -19,6 +19,8 @@
     <script src="public/js/jquery.form.js" type="text/javascript"></script>
     <script src="public/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="public/js/quimbo.js" type="text/javascript"></script>
+    <script src="public/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="public/js/dataTables.bootstrap.js" type="text/javascript"></script>
 <?php if (file_exists("public/js/".$stRView."/".strtolower($stRPage).".js")) { ?>
     <script src="public/js/<?php echo $stRView."/".strtolower($stRPage); ?>.js" type="text/javascript"></script>
 <?php } ?>

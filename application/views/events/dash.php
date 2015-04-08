@@ -2,6 +2,7 @@
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
+
 <style>
     h1{
         width: 100%;
@@ -78,7 +79,7 @@
         <br/>
         <br/>
         <div>
-            <table class="table table-bordered table-responsive">
+            <table id="tableContentEvents" class="table table-bordered table-responsive">
                 <thead>
                     <tr>
                         <th>
@@ -102,7 +103,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="contentEvents">
+                <tbody>
                     
                 </tbody>
             </table>

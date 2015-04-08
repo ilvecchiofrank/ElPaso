@@ -58,7 +58,9 @@ class QC_Events extends QC_Controller {
     
     public function getEvent(){
         $this->load->model("qm_events", "eventsModel", true);
-        echo json_encode($this->eventsModel->getEvent($_POST["actividadid"]));
+        $data = $this->eventsModel->getEvent($_POST["actividadid"]);
+        $data[0]->municipiosCobertura = $this->eventsModel->getMunicipiosCobertura($_POST["actividadid"]);
+        echo json_encode($data);
     }
     
     public function getDataEvents(){
@@ -94,6 +96,7 @@ class QC_Events extends QC_Controller {
         $array["horafin"] = $_POST["horafin"];
         $array["sitionombre"] = $_POST["sitionombre"];
         $array["actividaddescripcion"] = $_POST["actividaddescripcion"];
+        $array["municipiosCobertura"] = $_POST["municipiosCobertura"];
         
         if($_POST["actividadid"] != "0"){
             $this->eventsModel->updateEvent($_POST["actividadid"], $array);
