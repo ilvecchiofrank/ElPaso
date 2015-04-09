@@ -25,6 +25,11 @@ class QM_Events extends CI_Model {
         $query = $this->db->query('SELECT *  from actividades_tipos');
         return $query->result();
     }
+    
+    public function getTiposSoportes() {
+        $query = $this->db->query('SELECT *  from soportes');
+        return $query->result();
+    }
 
     public function insertEvent($arrayData) {
         $this->db->query("INSERT INTO actividades(actividadtipoid,dpto,mpo,fechaini,fechafin,horainicio, horafin,sitionombre,actividaddescripcion)
@@ -153,6 +158,18 @@ class QM_Events extends CI_Model {
         $query = $this->db->query("SELECT a.mpoid AS municipioid, c.a06Nombre AS municipio, a.deptoid AS departamentoid, b.a05Nombre AS departamento FROM municipioscobertura_actividades a
                                     INNER JOIN t05web_departamentos b ON a.deptoid = b.a05Codigo
                                     INNER JOIN t06web_municipios c ON a.mpoid = c.a06Codigo
+                                    WHERE a.actividadid = $id ");
+        return $query->result();
+    }
+    
+    public function insertSoporte($query){
+        $query = $this->db->query($query);
+        return true;
+    }
+    
+    public function searchSoportesByActividad($id){
+        $query = $this->db->query("SELECT b.soportetxt AS tiposoporte, a.nombre, a.linkdescargasoporte, a.descripcion FROM actividadessoportes a
+                                    INNER JOIN soportes b ON a.tiposoporteid = b.tiposoporteid
                                     WHERE a.actividadid = $id ");
         return $query->result();
     }

@@ -5,6 +5,7 @@ $(document).ready(function() {
     $(".departamentos").trigger("change");
     if (actividadid > 0) {
         getData();
+        loadFiles();
     }
 });
 
@@ -12,6 +13,10 @@ function loadSelects() {
     //Cargar listado de tipos de actividad
     $.getJSON("index.php/events/getEventTypes/", function(objRData) {
         $("#actividadTipos").html(objRData);
+    });
+    //Cargar listado de tipos de soporte
+    $.getJSON("index.php/events/getTiposSoportes/", function(objRData) {
+        $("#soporteid").html(objRData);
     });
 
     $("#departamentos").change(function() {
@@ -139,4 +144,22 @@ function deleteItem(key) {
     arrayMunicipiosCobertura.splice(key, 1);
     cargarTablaMunicipiosCobertura();
 
+}
+
+function loadFiles(){
+    $.ajax({
+        url: "index.php/events/getSoportesByActividad/",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "actividadid": actividadid
+        },
+        success: function(data) {
+            $("#tableSoportes tbody").html(data);
+        }
+    });
+}
+
+function editRowFile(id, obj){
+    
 }

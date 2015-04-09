@@ -34,7 +34,7 @@ class QC_Events extends QC_Controller {
     public function dash() {
         $this->display_page("dash", "events");
     }
-    
+
     /**
      * Function dash
      *
@@ -45,8 +45,8 @@ class QC_Events extends QC_Controller {
         $this->load->vars($data);
         $this->display_page("form", "events");
     }
-    
-    public function getEventTypes(){
+
+    public function getEventTypes() {
         $this->load->model("qm_events", "eventsModel", true);
         $html = "<option>Seleccione...</option>";
         $data = $this->eventsModel->getEventTypes();
@@ -56,35 +56,68 @@ class QC_Events extends QC_Controller {
         echo json_encode($html);
     }
     
-    public function getEvent(){
+    public function getTiposSoportes() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $html = "<option>Seleccione...</option>";
+        $data = $this->eventsModel->getTiposSoportes();
+        foreach ($data as $key => $value) {
+            $html .= "<option value='$value->tiposoporteid'>$value->soportetxt</option>";
+        }
+        echo json_encode($html);
+    }
+
+    public function getEvent() {
         $this->load->model("qm_events", "eventsModel", true);
         $data = $this->eventsModel->getEvent($_POST["actividadid"]);
         $data[0]->municipiosCobertura = $this->eventsModel->getMunicipiosCobertura($_POST["actividadid"]);
         echo json_encode($data);
     }
-    
-    public function getDataEvents(){
+
+    public function getDataEvents() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
-        
+
         $array["actividadtipoid"] = $_POST["actividadtipoid"];
         $array["dpto"] = $_POST["dpto"];
         $array["mpo"] = $_POST["mpo"];
         $array["fechaini"] = $_POST["fechaini"];
         $array["fechafin"] = $_POST["fechafin"];
         $array["sitionombre"] = $_POST["sitionombre"];
-        
+
         $data = $this->eventsModel->searchEvents($array);
-        
+
         $htmlTable = "";
         foreach ($data as $key => $value) {
             $htmlTable .= "<tr><td>$value->dpto</td><td>$value->mpo</td><td>$value->tipoactividad</td><td>$value->sitioevento</td><td>$value->fechaini</td><td>$value->fechafin</td><td> <a href='index.php/events/form/$value->actividadid' class='btn btn-warning'>Editar</a> </td></tr>";
         }
-        
+
         echo $htmlTable;
     }
     
-    public function save(){
+    public function getSoportesByActividad() {
+        $this->load->model("qm_events", "eventsModel", true);
+
+        $data = $this->eventsModel->searchSoportesByActividad($_POST["actividadid"]);
+
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr>
+                            <td>$value->tiposoporte</td>
+                            <td>$value->nombre</td>
+                            <td>$value->descripcion</td>
+                            <td>
+                                <a target='_blank' href='https://s3.amazonaws.com/elp4s0/soportes/$value->linkdescargasoporte' class='btn btn-success'>
+                                    <span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>
+                                </a> 
+                                <button class='btn btn-warning'>Editar</Button>  
+                                <button class='btn btn-danger'>Eliminar</Button> </td></tr>
+                    ";
+        }
+
+        echo $htmlTable;
+    }
+
+    public function save() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["actividadtipoid"] = $_POST["actividadtipoid"];
@@ -97,13 +130,43 @@ class QC_Events extends QC_Controller {
         $array["sitionombre"] = $_POST["sitionombre"];
         $array["actividaddescripcion"] = $_POST["actividaddescripcion"];
         $array["municipiosCobertura"] = $_POST["municipiosCobertura"];
-        
-        if($_POST["actividadid"] != "0"){
+
+        if ($_POST["actividadid"] != "0") {
             $this->eventsModel->updateEvent($_POST["actividadid"], $array);
-        }else{
+        } else {
             $this->eventsModel->insertEvent($array);
         }
-        
+
         echo "true";
     }
+
+    public function uploadFilesToS3() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $soportedid = $_POST["soporteid"];
+        $nombre = $_POST["nombre"];
+        $actividadid = $_POST["actividadid"];
+        $descripcion = $_POST["descripcion"];
+        $user = $this->session->userdata("inRUserID");
+        
+        $this->load->library('aws_sdk');
+        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . 'ElPaso/public/uploads/tmp/';
+        $nameFile = date("Y_m_d_His") . basename($_FILES['itemUpload']['name']);
+        $uploadfile = $uploaddir . $nameFile;
+        if (move_uploaded_file($_FILES['itemUpload']['tmp_name'], $uploadfile)) {
+            /* Carga en carpeta temporal */
+            $uploadok = $this->aws_sdk->s3_upload($uploadfile, $nameFile, 'elp4s0/soportes');
+            if ($uploadok == true) {
+                /* Carga exitosa S3 */
+                /* Insertar registro en la tabla */
+                $ruta = $nameFile;
+                $query = "INSERT INTO actividadessoportes (actividadid, tiposoporteid, linkdescargasoporte, descripcion, user, nombre) VALUES ($actividadid,$soportedid, '$ruta', '$descripcion','$user', '$nombre');";
+                $this->eventsModel->insertSoporte($query);
+                unlink($uploadfile);
+                redirect("events/form/" . $actividadid);
+            } else {
+                /* Carga no exitosa S3 */
+            }
+        }
+    }
+
 }

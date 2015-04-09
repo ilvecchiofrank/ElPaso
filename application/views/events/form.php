@@ -25,7 +25,7 @@
 <section class="main-content">
     <div class="container">
         <h1>Formulario de administración de actividades</h1>
-        <legend></legend>
+        <legend>1. Datos basicos actividad</legend>
         <div id="filter">
             <label>
                 Tipo Evento:
@@ -124,6 +124,48 @@
                     </tbody>
                 </thead>
             </table>
+            <br/>
+            <br/>
+            
+             <?php echo form_open_multipart('events/uploadFilesToS3');?>
+            <legend>Carga de archivos</legend>
+            
+            <label>Tipo de Soporte</label>
+            <select name="soporteid" id="soporteid" class='form-control'>
+                <option>Seleccione...</option>
+            </select>
+            
+            <label>Soporte a Cargar</label>
+            <input type="file" class="form-control" name="itemUpload" value="">
+            <input type="hidden" class="form-control" name="actividadid" value="<?php echo $actividadid; ?>">
+            
+            <label>Etiqueta</label>
+            <input type='text' name='nombre' class="form-control"/>
+            
+            <label>Descripción</label>
+            <textarea name="descripcion" class="form-control"></textarea>
+            
+            <label>Cargar Soporte</label>
+            <input type="submit" class="btn btn-success" value="Cargar" />
+            <br/>
+            <br/>
+            <legend>Listado de soportes asociados a la actividad actual</legend>
+            <table id="tableSoportes" class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Tipo de Soporte</th>
+                        <th>Nombre de Soporte</th>
+                        <th>Descripción</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <br/>
+            <br/>
+            </form>
         </div>
         <legend></legend>
         <input id="save" style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
