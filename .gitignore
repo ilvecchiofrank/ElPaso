@@ -5,6 +5,7 @@
 */cache/!index.html
 */cache/!.htaccess
 */config/database.php
+*/config/aws_sdk.php
 */config/ftp.php
 /nbproject/private/
 nbproject/
