@@ -236,7 +236,7 @@ function validate() {
     }
     
     if (new Date($("#fechaini").val() + " " + $("#horainicio").val()) > new Date($("#fechafin").val() + " " + $("#horafin").val())) {
-        alert("La fecha de inicio no puede ser mayor a la fecha de finalización!");
+        alert("La fecha y hora de inicio no puede ser mayor a la fecha y hora de finalización!");
         $("#fechaini").val("");
         $("#horainicio").val("");
         $("#fechafin").val("");
