@@ -6,6 +6,7 @@ $(document).ready(function() {
     if (actividadid > 0) {
         getData();
         loadFiles();
+        $("#filesPanel").css("display","block");
     }
 });
 
@@ -63,8 +64,12 @@ function save() {
             "municipiosCobertura": JSON.stringify(arrayMunicipiosCobertura)
         },
         success: function(data) {
-            $("#save").after("<br/><br/><div class='alert alert-success'><strong>Guardado Exitoso!</strong><br/><p>La actividad se grabo correctamente, por favor espere...</p></div>");
-            setTimeout("window.location = 'index.php/events/dash/';", 1000);
+            $("#save").after("<br/><br/><div class='alert alert-success rm'><strong>Guardado Exitoso!</strong><br/><p>La actividad se grabo correctamente, por favor espere...</p></div>");
+            //setTimeout("window.location = 'index.php/events/dash/';", 1000);
+            $("#filesPanel").css("display","block");
+            setTimeout("$('.rm').remove();", 2000);
+            actividadid = parseInt(data);
+            
         },
         error: function() {
             //Error

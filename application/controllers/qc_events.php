@@ -130,14 +130,14 @@ class QC_Events extends QC_Controller {
         $array["sitionombre"] = $_POST["sitionombre"];
         $array["actividaddescripcion"] = $_POST["actividaddescripcion"];
         $array["municipiosCobertura"] = $_POST["municipiosCobertura"];
-
-        if ($_POST["actividadid"] != "0") {
+        $actividadid = $_POST["actividadid"];
+        if ($actividadid != "0") {
             $this->eventsModel->updateEvent($_POST["actividadid"], $array);
         } else {
-            $this->eventsModel->insertEvent($array);
+            $actividadid = $this->eventsModel->insertEvent($array);
         }
 
-        echo "true";
+        echo $actividadid;
     }
 
     public function uploadFilesToS3() {

@@ -48,7 +48,7 @@ class QM_Events extends CI_Model {
         $data = $this->db->query("SELECT MAX(actividadid) as id FROM actividades");
         $data = $data->result();
         $this->setMunicipiosCobertura($data[0]->id, $arrayData["municipiosCobertura"]);
-        return true;
+        return $data[0]->id;
     }
 
     public function updateEvent($actividadid, $arrayData) {
