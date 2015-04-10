@@ -141,7 +141,7 @@
 
                 <label>Soporte a Cargar</label>
                 <input type="file" class="form-control" name="itemUpload" value="">
-                <input type="hidden" class="form-control" name="actividadid" value="<?php echo $actividadid; ?>">
+                <input id="actividadidhdd" type="hidden" class="form-control" name="actividadid" value="<?php echo $actividadid; ?>">
 
                 <label>Etiqueta</label>
                 <input type='text' name='nombre' class="form-control"/>

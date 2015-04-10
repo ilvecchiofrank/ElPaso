@@ -69,6 +69,7 @@ function save() {
             $("#filesPanel").css("display","block");
             setTimeout("$('.rm').remove();", 2000);
             actividadid = parseInt(data);
+            $("#actividadidhdd").val(actividadid);
             
         },
         error: function() {
