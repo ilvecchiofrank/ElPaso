@@ -6,7 +6,7 @@ $(document).ready(function() {
     if (actividadid > 0) {
         getData();
         loadFiles();
-        $("#filesPanel").css("display","block");
+        $("#filesPanel").css("display", "block");
     }
 });
 
@@ -38,45 +38,47 @@ function loadSelects() {
     $.getJSON("index.php/form/get_DptoEvento/", function(objRData) {
         $("#departamentos").html(objRData);
     });
-    
-        //Cargar listado de departamentos
+
+    //Cargar listado de departamentos
     $.getJSON("index.php/form/get_DptoCobertura/", function(objRData) {
         $("#departamentosCobertura").html(objRData);
     });
 }
 
 function save() {
-    $.ajax({
-        url: "index.php/events/save",
-        type: "POST",
-        data: {
-            "csrf_test_name": get_csrf_hash,
-            "actividadid": actividadid,
-            "actividadtipoid": $("#actividadTipos").val(),
-            "dpto": $("#departamentos").val(),
-            "mpo": $("#municipios").val(),
-            "fechaini": $("#fechaini").val(),
-            "fechafin": $("#fechafin").val(),
-            "horainicio": $("#horainicio").val(),
-            "horafin": $("#horafin").val(),
-            "sitionombre": $("#sitionombre").val(),
-            "actividaddescripcion": $("#actividaddescripcion").val(),
-            "municipiosCobertura": JSON.stringify(arrayMunicipiosCobertura)
-        },
-        success: function(data) {
-            $("#save").after("<br/><br/><div class='alert alert-success rm'><strong>Guardado Exitoso!</strong><br/><p>La actividad se grabo correctamente, por favor espere...</p></div>");
-            //setTimeout("window.location = 'index.php/events/dash/';", 1000);
-            $("#filesPanel").css("display","block");
-            setTimeout("$('.rm').remove();", 2000);
-            actividadid = parseInt(data);
-            $("#actividadidhdd").val(actividadid);
-            
-        },
-        error: function() {
-            //Error
-        }
+    if (validate()) {
+        $.ajax({
+            url: "index.php/events/save",
+            type: "POST",
+            data: {
+                "csrf_test_name": get_csrf_hash,
+                "actividadid": actividadid,
+                "actividadtipoid": $("#actividadTipos").val(),
+                "dpto": $("#departamentos").val(),
+                "mpo": $("#municipios").val(),
+                "fechaini": $("#fechaini").val(),
+                "fechafin": $("#fechafin").val(),
+                "horainicio": $("#horainicio").val(),
+                "horafin": $("#horafin").val(),
+                "sitionombre": $("#sitionombre").val(),
+                "actividaddescripcion": $("#actividaddescripcion").val(),
+                "municipiosCobertura": JSON.stringify(arrayMunicipiosCobertura)
+            },
+            success: function(data) {
+                $("#save").after("<br/><br/><div class='alert alert-success rm'><strong>Guardado Exitoso!</strong><br/><p>La actividad se grabo correctamente, por favor espere...</p></div>");
+                //setTimeout("window.location = 'index.php/events/dash/';", 1000);
+                $("#filesPanel").css("display", "block");
+                setTimeout("$('.rm').remove();", 2000);
+                actividadid = parseInt(data);
+                $("#actividadidhdd").val(actividadid);
 
-    });
+            },
+            error: function() {
+                //Error
+            }
+
+        });
+    }
 }
 var actividadObject = null;
 function getData() {
@@ -91,10 +93,10 @@ function getData() {
         success: function(data) {
 
             actividadObject = data[0];
-            setTimeout(function(){ 
+            setTimeout(function() {
                 $("#departamentos").val(data[0].dpto);
                 $("#departamentos").trigger("change");
-                
+
                 setTimeout('$("#municipios").val(' + data[0].mpo + ');', 1000);
             }, 200);
             $("#fechaini").val(data[0].fechaini);
@@ -122,25 +124,25 @@ function asignarMunicipiosCobertura() {
             "municipioid": $("#municipiosCobertura").val()
 
         };
-        
+
         var exist = false;
         $.each(arrayMunicipiosCobertura, function(key, value) {
-            if(value.municipioid == $("#municipiosCobertura").val() && value.departamentoid == $("#departamentosCobertura").val()){
-               exist = true; 
+            if (value.municipioid == $("#municipiosCobertura").val() && value.departamentoid == $("#departamentosCobertura").val()) {
+                exist = true;
             }
         });
-        
-        if(!exist){
+
+        if (!exist) {
             arrayMunicipiosCobertura.push(jsonMunicipio);
-        }else{
+        } else {
             $("#tableMunicipiosCobertura").before("<div class='alert alert-danger rm'><strong>Oppsss...</strong><br/><p style='text-align: justify;'>El departamento y municipio seleccionados ya fueron registrados en la lista.</p></div>");
-            setTimeout("$('.rm').remove();",2000);
+            setTimeout("$('.rm').remove();", 2000);
         }
-        
+
         cargarTablaMunicipiosCobertura();
-    }else{
+    } else {
         $("#tableMunicipiosCobertura").before("<div class='alert alert-danger rm'><strong>Oppsss...</strong><br/><p style='text-align: justify;'>Es necesario seleccionar un departamento y un municipio para asignarlo a la actividad.</p></div>");
-        setTimeout("$('.rm').remove();",2000);
+        setTimeout("$('.rm').remove();", 2000);
     }
 }
 
@@ -157,7 +159,7 @@ function deleteItem(key) {
 
 }
 
-function loadFiles(){
+function loadFiles() {
     $("#tableSoportes tbody").html("");
     $.ajax({
         url: "index.php/events/getSoportesByActividad/",
@@ -172,25 +174,25 @@ function loadFiles(){
     });
 }
 
-function editRowFile(id, obj){
+function editRowFile(id, obj) {
     var idColumn = 0;
-    $(obj).parent().parent().find("td").each(function(){
-        if(idColumn == 1){
+    $(obj).parent().parent().find("td").each(function() {
+        if (idColumn == 1) {
             var text = $(this).html();
             $(this).html("<input type='text' style='width: 90%;' id='newname" + id + "' class='form-control' value='" + text + "' />");
-        }else if(idColumn == 2){
+        } else if (idColumn == 2) {
             var text = $(this).html();
             $(this).html("<textarea style='width: 90%;' id='newdescription" + id + "' class='form-control'>" + text + "</textarea>");
         }
         idColumn++;
     });
-    
+
     $(obj).attr("onclick", "updateSoporte(" + id + ");");
     $(obj).attr("value", "Actualizar");
     $(obj).attr("style", "margin-top: -0.1em; width: 7em;");
 }
 
-function updateSoporte(id){
+function updateSoporte(id) {
     $.ajax({
         url: "index.php/events/updateSoporte",
         type: "POST",
@@ -203,13 +205,13 @@ function updateSoporte(id){
         success: function(data) {
             loadFiles();
         },
-        error: function(){
-            
+        error: function() {
+
         }
     });
 }
 
-function deleteSoporte(id){
+function deleteSoporte(id) {
     $.ajax({
         url: "index.php/events/disabledSoporte",
         type: "POST",
@@ -220,8 +222,26 @@ function deleteSoporte(id){
         success: function(data) {
             loadFiles();
         },
-        error: function(){
-            
+        error: function() {
+
         }
     });
+}
+
+function validate() {
+    var error = true;
+    if($("#fechaini").val() == "" || $("#horainicio").val() == "" || $("#fechafin").val() == "" || $("#horafin").val() == ""){
+        error = false;
+        alert("Los campos de fecha y hora son obligatorios!");
+    }
+    
+    if (new Date($("#fechaini").val() + " " + $("#horainicio").val()) > new Date($("#fechafin").val() + " " + $("#horafin").val())) {
+        alert("La fecha de inicio no puede ser mayor a la fecha de finalización!");
+        $("#fechaini").val("");
+        $("#horainicio").val("");
+        $("#fechafin").val("");
+        $("#horafin").val("");
+        error = false;
+    }
+    return error;
 }

@@ -67,22 +67,22 @@
             <label>
                 Fecha inicio:
             </label>
-            <input id="fechaini" type="date" class="form-control" />
+            <input id="fechaini" type="date" class="form-control validateDates" />
 
             <label>
                 Fecha fin:
             </label>
-            <input id="fechafin" type="date" class="form-control" />
+            <input id="fechafin" type="date" class="form-control validateDates" />
 
             <label>
                 Hora inicio:
             </label>
-            <input id="horainicio" type="time" class="form-control" />
+            <input id="horainicio" type="time" class="form-control validateDates" />
 
             <label>
                 Hora fin:
             </label>
-            <input id="horafin" type="time" class="form-control" />
+            <input id="horafin" type="time" class="form-control validateDates" />
 
             <label>
                 Departamento de cobertura:
