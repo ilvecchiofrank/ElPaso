@@ -127,6 +127,7 @@
             <br/>
             <br/>
             <input id="save" style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
+            <input style="margin-left: 5%;" type="button" value="Salir" onclick="window.location = 'index.php/events/dash';" class="btn btn-primary" />
             <br/>
             <br/>
             <div id="filesPanel" style="display: none;">
