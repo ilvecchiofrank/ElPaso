@@ -168,9 +168,9 @@ class QM_Events extends CI_Model {
     }
     
     public function searchSoportesByActividad($id){
-        $query = $this->db->query("SELECT b.soportetxt AS tiposoporte, a.nombre, a.linkdescargasoporte, a.descripcion FROM actividadessoportes a
+        $query = $this->db->query("SELECT a.actividadessoportesid, b.soportetxt AS tiposoporte, a.nombre, a.linkdescargasoporte, a.descripcion FROM actividadessoportes a
                                     INNER JOIN soportes b ON a.tiposoporteid = b.tiposoporteid
-                                    WHERE a.actividadid = $id ");
+                                    WHERE a.actividadid = $id AND estado = 'A' ");
         return $query->result();
     }
 

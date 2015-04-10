@@ -109,8 +109,8 @@ class QC_Events extends QC_Controller {
                                 <a target='_blank' href='https://s3.amazonaws.com/elp4s0/soportes/$value->linkdescargasoporte' class='btn btn-success'>
                                     <span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>
                                 </a> 
-                                <button class='btn btn-warning'>Editar</Button>  
-                                <button class='btn btn-danger'>Eliminar</Button> </td></tr>
+                                <input style='margin-top: -0.1em;' type='button' onclick='editRowFile($value->actividadessoportesid, this)' value='Editar' class='btn btn-warning' />
+                                <input style='margin-top: -0.1em;' type='button' onclick='deleteSoporte($value->actividadessoportesid)' value='Eliminar' class='btn btn-danger' />
                     ";
         }
 
@@ -149,7 +149,7 @@ class QC_Events extends QC_Controller {
         $user = $this->session->userdata("inRUserID");
         
         $this->load->library('aws_sdk');
-        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . 'ElPaso/public/uploads/tmp/';
+        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . 'elpaso_test/public/uploads/tmp/';
         $nameFile = date("Y_m_d_His") . basename($_FILES['itemUpload']['name']);
         $uploadfile = $uploaddir . $nameFile;
         if (move_uploaded_file($_FILES['itemUpload']['tmp_name'], $uploadfile)) {
@@ -167,6 +167,28 @@ class QC_Events extends QC_Controller {
                 /* Carga no exitosa S3 */
             }
         }
+    }
+    
+    public function updateSoporte(){
+        $this->load->model("qm_events", "eventsModel", true);
+        $actividadessoportesid = $_POST["actividadessoportesid"];
+        $nombre = $_POST["nombre"];
+        $descripcion = $_POST["descripcion"];
+        
+        $query = "UPDATE actividadessoportes SET descripcion = '$descripcion', nombre = '$nombre' WHERE actividadessoportesid = $actividadessoportesid";
+        $this->eventsModel->insertSoporte($query);
+        
+        echo "ok";
+    }
+    
+    public function disabledSoporte(){
+        $this->load->model("qm_events", "eventsModel", true);
+        $actividadessoportesid = $_POST["actividadessoportesid"];
+        
+        $query = "UPDATE actividadessoportes SET estado = 'I' WHERE actividadessoportesid = $actividadessoportesid";
+        $this->eventsModel->insertSoporte($query);
+        
+        echo "ok";
     }
 
 }

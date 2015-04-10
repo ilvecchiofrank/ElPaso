@@ -147,6 +147,7 @@ function deleteItem(key) {
 }
 
 function loadFiles(){
+    $("#tableSoportes tbody").html("");
     $.ajax({
         url: "index.php/events/getSoportesByActividad/",
         type: "POST",
@@ -161,5 +162,55 @@ function loadFiles(){
 }
 
 function editRowFile(id, obj){
+    var idColumn = 0;
+    $(obj).parent().parent().find("td").each(function(){
+        if(idColumn == 1){
+            var text = $(this).html();
+            $(this).html("<input type='text' style='width: 90%;' id='newname" + id + "' class='form-control' value='" + text + "' />");
+        }else if(idColumn == 2){
+            var text = $(this).html();
+            $(this).html("<textarea style='width: 90%;' id='newdescription" + id + "' class='form-control'>" + text + "</textarea>");
+        }
+        idColumn++;
+    });
     
+    $(obj).attr("onclick", "updateSoporte(" + id + ");");
+    $(obj).attr("value", "Actualizar");
+    $(obj).attr("style", "margin-top: -0.1em; width: 7em;");
+}
+
+function updateSoporte(id){
+    $.ajax({
+        url: "index.php/events/updateSoporte",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "actividadessoportesid": id,
+            "nombre": $("#newname" + id).val(),
+            "descripcion": $("#newdescription" + id).val()
+        },
+        success: function(data) {
+            loadFiles();
+        },
+        error: function(){
+            
+        }
+    });
+}
+
+function deleteSoporte(id){
+    $.ajax({
+        url: "index.php/events/disabledSoporte",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "actividadessoportesid": id
+        },
+        success: function(data) {
+            loadFiles();
+        },
+        error: function(){
+            
+        }
+    });
 }
