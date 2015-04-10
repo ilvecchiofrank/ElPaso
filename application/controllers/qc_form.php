@@ -1150,11 +1150,34 @@ $html2pdf->Output($nombreArchivo.'.pdf');*/
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_dpto());
     }
+    /*Cargar departamentos*/
+    public function get_DptoEvento(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dptoEvento());
+    }
+    
+    /*Cargar departamentos*/
+    public function get_DptoCobertura(){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_dptoCobertura());
+    }
 
     /*Cargar municipios*/
     public function get_Mpo($depto){
         $this->load->model("qm_form", "form", true);
         echo json_encode($this->form->get_mpo($depto));
+    }
+    
+    /*Cargar municipios*/
+    public function get_MpoEvento($depto){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_mpoEvento($depto));
+    }
+    
+    /*Cargar municipios*/
+    public function get_MpoCobertura($depto){
+        $this->load->model("qm_form", "form", true);
+        echo json_encode($this->form->get_mpoCobertura($depto));
     }
 
     /*Cargar listado de actividades economicas*/

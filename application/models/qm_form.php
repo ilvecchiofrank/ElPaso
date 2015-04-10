@@ -139,11 +139,79 @@ class QM_Form extends CI_Model {
          echo $exc->getTraceAsString();
       }
     }
+    
+    /*Obtener listado de departamentos*/
+    public function get_dptoCobertura(){
+      try {
+        $query = $this->db->query("SELECT a05Codigo, a05Nombre FROM t05web_departamentos WHERE a05Cobertura = 'A' ORDER BY a05Nombre");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $departamento => $objDepto) {
+          $html .= "<option value='$objDepto->a05Codigo'>$objDepto->a05Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
+    
+    /*Obtener listado de departamentos*/
+    public function get_dptoEvento(){
+      try {
+        $query = $this->db->query("SELECT a05Codigo, a05Nombre FROM t05web_departamentos WHERE a05Evento = 'A' ORDER BY a05Nombre");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $departamento => $objDepto) {
+          $html .= "<option value='$objDepto->a05Codigo'>$objDepto->a05Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
 
     /*Obtener listado de municipios*/
     public function get_mpo($depto){
       try {
         $query = $this->db->query("SELECT a06codigo, a06Nombre FROM t06web_municipios WHERE a06Departamento = $depto ORDER BY a06Nombre");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $municipio => $objMpo) {
+          $html .= "<option value='$objMpo->a06codigo'>$objMpo->a06Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
+    
+    /*Obtener listado de municipios*/
+    public function get_mpoEvento($depto){
+      try {
+        $query = $this->db->query("SELECT a06codigo, a06Nombre FROM t06web_municipios WHERE a06Departamento = $depto AND a06Evento = 'A' ORDER BY a06Nombre ");
+        $dataArray = $query->result();
+
+        $html = "<option value=''>Seleccione...</option>";
+        foreach ($dataArray as $municipio => $objMpo) {
+          $html .= "<option value='$objMpo->a06codigo'>$objMpo->a06Nombre</option>";
+        }
+
+        return $html;
+      } catch (Exception $exc) {
+         echo $exc->getTraceAsString();
+      }
+    }
+    
+    /*Obtener listado de municipios*/
+    public function get_mpoCobertura($depto){
+      try {
+        $query = $this->db->query("SELECT a06codigo, a06Nombre FROM t06web_municipios WHERE a06Departamento = $depto AND a06Cobertura = 'A' ORDER BY a06Nombre ");
         $dataArray = $query->result();
 
         $html = "<option value=''>Seleccione...</option>";

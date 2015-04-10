@@ -21,21 +21,26 @@ function loadSelects() {
 
     $("#departamentos").change(function() {
         var munChildId = "municipios";
-        $.getJSON("index.php/form/get_Mpo/" + $(this).val(), function(objRData) {
+        $.getJSON("index.php/form/get_MpoEvento/" + $(this).val(), function(objRData) {
             $("#" + munChildId).html(objRData);
         });
     });
 
     $("#departamentosCobertura").change(function() {
         var munChildId = "municipiosCobertura";
-        $.getJSON("index.php/form/get_Mpo/" + $(this).val(), function(objRData) {
+        $.getJSON("index.php/form/get_MpoCobertura/" + $(this).val(), function(objRData) {
             $("#" + munChildId).html(objRData);
         });
     });
 
     //Cargar listado de departamentos
-    $.getJSON("index.php/form/get_Dpto/", function(objRData) {
-        $(".departamentos").html(objRData);
+    $.getJSON("index.php/form/get_DptoEvento/", function(objRData) {
+        $("#departamentos").html(objRData);
+    });
+    
+        //Cargar listado de departamentos
+    $.getJSON("index.php/form/get_DptoCobertura/", function(objRData) {
+        $("#departamentosCobertura").html(objRData);
     });
 }
 
