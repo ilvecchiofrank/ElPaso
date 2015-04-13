@@ -149,7 +149,7 @@ class QC_Events extends QC_Controller {
         $user = $this->session->userdata("inRUserID");
         
         $this->load->library('aws_sdk');
-        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . 'elpaso_test/public/uploads/tmp/';
+        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . $this->config->item('app_dir') . '/public/uploads/tmp/';
         $nameFile = date("Y_m_d_His") . basename($_FILES['itemUpload']['name']);
         $uploadfile = $uploaddir . $nameFile;
         if (move_uploaded_file($_FILES['itemUpload']['tmp_name'], $uploadfile)) {
