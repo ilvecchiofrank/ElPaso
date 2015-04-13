@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once 'D:\ServidordeaplicacionesPHP\www\aws-sdk-php\vendor\autoload.php';
+require_once '/var/www/html/quimbo_test/application/core/aws/vendor/autoload.php';
 
 use Aws\S3\S3Client;
 class aws_sdk{
