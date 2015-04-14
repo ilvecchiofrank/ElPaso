@@ -118,7 +118,7 @@ class QM_Events extends CI_Model {
     }
     
     public function updatePersona($personaid, $arrayData) {
-        if($this->validarDocumentoPersona($arrayData["documento"]) == 'V'){
+        if($this->validarDocumentoPersona($arrayData["documento"], true, $personaid) == 'V'){
         $this->db->query("update personas
                                     set 
                                             nodocumento = '$arrayData[documento]',
@@ -315,8 +315,12 @@ class QM_Events extends CI_Model {
         return $query->result();
     }
     
-    public function validarDocumentoPersona($documento){
-        $query = $this->db->query("SELECT IF(COUNT(1) > 0, 'NV', 'V') as result FROM personas WHERE nodocumento = '$documento' and nodocumento is not null and nodocumento <> '' ");
+    public function validarDocumentoPersona($documento, $edit = false, $personaid = 0){
+        $query = "SELECT IF(COUNT(1) > 0, 'NV', 'V') as result FROM personas WHERE nodocumento = '$documento' and nodocumento is not null and nodocumento <> '' "; 
+        if($edit){
+            $query .= " AND personaid <> $personaid";
+        }
+        $query = $this->db->query($query);
         $data = $query->result();
         return $data[0]->result;
     }
