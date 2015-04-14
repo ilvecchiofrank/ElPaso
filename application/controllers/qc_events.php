@@ -34,6 +34,10 @@ class QC_Events extends QC_Controller {
     public function dash() {
         $this->display_page("dash", "events");
     }
+    
+    public function people() {
+        $this->display_page("people", "events");
+    }
 
     /**
      * Function dash
@@ -65,11 +69,37 @@ class QC_Events extends QC_Controller {
         }
         echo json_encode($html);
     }
+    
+    public function getSexo() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $html = "<option>Seleccione...</option>";
+        $data = $this->eventsModel->getSexo();
+        foreach ($data as $key => $value) {
+            $html .= "<option value='$value->sexoid'>$value->sexo</option>";
+        }
+        echo json_encode($html);
+    }
+    
+    public function getTiposDocumento() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $html = "<option>Seleccione...</option>";
+        $data = $this->eventsModel->getTiposDocumento();
+        foreach ($data as $key => $value) {
+            $html .= "<option value='$value->tipo_documento_id'>$value->tipo_documento</option>";
+        }
+        echo json_encode($html);
+    }
 
     public function getEvent() {
         $this->load->model("qm_events", "eventsModel", true);
         $data = $this->eventsModel->getEvent($_POST["actividadid"]);
         $data[0]->municipiosCobertura = $this->eventsModel->getMunicipiosCobertura($_POST["actividadid"]);
+        echo json_encode($data);
+    }
+    
+    public function getPersona() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $data = $this->eventsModel->getPersona($_POST["personaid"]);        
         echo json_encode($data);
     }
 
@@ -89,6 +119,37 @@ class QC_Events extends QC_Controller {
         $htmlTable = "";
         foreach ($data as $key => $value) {
             $htmlTable .= "<tr><td>$value->dpto</td><td>$value->mpo</td><td>$value->tipoactividad</td><td>$value->sitioevento</td><td>$value->fechaini</td><td>$value->fechafin</td><td> <a href='index.php/events/form/$value->actividadid' class='btn btn-warning'>Editar</a> </td></tr>";
+        }
+
+        echo $htmlTable;
+    }
+    
+    public function getPeople() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+
+        $array["nombres"] = $_POST["nombres"];
+        $array["apellidos"] = $_POST["apellidos"];
+        $array["documento"] = $_POST["documento"];
+
+        $data = $this->eventsModel->searchPeople($array);
+
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr>
+                                <td>$value->nombres</td>
+                                <td>$value->apellidos</td>
+                                <td>$value->sexo</td>
+                                <td>$value->nodocumento</td>
+                                <td>$value->dpto</td>
+                                <td>$value->mpo</td>
+                                <td>$value->telefono</td>
+                                <td>$value->celular</td>
+                                <td> 
+                                    <button class='btn btn-warning' onclick='personaid = $value->personaid; getData();'>Editar</button>
+                                    <a href='#' class='btn btn-success'>Agregar</a>
+                                 </td>
+                            </tr>";
         }
 
         echo $htmlTable;
@@ -138,6 +199,34 @@ class QC_Events extends QC_Controller {
         }
 
         echo $actividadid;
+    }
+    
+    public function savePersona() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["personaid"] = $_POST["personaid"];
+        $array["dpto"] = $_POST["dpto"];
+        $array["mpo"] = $_POST["mpo"];
+        $array["nombres"] = $_POST["nombres"];
+        $array["apellidos"] = $_POST["apellidos"];
+        $array["tipo_documento_id"] = $_POST["tipo_documento_id"];
+        $array["documento"] = $_POST["documento"];
+        $array["sexo"] = $_POST["sexo"];
+        $array["direccion"] = $_POST["direccion"];
+        $array["telefono"] = $_POST["telefono"];
+        $array["celular"] = $_POST["celular"];
+        $array["cargo"] = $_POST["cargo"];
+        $array["entidad"] = $_POST["entidad"];
+        $array["fechanac"] = $_POST["fechanac"];
+        
+        $personaid = $_POST["personaid"];
+        if ($personaid != "0") {
+            $this->eventsModel->updatePersona($_POST["personaid"], $array);
+        } else {
+            $personaid = $this->eventsModel->insertPersona($array);
+        }
+
+        echo $personaid;
     }
 
     public function uploadFilesToS3() {

@@ -30,6 +30,16 @@ class QM_Events extends CI_Model {
         $query = $this->db->query('SELECT *  from soportes');
         return $query->result();
     }
+    
+    public function getSexo() {
+        $query = $this->db->query('SELECT *  from sexo');
+        return $query->result();
+    }
+    
+    public function getTiposDocumento() {
+        $query = $this->db->query('SELECT *  from tipos_documento');
+        return $query->result();
+    }
 
     public function insertEvent($arrayData) {
         $this->db->query("INSERT INTO actividades(actividadtipoid,dpto,mpo,fechaini,fechafin,horainicio, horafin,sitionombre,actividaddescripcion)
@@ -49,6 +59,51 @@ class QM_Events extends CI_Model {
         $data = $data->result();
         $this->setMunicipiosCobertura($data[0]->id, $arrayData["municipiosCobertura"]);
         return $data[0]->id;
+    }
+    
+    public function insertPersona($arrayData) {
+        $this->db->query("INSERT INTO personas (nodocumento, nombres, sexo_id, apellidos, direccion, telefono, celular, mporesidencia, dptoresidencia, fechanac, cargo, entidad, tipo_documento_id)
+                                    VALUES (
+                                            '$arrayData[documento]',
+                                            '$arrayData[nombres]',
+                                            $arrayData[sexo],
+                                            '$arrayData[apellidos]',
+                                            '$arrayData[direccion]',
+                                            '$arrayData[telefono]',
+                                            '$arrayData[celular]',
+                                            $arrayData[mpo],
+                                            $arrayData[dpto],
+                                            '$arrayData[fechanac]',
+                                            '$arrayData[cargo]',
+                                            '$arrayData[entidad]',
+                                            '$arrayData[tipo_documento_id]'
+                                                
+                                            )
+                                ");
+        $data = $this->db->query("SELECT MAX(actividadid) as id FROM actividades");
+        $data = $data->result();
+        return $data[0]->id;
+    }
+    
+    public function updatePersona($personaid, $arrayData) {
+        $this->db->query("update personas
+                                    set 
+                                            nodocumento = '$arrayData[documento]',
+                                            nombres = '$arrayData[nombres]',
+                                            sexo_id = $arrayData[sexo],
+                                            apellidos = '$arrayData[apellidos]',
+                                            direccion = '$arrayData[direccion]',
+                                            telefono = '$arrayData[telefono]',
+                                            celular = '$arrayData[celular]',
+                                            mporesidencia = $arrayData[mpo],
+                                            dptoresidencia = $arrayData[dpto],
+                                            fechanac = '$arrayData[fechanac]',
+                                            cargo = '$arrayData[cargo]',
+                                            entidad = '$arrayData[entidad]',
+                                            tipo_documento_id = '$arrayData[tipo_documento_id]'
+                                      where personaid = $personaid
+                                ");
+        return $personaid;
     }
 
     public function updateEvent($actividadid, $arrayData) {
@@ -147,10 +202,51 @@ class QM_Events extends CI_Model {
         $query = $this->db->query($query);
         return $query->result();
     }
+    
+    public function searchPeople($parameters) {
+        $query = "SELECT a.*, d.sexo, b.a05Nombre AS dpto, c.a06Nombre AS mpo FROM personas a
+                    INNER JOIN t05web_departamentos b ON a.dptoresidencia = b.a05Codigo
+                    INNER JOIN t06web_municipios c ON a.mporesidencia = c.a06Codigo
+                    INNER JOIN sexo d ON d.sexoid = a.sexo_id";
+        $filter = false;
+        $filterQuery = "";
+
+        if (trim($parameters['nombres']) != "") {
+            $filterQuery .= " a.nombres like '%$parameters[nombres]%'";
+            $filter = true;
+        }
+        if (trim($parameters['apellidos']) != "") {
+            if ($filter) {
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.apellidos like '%$parameters[apellidos]%'";
+            $filter = true;
+        }
+        if (trim($parameters['documento']) != "") {
+            if ($filter) {
+                $filterQuery .= " AND ";
+            }
+            $filterQuery .= " a.nodocumento like '%$parameters[documento]%'";
+            $filter = true;
+        }
+
+        if ($filter) {
+            $query .= " WHERE " . $filterQuery;
+        }
+
+        $query = $this->db->query($query);
+        return $query->result();
+    }
 
     public function getEvent($id) {
         $query = $this->db->query("SELECT *, NULL as municipiosCobertura FROM actividades a
                                    where a.actividadid = $id ");
+        return $query->result();
+    }
+    
+    public function getPersona($id) {
+        $query = $this->db->query("SELECT * FROM personas a
+                                   where a.personaid = $id ");
         return $query->result();
     }
     
