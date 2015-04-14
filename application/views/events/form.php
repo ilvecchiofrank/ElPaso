@@ -127,7 +127,7 @@
             <br/>
             <br/>
             <input id="save" style="margin-left: 5%;" type="button" value="Guardar" onclick="save();" class="btn btn-success" />
-            <input style="margin-left: 5%;" type="button" value="Participantes" onclick="window.location = 'index.php/events/people';" class="btn btn-default" />
+            <input id="btnParticipantes" style="margin-left: 5%; display: none;" type="button" value="Participantes" onclick="window.location = 'index.php/events/people/' + actividadid;" class="btn btn-default" />
             <input style="margin-left: 5%;" type="button" value="Salir" onclick="window.location = 'index.php/events/dash';" class="btn btn-primary" />
             <br/>
             <br/>

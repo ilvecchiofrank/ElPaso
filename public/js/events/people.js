@@ -2,9 +2,11 @@ $(document).ready(function() {
     loadSelects();
     $(".departamentos").trigger("change");
     loadData();
+    getPersonasActividad();
 });
 
 var jqueryDatatable = null;
+var jqueryDatatableActividadesPersona = null;
 
 function loadData() {
     $.ajax({
@@ -19,7 +21,7 @@ function loadData() {
         success: function(data) {
             $("#searchResult tbody").html(data);
 
-            if (jqueryDatatable != undefined) {
+            if (jqueryDatatable != null) {
                 jqueryDatatable.destroy();
             }
 
@@ -115,10 +117,14 @@ function savePersona() {
                  setTimeout("$('.rm').remove();", 2000);
                  actividadid = parseInt(data);
                  $("#actividadidhdd").val(actividadid);*/
-                clearControls();
+                if(data == 'NV'){
+                    alert("El número de documento ya está registrado para otro participante.");
+                }else{
+                    clearControls();
 
-                loadData();
-                $('#modalPeopleAdmin').modal('hide');
+                    loadData();
+                    $('#modalPeopleAdmin').modal('hide');
+                }
 
             },
             error: function() {
@@ -180,4 +186,94 @@ function clearControls() {
     $("#cargo").val("");
     $("#entidad").val("");
     $("#sexo").val("");
+}
+
+function agregarActividadPersona(personaidP) {
+    $.ajax({
+        url: "index.php/events/setPersonaActividad",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "personaid": personaidP,
+            "actividadid": actividadid
+        },
+        success: function(data) {
+            getPersonasActividad();
+        },
+        error: function() {
+            alert("La persona que intenta agregar ya hace parte de la actividad.");
+        }
+
+    });
+}
+
+function eliminarActividadPersona(personaidP) {
+    $.ajax({
+        url: "index.php/events/removePersonaActividad",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "personaid": personaidP,
+            "actividadid": actividadid
+        },
+        success: function(data) {
+            getPersonasActividad();
+        },
+        error: function() {
+            //alert("La persona que intenta agregar ya hace parte de la actividad.");
+        }
+
+    });
+}
+
+function getPersonasActividad() {
+    $.ajax({
+        url: "index.php/events/getPersonasActividad",
+        type: "POST",
+        data: {
+            "csrf_test_name": get_csrf_hash,
+            "actividadid": actividadid
+        },
+        success: function(data) {
+            $("#tableParticipantesActividad tbody").html(data);
+            
+            $("#contadorParticipantesRegistrados").html($("#tableParticipantesActividad tbody").find("tr").length);
+            
+            if (jqueryDatatableActividadesPersona != null && jqueryDatatableActividadesPersona != undefined) {
+                jqueryDatatableActividadesPersona.destroy();
+            }
+
+            jqueryDatatableActividadesPersona = $('#tableParticipantesActividad').dataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+            
+        },
+        error: function() {
+
+        }
+
+    });
 }

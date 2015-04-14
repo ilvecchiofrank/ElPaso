@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    var actividadid = <?php echo $actividadid; ?>;
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
@@ -30,8 +31,14 @@
 
 <section class="main-content">
     <div class="container">
-        <h1>Formulario de administración de participantes</h1>
+        <h1>Formulario para la administración de participantes</h1>
         <legend></legend>
+        <br/>
+        <h3>Actividad: </h3>
+        <ol id="miga" class="breadcrumb">
+            <?php echo $htmlMiga; ?>
+        </ol>
+        <br/>
         <div id="filter">
             <label>Nombres</label>
             <input type="text" id="nombresSearch" value="" class="form-control">
@@ -72,6 +79,35 @@
                 </tbody>
             </table>
         </div>
+        
+        <div>
+            <legend>Participantes registrados: <span id="contadorParticipantesRegistrados">0</span></legend>
+            
+            <table id="tableParticipantesActividad" class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Sexo</th>
+                        <th>No. Documento</th>
+                        <th>Dpto Residencia</th>
+                        <th>Mpo Residencia</th>
+                        <th>Teléfono</th>
+                        <th>Celular</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <br/>
+            <br/>
+            <input type="button" style="margin: 0 auto;" onclick="window.location = 'index.php/events/form/' + actividadid;" value="Retornar a actividad" class="btn btn-success" />
+            <br/>
+            <br/>
+        </div>
+        
         <div class="form-modal">
             <div class="modal fade" id="modalPeopleAdmin" tabindex="-1" role="dialog" aria-labelledby="modalPeopleAdmin" aria-hidden="true">
                 <div class="modal-dialog">

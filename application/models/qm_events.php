@@ -62,30 +62,63 @@ class QM_Events extends CI_Model {
     }
     
     public function insertPersona($arrayData) {
-        $this->db->query("INSERT INTO personas (nodocumento, nombres, sexo_id, apellidos, direccion, telefono, celular, mporesidencia, dptoresidencia, fechanac, cargo, entidad, tipo_documento_id)
+        if($this->validarDocumentoPersona($arrayData["documento"]) == 'V'){
+            $this->db->query("INSERT INTO personas (nodocumento, nombres, sexo_id, apellidos, direccion, telefono, celular, mporesidencia, dptoresidencia, fechanac, cargo, entidad, tipo_documento_id)
+                                        VALUES (
+                                                '$arrayData[documento]',
+                                                '$arrayData[nombres]',
+                                                $arrayData[sexo],
+                                                '$arrayData[apellidos]',
+                                                '$arrayData[direccion]',
+                                                '$arrayData[telefono]',
+                                                '$arrayData[celular]',
+                                                $arrayData[mpo],
+                                                $arrayData[dpto],
+                                                '$arrayData[fechanac]',
+                                                '$arrayData[cargo]',
+                                                '$arrayData[entidad]',
+                                                '$arrayData[tipo_documento_id]'
+
+                                                )
+                                    ");
+            $data = $this->db->query("SELECT MAX(actividadid) as id FROM actividades");
+            $data = $data->result();
+            return $data[0]->id;
+        }else{
+            return 'NV';
+        }
+    }
+    
+    public function setPersonaActividad($arrayData) {
+        $this->db->query("INSERT INTO actividadpersona (personaid, actividadid)
                                     VALUES (
-                                            '$arrayData[documento]',
-                                            '$arrayData[nombres]',
-                                            $arrayData[sexo],
-                                            '$arrayData[apellidos]',
-                                            '$arrayData[direccion]',
-                                            '$arrayData[telefono]',
-                                            '$arrayData[celular]',
-                                            $arrayData[mpo],
-                                            $arrayData[dpto],
-                                            '$arrayData[fechanac]',
-                                            '$arrayData[cargo]',
-                                            '$arrayData[entidad]',
-                                            '$arrayData[tipo_documento_id]'
-                                                
+                                            $arrayData[personaid],
+                                            $arrayData[actividadid]
                                             )
                                 ");
-        $data = $this->db->query("SELECT MAX(actividadid) as id FROM actividades");
-        $data = $data->result();
-        return $data[0]->id;
+        
+        echo "ok";
+    }
+    
+    public function removePersonaActividad($arrayData) {
+        $this->db->query("DELETE FROM actividadpersona
+                            WHERE personaid =  $arrayData[personaid] AND actividadid = $arrayData[actividadid]
+                                ");
+        return "ok";
+    }
+    
+    public function getPersonaActividad($arrayData) {
+        $data = $this->db->query("SELECT a.*, d.sexo, b.a05Nombre AS dpto, c.a06Nombre AS mpo FROM personas a
+                                    INNER JOIN t05web_departamentos b ON a.dptoresidencia = b.a05Codigo
+                                    INNER JOIN t06web_municipios c ON a.mporesidencia = c.a06Codigo
+                                    INNER JOIN sexo d ON d.sexoid = a.sexo_id
+                                    WHERE a.personaid IN (SELECT personaid FROM actividadpersona WHERE actividadid = $arrayData[actividadid])");
+        
+        return $data->result();
     }
     
     public function updatePersona($personaid, $arrayData) {
+        if($this->validarDocumentoPersona($arrayData["documento"]) == 'V'){
         $this->db->query("update personas
                                     set 
                                             nodocumento = '$arrayData[documento]',
@@ -104,6 +137,9 @@ class QM_Events extends CI_Model {
                                       where personaid = $personaid
                                 ");
         return $personaid;
+        }else{
+            return 'NV';
+        }
     }
 
     public function updateEvent($actividadid, $arrayData) {
@@ -268,6 +304,21 @@ class QM_Events extends CI_Model {
                                     INNER JOIN soportes b ON a.tiposoporteid = b.tiposoporteid
                                     WHERE a.actividadid = $id AND estado = 'A' ");
         return $query->result();
+    }
+    
+    public function getMigaParticipantes($actividadid){
+        $query = $this->db->query("SELECT a.actividadid, c.a05Nombre AS dpto, d.a06Nombre AS mpo, b.actividadtipodescripcion AS tipoactividad, a.sitionombre AS sitioevento, a.actividaddescripcion as descripcion, a.fechaini, a.fechafin FROM actividades a
+                                    INNER JOIN actividades_tipos b ON a.actividadtipoid = b.actividadtipoid
+                                    INNER JOIN t05web_departamentos c ON a.dpto = c.a05Codigo
+                                    INNER JOIN t06web_municipios d ON a.mpo = d.a06Codigo
+                                    WHERE a.actividadid = $actividadid");
+        return $query->result();
+    }
+    
+    public function validarDocumentoPersona($documento){
+        $query = $this->db->query("SELECT IF(COUNT(1) > 0, 'NV', 'V') as result FROM personas WHERE nodocumento = '$documento' and nodocumento is not null and nodocumento <> '' ");
+        $data = $query->result();
+        return $data[0]->result;
     }
 
 }

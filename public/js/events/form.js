@@ -7,6 +7,7 @@ $(document).ready(function() {
         getData();
         loadFiles();
         $("#filesPanel").css("display", "block");
+        $("#btnParticipantes").css("display", "inline");
     }
 });
 
@@ -68,6 +69,7 @@ function save() {
                 $("#save").after("<br/><br/><div class='alert alert-success rm'><strong>Guardado Exitoso!</strong><br/><p>La actividad se grabo correctamente, por favor espere...</p></div>");
                 //setTimeout("window.location = 'index.php/events/dash/';", 1000);
                 $("#filesPanel").css("display", "block");
+                $("#btnParticipantes").css("display", "block");
                 setTimeout("$('.rm').remove();", 2000);
                 actividadid = parseInt(data);
                 $("#actividadidhdd").val(actividadid);

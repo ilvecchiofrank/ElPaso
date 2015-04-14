@@ -35,7 +35,20 @@ class QC_Events extends QC_Controller {
         $this->display_page("dash", "events");
     }
     
-    public function people() {
+    public function people($actividadid) {
+        $this->load->model("qm_events", "eventsModel", true);
+        $dataMiga = $this->eventsModel->getMigaParticipantes($actividadid);
+        
+        $htmlMiga = "
+                    <li class='active'>" . $dataMiga[0]->dpto . "</li>
+                    <li class='active'>" . $dataMiga[0]->mpo . "</li>
+                    <li class='active'>" . $dataMiga[0]->fechaini . "</li>
+                    <li class='active'>" . $dataMiga[0]->sitioevento . "</li>
+                    <li class='active'>" . $dataMiga[0]->descripcion . "</li>
+                    ";
+        
+        $data = array('actividadid' => $actividadid, 'htmlMiga' => $htmlMiga);
+        $this->load->vars($data);
         $this->display_page("people", "events");
     }
 
@@ -147,7 +160,7 @@ class QC_Events extends QC_Controller {
                                 <td>$value->celular</td>
                                 <td> 
                                     <button class='btn btn-warning' onclick='personaid = $value->personaid; getData();'>Editar</button>
-                                    <a href='#' class='btn btn-success'>Agregar</a>
+                                    <button class='btn btn-success' onclick='agregarActividadPersona($value->personaid);'>Agregar</a>
                                  </td>
                             </tr>";
         }
@@ -221,12 +234,61 @@ class QC_Events extends QC_Controller {
         
         $personaid = $_POST["personaid"];
         if ($personaid != "0") {
-            $this->eventsModel->updatePersona($_POST["personaid"], $array);
+            $personaid = $this->eventsModel->updatePersona($_POST["personaid"], $array);
         } else {
             $personaid = $this->eventsModel->insertPersona($array);
         }
-
+        
         echo $personaid;
+    }
+    
+    public function setPersonaActividad() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["personaid"] = $_POST["personaid"];
+        $array["actividadid"] = $_POST["actividadid"];
+       
+        echo  $this->eventsModel->setPersonaActividad($array);
+        
+        
+    }
+    
+    public function removePersonaActividad() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["personaid"] = $_POST["personaid"];
+        $array["actividadid"] = $_POST["actividadid"];
+       
+        echo  $this->eventsModel->removePersonaActividad($array);
+        
+        
+    }
+    
+    public function getPersonasActividad(){ 
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["actividadid"] = $_POST["actividadid"];
+       
+        $data =  $this->eventsModel->getPersonaActividad($array);
+        
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr>
+                                <td>$value->nombres</td>
+                                <td>$value->apellidos</td>
+                                <td>$value->sexo</td>
+                                <td>$value->nodocumento</td>
+                                <td>$value->dpto</td>
+                                <td>$value->mpo</td>
+                                <td>$value->telefono</td>
+                                <td>$value->celular</td>
+                                <td> 
+                                    <button class='btn btn-danger' onclick='eliminarActividadPersona($value->personaid);'>Eliminar</button>
+                                 </td>
+                            </tr>";
+        }
+
+        echo $htmlTable;
     }
 
     public function uploadFilesToS3() {
