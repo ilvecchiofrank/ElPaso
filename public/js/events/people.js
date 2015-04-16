@@ -117,9 +117,9 @@ function savePersona() {
                  setTimeout("$('.rm').remove();", 2000);
                  actividadid = parseInt(data);
                  $("#actividadidhdd").val(actividadid);*/
-                if(data == 'NV'){
+                if (data == 'NV') {
                     alert("El número de documento ya está registrado para otro participante.");
-                }else{
+                } else {
                     clearControls();
 
                     loadData();
@@ -208,22 +208,24 @@ function agregarActividadPersona(personaidP) {
 }
 
 function eliminarActividadPersona(personaidP) {
-    $.ajax({
-        url: "index.php/events/removePersonaActividad",
-        type: "POST",
-        data: {
-            "csrf_test_name": get_csrf_hash,
-            "personaid": personaidP,
-            "actividadid": actividadid
-        },
-        success: function(data) {
-            getPersonasActividad();
-        },
-        error: function() {
-            //alert("La persona que intenta agregar ya hace parte de la actividad.");
-        }
+    if (confirm("¿Está seguro que desea desvilcular el participante de la actividad, tenga en cuenta que las inquietudes del participante se perderan?")) {
+        $.ajax({
+            url: "index.php/events/removePersonaActividad",
+            type: "POST",
+            data: {
+                "csrf_test_name": get_csrf_hash,
+                "personaid": personaidP,
+                "actividadid": actividadid
+            },
+            success: function(data) {
+                getPersonasActividad();
+            },
+            error: function() {
+                //alert("La persona que intenta agregar ya hace parte de la actividad.");
+            }
 
-    });
+        });
+    }
 }
 
 function getPersonasActividad() {
@@ -236,9 +238,9 @@ function getPersonasActividad() {
         },
         success: function(data) {
             $("#tableParticipantesActividad tbody").html(data);
-            
+
             $("#contadorParticipantesRegistrados").html($("#tableParticipantesActividad tbody").find("tr").length);
-            
+
             if (jqueryDatatableActividadesPersona != null && jqueryDatatableActividadesPersona != undefined) {
                 jqueryDatatableActividadesPersona.destroy();
             }
@@ -269,7 +271,7 @@ function getPersonasActividad() {
                     }
                 }
             });
-            
+
         },
         error: function() {
 

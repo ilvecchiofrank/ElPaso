@@ -40,6 +40,10 @@ class QM_Events extends CI_Model {
         $query = $this->db->query('SELECT *  from tipos_documento');
         return $query->result();
     }
+    public function getPreguntasCategorias() {
+        $query = $this->db->query('SELECT *  from preguntas_categorias');
+        return $query->result();
+    }
 
     public function insertEvent($arrayData) {
         $this->db->query("INSERT INTO actividades(actividadtipoid,dpto,mpo,fechaini,fechafin,horainicio, horafin,sitionombre,actividaddescripcion)
@@ -89,6 +93,24 @@ class QM_Events extends CI_Model {
         }
     }
     
+    public function insertParticipantePregunta($arrayData) {
+            $this->db->query("INSERT INTO actividadpersona_preguntas (actividadpersona_id, preguntacategoriaid, pregunta_txt) 
+                                        VALUES ((SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $arrayData[personaid] AND actividadid = $arrayData[actividadid]), $arrayData[preguntasCategoriaId], '$arrayData[inquietud]')
+                                    ");
+            $data = $this->db->query("SELECT MAX(actividadpersona_pregunta_id) as id FROM actividadpersona_preguntas");
+            $data = $data->result();
+            return $data[0]->id;
+        
+    }
+    
+    public function updateParticipantePregunta($id, $arrayData) {
+            $this->db->query("UPDATE actividadpersona_preguntas SET preguntacategoriaid = $arrayData[preguntasCategoriaId], pregunta_txt = '$arrayData[inquietud]'
+                              WHERE actividadpersona_pregunta_id = $id
+                            ");
+            return $id;
+        
+    }
+    
     public function setPersonaActividad($arrayData) {
         $this->db->query("INSERT INTO actividadpersona (personaid, actividadid)
                                     VALUES (
@@ -101,6 +123,10 @@ class QM_Events extends CI_Model {
     }
     
     public function removePersonaActividad($arrayData) {
+        $this->db->query("DELETE FROM actividadpersona_preguntas
+                          WHERE actividadpersona_id IN (SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $arrayData[personaid] AND actividadid = $arrayData[actividadid])
+                         ");
+        
         $this->db->query("DELETE FROM actividadpersona
                             WHERE personaid =  $arrayData[personaid] AND actividadid = $arrayData[actividadid]
                                 ");
@@ -315,6 +341,17 @@ class QM_Events extends CI_Model {
         return $query->result();
     }
     
+    public function getMigaActividadParticipantes($actividadid, $personaid){
+        $query = $this->db->query("SELECT a.actividadid, c.a05Nombre AS dpto, d.a06Nombre AS mpo, b.actividadtipodescripcion AS tipoactividad, a.sitionombre AS sitioevento, a.actividaddescripcion AS descripcion, a.fechaini, a.fechafin, CONCAT(f.nombres, ' ', f.apellidos, ' C.C. ', f.nodocumento) AS persona FROM actividades a
+                                    INNER JOIN actividades_tipos b ON a.actividadtipoid = b.actividadtipoid
+                                    INNER JOIN t05web_departamentos c ON a.dpto = c.a05Codigo
+                                    INNER JOIN t06web_municipios d ON a.mpo = d.a06Codigo
+                                    INNER JOIN actividadpersona e ON e.actividadid = a.actividadid
+                                    INNER JOIN personas f ON f.personaid = e.personaid
+                                    WHERE a.actividadid = $actividadid AND f.personaid = $personaid ");
+        return $query->result();
+    }
+    
     public function validarDocumentoPersona($documento, $edit = false, $personaid = 0){
         $query = "SELECT IF(COUNT(1) > 0, 'NV', 'V') as result FROM personas WHERE nodocumento = '$documento' and nodocumento is not null and nodocumento <> '' "; 
         if($edit){
@@ -323,6 +360,19 @@ class QM_Events extends CI_Model {
         $query = $this->db->query($query);
         $data = $query->result();
         return $data[0]->result;
+    }
+    
+    public function searchPreguntasParticipantes($parametros){
+        $query = $this->db->query("SELECT a.actividadpersona_pregunta_id as id, b.preguntadescripciontxt as categoriatxt,a.preguntacategoriaid as categoria, a.pregunta_txt as inquietud FROM actividadpersona_preguntas a
+                                    INNER JOIN preguntas_categorias b ON a.preguntacategoriaid = b.preguntacategoriaid
+                                    WHERE a.actividadpersona_id = (SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $parametros[personaid] AND actividadid = $parametros[actividadid])");
+        return $query->result();
+    }
+    
+    public function deletePreguntasParticipantes($parametros){
+        $query = $this->db->query("DELETE FROM actividadpersona_preguntas
+                                   WHERE actividadpersona_pregunta_id = $parametros[id]");
+        return true;
     }
 
 }
