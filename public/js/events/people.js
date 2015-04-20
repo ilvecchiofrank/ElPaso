@@ -136,7 +136,13 @@ function savePersona() {
 }
 
 function validate() {
-    return true;
+    var error = true;
+    if($.trim($("#nombres").val()) == "" || $.trim($("#apellidos").val()) == ""){
+        error = false;
+        alert("El nombres y apellidos son requeridos para crear el participante!");
+    }
+    
+    return error;
 }
 
 function getData() {
