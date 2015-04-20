@@ -15,7 +15,7 @@
         padding: 1em 1em 1em 1em;
     }
 
-    #filter select, #filter label, #filter input, #filter textarea{
+    #filter select, #filter label, #filter input/*, #filter textarea*/{
         width: 20%;
         display: inline-table;
         margin-top: 1em;
@@ -41,16 +41,17 @@
             <?php echo $htmlMiga; ?>
         </ol>
         <br/>
-        <div id="filter">
+        <div>
             <legend>Formulario de registro de inquietudes de participantes</legend>
             <label>Tipo de inquietud</label>
+            <br/>
             <select id='preguntasCategorias' class="form-control">
                 <option>Seleccione...</option>
             </select>
-            
+            <br/>
             <label>Inquietud</label>
-            <textarea id="inquietud" class="form-control"></textarea>
-            
+            <textarea style="max-width: 100%; min-height: 200px;" id="inquietud" class="form-control"></textarea>
+            <br/>
             <label>Agregar Inquietud</label>
             <button id="save" onclick='saveParticipantePregunta();' class="btn btn-success">Guardar</button>
         </div>
