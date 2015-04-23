@@ -34,6 +34,7 @@ function saveQuestionCategorised() {
     }
 }
 
+
 function validate() {
     return true;
 }
