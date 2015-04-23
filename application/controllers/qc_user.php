@@ -40,9 +40,10 @@ class QC_User extends QC_Controller {
             /*Redireccion de usuario por rol*/
             switch ($this->session->userdata("inRUserType")) {
 
-            // case 1:
-            //     echo "Admin";
-            //     break;
+             case 1:
+                 //echo "Admin";
+                 redirect("events/questionsCategorised");
+                 break;
             // case 2:
             //     echo "Usuario";
             //     break;
