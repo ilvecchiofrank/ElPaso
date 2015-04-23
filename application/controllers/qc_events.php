@@ -34,11 +34,11 @@ class QC_Events extends QC_Controller {
     public function dash() {
         $this->display_page("dash", "events");
     }
-    
+
     public function people($actividadid) {
         $this->load->model("qm_events", "eventsModel", true);
         $dataMiga = $this->eventsModel->getMigaParticipantes($actividadid);
-        
+
         $htmlMiga = "
                     <li class='active'>" . $dataMiga[0]->dpto . "</li>
                     <li class='active'>" . $dataMiga[0]->mpo . "</li>
@@ -46,16 +46,16 @@ class QC_Events extends QC_Controller {
                     <li class='active'>" . $dataMiga[0]->sitioevento . "</li>
                     <li class='active'>" . $dataMiga[0]->descripcion . "</li>
                     ";
-        
+
         $data = array('actividadid' => $actividadid, 'htmlMiga' => $htmlMiga);
         $this->load->vars($data);
         $this->display_page("people", "events");
     }
-    
+
     public function questions($actividadid, $personaid) {
         $this->load->model("qm_events", "eventsModel", true);
         $dataMiga = $this->eventsModel->getMigaActividadParticipantes($actividadid, $personaid);
-        
+
         $htmlMiga = "
                     <li class='active'>" . $dataMiga[0]->dpto . "</li>
                     <li class='active'>" . $dataMiga[0]->mpo . "</li>
@@ -64,15 +64,21 @@ class QC_Events extends QC_Controller {
                     <li class='active'>" . $dataMiga[0]->descripcion . "</li>
                     <li class='active'>" . $dataMiga[0]->persona . "</li>
                     ";
-        
+
         $data = array('actividadid' => $actividadid, 'personaid' => $personaid, 'htmlMiga' => $htmlMiga);
         $this->load->vars($data);
         $this->display_page("questions", "events");
     }
-    
+
     public function questionsCategorised() {
-        $this->load->model("qm_events", "eventsModel", true);
-        $this->display_page("questionsCategorised", "events");
+        if ($this->session->userdata("isLoggedIn")) {
+
+            $this->load->model("qm_events", "eventsModel", true);
+            $this->display_page("questionscategorised", "events");
+            return;
+        }
+
+        redirect("/");
     }
 
     /**
@@ -95,7 +101,7 @@ class QC_Events extends QC_Controller {
         }
         echo json_encode($html);
     }
-    
+
     public function getTiposSoportes() {
         $this->load->model("qm_events", "eventsModel", true);
         $html = "<option>Seleccione...</option>";
@@ -105,7 +111,7 @@ class QC_Events extends QC_Controller {
         }
         echo json_encode($html);
     }
-    
+
     public function getPreguntasCategorias() {
         $this->load->model("qm_events", "eventsModel", true);
         $html = "<option>Seleccione...</option>";
@@ -115,7 +121,7 @@ class QC_Events extends QC_Controller {
         }
         echo json_encode($html);
     }
-    
+
     public function getSexo() {
         $this->load->model("qm_events", "eventsModel", true);
         $html = "<option>Seleccione...</option>";
@@ -125,7 +131,7 @@ class QC_Events extends QC_Controller {
         }
         echo json_encode($html);
     }
-    
+
     public function getTiposDocumento() {
         $this->load->model("qm_events", "eventsModel", true);
         $html = "<option>Seleccione...</option>";
@@ -142,10 +148,10 @@ class QC_Events extends QC_Controller {
         $data[0]->municipiosCobertura = $this->eventsModel->getMunicipiosCobertura($_POST["actividadid"]);
         echo json_encode($data);
     }
-    
+
     public function getPersona() {
         $this->load->model("qm_events", "eventsModel", true);
-        $data = $this->eventsModel->getPersona($_POST["personaid"]);        
+        $data = $this->eventsModel->getPersona($_POST["personaid"]);
         echo json_encode($data);
     }
 
@@ -169,7 +175,7 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
-    
+
     public function getPeople() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -200,7 +206,7 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
-    
+
     public function getPreguntasParticipantes() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -224,7 +230,7 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
-    
+
     public function getPreguntasCategorizadas() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -245,7 +251,7 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
-    
+
     public function getSoportesByActividad() {
         $this->load->model("qm_events", "eventsModel", true);
 
@@ -291,7 +297,7 @@ class QC_Events extends QC_Controller {
 
         echo $actividadid;
     }
-    
+
     public function saveParticipantePregunta() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -300,7 +306,7 @@ class QC_Events extends QC_Controller {
         $array["preguntasCategoriaId"] = $_POST["preguntasCategoriaId"];
         $array["actividadid"] = $_POST["actividadid"];
         $actividadpersona_pregunta_id = $_POST["actividadpersona_pregunta_id"];
-        
+
         if ($actividadpersona_pregunta_id != "0") {
             $this->eventsModel->updateParticipantePregunta($_POST["actividadpersona_pregunta_id"], $array);
         } else {
@@ -309,14 +315,14 @@ class QC_Events extends QC_Controller {
 
         echo $actividadpersona_pregunta_id;
     }
-    
+
     public function saveParticipanteCategorizada() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["inquietudid"] = $_POST["inquietudid"];
         $array["inquietud"] = $_POST["inquietud"];
         $inquietudid = $array["inquietudid"];
-        
+
         if ($inquietudid != "0") {
             $this->eventsModel->updatePreguntaCategorizada($inquietudid, $array);
         } else {
@@ -325,7 +331,7 @@ class QC_Events extends QC_Controller {
 
         echo $inquietudid;
     }
-    
+
     public function savePersona() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -343,62 +349,58 @@ class QC_Events extends QC_Controller {
         $array["cargo"] = $_POST["cargo"];
         $array["entidad"] = $_POST["entidad"];
         $array["fechanac"] = $_POST["fechanac"];
-        
+
         $personaid = $_POST["personaid"];
         if ($personaid != "0") {
             $personaid = $this->eventsModel->updatePersona($_POST["personaid"], $array);
         } else {
             $personaid = $this->eventsModel->insertPersona($array);
         }
-        
+
         echo $personaid;
     }
-    
+
     public function setPersonaActividad() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["personaid"] = $_POST["personaid"];
         $array["actividadid"] = $_POST["actividadid"];
-       
-        echo  $this->eventsModel->setPersonaActividad($array);
-        
-        
+
+        echo $this->eventsModel->setPersonaActividad($array);
     }
-    
+
     public function removePersonaActividad() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["personaid"] = $_POST["personaid"];
         $array["actividadid"] = $_POST["actividadid"];
-       
-        echo  $this->eventsModel->removePersonaActividad($array);
-        
-        
+
+        echo $this->eventsModel->removePersonaActividad($array);
     }
-    
+
     public function deletePreguntasParticipantes() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["id"] = $_POST["id"];
-       
-        echo  $this->eventsModel->deletePreguntasParticipantes($array);
+
+        echo $this->eventsModel->deletePreguntasParticipantes($array);
     }
-    
+
     public function deletePreguntasCategorizadas() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["id"] = $_POST["id"];
-       
-        echo  $this->eventsModel->deletePreguntasCategorizadas($array);
+
+        echo $this->eventsModel->deletePreguntasCategorizadas($array);
     }
-    
-    public function getPersonasActividad(){ 
+
+    public function getPersonasActividad() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["actividadid"] = $_POST["actividadid"];
-       
-        $data =  $this->eventsModel->getPersonaActividad($array);
-        
+
+        $data = $this->eventsModel->getPersonaActividad($array);
+
         $htmlTable = "";
         foreach ($data as $key => $value) {
             $htmlTable .= "<tr>
@@ -427,7 +429,7 @@ class QC_Events extends QC_Controller {
         $actividadid = $_POST["actividadid"];
         $descripcion = $_POST["descripcion"];
         $user = $this->session->userdata("inRUserID");
-        
+
         $this->load->library('aws_sdk');
         $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/' . $this->config->item('app_dir') . '/public/uploads/tmp/';
         $nameFile = date("Y_m_d_His") . basename($_FILES['itemUpload']['name']);
@@ -448,26 +450,26 @@ class QC_Events extends QC_Controller {
             }
         }
     }
-    
-    public function updateSoporte(){
+
+    public function updateSoporte() {
         $this->load->model("qm_events", "eventsModel", true);
         $actividadessoportesid = $_POST["actividadessoportesid"];
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
-        
+
         $query = "UPDATE actividadessoportes SET descripcion = '$descripcion', nombre = '$nombre' WHERE actividadessoportesid = $actividadessoportesid";
         $this->eventsModel->insertSoporte($query);
-        
+
         echo "ok";
     }
-    
-    public function disabledSoporte(){
+
+    public function disabledSoporte() {
         $this->load->model("qm_events", "eventsModel", true);
         $actividadessoportesid = $_POST["actividadessoportesid"];
-        
+
         $query = "UPDATE actividadessoportes SET estado = 'I' WHERE actividadessoportesid = $actividadessoportesid";
         $this->eventsModel->insertSoporte($query);
-        
+
         echo "ok";
     }
 
