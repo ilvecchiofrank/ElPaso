@@ -69,6 +69,11 @@ class QC_Events extends QC_Controller {
         $this->load->vars($data);
         $this->display_page("questions", "events");
     }
+    
+    public function questionsCategorised() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $this->display_page("questionsCategorised", "events");
+    }
 
     /**
      * Function dash
@@ -220,6 +225,27 @@ class QC_Events extends QC_Controller {
         echo $htmlTable;
     }
     
+    public function getPreguntasCategorizadas() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+
+        $data = $this->eventsModel->searchPreguntasCategorizadas();
+
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr>
+                                <td>$value->pregunta_categorizada_id</td>
+                                <td>$value->pregunta_categorizadatxt</td>
+                                <td> 
+                                    <button class='btn btn-warning' onclick='updateQuestionCategorised($value->pregunta_categorizada_id, \"$value->pregunta_categorizadatxt\");'>Editar</button>
+                                    <button class='btn btn-danger' onclick='deletePreguntasCategorizadas($value->pregunta_categorizada_id);'>Eliminar</button>
+                                 </td>
+                            </tr>";
+        }
+
+        echo $htmlTable;
+    }
+    
     public function getSoportesByActividad() {
         $this->load->model("qm_events", "eventsModel", true);
 
@@ -284,6 +310,22 @@ class QC_Events extends QC_Controller {
         echo $actividadpersona_pregunta_id;
     }
     
+    public function saveParticipanteCategorizada() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["inquietudid"] = $_POST["inquietudid"];
+        $array["inquietud"] = $_POST["inquietud"];
+        $inquietudid = $array["inquietudid"];
+        
+        if ($inquietudid != "0") {
+            $this->eventsModel->updatePreguntaCategorizada($inquietudid, $array);
+        } else {
+            $inquietudid = $this->eventsModel->insertPreguntaCategorizada($array);
+        }
+
+        echo $inquietudid;
+    }
+    
     public function savePersona() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -340,6 +382,14 @@ class QC_Events extends QC_Controller {
         $array["id"] = $_POST["id"];
        
         echo  $this->eventsModel->deletePreguntasParticipantes($array);
+    }
+    
+    public function deletePreguntasCategorizadas() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["id"] = $_POST["id"];
+       
+        echo  $this->eventsModel->deletePreguntasCategorizadas($array);
     }
     
     public function getPersonasActividad(){ 

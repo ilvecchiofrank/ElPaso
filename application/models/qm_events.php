@@ -103,9 +103,27 @@ class QM_Events extends CI_Model {
         
     }
     
+    public function insertPreguntaCategorizada($arrayData) {
+            $this->db->query("INSERT INTO preguntas_categorizadas (pregunta_categorizadatxt) 
+                                        VALUES ('$arrayData[inquietud]')
+                                    ");
+            $data = $this->db->query("SELECT MAX(pregunta_categorizada_id) as pregunta_categorizada_id FROM preguntas_categorizadas");
+            $data = $data->result();
+            return $data[0]->id;
+        
+    }
+    
     public function updateParticipantePregunta($id, $arrayData) {
             $this->db->query("UPDATE actividadpersona_preguntas SET preguntacategoriaid = $arrayData[preguntasCategoriaId], pregunta_txt = '$arrayData[inquietud]'
                               WHERE actividadpersona_pregunta_id = $id
+                            ");
+            return $id;
+        
+    }
+    
+    public function updatePreguntaCategorizada($id, $arrayData) {
+            $this->db->query("UPDATE preguntas_categorizadas SET pregunta_categorizadatxt = '$arrayData[inquietud]'
+                              WHERE pregunta_categorizada_id = $id
                             ");
             return $id;
         
@@ -369,9 +387,20 @@ class QM_Events extends CI_Model {
         return $query->result();
     }
     
+    public function searchPreguntasCategorizadas(){
+        $query = $this->db->query("SELECT * FROM preguntas_categorizadas a");
+        return $query->result();
+    }
+    
     public function deletePreguntasParticipantes($parametros){
         $query = $this->db->query("DELETE FROM actividadpersona_preguntas
                                    WHERE actividadpersona_pregunta_id = $parametros[id]");
+        return true;
+    }
+    
+    public function deletePreguntasCategorizadas($parametros){
+        $query = $this->db->query("DELETE FROM preguntas_categorizadas
+                                   WHERE pregunta_categorizada_id = $parametros[id]");
         return true;
     }
 
