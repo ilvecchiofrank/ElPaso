@@ -8,7 +8,7 @@ var jqueryDatatable = null;
 function saveQuestionCategorised() {
     if (validate()) {
         $.ajax({
-            url: "index.php/events/saveParticipanteCategorizada",
+            url: "index.php/events/savePreguntaCategorizada",
             type: "POST",
             data: {
                 "csrf_test_name": get_csrf_hash,

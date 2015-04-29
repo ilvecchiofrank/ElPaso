@@ -40,6 +40,7 @@ class QM_Events extends CI_Model {
         $query = $this->db->query('SELECT *  from tipos_documento');
         return $query->result();
     }
+    
     public function getPreguntasCategorias() {
         $query = $this->db->query('SELECT *  from preguntas_categorias');
         return $query->result();
@@ -107,7 +108,17 @@ class QM_Events extends CI_Model {
             $this->db->query("INSERT INTO preguntas_categorizadas (pregunta_categorizadatxt) 
                                         VALUES ('$arrayData[inquietud]')
                                     ");
-            $data = $this->db->query("SELECT MAX(pregunta_categorizada_id) as pregunta_categorizada_id FROM preguntas_categorizadas");
+            $data = $this->db->query("SELECT MAX(pregunta_categorizada_id) as id FROM preguntas_categorizadas");
+            $data = $data->result();
+            return $data[0]->id;
+        
+    }
+    
+    public function insertRespuestaCategorizada($arrayData) {
+            $this->db->query("INSERT INTO respuestas_categorias (respuestadescripciontxt) 
+                                        VALUES ('$arrayData[answer]')
+                                    ");
+            $data = $this->db->query("SELECT MAX(respuestacategoriaid) as id FROM respuestas_categorias");
             $data = $data->result();
             return $data[0]->id;
         
@@ -124,6 +135,14 @@ class QM_Events extends CI_Model {
     public function updatePreguntaCategorizada($id, $arrayData) {
             $this->db->query("UPDATE preguntas_categorizadas SET pregunta_categorizadatxt = '$arrayData[inquietud]'
                               WHERE pregunta_categorizada_id = $id
+                            ");
+            return $id;
+        
+    }
+    
+    public function updateRespuestaCategorizada($id, $arrayData) {
+            $this->db->query("UPDATE respuestas_categorias SET respuestadescripciontxt = '$arrayData[answer]'
+                              WHERE respuestacategoriaid = $id
                             ");
             return $id;
         
@@ -392,6 +411,11 @@ class QM_Events extends CI_Model {
         return $query->result();
     }
     
+    public function searchRespuestasCategorizadas(){
+        $query = $this->db->query("SELECT * FROM respuestas_categorias a");
+        return $query->result();
+    }
+    
     public function deletePreguntasParticipantes($parametros){
         $query = $this->db->query("DELETE FROM actividadpersona_preguntas
                                    WHERE actividadpersona_pregunta_id = $parametros[id]");
@@ -401,6 +425,12 @@ class QM_Events extends CI_Model {
     public function deletePreguntasCategorizadas($parametros){
         $query = $this->db->query("DELETE FROM preguntas_categorizadas
                                    WHERE pregunta_categorizada_id = $parametros[id]");
+        return true;
+    }
+    
+    public function deleteRespuestasCategorizadas($parametros){
+        $query = $this->db->query("DELETE FROM respuestas_categorias
+                                   WHERE respuestacategoriaid = $parametros[id]");
         return true;
     }
 

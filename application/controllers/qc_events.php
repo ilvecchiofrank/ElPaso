@@ -80,6 +80,17 @@ class QC_Events extends QC_Controller {
 
         redirect("/");
     }
+    
+    public function answersCategorised() {
+        if ($this->session->userdata("isLoggedIn")) {
+
+            $this->load->model("qm_events", "eventsModel", true);
+            $this->display_page("answerscategorised", "events");
+            return;
+        }
+
+        redirect("/");
+    }
 
     /**
      * Function dash
@@ -251,6 +262,27 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
+    
+    public function getRespuestasCategorizadas() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+
+        $data = $this->eventsModel->searchRespuestasCategorizadas();
+
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<tr>
+                                <td>$value->respuestacategoriaid</td>
+                                <td>$value->respuestadescripciontxt</td>
+                                <td> 
+                                    <button class='btn btn-warning' onclick='updateAnswerCategorised($value->respuestacategoriaid, \"$value->respuestadescripciontxt\");'>Editar</button>
+                                    <button class='btn btn-danger' onclick='deleteRespuestasCategorizadas($value->respuestacategoriaid);'>Eliminar</button>
+                                 </td>
+                            </tr>";
+        }
+
+        echo $htmlTable;
+    }
 
     public function getSoportesByActividad() {
         $this->load->model("qm_events", "eventsModel", true);
@@ -316,7 +348,7 @@ class QC_Events extends QC_Controller {
         echo $actividadpersona_pregunta_id;
     }
 
-    public function saveParticipanteCategorizada() {
+    public function savePreguntaCategorizada() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
         $array["inquietudid"] = $_POST["inquietudid"];
@@ -330,6 +362,22 @@ class QC_Events extends QC_Controller {
         }
 
         echo $inquietudid;
+    }
+    
+    public function saveRespuestaCategorizada() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["answerid"] = $_POST["answerid"];
+        $array["answer"] = $_POST["answer"];
+        $answerid = $array["answerid"];
+
+        if ($answerid != "0") {
+            $this->eventsModel->updateRespuestaCategorizada($answerid, $array);
+        } else {
+            $answerid = $this->eventsModel->insertRespuestaCategorizada($array);
+        }
+
+        echo $answerid;
     }
 
     public function savePersona() {
@@ -392,6 +440,14 @@ class QC_Events extends QC_Controller {
         $array["id"] = $_POST["id"];
 
         echo $this->eventsModel->deletePreguntasCategorizadas($array);
+    }
+    
+    public function deleteRespuestasCategorizadas() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["id"] = $_POST["id"];
+
+        echo $this->eventsModel->deleteRespuestasCategorizadas($array);
     }
 
     public function getPersonasActividad() {
