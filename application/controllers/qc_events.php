@@ -34,6 +34,10 @@ class QC_Events extends QC_Controller {
     public function dash() {
         $this->display_page("dash", "events");
     }
+    
+    public function adminevents() {
+        $this->display_page("adminevents", "events");
+    }
 
     public function people($actividadid) {
         $this->load->model("qm_events", "eventsModel", true);

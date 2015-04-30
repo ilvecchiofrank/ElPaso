@@ -42,7 +42,7 @@ class QC_User extends QC_Controller {
 
              case 1:
                  //echo "Admin";
-                 redirect("events/questionsCategorised");
+                 redirect("events/adminevents");
                  break;
             // case 2:
             //     echo "Usuario";
