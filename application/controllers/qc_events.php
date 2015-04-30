@@ -237,7 +237,7 @@ class QC_Events extends QC_Controller {
                                 <td>$value->categoriatxt</td>
                                 <td>$value->inquietud</td>
                                 <td> 
-                                    <button class='btn btn-warning' onclick='updateQuestion($value->id, $value->categoria,\"$value->inquietud\");'>Editar</button>
+                                    <button class='btn btn-warning' onclick='updateQuestion($value->id, $value->categoria,\"$value->inquietud\", \"$value->respuesta\", $value->preguntaCategoria, $value->respuestaCategoria);'>Editar</button>
                                     <button class='btn btn-danger' onclick='deletePreguntasParticipantes($value->id);'>Eliminar</button>
                                  </td>
                             </tr>";
@@ -266,7 +266,21 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
+    
+    public function getPreguntasCategorizadasSelect() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
 
+        $data = $this->eventsModel->searchPreguntasCategorizadas();
+
+        $htmlTable = "<option value='0'>Seleccione...</option>";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<option value='$value->pregunta_categorizada_id'>$value->pregunta_categorizadatxt</option>";
+        }
+
+        echo json_encode($htmlTable);
+    }
+    
     public function getPreguntasCategorizadasAnswers() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -323,6 +337,20 @@ class QC_Events extends QC_Controller {
         }
 
         echo $htmlTable;
+    }
+    
+    public function getRespuestasCategorizadasSelect() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+
+        $data = $this->eventsModel->searchRespuestasCategorizadas();
+
+        $htmlTable = "<option value='0'>Seleccione...</option>";
+        foreach ($data as $key => $value) {
+            $htmlTable .= "<option value='$value->respuestacategoriaid'>$value->respuestadescripciontxt</option>";
+        }
+
+        echo json_encode($htmlTable);
     }
 
     public function getSoportesByActividad() {
@@ -396,6 +424,10 @@ class QC_Events extends QC_Controller {
         $array["inquietud"] = $_POST["inquietud"];
         $array["preguntasCategoriaId"] = $_POST["preguntasCategoriaId"];
         $array["actividadid"] = $_POST["actividadid"];
+        $array["respuesta"] = $_POST["respuesta"];
+        $array["categoriaInquietud"] = $_POST["categoriaInquietud"];
+        $array["categoriaRespuesta"] = $_POST["categoriaRespuesta"];
+        
         $actividadpersona_pregunta_id = $_POST["actividadpersona_pregunta_id"];
 
         if ($actividadpersona_pregunta_id != "0") {
@@ -586,6 +618,11 @@ class QC_Events extends QC_Controller {
         $this->eventsModel->insertSoporte($query);
 
         echo "ok";
+    }
+    
+    public function getAnsweridForQuestionid(){
+        $this->load->model("qm_events", "eventsModel", true);
+        echo json_encode($this->eventsModel->getAnsweridForQuestionid($_GET["questionid"]));
     }
 
 }

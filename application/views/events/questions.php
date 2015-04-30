@@ -52,6 +52,22 @@
             <label>Inquietud</label>
             <textarea style="max-width: 100%; min-height: 200px;" id="inquietud" class="form-control"></textarea>
             <br/>
+            <br/>
+            <label>Respuesta dada</label>
+            <textarea style="max-width: 100%; min-height: 200px;" id="respuesta" class="form-control"></textarea>
+            <br/>
+            <label>Categoría inquietud manifestada</label>
+            <br/>
+            <select id='categoriaInquietud' class="form-control">
+                <option>Seleccione...</option>
+            </select>
+            <br/>
+            <label>Categoría respuesta dada</label>
+            <br/>
+            <select id='categoriaRespuesta' class="form-control">
+                <option>Seleccione...</option>
+            </select>
+            <br/>
             <label>Agregar Inquietud</label>
             <button id="save" onclick='saveParticipantePregunta();' class="btn btn-success">Guardar</button>
         </div>

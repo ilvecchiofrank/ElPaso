@@ -95,8 +95,14 @@ class QM_Events extends CI_Model {
     }
     
     public function insertParticipantePregunta($arrayData) {
-            $this->db->query("INSERT INTO actividadpersona_preguntas (actividadpersona_id, preguntacategoriaid, pregunta_txt) 
-                                        VALUES ((SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $arrayData[personaid] AND actividadid = $arrayData[actividadid]), $arrayData[preguntasCategoriaId], '$arrayData[inquietud]')
+            $this->db->query("INSERT INTO actividadpersona_preguntas (actividadpersona_id, preguntacategoriaid, pregunta_txt, respuesta_txt, pregunta_categorizada_id, respuestacategoriaid) 
+                                        VALUES ((SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $arrayData[personaid] AND actividadid = $arrayData[actividadid]), 
+                                        $arrayData[preguntasCategoriaId], 
+                                        '$arrayData[inquietud]',
+                                        '$arrayData[respuesta]',
+                                        $arrayData[categoriaInquietud],
+                                        $arrayData[categoriaRespuesta]
+                                        )
                                     ");
             $data = $this->db->query("SELECT MAX(actividadpersona_pregunta_id) as id FROM actividadpersona_preguntas");
             $data = $data->result();
@@ -125,7 +131,12 @@ class QM_Events extends CI_Model {
     }
     
     public function updateParticipantePregunta($id, $arrayData) {
-            $this->db->query("UPDATE actividadpersona_preguntas SET preguntacategoriaid = $arrayData[preguntasCategoriaId], pregunta_txt = '$arrayData[inquietud]'
+            $this->db->query("UPDATE actividadpersona_preguntas SET 
+                                preguntacategoriaid = $arrayData[preguntasCategoriaId], 
+                                pregunta_txt = '$arrayData[inquietud]',        
+                                respuesta_txt = '$arrayData[respuesta]',        
+                                pregunta_categorizada_id = $arrayData[categoriaInquietud],        
+                                respuestacategoriaid = $arrayData[categoriaRespuesta]        
                               WHERE actividadpersona_pregunta_id = $id
                             ");
             return $id;
@@ -400,7 +411,7 @@ class QM_Events extends CI_Model {
     }
     
     public function searchPreguntasParticipantes($parametros){
-        $query = $this->db->query("SELECT a.actividadpersona_pregunta_id as id, b.preguntadescripciontxt as categoriatxt,a.preguntacategoriaid as categoria, a.pregunta_txt as inquietud FROM actividadpersona_preguntas a
+        $query = $this->db->query("SELECT a.actividadpersona_pregunta_id as id, b.preguntadescripciontxt as categoriatxt,a.preguntacategoriaid as categoria, a.pregunta_txt as inquietud, if(a.respuesta_txt IS NULL, ' ', a.respuesta_txt) as respuesta, if(a.pregunta_categorizada_id IS NULL, 0, a.pregunta_categorizada_id) as preguntaCategoria, if(a.respuestacategoriaid IS NULL, 0, a.respuestacategoriaid) as respuestaCategoria FROM actividadpersona_preguntas a
                                     INNER JOIN preguntas_categorias b ON a.preguntacategoriaid = b.preguntacategoriaid
                                     WHERE a.actividadpersona_id = (SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $parametros[personaid] AND actividadid = $parametros[actividadid])");
         return $query->result();
@@ -453,6 +464,12 @@ class QM_Events extends CI_Model {
         $query = $this->db->query("DELETE FROM asignacion_preguntas_respuestas_categorizadas 
                                    WHERE pregunta_categorizada_id = $parametros[questioncategorisedid] AND respuestacategoriaid = $parametros[answercategorisedid]");
         return true;
+    }
+    
+    public function getAnsweridForQuestionid($id){
+        $query = $this->db->query("SELECT IF(COUNT(respuestacategoriaid) > 0, respuestacategoriaid, 0) AS id FROM asignacion_preguntas_respuestas_categorizadas WHERE pregunta_categorizada_id = $id");
+        $query = $query->result();
+        return $query[0]->id;
     }
 
 }

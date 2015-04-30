@@ -1,6 +1,12 @@
 $(document).ready(function() {
     loadSelects();
     getPreguntasParticipantes();
+    
+    $("#categoriaInquietud").change(function() {
+        $.getJSON("index.php/events/getAnsweridForQuestionid?questionid=" + $("#categoriaInquietud").val(), function(id) {
+            $("#categoriaRespuesta").val(id);
+        });
+    });
 });
 
 function loadSelects() {
@@ -8,6 +14,15 @@ function loadSelects() {
     $.getJSON("index.php/events/getPreguntasCategorias/", function(objRData) {
         $("#preguntasCategorias").html(objRData);
     });
+
+    $.getJSON("index.php/events/getPreguntasCategorizadasSelect/", function(html) {
+        $("#categoriaInquietud").html(html);
+    });
+
+    $.getJSON("index.php/events/getRespuestasCategorizadasSelect/", function(html) {
+        $("#categoriaRespuesta").html(html);
+    });
+
 }
 
 var actividadpersona_pregunta_id = 0;
@@ -23,6 +38,9 @@ function saveParticipantePregunta() {
                 "personaid": personaid,
                 "actividadid": actividadid,
                 "inquietud": $("#inquietud").val(),
+                "respuesta": $("#respuesta").val(),
+                "categoriaInquietud": $("#categoriaInquietud").val(),
+                "categoriaRespuesta": $("#categoriaRespuesta").val(),
                 "preguntasCategoriaId": $("#preguntasCategorias").val(),
                 "actividadpersona_pregunta_id": actividadpersona_pregunta_id
             },
@@ -31,7 +49,10 @@ function saveParticipantePregunta() {
                 //setTimeout("window.location = 'index.php/events/dash/';", 1000);
                 setTimeout("$('.rm').remove();", 2000);
                 $("#inquietud").val("");
+                $("#respuesta").val("");
                 $("#preguntasCategorias").val("");
+                $("#categoriaInquietud").val("");
+                $("#categoriaRespuesta").val("");
                 getPreguntasParticipantes();
 
                 if (actividadpersona_pregunta_id != 0) {
@@ -97,9 +118,12 @@ function getPreguntasParticipantes() {
     });
 }
 
-function updateQuestion(id, categoria, inquietud) {
+function updateQuestion(id, categoria, inquietud, respuesta, preguntaCategoria, respuestaCategoria) {
     $("#inquietud").val(inquietud);
     $("#preguntasCategorias").val(categoria);
+    $("#respuesta").val(respuesta);
+    $("#categoriaInquietud").val(preguntaCategoria);
+    $("#categoriaRespuesta").val(respuestaCategoria);
     actividadpersona_pregunta_id = id;
 }
 
