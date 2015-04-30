@@ -80,7 +80,7 @@ class QC_Events extends QC_Controller {
 
         redirect("/");
     }
-    
+
     public function answersCategorised() {
         if ($this->session->userdata("isLoggedIn")) {
 
@@ -262,7 +262,43 @@ class QC_Events extends QC_Controller {
 
         echo $htmlTable;
     }
-    
+
+    public function getPreguntasCategorizadasAnswers() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $data = $this->eventsModel->searchPreguntasCategorizadasAnswers();
+
+        $htmlTable = "";
+        foreach ($data as $key => $value) {
+            if ($value->estado == null || $_POST["answerForSet"] == $value->estado) {
+                $htmlTable .= "<tr>
+                                <td>$value->pregunta_categorizada_id</td>
+                                <td>$value->pregunta_categorizadatxt</td>
+                                <td> 
+                                    <div class=\"btn-group\" data-toggle=\"buttons\">";
+                if ($_POST["answerForSet"] != $value->estado) {
+                    $htmlTable .= "
+                                        <label class=\"btn btn-primary\">
+                                          <input type=\"checkbox\" class=\"insertCheck\" questioncategorisedid=\"$value->pregunta_categorizada_id\" answercategorisedid=\"$value->estado\"> Asignar
+                                        </label>
+                                    </div>
+                                 </td>
+                            </tr>";
+                } else {
+                    $htmlTable .= "
+                                        <label class=\"btn btn-primary active\">
+                                          <input type=\"checkbox\" class=\"deleteCheck\" questioncategorisedid=\"$value->pregunta_categorizada_id\" answercategorisedid=\"$value->estado\" checked> Asignado
+                                        </label>
+                                    </div>
+                                 </td>
+                            </tr>";
+                }
+            }
+        }
+
+        echo $htmlTable;
+    }
+
     public function getRespuestasCategorizadas() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -275,6 +311,7 @@ class QC_Events extends QC_Controller {
                                 <td>$value->respuestacategoriaid</td>
                                 <td>$value->respuestadescripciontxt</td>
                                 <td> 
+                                    <button class='btn btn-success' onclick='showAnswer($value->respuestacategoriaid, \"$value->respuestadescripciontxt\");'>Seleccionar</button>
                                     <button class='btn btn-warning' onclick='updateAnswerCategorised($value->respuestacategoriaid, \"$value->respuestadescripciontxt\");'>Editar</button>
                                     <button class='btn btn-danger' onclick='deleteRespuestasCategorizadas($value->respuestacategoriaid);'>Eliminar</button>
                                  </td>
@@ -329,6 +366,24 @@ class QC_Events extends QC_Controller {
 
         echo $actividadid;
     }
+    
+    public function setQuestionAnswerCategorised() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["questioncategorisedid"] = $_POST["questioncategorisedid"];
+        $array["answercategorisedid"] = $_POST["answercategorisedid"];
+        
+        echo $this->eventsModel->insertAsignacionPreguntasRespuestasCategorizadas($array);
+    }
+    
+    public function deleteQuestionAnswerCategorised() {
+        $this->load->model("qm_events", "eventsModel", true);
+        $array = [];
+        $array["questioncategorisedid"] = $_POST["questioncategorisedid"];
+        $array["answercategorisedid"] = $_POST["answercategorisedid"];
+        
+        echo $this->eventsModel->deleteAsignacionPreguntasRespuestasCategorizadas($array);
+    }
 
     public function saveParticipantePregunta() {
         $this->load->model("qm_events", "eventsModel", true);
@@ -363,7 +418,7 @@ class QC_Events extends QC_Controller {
 
         echo $inquietudid;
     }
-    
+
     public function saveRespuestaCategorizada() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];
@@ -441,7 +496,7 @@ class QC_Events extends QC_Controller {
 
         echo $this->eventsModel->deletePreguntasCategorizadas($array);
     }
-    
+
     public function deleteRespuestasCategorizadas() {
         $this->load->model("qm_events", "eventsModel", true);
         $array = [];

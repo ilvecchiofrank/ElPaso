@@ -411,6 +411,12 @@ class QM_Events extends CI_Model {
         return $query->result();
     }
     
+    public function searchPreguntasCategorizadasAnswers(){
+        $query = $this->db->query("SELECT a.*, b.respuestacategoriaid AS estado FROM preguntas_categorizadas a
+                                    LEFT JOIN asignacion_preguntas_respuestas_categorizadas b ON a.pregunta_categorizada_id = b.pregunta_categorizada_id");
+        return $query->result();
+    }
+    
     public function searchRespuestasCategorizadas(){
         $query = $this->db->query("SELECT * FROM respuestas_categorias a");
         return $query->result();
@@ -429,8 +435,23 @@ class QM_Events extends CI_Model {
     }
     
     public function deleteRespuestasCategorizadas($parametros){
+        $query = $this->db->query("DELETE FROM asignacion_preguntas_respuestas_categorizadas
+                                   WHERE respuestacategoriaid = $parametros[id]");
+        
         $query = $this->db->query("DELETE FROM respuestas_categorias
                                    WHERE respuestacategoriaid = $parametros[id]");
+        return true;
+    }
+    
+    public function insertAsignacionPreguntasRespuestasCategorizadas($parametros){
+        $query = $this->db->query("INSERT INTO asignacion_preguntas_respuestas_categorizadas (pregunta_categorizada_id, respuestacategoriaid)
+                                    VALUES ($parametros[questioncategorisedid], $parametros[answercategorisedid])");
+        return true;
+    }
+    
+    public function deleteAsignacionPreguntasRespuestasCategorizadas($parametros){
+        $query = $this->db->query("DELETE FROM asignacion_preguntas_respuestas_categorizadas 
+                                   WHERE pregunta_categorizada_id = $parametros[questioncategorisedid] AND respuestacategoriaid = $parametros[answercategorisedid]");
         return true;
     }
 

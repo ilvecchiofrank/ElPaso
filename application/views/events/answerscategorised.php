@@ -71,6 +71,9 @@
             </table>
             <br/>
             <br/>
+            <h3 id="answerChoose"></h3>
+            <br/>
+            <br/>
             <legend>Listado de inquietudes categorizadas</legend>
             <table id="tableQuestionsCategorised" class="table table-bordered table-responsive">
                 <thead>

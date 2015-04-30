@@ -1,6 +1,5 @@
 $(document).ready(function() {
     getRespuestasCategorizadas();
-    getPreguntasCategorizadas();
 });
 
 var answerid = 0;
@@ -92,7 +91,7 @@ function updateAnswerCategorised(id, answer) {
 }
 
 function deleteRespuestasCategorizadas(id) {
-    if (confirm("¿Está seguro que desea eliminar la respuesta seleccionada?")) {
+    if (confirm("¿Está seguro que desea eliminar la respuesta seleccionada?, recuerde que la asignación de respuestas a inquietudes categorizadas se perderá!")) {
         $.ajax({
             url: "index.php/events/deleteRespuestasCategorizadas",
             type: "POST",
@@ -113,20 +112,22 @@ function deleteRespuestasCategorizadas(id) {
 }
 
 function getPreguntasCategorizadas() {
-    $("#tableQuestionsCategorised tbody").html("");
+    $("#tableQuestionsCategorised tbody").empty();
     $.ajax({
-        url: "index.php/events/getPreguntasCategorizadas/",
+        url: "index.php/events/getPreguntasCategorizadasAnswers/",
         type: "POST",
         data: {
-            "csrf_test_name": get_csrf_hash
+            "csrf_test_name": get_csrf_hash,
+            "answerForSet": answerForSet
         },
         success: function(data) {
-            $("#tableQuestionsCategorised tbody").html(data);
             if (jqueryDatatableQuestions != null) {
-
-                jqueryDatatableQuestions.destroy();
+                jqueryDatatableQuestions.fnDestroy();
+                $("#tableQuestionsCategorised tbody").empty();
             }
-
+            
+            $("#tableQuestionsCategorised tbody").html(data);
+            
             jqueryDatatableQuestions = $('#tableQuestionsCategorised').dataTable({
                 "language": {
                     "sProcessing": "Procesando...",
@@ -153,6 +154,49 @@ function getPreguntasCategorizadas() {
                     }
                 }
             });
+
+            $(".insertCheck").change(function() {
+                $.ajax({
+                    url: "index.php/events/setQuestionAnswerCategorised/",
+                    type: "POST",
+                    data: {
+                        "csrf_test_name": get_csrf_hash,
+                        "questioncategorisedid": $(this).attr("questioncategorisedid"),
+                        "answercategorisedid": answerForSet
+                    },
+                    success: function(data) {
+                        getPreguntasCategorizadas();
+                        console.log("Asigno despues del insert");
+                    },
+                    error: function() {
+
+                    }
+                });
+            });
+
+            $(".deleteCheck").change(function() {
+                $.ajax({
+                    url: "index.php/events/deleteQuestionAnswerCategorised/",
+                    type: "POST",
+                    data: {
+                        "csrf_test_name": get_csrf_hash,
+                        "questioncategorisedid": $(this).attr("questioncategorisedid"),
+                        "answercategorisedid": answerForSet
+                    },
+                    success: function(data) {
+                        getPreguntasCategorizadas();
+                    },
+                    error: function() {
+
+                    }
+                });
+            });
         }
     });
+}
+var answerForSet = 0;
+function showAnswer(id, answer) {
+    answerForSet = id;
+    $("#answerChoose").html("Respuesta seleccionada: " + id + " - " + answer);
+    getPreguntasCategorizadas();
 }
