@@ -232,18 +232,28 @@ function deleteSoporte(id) {
 
 function validate() {
     var error = true;
+
+    //Completitud
     if($("#fechaini").val() == "" || $("#horainicio").val() == "" || $("#fechafin").val() == "" || $("#horafin").val() == ""){
         error = false;
         alert("Los campos de fecha y hora son obligatorios!");
     }
-    
-    if (new Date($("#fechaini").val() + " " + $("#horainicio").val()) > new Date($("#fechafin").val() + " " + $("#horafin").val())) {
-        alert("La fecha y hora de inicio no puede ser mayor a la fecha y hora de finalización!");
-        $("#fechaini").val("");
-        $("#horainicio").val("");
-        $("#fechafin").val("");
-        $("#horafin").val("");
-        error = false;
+
+    //Comparar fechas
+    if (new Date($("#fechaini").val()) > new Date($("#fechafin").val())) {
+        //Inicio mayor a fin
+        alert("La fecha de inicio no puede ser mayor a la fecha de finalización!");
     }
+
+
+    
+    // if (new Date($("#fechaini").val() + " " + $("#horainicio").val()) > new Date($("#fechafin").val() + " " + $("#horafin").val())) {
+    //     alert("La fecha y hora de inicio no puede ser mayor a la fecha y hora de finalización!");
+    //     $("#fechaini").val("");
+    //     $("#horainicio").val("");
+    //     $("#fechafin").val("");
+    //     $("#horafin").val("");
+    //     error = false;
+    // }
     return error;
 }

@@ -19,11 +19,9 @@ function loadData(){
         },
         success: function(data) {
             $("#tableContentEvents tbody").html(data);
-            
             if(jqueryDatatable != undefined){
                 table.destroy();
             }
-            
             jqueryDatatable = $('#tableContentEvents').dataTable({
                 "language": {
                                 "sProcessing":     "Procesando...",
