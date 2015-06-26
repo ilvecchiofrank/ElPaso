@@ -233,20 +233,37 @@ function deleteSoporte(id) {
 function validate() {
     var error = true;
 
+console.log("Ini: " + $("#fechaini").val());
+console.log("Fin: " + $("#fechafin").val());
+console.log("Hora Ini: " + $("#horainicio").val());
+console.log("Hora Fin: " + $("#horafin").val());
+
     //Completitud
     if($("#fechaini").val() == "" || $("#horainicio").val() == "" || $("#fechafin").val() == "" || $("#horafin").val() == ""){
         error = false;
         alert("Los campos de fecha y hora son obligatorios!");
+        return;
     }
 
     //Comparar fechas
     if (new Date($("#fechaini").val()) > new Date($("#fechafin").val())) {
         //Inicio mayor a fin
         alert("La fecha de inicio no puede ser mayor a la fecha de finalización!");
+        error = false;
+        return;
+    }else{
+
+        if ($("#fechaini").val() == $("#fechafin").val()) {
+            console.log("Fechas iguales!");
+            //Fechas iguales
+            if ($("#horainicio").val() > $("#horafin").val()) {
+                alert("La hora de inicio no puede ser mayor a la hora de finalización!");
+                error = false;
+                return;
+            }
+        }
     }
 
-
-    
     // if (new Date($("#fechaini").val() + " " + $("#horainicio").val()) > new Date($("#fechafin").val() + " " + $("#horafin").val())) {
     //     alert("La fecha y hora de inicio no puede ser mayor a la fecha y hora de finalización!");
     //     $("#fechaini").val("");
