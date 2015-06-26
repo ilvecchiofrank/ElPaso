@@ -24,6 +24,8 @@
 
 <section class="main-content">
     <div class="container">
+        <h3>Registro único de Personas - RUP</h3>
+        <br/>
         <h1>Formulario de búsqueda de actividades</h1>
         <legend></legend>
         <div id="filter">
