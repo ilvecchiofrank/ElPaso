@@ -125,6 +125,11 @@ function updateQuestion(id, categoria, inquietud, respuesta, preguntaCategoria, 
     $("#categoriaInquietud").val(preguntaCategoria);
     $("#categoriaRespuesta").val(respuestaCategoria);
     actividadpersona_pregunta_id = id;
+
+    $('html, body').animate({
+        scrollTop: $("#preguntasCategorias").offset().top
+    }, 2000);
+
 }
 
 function deletePreguntasParticipantes(id) {
