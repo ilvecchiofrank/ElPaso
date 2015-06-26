@@ -128,7 +128,7 @@ function updateQuestion(id, categoria, inquietud, respuesta, preguntaCategoria, 
 
     $('html, body').animate({
         scrollTop: $("#preguntasCategorias").offset().top
-    }, 2000);
+    }, 1000);
 
 }
 
