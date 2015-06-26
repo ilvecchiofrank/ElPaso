@@ -71,7 +71,7 @@
             </table>
             <br/>
             <br/>
-            <input type="button" style="margin: 0 auto;" onclick="window.location = 'index.php/' + actividadid;" value="Volver" class="btn btn-success" />
+            <input type="button" style="margin: 0 auto;" onclick="window.location = 'index.php/events/adminevents';" value="Regresar" class="btn btn-success" />
             <br/>
             <br/>
         </div>

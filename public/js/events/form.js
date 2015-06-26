@@ -233,11 +233,6 @@ function deleteSoporte(id) {
 function validate() {
     var error = true;
 
-console.log("Ini: " + $("#fechaini").val());
-console.log("Fin: " + $("#fechafin").val());
-console.log("Hora Ini: " + $("#horainicio").val());
-console.log("Hora Fin: " + $("#horafin").val());
-
     //Completitud
     if($("#fechaini").val() == "" || $("#horainicio").val() == "" || $("#fechafin").val() == "" || $("#horafin").val() == ""){
         error = false;
@@ -272,5 +267,6 @@ console.log("Hora Fin: " + $("#horafin").val());
     //     $("#horafin").val("");
     //     error = false;
     // }
+
     return error;
 }
