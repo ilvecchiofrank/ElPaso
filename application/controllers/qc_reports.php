@@ -14,7 +14,7 @@
  */
 class QC_Reports extends QC_Controller {
 
-    /** Funcion index redirecciona a dash */
+    /** Funcion index redirecciona a reporte general de actividades */
     public function index() {
         $this->activityReport();
         return;
