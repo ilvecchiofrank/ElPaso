@@ -17,7 +17,7 @@ class QC_Reports extends QC_Controller {
     /** Funcion index redirecciona a dash */
     public function index() {
         echo "index";
-        $this->display_page("activityReport", "reports");
+        $this->display_page("activityReport", "report");
         return;
     }
 
