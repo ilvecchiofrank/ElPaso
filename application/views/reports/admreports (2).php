@@ -32,8 +32,8 @@
         <legend>Modulos disponibles para el administrador de actividades:</legend>
         <br/>
         <div style="width: 100%; text-align: center;" >
-            <a href="index.php/reports/activityReport" class="btn btn-default">Reporte de actividades</a>
-            <a href="index.php/reports/activityDetailedReport" class="btn btn-warning">Reporte de actividad detallada</a>
+            <a href="index.php/events/answersCategorised" class="btn btn-default">Reporte de actividades</a>
+            <a href="index.php/events/admReports" class="btn btn-warning">Reporte de actividad detallada</a>
         </div>
         <!-- <a href="#" class="btn btn-success"></a> -->
         
