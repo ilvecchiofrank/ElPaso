@@ -48,7 +48,7 @@ $route['certifications'] = "qc_certifications/index";
 $route['certifications/(:any)'] = "qc_certifications/$1";
 $route['events'] = "qc_events/index";
 $route['reports'] = "qc_reports/index";
-$route['reports/(:any)'] = "qc_user/do_$1";
+$route['reports/(:any)'] = "qc_reports/$1";
 $route['events/(:any)'] = "qc_events/$1";
 $route['user/do_(:any)'] = "qc_user/do_$1";
 
