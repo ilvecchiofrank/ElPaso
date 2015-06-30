@@ -22,20 +22,22 @@ class QC_Reports extends QC_Controller {
 
     /* Cargar reporte general de actividades */
     public function activityReport() {
-        if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("alt_search", "form");
-            return;
-        }
-        redirect("/");
+        echo "Report";
+        // if ($this->session->userdata("isLoggedIn")) {
+        //     $this->display_page("alt_search", "form");
+        //     return;
+        // }
+        // redirect("/");
     }
 
     /* Cargar reporte detallado de actividades */
     public function activityDetailedReport() {
-        if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("cce", "form");
-            return;
-        }
-        redirect("/");
+        echo "DetReport";
+        // if ($this->session->userdata("isLoggedIn")) {
+        //     $this->display_page("cce", "form");
+        //     return;
+        // }
+        // redirect("/");
     }
 
 }
