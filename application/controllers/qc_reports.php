@@ -23,7 +23,7 @@ class QC_Reports extends QC_Controller {
     /* Cargar reporte general de actividades */
     public function activityReport() {
         if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("activityReport", "reports");
+            $this->display_page("activityreport", "reports");
             return;
         }
         redirect("/");
@@ -31,12 +31,11 @@ class QC_Reports extends QC_Controller {
 
     /* Cargar reporte detallado de actividades */
     public function activityDetailedReport() {
-        echo "DetReport";
-        // if ($this->session->userdata("isLoggedIn")) {
-        //     $this->display_page("cce", "form");
-        //     return;
-        // }
-        // redirect("/");
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("activitydetailedreport", "reports");
+            return;
+        }
+        redirect("/");
     }
 
 }
