@@ -23,7 +23,7 @@ class QC_Reports extends QC_Controller {
     /* Cargar reporte general de actividades */
     public function activityReport() {
         if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("alt_search", "form");
+            $this->display_page("activityReport", "reports");
             return;
         }
         redirect("/");
