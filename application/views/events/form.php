@@ -28,7 +28,7 @@
         <legend>1. Datos basicos actividad</legend>
         <div id="filter">
             <label>
-                Tipo Evento:
+                Tipo Actividad:
             </label>
             <select id="actividadTipos" class="form-control">
                 <option>

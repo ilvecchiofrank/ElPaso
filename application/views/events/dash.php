@@ -46,7 +46,7 @@
             </select>
             
             <label>
-                Tipo Evento:
+                Tipo Actividad:
             </label>
             <select id="actividadTipos" class="form-control">
                 <option>
@@ -89,10 +89,10 @@
                             Municipio
                         </th>
                         <th>
-                            Tipo Evento
+                            Tipo Actividad
                         </th>
                         <th>
-                            Sitio Evento
+                            Sitio Actividad
                         </th>
                         <th>
                             Fecha Inicio

@@ -39,6 +39,17 @@ class QC_Events extends QC_Controller {
         $this->display_page("adminevents", "events");
     }
 
+    public function admReports() {
+        if ($this->session->userdata("isLoggedIn")) {
+
+            $this->load->model("qm_events", "eventsModel", true);
+            $this->display_page("admreports", "events");
+            return;
+        }
+
+        redirect("/");
+    }
+
     public function people($actividadid) {
         $this->load->model("qm_events", "eventsModel", true);
         $dataMiga = $this->eventsModel->getMigaParticipantes($actividadid);
