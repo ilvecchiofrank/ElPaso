@@ -5,15 +5,15 @@ if (!defined('BASEPATH'))
 
 /**
  *
- * Administra modulo de eventos y actividades
+ * Modulo de reportes
  *
  * @category    Application
  * @package     Controllers
  * @version     CVS: $Id:$
  * @version     PHP: 5.x
  * @since       File available since Release 1.0
- * @author      Juan Camilo Martinez Morales <juan.martinez@mggroup.com.co>
- * @link        http://twitter.com/xogost/
+ * @author      Pedro Cruz <pedro.cruz@mggroup.com.co>
+ * @link        http://twitter.com/decilantro/
  */
 class QC_Reports extends QC_Controller {
 
@@ -30,7 +30,7 @@ class QC_Reports extends QC_Controller {
     /* Cargar reporte general de actividades */
     public function activityReport() {
         if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("activityreport", "reports");
+            $this->display_page("alt_search", "form");
             return;
         }
         redirect("/");
@@ -39,7 +39,7 @@ class QC_Reports extends QC_Controller {
     /* Cargar reporte detallado de actividades */
     public function activityDetailedReport() {
         if ($this->session->userdata("isLoggedIn")) {
-            $this->display_page("activitydetailedreport", "reports");
+            $this->display_page("cce", "form");
             return;
         }
         redirect("/");
