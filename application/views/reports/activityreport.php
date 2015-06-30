@@ -27,8 +27,10 @@
 
 <section class="main-content">
     <div class="container" style="min-height: 500px;">
-        <h1>Reporte De Actividades</h1>
-        <br>
+        <h1>PROYECTO HIDROELÉCRICO EL PASO</h1>
+        <br/>
+        <h2>REPORTE DE ACTIVIDADES</h2>
+        <br/>
         <legend>Modulos disponibles para el administrador de actividades:</legend>
         <br/>
         <div style="width: 100%; text-align: center;" >
