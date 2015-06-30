@@ -1,7 +1,4 @@
-<?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  *
@@ -19,12 +16,8 @@ class QC_Reports extends QC_Controller {
 
     /** Funcion index redirecciona a dash */
     public function index() {
-        $this->dash();
-    }
-
-    /* Cargar Dashboard*/
-    public function dash() {
         $this->display_page("dash", "events");
+        return;
     }
 
     /* Cargar reporte general de actividades */
