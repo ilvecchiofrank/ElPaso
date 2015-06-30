@@ -16,29 +16,26 @@ class QC_Reports extends QC_Controller {
 
     /** Funcion index redirecciona a dash */
     public function index() {
-        echo "index";
-        // $this->display_page("dash", "events");
-        // return;
+        $this->display_page("activityReport", "reports");
+        return;
     }
 
     /* Cargar reporte general de actividades */
     public function activityReport() {
-        echo "actreport";
-        // if ($this->session->userdata("isLoggedIn")) {
-        //     $this->display_page("alt_search", "form");
-        //     return;
-        // }
-        // redirect("/");
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("alt_search", "form");
+            return;
+        }
+        redirect("/");
     }
 
     /* Cargar reporte detallado de actividades */
     public function activityDetailedReport() {
-        echo "dreport";
-        // if ($this->session->userdata("isLoggedIn")) {
-        //     $this->display_page("cce", "form");
-        //     return;
-        // }
-        // redirect("/");
+        if ($this->session->userdata("isLoggedIn")) {
+            $this->display_page("cce", "form");
+            return;
+        }
+        redirect("/");
     }
 
 }
