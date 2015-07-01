@@ -27,17 +27,21 @@
 
 <section class="main-content">
     <div class="container" style="min-height: 500px;">
-        <h4>PROYECTO HIDROELÉCRICO EL PASO</h4>
+        <h4 style="text-align: center;">PROYECTO HIDROELÉCRICO EL PASO</h4>
         <br/>
-        <h5>REPORTE DE ACTIVIDADES</h5>
-        <br/>
-        <legend>Modulos disponibles para el administrador de actividades:</legend>
+        <h5 style="text-align: center;">REPORTE DE ACTIVIDADES</h5>
         <br/>
         <div style="width: 100%; text-align: center;" >
-<!--             <a href="index.php/events/answersCategorised" class="btn btn-default">Reporte de actividades</a>
-            <a href="index.php/events/admReports" class="btn btn-warning">Reporte de actividad detallada</a> -->
+        <table>
+            <tbody>
+                <tr>
+                    <td>Departamento:</td>
+                    <td><option id="selDpto"></option></td>
+                    <td>Municipio</td>
+                    <td><option id="selMpo"></option></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
-        <!-- <a href="#" class="btn btn-success"></a> -->
-        
     </div>
 </section>
