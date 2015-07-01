@@ -35,10 +35,16 @@
         <table>
             <tbody>
                 <tr>
-                    <td>Departamento:</td>
-                    <td><option id="selDpto"></option></td>
-                    <td>Municipio</td>
-                    <td><option id="selMpo"></option></td>
+                    <td><label>Departamento:</label></td>
+                    <td><select id="departamentos" class="form-control">
+                            <option>Seleccione...</option>
+                        </select>
+                    </td>
+                    <td><label>Municipio:</label></td>
+                    <td><select id="municipios" class="form-control">
+                            <option>Seleccione...</option>
+                        </select>
+                    </td>
                 </tr>
             </tbody>
         </table>
