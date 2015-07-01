@@ -38,4 +38,22 @@ class QC_Reports extends QC_Controller {
         redirect("/");
     }
 
+    /* Obtener departamentos de las actividades*/
+    public function get_Activity_Dpto(){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_activity_dpto());
+    }
+
+    /* Obtener municipios de las actividades*/
+    public function get_Activity_Mpo($departamento){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_activity_mpo($departamento));
+    }
+
+    /* Obtener resumen de reporte general*/
+    public function get_Report_Resume(){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_report_resume());
+    }
+
 }

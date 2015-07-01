@@ -36,18 +36,30 @@
             <tbody>
                 <tr>
                     <td><label>Departamento:</label></td>
-                    <td><select id="departamentos" class="form-control">
+                    <td><select id="departamentos" class="form-control departamentos">
                             <option>Seleccione...</option>
                         </select>
                     </td>
                     <td><label>Municipio:</label></td>
-                    <td><select id="municipios" class="form-control">
+                    <td><select id="municipios" class="form-control municipios">
                             <option>Seleccione...</option>
                         </select>
                     </td>
                 </tr>
             </tbody>
         </table>
+        </div>
+        <br/>
+        <div id="divFilter"><button class="btn btn-default" id="btnFilter" >Filtrar</button><button class="btn btn-danger" id="btnRemoveFilter" >Quitar filtro</button></div>
+        <br/>
+        <div id="divResume">
+            <label>1. Resumen</label>
+            <table class="table" id="tblResume"><tr><td></td></tr></table>
+        </div>
+        <br/>
+        <div id="divResume">
+            <label>2. Detalle</label>
+            <table id="tblDetails"><tr><td></td></tr></table>
         </div>
     </div>
 </section>
