@@ -83,7 +83,7 @@ class QM_Reports extends CI_Model {
 
         $html .= "<td>" . $dataArray[0]->conteo . "</td>";
 
-        $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL");
+        $query = $this->db->query("SELECT COUNT(*) AS conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL AND respuesta_txt <> ''");
         $dataArray = $query->result();
 
         $html .= "<td>" . $dataArray[0]->conteo . "</td></tr></tbody></table>";
