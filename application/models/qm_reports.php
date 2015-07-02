@@ -56,7 +56,7 @@ class QM_Reports extends CI_Model {
     public function get_report_resume(){
       try {
 
-        $html = "<table class='table'><thead><tr><td>Actividades</td><td>Participantes</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+        $html = "<table><thead><tr><td>Actividades</td><td>Participantes</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
 
         $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
         $dataArray = $query->result();
@@ -90,4 +90,28 @@ class QM_Reports extends CI_Model {
       }
     }
 
+    /**
+     * Metodo get_report_details
+     *
+     * Metodo que trae los detalles del reporte general
+     */
+    public function get_report_details(){
+      try {
+        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td></td></tr></thead><tbody>";
+
+        $query = $this->db->query("SELECT a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre FROM actividades a JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo");
+        $dataArray = $query->result();
+
+        foreach ($dataArray as $registro => $value) {
+          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/report/details/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
+        }
+
+        $html .= "</tbody></table>";
+
+        return $html;
+
+      } catch (Exception $e) {
+        $e->getTraceAsString();
+      }
+    }
 }

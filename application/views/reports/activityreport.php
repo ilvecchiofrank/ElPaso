@@ -57,9 +57,9 @@
             <table class="table" id="tblResume"><tr><td></td></tr></table>
         </div>
         <br/>
-        <div id="divResume">
+        <div id="divDetails">
             <label>2. Detalle</label>
-            <table id="tblDetails"><tr><td></td></tr></table>
+            <table class="table table-striped" id="tblDetails"><tr><td></td></tr></table>
         </div>
     </div>
 </section>

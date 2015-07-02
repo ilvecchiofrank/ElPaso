@@ -56,4 +56,10 @@ class QC_Reports extends QC_Controller {
         echo json_encode($this->reports->get_report_resume());
     }
 
+    /* Obtener detalles de reporte general*/
+    public function get_Report_Details(){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_report_details());
+    }
+
 }

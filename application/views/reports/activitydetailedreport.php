@@ -27,15 +27,33 @@
 
 <section class="main-content">
     <div class="container" style="min-height: 500px;">
-        <h1>Reporte De Actividades</h1>
-        <br>
-        <legend>Modulos disponibles para el administrador de actividades:</legend>
+        <h4 style="text-align: center;">PROYECTO HIDROELÉCRICO EL PASO</h4>
         <br/>
-        <div style="width: 100%; text-align: center;" >
-            <a href="index.php/events/answersCategorised" class="btn btn-default">Reporte de actividades</a>
-            <a href="index.php/events/admReports" class="btn btn-warning">Reporte de actividad detallada</a>
+        <h5 style="text-align: center;">Ficha detallada de la actividad</h5>
+        <br/>
+        <div id="divDescription">
+            <label>1. Descripción:</label>
+            <table class="table" id="tblDescription"><tr><td></td></tr></table>
         </div>
-        <!-- <a href="#" class="btn btn-success"></a> -->
-        
+        <br/>
+        <div id="divDetails">
+            <label>2. Cobertura</label>
+            <table class="table table-striped" id="tblDetails"><tr><td></td></tr></table>
+        </div>
+        <br/>
+        <div id="divSupport">
+            <label>3. Soportes asociados a la actividad</label>
+            <table class="table table-striped" id="tblSupport"><tr><td></td></tr></table>
+        </div>
+        <br/>
+        <div id="divAssistantss">
+            <label>4. Participantes</label>
+            <table class="table table-striped" id="tblAssistants"><tr><td></td></tr></table>
+        </div>
+        <br/>
+        <div id="divQuestions">
+            <label>5. Inquietudes y respuestas</label>
+            <table class="table table-striped" id="tblQuestions"><tr><td></td></tr></table>
+        </div>
     </div>
 </section>
