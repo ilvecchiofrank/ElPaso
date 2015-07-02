@@ -134,7 +134,7 @@ class QM_Reports extends CI_Model {
      */
     public function get_soporte_by_id($id){
         try {
-            $query = $this->db->query("SELECT s.soportetxt, acts.nombre, acts.descripcion, acts.linkdescargasoporte FROM actividadessoportes acts JOIN soportes s ON acts.tiposoporteid = s.tiposoporteid WHERE acts.actividadid = $id");
+            $query = $this->db->query("SELECT s.soportetxt, acts.nombre, acts.descripcion, acts.linkdescargasoporte FROM actividadessoportes acts JOIN soportes s ON acts.tiposoporteid = s.tiposoporteid WHERE acts.actividadid = $id  AND estado = 'A'");
             $dataArray = $query->result();
 
             return $dataArray;
