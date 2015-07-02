@@ -25,7 +25,7 @@ function loadData(){
             $("#lblMpo").text(arrReporte[0].mpo);
             $("#lblTypeActivity").text(arrReporte[0].actividadtipoid);
             $("#lblSiteName").text(arrReporte[0].sitionombre);
-            $("#lblActivityDesc").text(arrReporte[0].actividaddescripcion);
+            $("#lblActivity").text(arrReporte[0].actividaddescripcion);
             $("#lblFIni").text(arrReporte[0].fechaini);
             $("#lblFFin").text(arrReporte[0].fechafin);
             $("#lblHIni").text(arrReporte[0].horainicio);
