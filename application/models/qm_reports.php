@@ -56,7 +56,7 @@ class QM_Reports extends CI_Model {
     public function get_report_resume(){
       try {
 
-        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
 
         $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
         $dataArray = $query->result();
