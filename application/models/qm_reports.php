@@ -108,7 +108,7 @@ class QM_Reports extends CI_Model {
         $dataArray = $query->result();
 
         foreach ($dataArray as $registro => $value) {
-          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/report/details/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
+          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
         }
 
         $html .= "</tbody></table>";

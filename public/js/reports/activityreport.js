@@ -27,3 +27,8 @@ function loadData(){
     });
 
 }
+
+function loadFilteredData(){
+    //Cargar resumen del reporte filtrado
+    //Cargar detalle del reporte filtado
+}
