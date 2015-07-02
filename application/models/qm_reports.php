@@ -96,6 +96,22 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_report_by_id
+     *
+     * Metodo que trae los datos del reporte por id
+     */
+    public function get_report_by_id($id){
+        try {
+            $query = $this->db->query("SELECT * FROM actividades WHERE actividadid = $id");
+            $dataArray = $query->result();
+
+            return $dataArray;
+        } catch (Exception $e) {
+            $e->getTraceAsString();
+        }
+    }
+
+    /**
      * Metodo get_report_details
      *
      * Metodo que trae los detalles del reporte general
