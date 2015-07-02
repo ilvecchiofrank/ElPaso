@@ -17,10 +17,8 @@ function loadData(){
     //Cargar detalle del reporte
     $.getJSON("index.php/reports/get_Report_By_Id/" + actId, function(objRData) {
         arrReporte = objRData;
-        console.table(arrReporte);
 
         if (arrReporte.length > 0) {
-            //$("#lblActivity").text(arrReporte[0].);
             $("#lblDepto").text(arrReporte[0].dpto);
             $("#lblMpo").text(arrReporte[0].mpo);
             $("#lblTypeActivity").text(arrReporte[0].act_tipo);
@@ -30,6 +28,22 @@ function loadData(){
             $("#lblFFin").text(arrReporte[0].fechafin);
             $("#lblHIni").text(arrReporte[0].horainicio);
             $("#lblHFin").text(arrReporte[0].horafin);
+        }
+
+    });
+
+    //Cargar municipios de cobertura reporte
+    $.getJSON("index.php/reports/get_Cobertura_By_Id/" + actId, function(objRData) {
+        arrReporte = objRData;
+        var table = "<table><tr><td>Departamento</td><td>Municipio</td></tr>"
+
+        if (arrReporte.length > 0) {
+            for (var i = arrReporte.length - 1; i >= 0; i--) {
+                table += "<tr><td>" + arrReporte[i].depto + "</td><td>" + arrReporte[i].mpo + "</td></tr>";
+            };
+
+            table += "</table>"
+            $("#tblDetails").html(table);
         }
 
     });

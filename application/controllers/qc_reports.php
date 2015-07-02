@@ -68,4 +68,10 @@ class QC_Reports extends QC_Controller {
         echo json_encode($this->reports->get_report_by_id($id));
     }
 
+    /* Obtener cobertura por ID*/
+    public function get_Cobertura_By_Id($id){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_cobertura_by_id($id));
+    }
+
 }

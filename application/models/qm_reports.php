@@ -112,6 +112,22 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_cobertura_by_id
+     *
+     * Metodo que trae los municipios de cobertura por id
+     */
+    public function get_cobertura_by_id($id){
+        try {
+            $query = $this->db->query("SELECT wd.a05Nombre AS depto, wm.a06Nombre AS mpo FROM municipioscobertura_actividades mca  JOIN t05web_departamentos wd ON mca.deptoid = wd.a05Codigo JOIN t06web_municipios wm ON mca.mpoid = wm.a06Codigo WHERE mca.actividadid = $id");
+            $dataArray = $query->result();
+
+            return $dataArray;
+        } catch (Exception $e) {
+            $e->getTraceAsString();
+        }
+    }
+
+    /**
      * Metodo get_report_details
      *
      * Metodo que trae los detalles del reporte general
