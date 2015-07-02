@@ -56,7 +56,7 @@ class QM_Reports extends CI_Model {
     public function get_report_resume(){
       try {
 
-        $html = "<table><thead><tr><td>Actividades</td><td>Participantes</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participantes</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
 
         $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
         $dataArray = $query->result();
@@ -64,6 +64,11 @@ class QM_Reports extends CI_Model {
         $html .= "<tr><td>" . $dataArray[0]->conteo . "</td>";
 
         $query = $this->db->query("SELECT COUNT(DISTINCT personaid) as conteo FROM actividadpersona");
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+        $query = $this->db->query("SELECT COUNT(personaid) as conteo FROM actividadpersona");
         $dataArray = $query->result();
 
         $html .= "<td>" . $dataArray[0]->conteo . "</td>";
