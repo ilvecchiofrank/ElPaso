@@ -48,5 +48,21 @@ function loadData(){
 
     });
 
+    //Cargar archivos de soporte
+    $.getJSON("index.php/reports/get_Soporte_By_Id/" + actId, function(objRData) {
+        arrReporte = objRData;
+        var table = "<table><tr><td>Tipo Soporte</td><td>Nombre del Soporte</td><td>Descripción</td><td>Consultar Soporte</td></tr>"
+
+        if (arrReporte.length > 0) {
+            for (var i = arrReporte.length - 1; i >= 0; i--) {
+                table += "<tr><td>" + arrReporte[i].soportetxt + "</td><td>" + arrReporte[i].nombre + "</td><td>" + arrReporte[i].descripcion + "</td><td>" + arrReporte[i].linkdescargasoporte + "</td></tr>";
+            };
+
+            table += "</table>"
+            $("#tblSupport").html(table);
+        }
+
+    });
+
 }
 
