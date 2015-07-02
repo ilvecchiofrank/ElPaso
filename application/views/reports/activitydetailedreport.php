@@ -35,8 +35,8 @@
             <label>1. Descripción:</label>
             <table class="table table-striped" id="tblDescription">
                 <tr>
-                    <td colspan="2">Actividad</td>
-                    <td colspan="2"><label id="lblActivity"></label></td>
+                    <td>Actividad</td>
+                    <td colspan="3"><label id="lblActivity"></label></td>
                 </tr>
                 <tr>
                     <td>Departamento:</td>
@@ -49,10 +49,6 @@
                     <td><label id="lblTypeActivity"></label></td>
                     <td>Nombre del sitio:</td>
                     <td><label id="lblSiteName"></label></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Descripción de la actividad:</td>
-                    <td colspan="2"><label id="lblActivityDesc"></label></td>
                 </tr>
                 <tr>
                     <td>Fecha inicio:</td>

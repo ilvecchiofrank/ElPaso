@@ -23,7 +23,7 @@ function loadData(){
             //$("#lblActivity").text(arrReporte[0].);
             $("#lblDepto").text(arrReporte[0].dpto);
             $("#lblMpo").text(arrReporte[0].mpo);
-            $("#lblTypeActivity").text(arrReporte[0].actividadtipoid);
+            $("#lblTypeActivity").text(arrReporte[0].act_tipo);
             $("#lblSiteName").text(arrReporte[0].sitionombre);
             $("#lblActivity").text(arrReporte[0].actividaddescripcion);
             $("#lblFIni").text(arrReporte[0].fechaini);

@@ -102,7 +102,7 @@ class QM_Reports extends CI_Model {
      */
     public function get_report_by_id($id){
         try {
-            $query = $this->db->query("SELECT * FROM actividades WHERE actividadid = $id");
+            $query = $this->db->query("SELECT act.actividadtipodescripcion AS act_tipo, wd.a05Nombre AS dpto, wm.a06Nombre AS mpo, a.fechafin, a.fechaini, a.horafin, a.horainicio, a.sitionombre, a.actividaddescripcion FROM actividades a JOIN actividades_tipos act ON a.actividadtipoid = act.actividadtipoid JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo WHERE a.actividadid = $id");
             $dataArray = $query->result();
 
             return $dataArray;
