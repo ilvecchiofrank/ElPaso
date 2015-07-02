@@ -64,5 +64,31 @@ function loadData(){
 
     });
 
+    //Cargar participantes
+    $.getJSON("index.php/reports/get_Personas_By_Id/" + actId, function(objRData) {
+        arrReporte = objRData;
+        var table = "<table><tr><td>Nombres</td><td>Apellidos</td><td>Sexo</td><td>No. Documento</td><td>Dpto. Residencia</td><td>Mpo. Residencia</td><td>Teléfono</td><td>Celular</td></tr>"
+
+        if (arrReporte.length > 0) {
+            for (var i = arrReporte.length - 1; i >= 0; i--) {
+                table += "<tr><td>" + arrReporte[i].nombres + "</td><td>" + arrReporte[i].apellidos + "</td><td>" + arrReporte[i].sexo + "</td><td>" + arrReporte[i].nodocumento + "</td><td>" + arrReporte[i].depto + "</td><td>" + arrReporte[i].mpo + "</td><td>" + arrReporte[i].telefono + "</td><td>" + arrReporte[i].celular + "</td></tr>";
+            };
+
+            table += "</table>"
+            $("#tblAssistants").html(table);
+        }
+
+    });
+
+    //Cargar total participantes
+    $.getJSON("index.php/reports/get_Total_Personas_By_Id/" + actId, function(objRData) {
+        arrReporte = objRData;
+
+        if (arrReporte.length > 0) {
+            $("#tblTotalAssistants").text("Total Personas: " + arrReporte[0].conteo);
+        }
+
+    });
+
 }
 

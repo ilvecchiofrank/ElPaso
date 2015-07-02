@@ -144,6 +144,38 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_personas_by_id
+     *
+     * Metodo que trae las personas por id
+     */
+    public function get_personas_by_id($id){
+        try {
+            $query = $this->db->query("SELECT p.nombres, p.apellidos, s.sexo, p.nodocumento, wd.a05Nombre AS depto, wm.a06Nombre AS mpo, p.telefono, p.celular FROM actividadpersona ap JOIN personas p ON ap.personaid = p.personaid JOIN sexo s ON p.sexo_id = s.sexoid JOIN t05web_departamentos wd ON p.dptoresidencia = wd.a05Codigo JOIN t06web_municipios wm ON p.mporesidencia = wm.a06Codigo WHERE ap.actividadid = $id");
+            $dataArray = $query->result();
+
+            return $dataArray;
+        } catch (Exception $e) {
+            $e->getTraceAsString();
+        }
+    }
+
+    /**
+     * Metodo get_total_personas_by_id
+     *
+     * Metodo que trae las personas por id
+     */
+    public function get_total_personas_by_id($id){
+        try {
+            $query = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona WHERE actividadid = $id");
+            $dataArray = $query->result();
+
+            return $dataArray;
+        } catch (Exception $e) {
+            $e->getTraceAsString();
+        }
+    }
+
+    /**
      * Metodo get_report_details
      *
      * Metodo que trae los detalles del reporte general

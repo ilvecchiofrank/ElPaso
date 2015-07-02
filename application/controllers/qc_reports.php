@@ -80,4 +80,16 @@ class QC_Reports extends QC_Controller {
         echo json_encode($this->reports->get_soporte_by_id($id));
     }
 
+    /* Obtener personas por ID*/
+    public function get_Personas_By_Id($id){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_personas_by_id($id));
+    }
+
+    /* Obtener total personas por ID*/
+    public function get_Total_Personas_By_Id($id){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_total_personas_by_id($id));
+    }
+
 }
