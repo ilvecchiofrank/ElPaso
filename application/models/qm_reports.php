@@ -107,10 +107,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
+            $query = $this->db->query("SELECT COUNT(actividadid) AS conteo FROM actividades WHERE dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
+            $query = $this->db->query("SELECT COUNT(actividadid) AS conteo FROM actividades WHERE mpo = $mpo");
         }
 
         $dataArray = $query->result();
@@ -119,10 +119,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) as conteo FROM actividadpersona");
+            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) as conteo FROM actividadpersona");
+            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
         }
 
         $dataArray = $query->result();
@@ -131,10 +131,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(personaid) as conteo FROM actividadpersona");
+            $query = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(personaid) as conteo FROM actividadpersona");
+            $query = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
         }
 
         $dataArray = $query->result();
@@ -143,10 +143,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(DISTINCT actividadpersona_id) as conteo FROM actividadpersona_preguntas");
+            $query = $this->db->query("SELECT COUNT(DISTINCT acp.actividadpersona_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(DISTINCT actividadpersona_id) as conteo FROM actividadpersona_preguntas");
+            $query = $this->db->query("SELECT COUNT(DISTINCT acp.actividadpersona_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
         }
 
         $dataArray = $query->result();
@@ -155,10 +155,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividadpersona_preguntas");
+            $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividadpersona_preguntas");
+            $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
         }
 
         $dataArray = $query->result();
@@ -167,10 +167,10 @@ class QM_Reports extends CI_Model {
 
         if ($mpo == 0) {
             //Query por departamento
-            $query = $this->db->query("SELECT COUNT(*) AS conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL AND respuesta_txt <> ''");
+            $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE acp.respuesta_txt IS NOT NULL AND acp.respuesta_txt <> '' AND a.dpto = $depto");
         } else {
             //Query por municipio
-            $query = $this->db->query("SELECT COUNT(*) AS conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL AND respuesta_txt <> ''");
+            $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE acp.respuesta_txt IS NOT NULL AND acp.respuesta_txt <> '' AND a.dpto = $mpo");
         }
 
         $dataArray = $query->result();
