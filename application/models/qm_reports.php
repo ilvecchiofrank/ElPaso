@@ -73,7 +73,7 @@ class QM_Reports extends CI_Model {
 
         $html .= "<td>" . $dataArray[0]->conteo . "</td>";
 
-        $query = $this->db->query("SELECT COUNT(DISTINCT actividadpersona_id) as conteo FROM actividadpersona_preguntas");
+        $query = $this->db->query("SELECT COUNT(actividadpersona_id) as conteo FROM actividadpersona_preguntas");
         $dataArray = $query->result();
 
         $html .= "<td>" . $dataArray[0]->conteo . "</td>";
