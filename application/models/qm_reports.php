@@ -96,6 +96,95 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_filtered_report_resume
+     *
+     * Metodo que trae el resumen del reporte general filtrado por ubicacion
+     */
+    public function get_filtered_report_resume($depto, $mpo){
+      try {
+
+        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<tr><td>" . $dataArray[0]->conteo . "</td>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) as conteo FROM actividadpersona");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(DISTINCT personaid) as conteo FROM actividadpersona");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(personaid) as conteo FROM actividadpersona");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(personaid) as conteo FROM actividadpersona");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(DISTINCT actividadpersona_id) as conteo FROM actividadpersona_preguntas");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(DISTINCT actividadpersona_id) as conteo FROM actividadpersona_preguntas");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividadpersona_preguntas");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividadpersona_preguntas");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT COUNT(*) AS conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL AND respuesta_txt <> ''");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT COUNT(*) AS conteo FROM actividadpersona_preguntas WHERE respuesta_txt IS NOT NULL AND respuesta_txt <> ''");
+        }
+
+        $dataArray = $query->result();
+
+        $html .= "<td>" . $dataArray[0]->conteo . "</td></tr></tbody></table>";
+
+        return $html;
+
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /**
      * Metodo get_report_by_id
      *
      * Metodo que trae los datos del reporte por id
@@ -216,4 +305,37 @@ class QM_Reports extends CI_Model {
         $e->getTraceAsString();
       }
     }
+
+    /**
+     * Metodo get_filtered_report_details
+     *
+     * Metodo que trae los detalles del reporte general filtrado por ubicacion
+     */
+    public function get_filtered_report_details($depto, $mpo){
+      try {
+        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td></td></tr></thead><tbody>";
+
+        if ($mpo == 0) {
+            //Query por departamento
+            $query = $this->db->query("SELECT a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre FROM actividades a JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo WHERE a.dpto = $depto GROUP BY a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre");
+        } else {
+            //Query por municipio
+            $query = $this->db->query("SELECT a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre FROM actividades a JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo WHERE a.mpo = $mpo GROUP BY a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre");
+        }
+
+        $dataArray = $query->result();
+
+        foreach ($dataArray as $registro => $value) {
+          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
+        }
+
+        $html .= "</tbody></table>";
+
+        return $html;
+
+      } catch (Exception $e) {
+        $e->getTraceAsString();
+      }
+    }
+
 }
