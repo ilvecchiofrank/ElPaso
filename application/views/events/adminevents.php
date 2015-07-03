@@ -34,7 +34,7 @@
         <div style="width: 100%; text-align: center;" >
             <a href="index.php/events/questionsCategorised" class="btn btn-success">Inquietudes Categorizadas</a>
             <a href="index.php/events/answersCategorised" class="btn btn-default">Respuestas Categorizadas</a>
-            <a href="index.php/events/admReports" class="btn btn-warning">Reportes</a>
+            <a href="index.php/reports/activityReport" class="btn btn-warning">Reportes</a>
         </div>
         <!-- <a href="#" class="btn btn-success"></a> -->
         

@@ -28,7 +28,27 @@ function loadData(){
 
 }
 
+$("#btnRemoveFilter").click(function() {
+    loadData();
+    $("#municipios").html("<select id='municipios' class='form-control municipios'><option>Seleccione...</option></select>");
+});
+
+$("#btnFilter").click(function(){
+    console.log("Filtrar");
+    loadFilteredData();
+});
+
 function loadFilteredData(){
+    var departamento = $("#departamentos").val();
+    var municipio = $("#municipios").val();
+
+console.log(departamento + "~" + municipio);
+
+    if (departamento == "" || municipio == "") {
+        console.log("Parametros incompletos");
+        return;
+    }
+
     //Cargar resumen del reporte filtrado
     //Cargar detalle del reporte filtado
 }

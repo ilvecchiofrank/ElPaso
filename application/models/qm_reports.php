@@ -144,6 +144,23 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_questions_by_id
+     *
+     * Metodo que trae los soportes por id
+     */
+    public function get_questions_by_id($id){
+        try {
+            //$query = $this->db->query("SELECT p.nodocumento, CONCAT(p.nombres, ' ', p.apellidos) AS fullname, pc.preguntadescripciontxt AS tipo, ap.pregunta_txt, ap.respuesta_txt, pcat.pregunta_categorizadatxt, rc.respuestadescripciontxt FROM actividadpersona_preguntas ap JOIN preguntas_categorias pc ON ap.preguntacategoriaid = pc.preguntacategoriaid JOIN preguntas_categorizadas pcat ON ap.pregunta_categorizada_id = pcat.pregunta_categorizada_id JOIN respuestas_categorias rc ON ap.respuestacategoriaid = rc.respuestacategoriaid JOIN actividadpersona ap2 ON ap.actividadpersona_id = ap2.actividadpersonaid JOIN personas p ON ap2.personaid = p.personaid WHERE ap2.actividadid = $id GROUP BY p.nodocumento, ap.pregunta_txt, ap.respuesta_txt, pcat.pregunta_categorizadatxt, rc.respuestadescripciontxt");
+            $query = $this->db->query("SELECT p.nodocumento, CONCAT(p.nombres, ' ', p.apellidos) AS fullname, pc.preguntadescripciontxt AS tipo, ap.pregunta_txt, ap.respuesta_txt, pcat.pregunta_categorizadatxt, rc.respuestadescripciontxt FROM actividadpersona_preguntas ap JOIN preguntas_categorias pc ON ap.preguntacategoriaid = pc.preguntacategoriaid JOIN preguntas_categorizadas pcat ON ap.pregunta_categorizada_id = pcat.pregunta_categorizada_id JOIN respuestas_categorias rc ON ap.respuestacategoriaid = rc.respuestacategoriaid JOIN actividadpersona ap2 ON ap.actividadpersona_id = ap2.actividadpersonaid JOIN personas p ON ap2.personaid = p.personaid GROUP BY p.nodocumento, ap.pregunta_txt, ap.respuesta_txt, pcat.pregunta_categorizadatxt, rc.respuestadescripciontxt");
+            $dataArray = $query->result();
+
+            return $dataArray;
+        } catch (Exception $e) {
+            $e->getTraceAsString();
+        }
+    }
+
+    /**
      * Metodo get_personas_by_id
      *
      * Metodo que trae las personas por id

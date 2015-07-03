@@ -92,4 +92,10 @@ class QC_Reports extends QC_Controller {
         echo json_encode($this->reports->get_total_personas_by_id($id));
     }
 
+    /* Obtener preguntas por ID*/
+    public function get_Questions_By_Id($id){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_questions_by_id($id));
+    }
+
 }
