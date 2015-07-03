@@ -14,18 +14,10 @@
           </div>
           <div class="collapse navbar-collapse" id="quimbo-nav">
             <ul class="nav navbar-nav navbar-right">
-              <li<?php if ($stRPage == "home" || $stRPage == "search") { ?> class="active"<?php } ?>>
-                <a href="<?php echo site_url("form/search"); ?>"><?php echo lang("TxtPageHome"); ?></a></li>
-<?php if ($bolRIsLoggenIn) { ?>
-              <li<?php if ($stRPage == "start") { ?> class="active"<?php } ?>>
-                <a href="<?php echo site_url("form/start"); ?>"><?php echo lang("TxtPageStart"); ?></a></li>
               <li>
-                <a href="http://localhost/" target="_blank">Georeferenciación</a></li>
-              <li>
-                <a href="<?php echo site_url("form/sync"); ?>">Sincronizar</a></li>
+                <a href="index.php">Inicio</a></li>
               <li>
                 <a href="<?php echo site_url("user/do_logout"); ?>">Salir</a></li>
-<?php } ?>
             </ul>
           </div>
         </div>

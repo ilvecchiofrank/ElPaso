@@ -62,6 +62,18 @@ class QC_Reports extends QC_Controller {
         echo json_encode($this->reports->get_report_details());
     }
 
+    /* Obtener resumen de reporte general filtrado por ubicacion*/
+    public function get_Filtered_Report_Resume($depto, $mpo){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_filtered_report_resume($depto, $mpo));
+    }
+
+    /* Obtener detalles de reporte general filtrado por ubicacion*/
+    public function get_Filtered_Report_Details($depto, $mpo){
+        $this->load->model("qm_reports", "reports", true);
+        echo json_encode($this->reports->get_filtered_report_details($depto, $mpo));
+    }
+
     /* Obtener reporte por ID*/
     public function get_Report_By_Id($id){
         $this->load->model("qm_reports", "reports", true);

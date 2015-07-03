@@ -34,7 +34,6 @@ $("#btnRemoveFilter").click(function() {
 });
 
 $("#btnFilter").click(function(){
-    console.log("Filtrar");
     loadFilteredData();
 });
 
@@ -48,8 +47,24 @@ function loadFilteredData(){
         return;
     }
 
-
+    if (municipio == "") {
+        municipio = 0;
+    }
 
     //Cargar resumen del reporte filtrado
-    //Cargar detalle del reporte filtado
+    $.getJSON("index.php/reports/get_Filtered_Report_Resume/" + departamento + "/" + municipio, function(objRData) {
+        $("#tblResume").html(objRData);
+    });
+
+    //Cargar detalle del reporte filtrado
+    $.getJSON("index.php/reports/get_Filtered_Report_Details/" + departamento + "/" + municipio, function(objRData) {
+        $("#tblDetails").html(objRData);
+    });
+
 }
+
+$(document).ajaxStart(function() {
+    $(".modal").modal('show');
+}).ajaxStop(function() {
+    $(".modal").modal('hide');
+});
