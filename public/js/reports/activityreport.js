@@ -42,12 +42,13 @@ function loadFilteredData(){
     var departamento = $("#departamentos").val();
     var municipio = $("#municipios").val();
 
-console.log(departamento + "~" + municipio);
-
-    if (departamento == "" || municipio == "") {
-        console.log("Parametros incompletos");
+    //Validacion departamento
+    if (departamento == "") {
+        alert("Debe seleccionar un departamento.");
         return;
     }
+
+
 
     //Cargar resumen del reporte filtrado
     //Cargar detalle del reporte filtado
