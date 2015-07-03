@@ -55,7 +55,7 @@ function loadData(){
 
         if (arrReporte.length > 0) {
             for (var i = arrReporte.length - 1; i >= 0; i--) {
-                table += "<tr><td>" + arrReporte[i].soportetxt + "</td><td>" + arrReporte[i].nombre + "</td><td>" + arrReporte[i].descripcion + "</td><td>" + arrReporte[i].linkdescargasoporte + "</td></tr>";
+                table += "<tr><td>" + arrReporte[i].soportetxt + "</td><td>" + arrReporte[i].nombre + "</td><td>" + arrReporte[i].descripcion + "</td><td>" +  "<a id='btnTutela' href=" + arrReporte[i].linkdescargasoporte + " class='btn btn-success btn-md'>Ver</a>" + "</td></tr>";
             };
 
             table += "</table>"
