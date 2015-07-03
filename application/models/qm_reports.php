@@ -301,13 +301,42 @@ class QM_Reports extends CI_Model {
      */
     public function get_report_details(){
       try {
-        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td></td></tr></thead><tbody>";
+        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td>Participantes</td><td>Personas con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td><td></td></tr></thead><tbody>";
 
         $query = $this->db->query("SELECT a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre FROM actividades a JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo");
         $dataArray = $query->result();
 
         foreach ($dataArray as $registro => $value) {
-          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
+
+            //Consultar resumen por actividad
+            $resumen = "";
+
+            //Participantes
+            $queryA = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona WHERE actividadid = " . $value->actividadid);
+            $dataArrayA = $queryA->result();
+
+            $resumen .= "<td>" . $dataArrayA[0]->conteo . "</td>";
+
+            //Participantes con inquietudes
+            $queryB = $this->db->query("SELECT COUNT(acp.actividadpersona_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid WHERE ap.actividadid = " . $value->actividadid);
+            $dataArrayB = $queryB->result();
+
+            $resumen .= "<td>" . $dataArrayB[0]->conteo . "</td>";
+
+            //Total inquietudes
+            $queryC = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid WHERE ap.actividadid = " . $value->actividadid);
+            $dataArrayC = $queryC->result();
+
+            $resumen .= "<td>" . $dataArrayC[0]->conteo . "</td>";
+
+            //Inquietudes respondidas
+            $queryD = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid WHERE acp.respuesta_txt IS NOT NULL AND acp.respuesta_txt <> '' AND ap.actividadid = " . $value->actividadid);
+            $dataArrayD = $queryD->result();
+
+            $resumen .= "<td>" . $dataArrayD[0]->conteo . "</td>";
+
+            //Armar fila
+            $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td>" . $resumen . "<td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
         }
 
         $html .= "</tbody></table>";
@@ -339,7 +368,64 @@ class QM_Reports extends CI_Model {
         $dataArray = $query->result();
 
         foreach ($dataArray as $registro => $value) {
-          $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
+
+            //Consultar resumen por actividad
+            $resumen = "";
+
+            //Participantes
+            if ($mpo == 0) {
+                //Query por departamento
+                $query = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
+            } else {
+                //Query por municipio
+                $query = $this->db->query("SELECT COUNT(personaid) AS conteo FROM actividadpersona ap JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
+            }
+
+            $dataArray = $query->result();
+
+            $resumen .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+            //Participantes con inquietudes
+            if ($mpo == 0) {
+                //Query por departamento
+                $query = $this->db->query("SELECT COUNT(acp.actividadpersona_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
+            } else {
+                //Query por municipio
+                $query = $this->db->query("SELECT COUNT(acp.actividadpersona_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
+            }
+
+            $dataArray = $query->result();
+
+            $resumen .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+            //Total inquietudes
+            if ($mpo == 0) {
+                //Query por departamento
+                $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.dpto = $depto");
+            } else {
+                //Query por municipio
+                $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE a.mpo = $mpo");
+            }
+
+            $dataArray = $query->result();
+
+            $resumen .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+            //Inquietudes respondidas
+            if ($mpo == 0) {
+                //Query por departamento
+                $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE acp.respuesta_txt IS NOT NULL AND acp.respuesta_txt <> '' AND a.dpto = $depto");
+            } else {
+                //Query por municipio
+                $query = $this->db->query("SELECT COUNT(actividadpersona_pregunta_id) AS conteo FROM actividadpersona_preguntas acp JOIN actividadpersona ap ON acp.actividadpersona_id = ap.actividadpersonaid JOIN actividades a ON ap.actividadid = a.actividadid WHERE acp.respuesta_txt IS NOT NULL AND acp.respuesta_txt <> '' AND a.dpto = $mpo");
+            }
+
+            $dataArray = $query->result();
+
+            $resumen .= "<td>" . $dataArray[0]->conteo . "</td>";
+
+            //Armar fila
+            $html .= "<tr><td>" . $value->a05Nombre . "</td><td>" . $value->a06Nombre . "</td><td>" . $value->fechaini . "</td><td>" . $value->fechafin . "</td><td>" . $value->horainicio . "</td><td>" . $value->horafin . "</td><td>" . $value->sitionombre . "</td><td>" . "<a id='btnCert' href='index.php/reports/activityDetailedReport/" . $value->actividadid . "' class='btn btn-success btn-md'>Detalle</a>" . "</td></tr>";
         }
 
         $html .= "</tbody></table>";
