@@ -51,6 +51,9 @@ function loadFilteredData(){
         municipio = 0;
     }
 
+    //Modificar link del export
+    $("#btnExport").attr("href", "index.php/reports/report_toExcel/" + departamento + "/" + municipio);
+
     //Cargar resumen del reporte filtrado
     $.getJSON("index.php/reports/get_Filtered_Report_Resume/" + departamento + "/" + municipio, function(objRData) {
         $("#tblResume").html(objRData);

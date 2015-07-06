@@ -21,20 +21,57 @@ class QC_Reports extends QC_Controller {
     }
 
     /* Exportar reporte general */
-    public function report_toExcel()
+    public function report_toExcel($depto, $mpo)
     {
         if ($this->session->userdata("isLoggedIn")) {
-          $this->display_page("export_report", "reports", true);
+
+            $this->load->model("qm_reports", "reports", true);
+            $arrLPageData = array();
+
+            //Validar diligenciamiento
+            if ($depto == 0 && $mpo == 0) {
+                //Sin filtros
+                $arrLPageData["arrHeader"] = $this->reports->get_report_header_empty();
+                $arrLPageData["arrResume"] = $this->reports->get_report_resume();
+                $arrLPageData["arrContent"] = $this->reports->get_report_details();
+            } else {
+                if ($mpo == 0) {
+                    //Departamento
+                    $arrLPageData["arrHeader"] = $this->reports->get_report_header_by_dpto($depto);
+                }else{
+                    //Municipio
+                    $arrLPageData["arrHeader"] = $this->reports->get_report_header_by_mpo($mpo);
+                }
+
+                $arrLPageData["arrResume"] = $this->reports->get_filtered_report_resume($depto, $mpo);
+                $arrLPageData["arrContent"] = $this->reports->get_filtered_report_details($depto, $mpo);
+            }
+
+            $this->load->vars($arrLPageData);
+            $this->display_page("export_report", "reports", true);
           return;
         }
         redirect("/");
     }
 
     /* Exportar reporte detallado */
-    public function detaild_report_toExcel()
+    public function detailed_report_toExcel($reporteid)
     {
         if ($this->session->userdata("isLoggedIn")) {
-          $this->display_page("export_detailed_report", "reports", true);
+
+            $this->load->model("qm_reports", "reports", true);
+            $arrLPageData = array();
+
+            if ($reporteid = 0) {
+                //Sin informacion
+                $this->display_page("activityreport", "reports");
+            }else{
+                //Con informacion
+                $arrLPageData["arrResults"] = $this->reports->get_report_resume();
+                $this->load->vars($arrLPageData);
+                $this->display_page("export_detailed_report", "reports", true);
+            }
+
           return;
         }
         redirect("/");

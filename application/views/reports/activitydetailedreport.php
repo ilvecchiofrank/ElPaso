@@ -101,8 +101,8 @@
         <br/>
         <div id="divFoot">
             <label id="lblGenerationDate"></label>
-            <a href='index.php/reports/detaild_report_toExcel' class="btn btn-success" >Exportar Informe</a>
-            <br/>
+            <a id="btnExport" href='index.php/reports/detailed_report_toExcel/0' class="btn btn-success" >Exportar Informe</a>
         </div>
+        <br/>
     </div>
 </section>

@@ -27,6 +27,51 @@ class QM_Reports extends CI_Model {
     }
 
     /**
+     * Metodo get_report_header_empty
+     */
+    public function get_report_header_empty(){
+      try {
+
+        $query = $this->db->query("SELECT 'No especificado' AS dpto, 'No especificado' AS mpo FROM t05web_departamentos  WHERE a05Codigo = 29");
+        $dataArray = $query->result();
+
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /**
+     * Metodo get_report_header_by_dpto
+     */
+    public function get_report_header_by_dpto($dptoid){
+      try {
+
+        $query = $this->db->query("SELECT wd.a05Nombre AS dpto, 'No especificado' AS mpo FROM `t05web_departamentos` wd WHERE a05Codigo = $dptoid");
+        $dataArray = $query->result();
+
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /**
+     * Metodo get_report_header_by_mpo
+     */
+    public function get_report_header_by_mpo($mpoid){
+      try {
+
+        $query = $this->db->query("SELECT wd.a05Nombre AS dpto, wm.a06Nombre AS mpo FROM t06web_municipios wm JOIN t05web_departamentos wd ON wm.a06Departamento = wd.a05Codigo WHERE a06Codigo = $mpoid");
+        $dataArray = $query->result();
+
+        return $dataArray;
+      } catch (Exception $e) {
+        echo $e->getTraceAsString();
+      }
+    }
+
+    /**
      * Metodo get_activity_mpo
      *
      * Metodo que trae los municipios existentes en la tabla de actividades filtrado por municipio
@@ -56,7 +101,7 @@ class QM_Reports extends CI_Model {
     public function get_report_resume(){
       try {
 
-        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+        $html = "<table border='1'><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
 
         //Actividades
         $query = $this->db->query("SELECT COUNT(*) as conteo FROM actividades");
@@ -109,7 +154,7 @@ class QM_Reports extends CI_Model {
     public function get_filtered_report_resume($depto, $mpo){
       try {
 
-        $html = "<table><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
+        $html = "<table border='1'><thead><tr><td>Actividades</td><td>Personas</td><td>Participaciones</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td></tr></thead><tbody>";
 
         //Actividades
         if ($mpo == 0) {
@@ -301,7 +346,7 @@ class QM_Reports extends CI_Model {
      */
     public function get_report_details(){
       try {
-        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td>Participantes</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td><td></td></tr></thead><tbody>";
+        $html = "<table border='1'><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td>Participantes</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td><td></td></tr></thead><tbody>";
 
         $query = $this->db->query("SELECT a.actividadid, wd.a05Nombre, wm.a06Nombre, a.fechaini, a.fechafin, a.horainicio, a.horafin, a.sitionombre FROM actividades a JOIN t05web_departamentos wd ON a.dpto = wd.a05Codigo JOIN t06web_municipios wm ON a.mpo = wm.a06Codigo");
         $dataArray = $query->result();
@@ -355,7 +400,7 @@ class QM_Reports extends CI_Model {
      */
     public function get_filtered_report_details($depto, $mpo){
       try {
-        $html = "<table><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td>Participantes</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td><td></td></tr></thead><tbody>";
+        $html = "<table border='1'><thead><tr><td>Departamento</td><td>Municipio</td><td>Fecha inicio</td><td>Fecha fin</td><td>Hora inicio</td><td>Hora fin</td><td>Lugar</td><td>Participantes</td><td>Participantes con inquietudes</td><td>Total inquietudes</td><td>Inquietudes respondidas</td><td></td></tr></thead><tbody>";
 
         if ($mpo == 0) {
             //Query por departamento

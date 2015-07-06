@@ -14,6 +14,9 @@ function loadData(){
         return;
     }
 
+    //Modificar link del export
+    $("#btnExport").attr("href", "index.php/reports/detailed_report_toExcel/" + actId);
+
     //Cargar detalle del reporte
     $.getJSON("index.php/reports/get_Report_By_Id/" + actId, function(objRData) {
         arrReporte = objRData;
