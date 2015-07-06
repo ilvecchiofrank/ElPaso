@@ -411,7 +411,7 @@ class QM_Events extends CI_Model {
     }
     
     public function searchPreguntasParticipantes($parametros){
-        $query = $this->db->query("SELECT a.actividadpersona_pregunta_id as id, b.preguntadescripciontxt as categoriatxt,a.preguntacategoriaid as categoria, a.pregunta_txt as inquietud, if(a.respuesta_txt IS NULL, ' ', a.respuesta_txt) as respuesta, if(a.pregunta_categorizada_id IS NULL, 0, a.pregunta_categorizada_id) as preguntaCategoria, if(a.respuestacategoriaid IS NULL, 0, a.respuestacategoriaid) as respuestaCategoria FROM actividadpersona_preguntas a
+        $query = $this->db->query("SELECT a.actividadpersona_pregunta_id as id, b.preguntadescripciontxt as categoriatxt,a.preguntacategoriaid as categoria, REPLACE(a.pregunta_txt,'\n','~') as inquietud, if(a.respuesta_txt IS NULL, ' ', a.respuesta_txt) as respuesta, if(a.pregunta_categorizada_id IS NULL, 0, a.pregunta_categorizada_id) as preguntaCategoria, if(a.respuestacategoriaid IS NULL, 0, a.respuestacategoriaid) as respuestaCategoria FROM actividadpersona_preguntas a
                                     INNER JOIN preguntas_categorias b ON a.preguntacategoriaid = b.preguntacategoriaid
                                     WHERE a.actividadpersona_id = (SELECT actividadpersonaid FROM actividadpersona WHERE personaid = $parametros[personaid] AND actividadid = $parametros[actividadid])");
         return $query->result();
