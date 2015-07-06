@@ -114,4 +114,11 @@ header("Expires: 0");
       }?>
   </table>
 </div>
+<div class="panel-body">
+  <table>
+    <tr>
+      <td><i>Generado: <?php echo date('d-m-Y H:i:s'); ?></i></td>
+    </tr>
+  </table>
+</div>
 </body>
