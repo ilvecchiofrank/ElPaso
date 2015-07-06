@@ -110,7 +110,7 @@ header("Expires: 0");
       <?php 
       for ($i = 0; $i < count($arrQuestion); $i++)
       {
-         echo "<tr><td>" . $arrQuestion[$i]->nodocumento . "</td><td>" . $arrQuestion[$i]->fullname . "</td><td>" . $arrQuestion[$i]->tipo . "</td><td>" . $arrQuestion[$i]->pregunta_txt . "</td><td>" . $arrQuestion[$i]->respuesta_txt . "</td><td>" . $arrQuestion[$i]->preguntacategorizadatxt . "</td><td>" . $arrQuestion[$i]->respuestadescripciontxt . "</td></tr>";
+         echo "<tr><td>" . $arrQuestion[$i]->nodocumento . "</td><td>" . $arrQuestion[$i]->fullname . "</td><td>" . $arrQuestion[$i]->tipo . "</td><td>" . $arrQuestion[$i]->pregunta_txt . "</td><td>" . $arrQuestion[$i]->respuesta_txt . "</td><td>" . $arrQuestion[$i]->pregunta_categorizadatxt . "</td><td>" . $arrQuestion[$i]->respuestadescripciontxt . "</td></tr>";
       }?>
   </table>
 </div>
