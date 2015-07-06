@@ -20,6 +20,26 @@ class QC_Reports extends QC_Controller {
         return;
     }
 
+    /* Exportar reporte general */
+    public function report_toExcel()
+    {
+        if ($this->session->userdata("isLoggedIn")) {
+          $this->display_page("export_report", "reports", true);
+          return;
+        }
+        redirect("/");
+    }
+
+    /* Exportar reporte detallado */
+    public function detaild_report_toExcel()
+    {
+        if ($this->session->userdata("isLoggedIn")) {
+          $this->display_page("export_detailed_report", "reports", true);
+          return;
+        }
+        redirect("/");
+    }
+
     /* Cargar reporte general de actividades */
     public function activityReport() {
         if ($this->session->userdata("isLoggedIn")) {
