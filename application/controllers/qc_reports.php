@@ -62,12 +62,18 @@ class QC_Reports extends QC_Controller {
             $this->load->model("qm_reports", "reports", true);
             $arrLPageData = array();
 
-            if ($reporteid = 0) {
+            if ($reporteid == 0) {
                 //Sin informacion
                 $this->display_page("activityreport", "reports");
             }else{
                 //Con informacion
-                $arrLPageData["arrResults"] = $this->reports->get_report_resume();
+                $arrLPageData["arrResume"] = $this->reports->get_report_by_id($reporteid);
+                $arrLPageData["arrDetails"] = $this->reports->get_cobertura_by_id($reporteid);
+                $arrLPageData["arrSupport"] = $this->reports->get_soporte_by_id($reporteid);
+                $arrLPageData["arrAssistant"] = $this->reports->get_personas_by_id($reporteid);
+                $arrLPageData["arrTotalAssistant"] = $this->reports->get_total_personas_by_id($reporteid);
+                $arrLPageData["arrQuestion"] = $this->reports->get_questions_by_id($reporteid);
+                $arrLPageData["arrTotalQuestion"] = $this->reports->get_total_questions_by_id($reporteid);
                 $this->load->vars($arrLPageData);
                 $this->display_page("export_detailed_report", "reports", true);
             }

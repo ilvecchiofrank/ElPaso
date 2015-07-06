@@ -39,21 +39,6 @@ header("Expires: 0");
 <div class="panel-body">
   <label>2. Detalle</label>
   <?php echo $arrContent; ?>
-<!--   <table border="1" class="table table-bordered table-condensed">
-    <tr>
-      <th>Departamento</th>
-      <th>Municipio</th>
-      <th>Fecha Inicio</th>
-      <th>Fecha Fin</th>
-      <th>Hora Inicio</th>
-      <th>Hora Fin</th>
-      <th>Lugar</th>
-      <th>Participantes</th>
-      <th>Participantes con inquietudes</th>
-      <th>Total inquietudes</th>
-      <th>Inquietudes respondidas</th>
-    </tr>
-  </table> -->
 </div>
 
 </body>

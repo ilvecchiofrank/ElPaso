@@ -96,7 +96,7 @@ function loadData(){
     //Cargar inquietudes
     $.getJSON("index.php/reports/get_Questions_By_Id/" + actId, function(objRData) {
         arrReporte = objRData;
-        console.table(arrReporte);
+
         var table = "<table><tr><td>No. Documento</td><td>Nombres y apellidos</td><td>Tipo</td><td>Inquietud</td><td>Respuesta dad</td><td>Categoria inquietud manifestada</td><td>Categoria respuesta dada</td></tr>";
 
         if (arrReporte.length > 0) {
@@ -106,6 +106,16 @@ function loadData(){
 
             table += "</table>";
             $("#tblQuestions").html(table);
+        }
+
+    });
+
+    //Cargar total participantes
+    $.getJSON("index.php/reports/get_Total_Questions_By_Id/" + actId, function(objRData) {
+        arrReporte = objRData;
+
+        if (arrReporte.length > 0) {
+            $("#tblTotalQuestions").text("Total Inquietudes: " + arrReporte[0].conteo);
         }
 
     });
