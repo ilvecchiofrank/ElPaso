@@ -101,7 +101,7 @@
         <br/>
         <div id="divFoot">
             <label id="lblGenerationDate"></label>
-            <button class="btn btn-default" id="btnExport">Exportar detalles actividades</button>
+            <a href='index.php/reports/detaild_report_toExcel' class="btn btn-success" >Exportar Informe</a>
             <br/>
         </div>
     </div>

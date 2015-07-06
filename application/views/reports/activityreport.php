@@ -61,6 +61,9 @@
             <label>2. Detalle</label>
             <table class="table table-striped" id="tblDetails"><tr><td></td></tr></table>
         </div>
+        <div id="divExport">
+            <a href='index.php/reports/report_toExcel' class="btn btn-success" >Exportar Informe</a>
+        </div>
     </div>
 </section>
 
