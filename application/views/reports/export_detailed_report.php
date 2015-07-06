@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=report.xls");
+header("Content-Disposition: attachment; filename=report_detail.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 ?>
